@@ -49,8 +49,8 @@
 
   --letter-spacing: 0.1rem;
 
-  --main-font-family: "Poppins";
-  --secondary-font-family: "Circe";
+  --main-font-family: "Circe";
+  --secondary-font-family: "Poppins";
 
   /* Media */
   --mobile: 320px;
