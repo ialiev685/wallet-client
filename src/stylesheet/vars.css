@@ -1,0 +1,59 @@
+:root {
+  /* Палитра */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-green: #24cca7;
+  --color-blue: #4a56e2;
+  --color-pink: #ff6596;
+
+  --color-light-grey: #e0e0e0;
+  --color-grey: #bdbdbd;
+  --secondary-grey-color: #a6a6a6;
+
+  --background-color: rgba(255, 255, 255, 0.4);
+  --modal-background-color: rgba(0, 0, 0, 0.25);
+
+  --backdrop-filter: blur(50px);
+
+  --border-color: #dcdcdf;
+
+  --shadow-color: rgba(255, 255, 255, 0.6);
+  --add-btn-box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+
+  --gradient-currency: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) -8.67%,
+    rgba(255, 255, 255, 0) 116.22%
+  );
+  /* Geometry */
+  --border-radius-small: 20px;
+  --border-radius-large: 30px;
+  --margin-s: 10px;
+  --margin-m: 20px;
+  --margin-l: 30px;
+  --margin-xl: 40px;
+
+  /* Fonts */
+  --font-size-s: 16px;
+  --font-size-m: 18px;
+  --font-size-l: 24px;
+  --font-size-xl: 30px;
+
+  --font-style-norm: normal;
+
+  --font-weigth-norm: 400;
+  --font-weigth-bold: 700;
+
+  --line-heigth-s: 1.12;
+  --line-heigth-m: 1.5;
+
+  --letter-spacing: 0.1rem;
+
+  --main-font-family: "Poppins";
+  --secondary-font-family: "Circe";
+
+  /* Media */
+  --mobile: 320px;
+  --tablet: 768px;
+  --desktop: 1280px;
+}
