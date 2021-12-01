@@ -1,3 +1,6 @@
+
+// import './stylesheet/index.css'
+
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authOperations, authSelectors } from "./redux/auth";
@@ -11,11 +14,14 @@ function App() {
   }, [dispatch]);
 
   return (
+
+
     !isFetchingCurrentUser && (
       <div className="App">
-        <h1>Ну что, поехали?</h1>
+        <h1>Wallet</h1>
       </div>
     )
+
   );
 }
 
