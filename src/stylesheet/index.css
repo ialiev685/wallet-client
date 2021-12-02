@@ -1,3 +1,4 @@
-@import "../../node_modules/modern-normalize/modern-normalize.css";
-@import "./fonts.css";
-@import "./vars.css";
+@import '../../node_modules/modern-normalize/modern-normalize.css';
+@import './fonts.css';
+@import './vars.css';
+@import '../components/Balance/Balance.module.css';
