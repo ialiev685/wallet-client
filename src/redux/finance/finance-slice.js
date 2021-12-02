@@ -6,7 +6,7 @@ const initialState = {
   isFetchingTotalBalance: false,
 };
 
-const authSlice = createSlice({
+const financeSlice = createSlice({
   name: 'finance',
   initialState,
   extraReducers: {
@@ -23,4 +23,4 @@ const authSlice = createSlice({
   },
 });
 
-export default authSlice.reducer;
+export default financeSlice.reducer;
