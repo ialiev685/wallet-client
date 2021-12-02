@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import NumberFormat from 'react-number-format';
+import './checkbox.scss';
 
 const validation = Yup.object({
   type: Yup.boolean(),
@@ -70,7 +71,7 @@ export const ModalTransaction = () => {
             thousandSeparator={true}
             format="### ### ###"
             autoComplete="off"
-            // decimalSeparator="."
+            placeholder="0.00"
             displayType="input"
             type="text"
             value={formik.values.amount}
@@ -108,6 +109,10 @@ export const ModalTransaction = () => {
 
           <button type="submit">Submit</button>
         </form>
+        <div class="switch_box box_1">
+          <input type="checkbox" className="switch_1" />
+          <div className="cross"></div>
+        </div>
       </div>
     </div>
   );
