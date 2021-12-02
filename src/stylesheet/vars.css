@@ -4,6 +4,8 @@
   --color-white: #ffffff;
   --color-green: #24cca7;
   --color-blue: #4a56e2;
+  --color-light-blue: #6e78e8;
+
   --color-pink: #ff6596;
 
   --color-light-grey: #e0e0e0;
@@ -49,8 +51,8 @@
 
   --letter-spacing: 0.1rem;
 
-  --main-font-family: "Circe";
-  --secondary-font-family: "Poppins";
+  --main-font-family: 'Circe';
+  --secondary-font-family: 'Poppins';
 
   /* Media */
   --mobile: 320px;
