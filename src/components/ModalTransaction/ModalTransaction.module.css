@@ -1,0 +1,100 @@
+@import '../../stylesheet/index.css';
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}
+
+.Modal {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+
+  width: 320px;
+  max-height: 830px;
+
+  padding: 20px 10px 0 10px;
+  /* max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 24px); */
+  background-color: var(--color-white);
+}
+
+.Modal__title {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: var(--font-weigth-norm);
+  font-size: var(--font-size-l);
+  line-height: var(--line-heigth-m);
+  text-align: center;
+
+  margin: 0;
+  margin-bottom: 40px;
+}
+
+.Modal__form {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.Modal__type {
+  position: relative;
+
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
+.Model__label {
+  font-family: var(--main-font-family);
+  font-style: normal;
+  font-weight: var(--font-weigth-norm);
+  font-size: var(--font-size-s);
+  line-height: var(--line-heigth-m);
+  color: #e0e0e0;
+}
+
+.Modal__income {
+  color: #24cca7;
+}
+
+.Modal__expenses {
+  color: #ff6596;
+}
+
+.Modal__input {
+  width: 280px;
+
+  margin-bottom: 40px;
+  padding: 10px 20px;
+
+  border: none;
+  outline: none;
+}
+
+.Modal__category {
+  background-color: var(--color-white);
+}
+
+.Modal__category option::-ms-expand {
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+}

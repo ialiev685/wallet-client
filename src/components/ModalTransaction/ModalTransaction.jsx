@@ -1,11 +1,13 @@
 import React from 'react';
 import { useFormik } from 'formik';
-// import { createPortal } from 'react-dom';
+import { createPortal } from 'react-dom';
 import * as Yup from 'yup';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 import NumberFormat from 'react-number-format';
 import './checkbox.scss';
+import style from './ModalTransaction.module.css';
+import { Checkbox } from 'components/Checkbox';
 
 const validation = Yup.object({
   type: Yup.boolean(),
@@ -23,6 +25,7 @@ export const ModalTransaction = () => {
   const formik = useFormik({
     initialValues: {
       type_pay: true,
+      category: 0,
       amount: '',
       date: new Date(),
       discription: '',
@@ -39,35 +42,64 @@ export const ModalTransaction = () => {
     id: 'date',
     name: 'date',
   };
-  return (
-    <div>
-      <div>
-        <h1>Добавить транзакцию</h1>
-        <form onSubmit={formik.handleSubmit}>
+  return createPortal(
+    <div className={style.Overlay}>
+      <div className={style.Modal}>
+        <h1 className={style.Modal__title}>Добавить транзакцию</h1>
+        <form onSubmit={formik.handleSubmit} className={style.Modal__form}>
           {/* <label htmlFor="firstName">First Name</label> */}
-          <label htmlFor="">Доход</label>
-          <input
-            id="type_pay"
-            name="type_pay"
-            type="checkbox"
-            checked={formik.values.type_pay}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.type_pay}
-          />
-          <label htmlFor="">Расход</label>
-          {/* 
-          <input
-            id="amount"
-            name="amount"
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.amount}
-          /> */}
+          <div className={style.Modal__type}>
+            <Checkbox
+              id="type_pay"
+              name="type_pay"
+              type="checkbox"
+              checked={formik.values.type_pay}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.type_pay}
+            />
+            <label
+              className={[
+                style.Model__label,
+                !formik.values.type_pay && style.Modal__income,
+              ].join(' ')}
+              htmlFor="type_pay"
+            >
+              Доход
+            </label>
+            <label
+              htmlFor="type_pay"
+              className={[
+                style.Model__label,
+                formik.values.type_pay && style.Modal__expenses,
+              ].join(' ')}
+            >
+              Расход
+            </label>
+          </div>
 
+          {formik.values.type_pay && (
+            <select
+              id="category"
+              className={[style.Modal__input, style.Modal__category].join(' ')}
+              name="category"
+              value={formik.values.category}
+              onChange={formik.handleChange}
+            >
+              <option value="0">Выберите категорию</option>
+              <option value="1">Основной</option>
+              <option value="2">Еда</option>
+              <option value="3">Авто</option>
+              <option value="4">Развитие</option>
+              <option value="5">Дети</option>
+              <option value="6">Дом</option>
+              <option value="7">Образование</option>
+              <option value="8">Остальное</option>
+            </select>
+          )}
           <NumberFormat
             id="amount"
+            className={[style.Modal__input, style.Modal__date].join(' ')}
             thousandSeparator={true}
             format="### ### ###"
             autoComplete="off"
@@ -87,6 +119,7 @@ export const ModalTransaction = () => {
 
           {/* <label htmlFor="lastName">Last Name</label> */}
           <Datetime
+            className="Modal__input"
             dateFormat="DD.MM.YYYY"
             timeFormat={false}
             inputProps={inputDateProps}
@@ -96,6 +129,7 @@ export const ModalTransaction = () => {
           {/*id="date" name="date" value={formik.values.date}*/}
           <input
             id="discription"
+            className={style.Modal__input}
             name="discription"
             autoComplete="off"
             type="text"
@@ -107,13 +141,12 @@ export const ModalTransaction = () => {
             <div>{formik.errors.discription}</div>
           ) : null}
 
-          <button type="submit">Submit</button>
+          <button type="submit">ДОБАВИТЬ</button>
         </form>
-        <div class="switch_box box_1">
-          <input type="checkbox" className="switch_1" />
-          <div className="cross"></div>
-        </div>
+
+        <button type="button">ОТМЕНА</button>
       </div>
-    </div>
+    </div>,
+    rootModal,
   );
 };
