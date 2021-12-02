@@ -17,6 +17,7 @@
 .icon {
   width: 38px;
   height: 38px;
+  fill: var(--color-light-blue);
 }
 
 @media screen and (min-width: 768px) {
@@ -36,9 +37,6 @@
   .navLink:focus {
     color: var(--color-blue);
   } */
-  .currency {
-    display: none;
-  }
 
   .icon {
     width: 24px;
@@ -53,6 +51,11 @@
     font-weight: var(--font-weigth-bold);
   }
 }
+
+.activeNavLink .icon {
+  fill: var(--color-blue);
+}
+
 @media screen and (min-width: 1280px) {
   .icon {
     margin-right: 20px;
