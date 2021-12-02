@@ -53,7 +53,7 @@
     "shortid": "^2.2.16"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{js,jsx,scss,css,md}": "prettier --write"
   }
 }
