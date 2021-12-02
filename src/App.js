@@ -16,7 +16,7 @@ function App() {
   return (
     !isFetchingCurrentUser && (
       <div className="App">
-        <h1>Wallet</h1>
+        {/* <h1>Wallet</h1> */}
         <Navigation />
       </div>
     )

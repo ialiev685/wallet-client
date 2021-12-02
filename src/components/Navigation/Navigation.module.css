@@ -1,0 +1,60 @@
+.navigation {
+  display: flex;
+}
+
+.navigation .navLink:not(:last-child) {
+  margin-right: 36px;
+}
+
+.navLink {
+  text-decoration: none;
+}
+
+.routeName {
+  display: none;
+}
+
+.icon {
+  width: 38px;
+  height: 38px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    flex-direction: column;
+  }
+
+  .navLink {
+    display: flex;
+    margin-bottom: 10px;
+    font-family: var(--secondary-font-family);
+    font-weight: var(--font-weigth-norm);
+    font-size: var(--font-size-m);
+    color: var(--color-black);
+  }
+  /* .navLink:hover,
+  .navLink:focus {
+    color: var(--color-blue);
+  } */
+  .currency {
+    display: none;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 23px;
+  }
+  .routeName {
+    display: block;
+  }
+
+  .activeNavLink {
+    font-weight: var(--font-weigth-bold);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .icon {
+    margin-right: 20px;
+  }
+}
