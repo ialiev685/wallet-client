@@ -1,11 +1,9 @@
-import IconsSVG from './Icons.svg'
+import IconsSVG from './Icons.svg';
 
-export const Icons = ({name, className}) => {
-// export const Icons = ({name, color, size, className}) => {
-    return (
-       <svg className={`icon icon-${name} ${className}`}>
-       {/* <svg className={`icon icon-${name} ${className}`} fill={color} stroke={color} width={size} height={size}>> */}
+export const Icons = ({ name, className }) => {
+  return (
+    <svg className={`icon icon-${name} ${className}`}>
       <use xlinkHref={`${IconsSVG}#icon-${name}`} />
     </svg>
-    )
-}
+  );
+};
