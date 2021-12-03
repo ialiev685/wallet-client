@@ -14,6 +14,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-media": "^1.10.0",
+    "react-loader-spinner": "^4.0.0",
     "react-redux": "^7.2.6",
     "react-responsive": "^9.0.0-beta.5",
     "react-router-dom": "^6.0.2",
@@ -61,6 +62,6 @@
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",
-    "*.{js,css,md,jsx}": "prettier --write"
+    "*.{js,jsx,css,md}": "prettier --write"
   }
 }
