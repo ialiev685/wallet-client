@@ -50,8 +50,12 @@
 
   --letter-spacing: 0.1rem;
 
-  --main-font-family: 'Circe';
-  --secondary-font-family: 'Poppins';
+  /* --main-font-family: 'Circe';
+  --secondary-font-family: 'Poppins'; */
+  --main-font-family-normal-w: 'Circe Light';
+  --main-font-family-bold-w: 'Circe Bold';
+  --secondary-font-family-normal-w: 'Poppins Light';
+  --secondary-font-family-bold-w: 'Poppins Bold';
 
   /* Media */
   --mobile: 320px;

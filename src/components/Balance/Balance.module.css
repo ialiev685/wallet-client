@@ -43,8 +43,9 @@
   width: 175px;
   height: 36px;
   margin: 0;
-  font-family: var(--secondary-font-family);
-  font-weight: var(--font-weigth-bold);
+  /* font-family: var(--secondary-font-family); */
+  font-family: var(--secondary-font-family-bold-w);
+  /* font-weight: var(--font-weigth-bold); */
   font-style: var(--font-style-norm);
   font-size: var(--font-size-xl);
   line-height: var(--line-heigth-m);
