@@ -5,7 +5,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import HomeIcon from '@mui/icons-material/Home';
 import TimelineIcon from '@mui/icons-material/Timeline';
 
-export const Navigation = () => {
+const Navigation = () => {
   const setActiveClass = ({ isActive }) =>
     `${s.navLink}` + (isActive ? ` ${s.activeNavLink}` : '');
 
@@ -32,3 +32,5 @@ export const Navigation = () => {
     </nav>
   );
 };
+
+export default Navigation;
