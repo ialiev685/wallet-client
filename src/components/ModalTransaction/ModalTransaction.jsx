@@ -17,6 +17,8 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './GlobalCssSlider.css';
+//кнопка
+import { ButtonWindow } from 'components/BattonWindow';
 
 const validation = Yup.object({
   type: Yup.boolean(),
@@ -174,10 +176,13 @@ export const ModalTransaction = () => {
             <div>{formik.errors.discription}</div>
           ) : null}
 
-          <button type="submit">ДОБАВИТЬ</button>
+          <ButtonWindow
+            className={style.Modal__button}
+            title={'добавить'}
+            action={'добавить'}
+          />
         </form>
-
-        <button type="button">ОТМЕНА</button>
+        <ButtonWindow title={'отмена'} />
       </div>
     </div>,
     rootModal,

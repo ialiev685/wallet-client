@@ -3,33 +3,40 @@
 }
 
 .MuiFormControl-root .css-1480iag-MuiInputBase-root-MuiInput-root {
-  font-family: Circe;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
+  font-family: var(--main-font-family);
+  font-style: var(--font-style-norm);
+  font-weight: var(--font-weigth-norm);
+  font-size: var(--font-size-m);
+  line-height: var(--line-heigth-m);
 
-  color: #bdbdbd;
+  color: var(--color-grey);
 
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-light-grey);
 }
 
 .MuiFormControl-root .css-1480iag-MuiInputBase-root-MuiInput-root:after {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-light-grey);
 }
 
 .MuiFormControl-root .css-1480iag-MuiInputBase-root-MuiInput-root:before {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-light-grey);
 }
 
 .MuiFormControl-root
   .css-1480iag-MuiInputBase-root-MuiInput-root:hover:not(.Mui-disabled):before {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-light-grey);
+}
+
+.MuiList-root .MuiMenuItem-root {
+  padding: 0 20px;
+  height: 44px;
+  width: 280px;
 }
 
 .MuiPaper-root.MuiPaper-root {
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(50px);
+  background-color: var(--background-color);
+  /* box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1); */
+  box-shadow: var(--add-btn-box-shadow);
+  backdrop-filter: var(--backdrop-filter);
   border-radius: 20px;
 }
