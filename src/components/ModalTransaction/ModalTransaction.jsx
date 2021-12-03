@@ -21,11 +21,12 @@ import './GlobalCssSlider.css';
 import { ButtonWindow } from 'components/BattonWindow';
 
 const validation = Yup.object({
-  type: Yup.boolean(),
+  type_pay: Yup.boolean(),
+  category: Yup.number().min(1, 'Выбери категорию от 1 до 7 '),
   amount: Yup.number()
-    .min(0.01, 'Minimum amount 0.01')
-    .max(999999999, 'Maximum amount 999999')
-    .required('Required'),
+    .min(0.01, 'Минимальная сумма 0.01')
+    .max(999999999, 'Максимальная сумма 999999')
+    .required('Минимальная сумма 0.01'),
   date: Yup.date().required(),
   discription: Yup.mixed(),
 });
@@ -59,7 +60,6 @@ export const ModalTransaction = () => {
       <div className={style.Modal}>
         <h1 className={style.Modal__title}>Добавить транзакцию</h1>
         <form onSubmit={formik.handleSubmit} className={style.Modal__form}>
-          {/* <label htmlFor="firstName">First Name</label> */}
           <div className={style.Modal__type}>
             <Checkbox
               id="type_pay"
@@ -91,51 +91,62 @@ export const ModalTransaction = () => {
           </div>
 
           {formik.values.type_pay && (
-            <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
-              {/* <InputLabel id="demo-simple-select-standard-label">
-                Age
-              </InputLabel> */}
-              <Select
-                // labelId="category"
-                id="category"
-                value={formik.values.category}
-                name="category"
-                onChange={formik.handleChange}
-                className={[style.Modal__input, style.Modal__category].join(
-                  ' ',
-                )}
-              >
-                <MenuItem value="0">Выберите категорию</MenuItem>
-                <MenuItem value={1}>Основной</MenuItem>
-                <MenuItem value={2}>Еда</MenuItem>
-                <MenuItem value={3}>Авто</MenuItem>
-                <MenuItem value={4}>Развитие</MenuItem>
-                <MenuItem value={5}>Дети</MenuItem>
-                <MenuItem value={6}>Дом</MenuItem>
-                <MenuItem value={7}>Образование</MenuItem>
-                <MenuItem value={8}>Остальное</MenuItem>
-              </Select>
-            </FormControl>
+            <div className={style.Modal__wrapperSelect}>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
+                <Select
+                  // labelId="category"
+                  id="category"
+                  value={formik.values.category}
+                  name="category"
+                  onChange={formik.handleChange}
+                  className={[style.Modal__input, style.Modal__category].join(
+                    ' ',
+                  )}
+                >
+                  <MenuItem disabled value="0">
+                    Выберите категорию
+                  </MenuItem>
+                  <MenuItem value={1}>Основной</MenuItem>
+                  <MenuItem value={2}>Еда</MenuItem>
+                  <MenuItem value={3}>Авто</MenuItem>
+                  <MenuItem value={4}>Развитие</MenuItem>
+                  <MenuItem value={5}>Дети</MenuItem>
+                  <MenuItem value={6}>Дом</MenuItem>
+                  <MenuItem value={7}>Образование</MenuItem>
+                  <MenuItem value={8}>Остальное</MenuItem>
+                </Select>
+              </FormControl>
+              {formik.touched.category && formik.errors.category ? (
+                <div className={style.Modal__errorSelect}>
+                  {formik.errors.category}
+                </div>
+              ) : null}
+            </div>
           )}
-          <NumberFormat
-            id="amount"
-            className={[style.Modal__input, style.Modal__amount].join(' ')}
-            thousandSeparator={true}
-            format="### ### ###"
-            autoComplete="off"
-            placeholder="0.00"
-            displayType="input"
-            type="text"
-            value={formik.values.amount}
-            onValueChange={(values, sourceInfo) => {
-              const { event } = sourceInfo;
-              formik.handleChange(event);
-            }}
-            thousandsGroupStyle="thousand"
-          />
-          {formik.touched.amount && formik.errors.amount ? (
-            <div>{formik.errors.amount}</div>
-          ) : null}
+
+          <div className={style.Modal__wrapperAmount}>
+            <NumberFormat
+              id="amount"
+              className={[style.Modal__input, style.Modal__amount].join(' ')}
+              thousandSeparator={true}
+              format="### ### ###"
+              autoComplete="off"
+              placeholder="0.00"
+              displayType="input"
+              type="text"
+              value={formik.values.amount}
+              onValueChange={(values, sourceInfo) => {
+                const { event } = sourceInfo;
+                formik.handleChange(event);
+              }}
+              thousandsGroupStyle="thousand"
+            />
+            {formik.touched.amount && formik.errors.amount ? (
+              <div className={style.Modal__errorAmount}>
+                {formik.errors.amount}
+              </div>
+            ) : null}
+          </div>
 
           {/* <label htmlFor="lastName">Last Name</label> */}
           <div
@@ -156,7 +167,7 @@ export const ModalTransaction = () => {
               closeOnSelect={true}
             />
           </div>
-          {/*id="date" name="date" value={formik.values.date}*/}
+
           <textarea
             id="discription"
             className={[style.Modal__input, style.Modal__input__hight].join(

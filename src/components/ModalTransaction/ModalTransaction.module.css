@@ -26,7 +26,7 @@
 
 .Modal__title {
   font-family: var(--secondary-font-family);
-  font-style: normal;
+  font-style: var(--font-style-norm);
   font-weight: var(--font-weigth-norm);
   font-size: var(--font-size-l);
   line-height: var(--line-heigth-m);
@@ -74,6 +74,29 @@
   color: var(--color-pink);
 }
 
+.Modal__wrapperSelect,
+.Modal__wrapperAmount {
+  position: relative;
+}
+
+.Modal__errorSelect,
+.Modal__errorAmount {
+  position: absolute;
+  font-size: var(--font-size-s);
+
+  color: rgb(236, 0, 0);
+}
+
+.Modal__errorSelect {
+  left: 5px;
+  bottom: 25px;
+}
+
+.Modal__errorAmount {
+  left: 0px;
+  bottom: 20px;
+}
+
 .Modal__input {
   font-family: var(--main-font-family);
   font-style: var(--font-style-norm);
@@ -99,6 +122,10 @@
   font-weight: var(--font-weigth-bold);
 }
 
+.Modal__amount::placeholder {
+  color: var(--color-grey);
+}
+
 .Modal__date {
   border: none;
   outline: none;
@@ -113,6 +140,10 @@
 
 .Modal__input__hight {
   resize: none;
+}
+
+.Modal__input__hight::placeholder {
+  color: var(--color-grey);
 }
 
 .Modal__button {
