@@ -1,7 +1,9 @@
 import { useMediaQuery } from 'react-responsive';
 import { NavLink } from 'react-router-dom';
-import Icons from '../Icons';
 import s from './Navigation.module.css';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import HomeIcon from '@mui/icons-material/Home';
+import TimelineIcon from '@mui/icons-material/Timeline';
 
 export const Navigation = () => {
   const setActiveClass = ({ isActive }) =>
@@ -14,28 +16,17 @@ export const Navigation = () => {
   return (
     <nav className={s.navigation}>
       <NavLink to="/home" className={setActiveClass}>
-        {/* <span className={s.iconBox}> */}
-
-        <Icons name={'home'} className={s.icon} />
-        {/* </span> */}
-        {/* { */}
-        {/* // !isMobile && */}
-        <span className={s.routeName}>Главная</span>
-
-        {/* // } */}
+        <HomeIcon className={s.icon} />
+        {!isMobile && <span className={s.routeName}>Главная</span>}
       </NavLink>
       <NavLink to="/diagram" className={setActiveClass}>
-        <Icons name={'diagramm'} className={s.icon} />
-        {/* { */}
-        {/* // !isMobile && */}
-
-        <span className={s.routeName}>Статистика</span>
-        {/* } */}
+        <TimelineIcon className={s.icon} />
+        {!isMobile && <span className={s.routeName}>Статистика</span>}
       </NavLink>
 
       {isMobile && (
         <NavLink to="/currency" className={setActiveClass}>
-          <Icons name={'currency'} className={s.icon} />
+          <AttachMoneyIcon className={s.icon} />
         </NavLink>
       )}
     </nav>
