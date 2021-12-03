@@ -1,0 +1,23 @@
+.progress {
+  background-color: var(--secondary-grey-color);
+  border-radius: 20px;
+  /* position: relative; */
+  margin: 10px 0;
+  height: 5px;
+  width: 409px;
+}
+
+/* .progressDone {
+	background-color: var(--color-green);
+	background: linear-gradient(to left, var(--color-green), var(--add-btn-box-shadow));
+	box-shadow: 0 3px 3px -5px var(--color-green), 0 2px 5px var(--color-green);
+	border-radius: 20px;
+	color: var(--color-white);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 0;
+	opacity: 0;
+	transition: 1s ease 0.3s;
+} */
