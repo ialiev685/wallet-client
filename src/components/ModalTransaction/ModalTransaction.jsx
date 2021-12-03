@@ -5,13 +5,14 @@ import * as Yup from 'yup';
 //дата
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
+import { ReactComponent as DateIcon } from 'icons/date-icon.svg';
 //сумма
 import NumberFormat from 'react-number-format';
 //чекбокс
 import { Checkbox } from 'components/Checkbox';
 import style from './ModalTransaction.module.css';
 //селект
-import InputLabel from '@mui/material/InputLabel';
+// import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -49,7 +50,7 @@ export const ModalTransaction = () => {
   let inputDateProps = {
     id: 'date',
     name: 'date',
-    className: style.Modal__input,
+    className: style.Modal__date,
   };
   return createPortal(
     <div className={style.Overlay}>
@@ -113,28 +114,10 @@ export const ModalTransaction = () => {
                 <MenuItem value={8}>Остальное</MenuItem>
               </Select>
             </FormControl>
-
-            // <select
-            //   id="category"
-            //   className={[style.Modal__input, style.Modal__category].join(' ')}
-            //   name="category"
-            //   value={formik.values.category}
-            //   onChange={formik.handleChange}
-            // >
-            // <option value="0">Выберите категорию</option>
-            // <option value="1">Основной</option>
-            // <option value="2">Еда</option>
-            // <option value="3">Авто</option>
-            // <option value="4">Развитие</option>
-            // <option value="5">Дети</option>
-            // <option value="6">Дом</option>
-            // <option value="7">Образование</option>
-            // <option value="8">Остальное</option>
-            // </select>
           )}
           <NumberFormat
             id="amount"
-            className={[style.Modal__input, style.Modal__date].join(' ')}
+            className={[style.Modal__input, style.Modal__amount].join(' ')}
             thousandSeparator={true}
             format="### ### ###"
             autoComplete="off"
@@ -153,25 +136,40 @@ export const ModalTransaction = () => {
           ) : null}
 
           {/* <label htmlFor="lastName">Last Name</label> */}
-          <Datetime
-            // className={style.Modal__input}
-            dateFormat="DD.MM.YYYY"
-            timeFormat={false}
-            inputProps={inputDateProps}
-            initialValue={formik.values.date}
-            closeOnSelect={true}
-          />
+          <div
+            className={[style.Modal__input, style.Modal__input__relative].join(
+              ' ',
+            )}
+          >
+            <DateIcon
+              width="18"
+              height="20"
+              className={style.Modal__iconDate}
+            />
+            <Datetime
+              dateFormat="DD.MM.YYYY"
+              timeFormat={false}
+              inputProps={inputDateProps}
+              initialValue={formik.values.date}
+              closeOnSelect={true}
+            />
+          </div>
           {/*id="date" name="date" value={formik.values.date}*/}
-          <input
+          <textarea
             id="discription"
-            className={style.Modal__input}
+            className={[style.Modal__input, style.Modal__input__hight].join(
+              ' ',
+            )}
             name="discription"
+            rows="3"
+            maxLength="84"
+            placeholder="Комментарий"
             autoComplete="off"
             type="text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.discription}
-          />
+          ></textarea>
           {formik.touched.discription && formik.errors.discription ? (
             <div>{formik.errors.discription}</div>
           ) : null}

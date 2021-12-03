@@ -78,6 +78,12 @@
 }
 
 .Modal__input {
+  font-family: --main-font-family;
+  font-style: normal;
+
+  font-size: --font-size-m;
+  line-height: -line-heigth-m;
+
   width: 280px;
 
   margin-bottom: 40px;
@@ -86,4 +92,28 @@
   border: none;
   outline: none;
   border-bottom: 1px solid #e0e0e0;
+}
+
+.Modal__input__relative {
+  position: relative;
+}
+
+.Modal__amount {
+  font-weight: var(--font-weigth-bold);
+}
+
+.Modal__date {
+  border: none;
+  outline: none;
+}
+
+.Modal__iconDate {
+  position: absolute;
+
+  right: 20px;
+  z-index: 1;
+}
+
+.Modal__input__hight {
+  resize: none;
 }
