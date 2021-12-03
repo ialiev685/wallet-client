@@ -2,12 +2,20 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { createPortal } from 'react-dom';
 import * as Yup from 'yup';
+//дата
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
+//сумма
 import NumberFormat from 'react-number-format';
-import './checkbox.scss';
-import style from './ModalTransaction.module.css';
+//чекбокс
 import { Checkbox } from 'components/Checkbox';
+import style from './ModalTransaction.module.css';
+//селект
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import './GlobalCssSlider.css';
 
 const validation = Yup.object({
   type: Yup.boolean(),
@@ -41,6 +49,7 @@ export const ModalTransaction = () => {
   let inputDateProps = {
     id: 'date',
     name: 'date',
+    className: style.Modal__input,
   };
   return createPortal(
     <div className={style.Overlay}>
@@ -79,23 +88,49 @@ export const ModalTransaction = () => {
           </div>
 
           {formik.values.type_pay && (
-            <select
-              id="category"
-              className={[style.Modal__input, style.Modal__category].join(' ')}
-              name="category"
-              value={formik.values.category}
-              onChange={formik.handleChange}
-            >
-              <option value="0">Выберите категорию</option>
-              <option value="1">Основной</option>
-              <option value="2">Еда</option>
-              <option value="3">Авто</option>
-              <option value="4">Развитие</option>
-              <option value="5">Дети</option>
-              <option value="6">Дом</option>
-              <option value="7">Образование</option>
-              <option value="8">Остальное</option>
-            </select>
+            <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
+              {/* <InputLabel id="demo-simple-select-standard-label">
+                Age
+              </InputLabel> */}
+              <Select
+                // labelId="category"
+                id="category"
+                value={formik.values.category}
+                name="category"
+                onChange={formik.handleChange}
+                className={[style.Modal__input, style.Modal__category].join(
+                  ' ',
+                )}
+              >
+                <MenuItem value="0">Выберите категорию</MenuItem>
+                <MenuItem value={1}>Основной</MenuItem>
+                <MenuItem value={2}>Еда</MenuItem>
+                <MenuItem value={3}>Авто</MenuItem>
+                <MenuItem value={4}>Развитие</MenuItem>
+                <MenuItem value={5}>Дети</MenuItem>
+                <MenuItem value={6}>Дом</MenuItem>
+                <MenuItem value={7}>Образование</MenuItem>
+                <MenuItem value={8}>Остальное</MenuItem>
+              </Select>
+            </FormControl>
+
+            // <select
+            //   id="category"
+            //   className={[style.Modal__input, style.Modal__category].join(' ')}
+            //   name="category"
+            //   value={formik.values.category}
+            //   onChange={formik.handleChange}
+            // >
+            // <option value="0">Выберите категорию</option>
+            // <option value="1">Основной</option>
+            // <option value="2">Еда</option>
+            // <option value="3">Авто</option>
+            // <option value="4">Развитие</option>
+            // <option value="5">Дети</option>
+            // <option value="6">Дом</option>
+            // <option value="7">Образование</option>
+            // <option value="8">Остальное</option>
+            // </select>
           )}
           <NumberFormat
             id="amount"
@@ -119,7 +154,7 @@ export const ModalTransaction = () => {
 
           {/* <label htmlFor="lastName">Last Name</label> */}
           <Datetime
-            className="Modal__input"
+            // className={style.Modal__input}
             dateFormat="DD.MM.YYYY"
             timeFormat={false}
             inputProps={inputDateProps}
