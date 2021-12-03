@@ -1,0 +1,38 @@
+.buttonContainer {
+  position: relative;
+}
+
+.button {
+  position: fixed;
+  bottom: 30px;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: transparent;
+  color: var(--color-white);
+  background-color: var(--color-green);
+  box-shadow: var(--add-btn-box-shadow);
+}
+
+.span,
+.rotateSpan {
+  position: absolute;
+  width: 20px;
+  border: 1px solid;
+}
+
+.rotateSpan {
+  transform: rotate(-90deg);
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    bottom: 40px;
+  }
+}

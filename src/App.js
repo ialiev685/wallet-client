@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { authOperations, authSelectors } from './redux/auth';
+import { authOperations, authSelectors } from 'redux/auth';
 import Balance from 'components/Balance';
 
 function App() {
