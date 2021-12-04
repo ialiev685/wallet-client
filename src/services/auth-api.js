@@ -12,7 +12,7 @@ const token = {
 };
 
 export const register = async credentials => {
-  const { data } = await axios.post('users/register', credentials);
+  const { data } = await axios.post('users/signup', credentials);
   token.set(data.token);
   return data;
 };

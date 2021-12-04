@@ -28,9 +28,8 @@ const validationSchema = Yup.object({
     .required('Password is required'),
 });
 
-export const RegistrationForm = () => {
+const RegistrationForm = () => {
   const dispatch = useDispatch();
-  // const navigation = Navigation();
 
   return (
     <Formik
@@ -40,76 +39,90 @@ export const RegistrationForm = () => {
         resetForm();
         const { name, email, password, passwordConfirm } = values;
         if (password !== passwordConfirm) {
-          alert ("Пароль не совпадает, попробуйте ещё раз");
+          alert('Пароль не совпадает, попробуйте ещё раз');
         }
         dispatch(registerUser({ name, email, password, passwordConfirm }));
       }}
     >
-      <Form className={s.form}>
-        <img className={s.logoIcon} src={logo} alt="логотип" />
+      {props => (
+        <Form className={s.form}>
+          <img className={s.logoIcon} src={logo} alt="логотип" />
 
-        <Grid className={s.wrapper}>
-          <EmailIcon className={`${s.icon} ${s.iconEmail}`} />
-          <Field
-            className={s.input}
-            type="email"
-            name="email"
-            placeholder="E-mail"
-          />
-        </Grid>
-        <Grid className={s.errorMessage}>
-          <ErrorMessage name="email" className={s.errorMessage} />
-        </Grid>
-        <Grid className={s.wrapper}>
-          <LockIcon className={`${s.icon} ${s.iconLock}`} />
-          <Field
-            className={s.input}
-            type="password"
-            name="password"
-            placeholder="Пароль"
-          />
-        </Grid>
-        <Grid className={s.errorMessage}>
-          <ErrorMessage name="password" />
-        </Grid>
+          <Grid className={s.wrapper}>
+            <EmailIcon className={`${s.icon} ${s.iconEmail}`} />
+            <Field
+              className={s.input}
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              onChange={props.handleChange}
+              value={props.values.email}
+            />
+            <Grid className={s.errorMessage}>
+              <ErrorMessage name="email" className={s.errorMessage} />
+            </Grid>
+          </Grid>
 
-        <Grid className={s.wrapper}>
-          <LockIcon className={`${s.icon} ${s.iconLockPass}`} />
-          <Field
-            className={s.input}
-            type="password"
-            name="passwordConfirm"
-            placeholder="Подтвердите пароль"
-          />
-          <ProgressBar style={s.progressDone}/>
-        </Grid>
-        <Grid className={s.errorMessage}>
-          <ErrorMessage name="password" className={s.errorMessage} />
-        </Grid>
-        <Grid className={s.wrapper}>
-          <AccountBoxIcon className={`${s.icon} ${s.iconUser}`} />
-          <Field
-            className={s.input}
-            type="text"
-            name="name"
-            placeholder="Ваше имя"
-          />
-        </Grid>
-        <Grid className={s.errorMessage}>
-          <ErrorMessage name="name" className={s.errorMessage} />
-        </Grid>
-        <Button variant="contained" type="submit" className={s.button}>
-          РЕГИСТРАЦИЯ
-        </Button>
-        <Button
-          variant="outlined"
-          type="button"
-          className={s.buttonLogin}
-          // onClick={() => navigation('/login')}
-        >
-          ВХОД
-        </Button>
-      </Form>
+          <Grid className={s.wrapper}>
+            <LockIcon className={`${s.icon} ${s.iconLock}`} />
+            <Field
+              className={s.input}
+              type="password"
+              name="password"
+              placeholder="Пароль"
+              onChange={props.handleChange}
+              value={props.values.password}
+            />
+            <Grid className={s.errorMessage}>
+            <ErrorMessage name="password" />
+          </Grid>
+          </Grid>
+          
+
+          <Grid className={s.wrapper}>
+            <LockIcon className={`${s.icon} ${s.iconLockPass}`} />
+            <Field
+              className={s.input}
+              type="password"
+              name="passwordConfirm"
+              placeholder="Подтвердите пароль"
+              onChange={props.handleChange}
+              value={props.values.passwordConfirm}
+            />
+            <Grid className={s.errorMessage}>
+            <ErrorMessage name="password" className={s.errorMessage} />
+          </Grid>
+            {props.values.password === props.values.passwordConfirm &&
+            (props.values.password !== '' ||
+              props.values.passwordConfirm !== '') ? (
+              <ProgressBar style={s.progressDone} />
+            ) : (
+              <ProgressBar style={s.progressNone} />
+            )}
+          </Grid>
+          
+          <Grid className={s.wrapper}>
+            <AccountBoxIcon className={`${s.icon} ${s.iconUser}`} />
+            <Field
+              className={s.input}
+              type="text"
+              name="name"
+              placeholder="Ваше имя"
+              onChange={props.handleChange}
+              value={props.values.name}
+            />
+            <Grid className={s.errorMessage}>
+            <ErrorMessage name="name" className={s.errorMessage} />
+          </Grid>
+          </Grid>          
+          <Button variant="contained" type="submit" className={s.button}>
+            РЕГИСТРАЦИЯ
+          </Button>
+          <Button variant="outlined" type="button" className={s.buttonLogin}>
+            ВХОД
+          </Button>
+        </Form>
+      )}
     </Formik>
   );
 };

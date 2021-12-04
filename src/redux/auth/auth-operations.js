@@ -14,7 +14,7 @@ const token = {
 };
 
 export const registerUser = createAsyncThunk(
-  'auth/register',
+  'auth/signup',
   async (credentials, { rejectWithValue }) => {
     try {
       const data = await authApi.register(credentials);

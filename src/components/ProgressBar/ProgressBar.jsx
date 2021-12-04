@@ -1,13 +1,14 @@
 import s from './ProgressBar.module.css';
 
 const ProgressBar = ({style =''}) => {
- const styles = `${style} ${s.progress}`
+
+  let styles = `${s.progressLine} ${style}`;
+  
   return (
-    <div className={styles}>
-      {/* <div className={style}>      
-      </div> */}
+    <div className={styles}>  
     </div>
   );
 };
 
 export default ProgressBar;
+
