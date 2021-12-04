@@ -2,8 +2,10 @@
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { authOperations, authSelectors } from './redux/auth';
+
+import { authOperations, authSelectors } from 'redux/auth';
 import Balance from 'components/Balance';
+import Navigation from '../src/components/Navigation';
 
 function App() {
   const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
@@ -16,8 +18,7 @@ function App() {
   return (
     !isFetchingCurrentUser && (
       <div className="App">
-        <h1>Wallet</h1>
-        <Balance />
+        <Navigation />
       </div>
     )
   );
