@@ -5,6 +5,7 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isAuth: false,
+  isLoggedIn: false, //Его надо еще добавить к signup, login, logout
   isFetchingCurrentUser: false,
 };
 
@@ -22,6 +23,7 @@ const authSlice = createSlice({
       state.isFetchingCurrentUser = true;
     },
     [authOperations.fetchCurrentUser.fulfilled](state) {
+      state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
     },
     [authOperations.fetchCurrentUser.rejected](state) {

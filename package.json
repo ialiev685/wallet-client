@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "latest",
-    "@emotion/styled": "latest",
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.2.0",
     "@mui/material": "^5.2.2",
     "@reduxjs/toolkit": "^1.6.2",
@@ -14,7 +14,11 @@
     "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-media": "^1.10.0",
+    "react-loader-spinner": "^4.0.0",
     "react-redux": "^7.2.6",
+    "react-responsive": "^9.0.0-beta.5",
+    "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
     "redux-persist": "^6.0.0",
     "web-vitals": "^1.1.2",
@@ -59,7 +63,7 @@
     "shortid": "^2.2.16"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{js,jsx,css,md}": "prettier --write"
   }
 }
