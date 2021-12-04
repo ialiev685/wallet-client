@@ -13,7 +13,6 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import logo from 'helpers/svg/logo.svg';
 import ProgressBar from '../ProgressBar/ProgressBar';
 
-
 const validationSchema = Yup.object({
   name: Yup.string()
     .min(1, 'Too short name!')
@@ -74,10 +73,9 @@ const RegistrationForm = () => {
               value={props.values.password}
             />
             <Grid className={s.errorMessage}>
-            <ErrorMessage name="password" />
+              <ErrorMessage name="password" />
+            </Grid>
           </Grid>
-          </Grid>
-          
 
           <Grid className={s.wrapper}>
             <LockIcon className={`${s.icon} ${s.iconLockPass}`} />
@@ -90,8 +88,8 @@ const RegistrationForm = () => {
               value={props.values.passwordConfirm}
             />
             <Grid className={s.errorMessage}>
-            <ErrorMessage name="password" className={s.errorMessage} />
-          </Grid>
+              <ErrorMessage name="password" className={s.errorMessage} />
+            </Grid>
             {props.values.password === props.values.passwordConfirm &&
             (props.values.password !== '' ||
               props.values.passwordConfirm !== '') ? (
@@ -100,7 +98,7 @@ const RegistrationForm = () => {
               <ProgressBar style={s.progressNone} />
             )}
           </Grid>
-          
+
           <Grid className={s.wrapper}>
             <AccountBoxIcon className={`${s.icon} ${s.iconUser}`} />
             <Field
@@ -112,9 +110,9 @@ const RegistrationForm = () => {
               value={props.values.name}
             />
             <Grid className={s.errorMessage}>
-            <ErrorMessage name="name" className={s.errorMessage} />
+              <ErrorMessage name="name" className={s.errorMessage} />
+            </Grid>
           </Grid>
-          </Grid>          
           <Button variant="contained" type="submit" className={s.button}>
             РЕГИСТРАЦИЯ
           </Button>
