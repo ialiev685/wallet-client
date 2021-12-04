@@ -2,10 +2,15 @@
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 
 import { authOperations, authSelectors } from 'redux/auth';
+
 import Balance from './components/Balance';
 import Navigation from './components/Navigation';
+
+
+
 
 function App() {
   const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
@@ -18,6 +23,7 @@ function App() {
   return (
     !isFetchingCurrentUser && (
       <div className="App">
+        <RegistrationForm />
         <Navigation />
         <Balance />
       </div>
