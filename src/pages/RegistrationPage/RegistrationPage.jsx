@@ -4,6 +4,8 @@ const RegistrationPage = () => {
   return (
     <div className={s.registrBox}>
       <div className={s.registrSubBox}></div>
+      <div className={s.registrationForm}></div>
+      {/* сюда вставить компонент 'RegistrationForm' с классом 'registrationForm' */}
     </div>
   );
 };

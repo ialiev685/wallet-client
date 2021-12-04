@@ -18,14 +18,12 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Container>
-      {!isFetchingCurrentUser && (
-        <div className="App">
-          {/* <Navigation /> */}
-          <RegistrationPage />
-        </div>
-      )}
-    </Container>
+    !isFetchingCurrentUser && (
+      <div className="App">
+        {/* <Navigation /> */}
+        <RegistrationPage />
+      </div>
+    )
   );
 }
 
