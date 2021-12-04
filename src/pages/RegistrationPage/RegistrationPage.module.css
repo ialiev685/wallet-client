@@ -68,6 +68,16 @@
     background-image: url('../../pictures/EllipseTwoTablet.png');
     background-repeat: no-repeat;
   }
+
+  .pictureTablet {
+    position: absolute;
+    width: 274px;
+    height: 250px;
+    left: 114px;
+    top: 60px;
+    background-image: url('../../pictures/PictureTablet.png');
+    background-repeat: no-repeat;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -95,5 +105,19 @@
 
   .registrEllipseTwo {
     top: 397px;
+  }
+
+  .pictureDesktop {
+    position: absolute;
+    width: 452px;
+    height: 413px;
+    left: 66px;
+    top: 153px;
+    background-image: url('../../pictures/PictureDesktop.png');
+    background-repeat: no-repeat;
+  }
+
+  .pictureTablet {
+    height: 0;
   }
 }

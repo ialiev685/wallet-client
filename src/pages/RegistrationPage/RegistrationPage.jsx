@@ -6,6 +6,8 @@ const RegistrationPage = () => {
       <div className={s.registrSubBox}></div>
       <div className={s.registrEllipseOne}></div>
       <div className={s.registrEllipseTwo}></div>
+      <div className={s.pictureTablet}></div>
+      <div className={s.pictureDesktop}></div>
 
       <div className={s.registrationForm}></div>
       {/* сюда вставить компонент 'RegistrationForm' с классом 'registrationForm' */}
