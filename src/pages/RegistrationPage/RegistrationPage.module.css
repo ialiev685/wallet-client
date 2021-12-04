@@ -46,6 +46,27 @@
     top: 360px;
     height: 616px;
     width: 540px;
+    border-radius: 20px;
+  }
+
+  .registrEllipseOne {
+    position: absolute;
+    width: 618px;
+    height: 547px;
+    left: 400px;
+    top: 0;
+    background-image: url('../../pictures/EllipseOneTablet.png');
+    background-repeat: no-repeat;
+  }
+
+  .registrEllipseTwo {
+    position: absolute;
+    width: 618px;
+    height: 547px;
+    left: 0;
+    top: 700px;
+    background-image: url('../../pictures/EllipseTwoTablet.png');
+    background-repeat: no-repeat;
   }
 }
 
@@ -57,11 +78,22 @@
 
   .registrSubBox {
     height: 100%;
+    z-index: 1;
   }
 
   .registrationForm {
     left: 655px;
     top: 52px;
     width: 540px;
+    z-index: 2;
+  }
+
+  .registrEllipseOne {
+    left: 727px;
+    background-image: url('../../pictures/EllipseOneDesktop.png');
+  }
+
+  .registrEllipseTwo {
+    top: 397px;
   }
 }
