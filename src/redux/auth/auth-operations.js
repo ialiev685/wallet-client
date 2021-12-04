@@ -13,12 +13,24 @@ const token = {
   },
 };
 
+export const registerUser = createAsyncThunk(
+  'auth/signup',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const data = await authApi.register(credentials);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
 export const logInUser = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const contacts = await authApi.logIn(credentials);
-      return contacts;
+      const finance = await authApi.logIn(credentials);
+      return finance;
     } catch (error) {
       return rejectWithValue(error.message);
     }
