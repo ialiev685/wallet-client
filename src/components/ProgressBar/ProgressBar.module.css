@@ -1,0 +1,13 @@
+.progressLine {
+  border-radius: 20px;
+
+  margin: 10px 0;
+  height: 5px;
+  width: 409px;
+}
+
+@media screen and (max-width: 768px) {
+  .progressLine {
+    width: 280px;
+  }
+}
