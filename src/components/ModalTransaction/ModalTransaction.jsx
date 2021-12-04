@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import { createPortal } from 'react-dom';
 import * as Yup from 'yup';
 //дата
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
+//иконка
 import { ReactComponent as DateIcon } from 'icons/date-icon.svg';
+import { ReactComponent as CrossIcon } from 'icons/cross-close.svg';
 //сумма
 import NumberFormat from 'react-number-format';
 //чекбокс
@@ -22,7 +24,12 @@ import { ButtonWindow } from 'components/BattonWindow';
 
 const validation = Yup.object({
   type_pay: Yup.boolean(),
-  category: Yup.number().min(1, 'Выбери категорию от 1 до 7 '),
+  category: Yup.number()
+    .min(1, 'Выбери категорию от 1 до 7 ')
+    .when('type_pay', {
+      is: false,
+      then: Yup.number().min(0),
+    }),
   amount: Yup.number()
     .min(0.01, 'Минимальная сумма 0.01')
     .max(999999999, 'Максимальная сумма 999999')
@@ -33,7 +40,25 @@ const validation = Yup.object({
 
 const rootModal = document.querySelector('#root-modal');
 
-export const ModalTransaction = () => {
+export const ModalTransaction = ({ onClose }) => {
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  const handleKeyDown = e => {
+    if (e.code === 'Escape') {
+      onClose();
+    }
+  };
+
+  const handleClick = () => {
+    onClose();
+  };
+
   const formik = useFormik({
     initialValues: {
       type_pay: true,
@@ -102,11 +127,6 @@ export const ModalTransaction = () => {
                   className={[style.Modal__input, style.Modal__category].join(
                     ' ',
                   )}
-                  // classes={{
-                  //   select: [style.Modal__input, style.Modal__category].join(
-                  //     ' ',
-                  //   ),
-                  // }}
                 >
                   <MenuItem disabled value="0">
                     Выберите категорию
@@ -181,8 +201,8 @@ export const ModalTransaction = () => {
               ' ',
             )}
             name="discription"
-            rows="3"
-            maxLength="84"
+            rows="2"
+            maxLength="60"
             placeholder="Комментарий"
             autoComplete="off"
             type="text"
@@ -200,7 +220,8 @@ export const ModalTransaction = () => {
             action={'добавить'}
           />
         </form>
-        <ButtonWindow title={'отмена'} />
+        <ButtonWindow onClick={handleClick} title={'отмена'} />
+        <CrossIcon onClick={handleClick} className={style.Modal__close} />
       </div>
     </div>,
     rootModal,
