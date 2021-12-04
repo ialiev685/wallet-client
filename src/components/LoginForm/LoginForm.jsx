@@ -2,9 +2,9 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-// import { Navigation } from 'react-router-dom';
-import { registerUser } from 'redux/auth/auth-operations';
-import s from './RegistrationForm.module.css';
+import { useNavigate } from 'react-router-dom';
+import { logInUser } from 'redux/auth/auth-operations';
+import s from './LoginForm.module.css';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import EmailIcon from '@mui/icons-material/Email';
@@ -23,6 +23,7 @@ const validationSchema = Yup.object({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <Formik
@@ -31,7 +32,7 @@ const LoginForm = () => {
       onSubmit={(values, { resetForm }) => {
         resetForm();
         const { email, password } = values;
-        dispatch(registerUser({ email, password }));
+        dispatch(logInUser({ email, password }));
       }}
     >
       <Form className={s.form}>
@@ -64,10 +65,15 @@ const LoginForm = () => {
         </Grid>
 
         <Button variant="contained" type="submit" className={s.button}>
-          РЕГИСТРАЦИЯ
-        </Button>
-        <Button variant="outlined" type="button" className={s.buttonLogin}>
           ВХОД
+        </Button>
+        <Button
+          variant="outlined"
+          type="button"
+          className={s.buttonLogin}
+          onClick={() => navigate('/signup')}
+        >
+          РЕГИСТРАЦИЯ
         </Button>
       </Form>
     </Formik>

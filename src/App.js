@@ -2,7 +2,8 @@
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
+//import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
+import LoginForm from 'components/LoginForm/LoginForm';
 
 import { authOperations, authSelectors } from 'redux/auth';
 //import Balance from 'components/Balance';
@@ -19,7 +20,8 @@ function App() {
   return (
     !isFetchingCurrentUser && (
       <div className="App">
-        <RegistrationForm />
+        {/* <RegistrationForm /> */}
+        <LoginForm />
         <Navigation />
       </div>
     )

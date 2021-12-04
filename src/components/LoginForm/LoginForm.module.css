@@ -2,6 +2,11 @@
   position: absolute;
   top: 40px;
 }
+@media screen and (max-width: 768px) {
+  .logoIcon {
+    top: 110px;
+  }
+}
 
 .form {
   display: flex;
@@ -28,7 +33,7 @@
     text-align: center;
     margin-right: auto;
     margin-left: auto;
-    padding-top: 110px;
+    padding-top: 190px;
     padding-bottom: 110px;
   }
 }
