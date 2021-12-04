@@ -19,6 +19,7 @@ function App() {
     !isFetchingCurrentUser && (
       <div className="App">
         <Navigation />
+        <Balance />
       </div>
     )
   );

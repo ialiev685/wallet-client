@@ -42,8 +42,8 @@
   .navLink {
     display: flex;
     margin-bottom: 10px;
-    font-family: var(--secondary-font-family);
-    font-weight: var(--font-weigth-norm);
+    font-family: var(--secondary-font-family-normal-w);
+    /* font-weight: var(--font-weigth-norm); */
     font-size: var(--font-size-m);
     color: var(--color-black);
   }
