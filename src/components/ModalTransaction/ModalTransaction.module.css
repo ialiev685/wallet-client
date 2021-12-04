@@ -24,6 +24,13 @@
   background-color: var(--color-white);
 }
 
+@media (min-width: 540px) {
+  .Modal {
+    width: 540px;
+    padding: 40px 65px 60px 65px;
+  }
+}
+
 .Modal__title {
   font-family: var(--secondary-font-family);
   font-style: var(--font-style-norm);
@@ -34,6 +41,12 @@
 
   margin: 0;
   margin-bottom: 40px;
+}
+
+@media (min-width: 540px) {
+  .Modal__title {
+    font-size: var(--font-size-xl);
+  }
 }
 
 .Modal__form {
@@ -82,14 +95,15 @@
 .Modal__errorSelect,
 .Modal__errorAmount {
   position: absolute;
-  font-size: var(--font-size-s);
+  /* font-size: var(--font-size-xs); */
+  font-size: 12px;
 
   color: rgb(236, 0, 0);
 }
 
 .Modal__errorSelect {
-  left: 5px;
-  bottom: 25px;
+  left: 10px;
+  bottom: 30px;
 }
 
 .Modal__errorAmount {
@@ -114,8 +128,20 @@
   border-bottom: 1px solid var(--color-light-grey);
 }
 
-.Modal__input__relative {
+.Modal__input__boxRelative {
   position: relative;
+}
+
+@media (min-width: 540px) {
+  .Modal__category,
+  .Modal__input__hight {
+    width: 409px;
+  }
+}
+
+@media (min-width: 540px) {
+  .Modal__input__hight {
+  }
 }
 
 .Modal__amount {
@@ -129,6 +155,22 @@
 .Modal__date {
   border: none;
   outline: none;
+}
+
+@media (min-width: 540px) {
+  .Modal__wrapperAmountDate {
+    width: 409px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 540px) {
+  .Modal__amount,
+  .Modal__input__boxRelative {
+    width: 190px;
+  }
 }
 
 .Modal__iconDate {

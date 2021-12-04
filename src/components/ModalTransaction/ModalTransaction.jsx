@@ -102,6 +102,11 @@ export const ModalTransaction = () => {
                   className={[style.Modal__input, style.Modal__category].join(
                     ' ',
                   )}
+                  // classes={{
+                  //   select: [style.Modal__input, style.Modal__category].join(
+                  //     ' ',
+                  //   ),
+                  // }}
                 >
                   <MenuItem disabled value="0">
                     Выберите категорию
@@ -124,48 +129,50 @@ export const ModalTransaction = () => {
             </div>
           )}
 
-          <div className={style.Modal__wrapperAmount}>
-            <NumberFormat
-              id="amount"
-              className={[style.Modal__input, style.Modal__amount].join(' ')}
-              thousandSeparator={true}
-              format="### ### ###"
-              autoComplete="off"
-              placeholder="0.00"
-              displayType="input"
-              type="text"
-              value={formik.values.amount}
-              onValueChange={(values, sourceInfo) => {
-                const { event } = sourceInfo;
-                formik.handleChange(event);
-              }}
-              thousandsGroupStyle="thousand"
-            />
-            {formik.touched.amount && formik.errors.amount ? (
-              <div className={style.Modal__errorAmount}>
-                {formik.errors.amount}
-              </div>
-            ) : null}
-          </div>
+          <div className={style.Modal__wrapperAmountDate}>
+            <div className={style.Modal__wrapperAmount}>
+              <NumberFormat
+                id="amount"
+                className={[style.Modal__input, style.Modal__amount].join(' ')}
+                thousandSeparator={true}
+                format="### ### ###"
+                autoComplete="off"
+                placeholder="0.00"
+                displayType="input"
+                type="text"
+                value={formik.values.amount}
+                onValueChange={(values, sourceInfo) => {
+                  const { event } = sourceInfo;
+                  formik.handleChange(event);
+                }}
+                thousandsGroupStyle="thousand"
+              />
+              {formik.touched.amount && formik.errors.amount ? (
+                <div className={style.Modal__errorAmount}>
+                  {formik.errors.amount}
+                </div>
+              ) : null}
+            </div>
 
-          {/* <label htmlFor="lastName">Last Name</label> */}
-          <div
-            className={[style.Modal__input, style.Modal__input__relative].join(
-              ' ',
-            )}
-          >
-            <DateIcon
-              width="18"
-              height="20"
-              className={style.Modal__iconDate}
-            />
-            <Datetime
-              dateFormat="DD.MM.YYYY"
-              timeFormat={false}
-              inputProps={inputDateProps}
-              initialValue={formik.values.date}
-              closeOnSelect={true}
-            />
+            <div
+              className={[
+                style.Modal__input,
+                style.Modal__input__boxRelative,
+              ].join(' ')}
+            >
+              <DateIcon
+                width="18"
+                height="20"
+                className={style.Modal__iconDate}
+              />
+              <Datetime
+                dateFormat="DD.MM.YYYY"
+                timeFormat={false}
+                inputProps={inputDateProps}
+                initialValue={formik.values.date}
+                closeOnSelect={true}
+              />
+            </div>
           </div>
 
           <textarea
