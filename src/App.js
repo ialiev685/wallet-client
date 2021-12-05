@@ -2,7 +2,7 @@
 
 
 
-import Currency from './components/Currency/Currency.jsx';
+import Currency from './components/Currency/Сurrency.jsx';
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

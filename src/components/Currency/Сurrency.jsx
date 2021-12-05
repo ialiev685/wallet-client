@@ -8,11 +8,11 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import s from './Currency.module.css';
+// import s from './Currency.module.css';
 import fetchCurrency from '../../services/currency-api';
-import bgDesktop from '../../images/bg-currency/bg-currensy-desktop.svg';
-import bgTablet from '../../images/bg-currency/bg-currensy-tablet.svg';
-import bgMobile from '../../images/bg-currency/bg-currensy-mobile.svg';
+import bgDesktop from '../../images/bg-currency/bg-currency-desktop.svg';
+import bgTablet from '../../images/bg-currency/bg-currency-tablet.svg';
+import bgMobile from '../../images/bg-currency/bg-currency-mobile.svg';
 
 const theme = createTheme({
   components: {
@@ -25,12 +25,12 @@ const theme = createTheme({
           minHeight: 174,
           borderRadius: 30,
           backgroundColor: 'rgba(74, 86, 226, 1)',
-          boxShadow:'0px 0px 26px -6px rgba(0, 0, 0, 0.25)',
+          boxShadow: '0px 0px 26px -6px rgba(0, 0, 0, 0.25)',
           backgroundImage: `url(${bgTablet})`,
           backgroundRepeat: 'no-repeat',
-           backgroundSize: 'contain',
-    backgroundPosition: 'bottom',
-    
+          backgroundSize: 'contain',
+          backgroundPosition: 'bottom',
+
           '@media (min-width:1280px)': {
             width: 348,
             height: 347,
@@ -40,10 +40,10 @@ const theme = createTheme({
           //   width: 334,
           //   height: 174,
           // },
-               "@media (max-width:767px)": {
+          '@media (max-width:767px)': {
             // width: 280,
             // height: 174,
-                 backgroundImage: `url(${bgMobile})`,
+            backgroundImage: `url(${bgMobile})`,
           },
         },
       },
@@ -62,43 +62,38 @@ const theme = createTheme({
     },
     MuiTableRow: {
       styleOverrides: {
-        root: {
-        
-        },
+        root: {},
         head: {
           //           paddingBottom: 10,
           // '@media (min-width:1280px)': {
-           
           //   paddingBottom: 20,
           // },
         },
       },
     },
-        MuiTableCell: {
-          styleOverrides: {
-            root: {
-        // paddingTop: 10,
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          // paddingTop: 10,
           padding: '10px 0px 10px',
           fontFamily: 'Circe, sans-serif',
           fontWeight: 400,
           fontSize: 16,
           color: '#ffffff',
-           '@media (min-width:1280px)': {
+          '@media (min-width:1280px)': {
             //  paddingTop: 20,
             //  paddingBottom: 23,
-             padding: '20px 0px 23px'
-            },
-           
-            
-            },
-        
-            head: {
+            padding: '20px 0px 23px',
+          },
+        },
+
+        head: {
           padding: '11px, 0px, 12px',
           // paddingTop: 11,
           // paddingBottom: 12,
           fontWeight: 700,
           fontSize: 18,
-              '@media (min-width:1280px)': {
+          '@media (min-width:1280px)': {
             padding: '17px, 0px, 16px',
             // paddingTop: 17,
             // paddingBottom: 16,
@@ -108,10 +103,9 @@ const theme = createTheme({
     },
     MuiTableBody: {
       styleOverrides: {
-        root: {
-        }
-      }
-    }
+        root: {},
+      },
+    },
   },
 });
 
@@ -122,9 +116,7 @@ export default function Currency() {
   const fetch = async () => {
     try {
       const data = await fetchCurrency();
-      console.log(data);
       const sliced = data.slice(0, -1);
-      console.log('sliced', sliced);
       setCurrency([...sliced]);
       //   setIsLoading(true);
     } catch (error) {
@@ -142,21 +134,17 @@ export default function Currency() {
 
   return (
     <>
-      <div className={s.table_wrapper}>
+      <div>
+        {' '}
+        {/*className={s.table_wrapper}*/}
         <ThemeProvider theme={theme}>
           <TableContainer>
             <Table size="small" aria-label="simple table">
               <TableHead>
                 <TableRow sx={{ th: { border: 0, color: '#fff' } }}>
-                  <TableCell align="center">
-                    Валюта
-                  </TableCell>
-                  <TableCell align="center">
-                    Покупка
-                  </TableCell>
-                  <TableCell align="center">
-                    Продажа
-                  </TableCell>
+                  <TableCell align="center">Валюта</TableCell>
+                  <TableCell align="center">Покупка</TableCell>
+                  <TableCell align="center">Продажа</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
