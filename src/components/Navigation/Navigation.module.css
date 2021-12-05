@@ -1,7 +1,8 @@
 .navigation {
   display: flex;
-  justify-content: center;
+  /* justify-content: center;
   align-items: center;
+  margin-bottom: var(--margin-s); */
 }
 
 .navigation .navLink:not(:last-child) {
@@ -39,8 +40,9 @@
   .navigation {
     flex-direction: column;
     width: 200px;
-    justify-content: start;
+    /* justify-content: start;
     align-items: flex-start;
+    margin-bottom: var(--margin-m); */
   }
 
   .navLink {
@@ -65,6 +67,9 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .navigation {
+    margin-bottom: var(--margin-l);
+  }
   .icon {
     margin-right: 20px;
   }
