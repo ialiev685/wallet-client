@@ -16,3 +16,9 @@ export const register = async credentials => {
   token.set(data.token);
   return data;
 };
+
+export const logIn = async credentials => {
+  const { data } = await axios.post('/users/login', credentials);
+  token.set(data.token);
+  return data;
+};

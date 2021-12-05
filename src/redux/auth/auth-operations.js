@@ -25,6 +25,18 @@ export const registerUser = createAsyncThunk(
   },
 );
 
+export const logInUser = createAsyncThunk(
+  'auth/login',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const finance = await authApi.logIn(credentials);
+      return finance;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
 export const fetchCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
