@@ -1,17 +1,17 @@
 .section {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: var(--margin-s);
+  padding-bottom: var(--margin-s);
 }
 
 @media screen and (min-width: 768px) {
   .section {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: var(--margin-m);
+    padding-bottom: var(--margin-m);
   }
 }
 @media screen and (min-width: 1280px) {
   .section {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: var(--margin-xl);
+    padding-bottom: var(--margin-xl);
   }
 }

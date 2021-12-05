@@ -1,8 +1,8 @@
 .container {
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: var(--margin-m);
+  padding-right: var(--margin-m);
 }
 @media screen and (min-width: 320px) {
   .container {
@@ -14,8 +14,8 @@
   .container {
     max-width: var(--tablet);
     width: 100%;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: var(--margin-xl);
+    padding-right: var(--margin-xl);
   }
 }
 @media screen and (min-width: 1280px) {
