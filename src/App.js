@@ -23,8 +23,6 @@ import RegistrationPage from './pages/RegistrationPage';
 
 import Background from './pages/Background';
 
-
-
 function App() {
   const [showModal, setShowModal] = useState(false);
 
@@ -41,33 +39,25 @@ function App() {
 
   return (
     !isFetchingCurrentUser && (
-
-      <>
-
       <div className="App">
-
         {/* <RegistrationForm /> */}
         {/* <LoginForm /> */}
         <Header />
         <Section>
           <Container>
-
-
             <Background>
               <RegistrationPage />
             </Background>
 
             <LoginForm />
 
-               
-  <button onClick={() => setShowModal(prevShowModal => !prevShowModal)}>
-          Показать модалку
-        </button>
-        {/*тестовая кнопка, удалить после установки боевой*/}
-        {showModal && <ModalTransaction onClose={toggleModal} />}
-    
-       
-
+            <button
+              onClick={() => setShowModal(prevShowModal => !prevShowModal)}
+            >
+              Показать модалку
+            </button>
+            {/*тестовая кнопка, удалить после установки боевой*/}
+            {showModal && <ModalTransaction onClose={toggleModal} />}
 
             <Currency />
           </Container>
@@ -75,11 +65,7 @@ function App() {
 
         {/* <Navigation /> */}
         {/* <Balance /> */}
-
-      </>
-
       </div>
-
     )
   );
 }
