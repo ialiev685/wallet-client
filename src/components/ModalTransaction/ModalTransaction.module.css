@@ -1,0 +1,215 @@
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: var(--modal-background-color);
+  overflow-y: scroll;
+  z-index: 5;
+}
+
+@media screen and (min-height: 690px) {
+  .Overlay {
+    align-items: center;
+  }
+}
+.Modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 320px;
+
+  /* min-height: 690px; */
+
+  padding: 20px 10px 60px 10px;
+
+  background-color: var(--color-white);
+
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .Modal {
+    width: 540px;
+
+    padding: 40px 65px 60px 65px;
+
+    border-radius: 20px;
+  }
+}
+
+.Modal__title {
+  font-family: var(--secondary-font-family);
+  font-style: var(--font-style-norm);
+  font-weight: var(--font-weigth-norm);
+  font-size: var(--font-size-l);
+  line-height: var(--line-heigth-m);
+  text-align: center;
+
+  margin: 0;
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .Modal__title {
+    font-size: var(--font-size-xl);
+  }
+}
+
+.Modal__form {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.Modal__type {
+  position: relative;
+
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
+.Model__label {
+  font-family: var(--main-font-family);
+  font-style: normal;
+  font-weight: var(--font-weigth-norm);
+  font-size: var(--font-size-s);
+  line-height: var(--line-heigth-m);
+  color: var(--color-light-grey);
+}
+
+.Modal__income {
+  color: var(--color-green);
+}
+
+.Modal__expenses {
+  color: var(--color-pink);
+}
+
+.Modal__wrapperSelect,
+.Modal__wrapperAmount {
+  position: relative;
+}
+
+.Modal__errorSelect,
+.Modal__errorAmount {
+  position: absolute;
+  /* font-size: var(--font-size-xs); */
+  font-size: 12px;
+
+  color: rgb(236, 0, 0);
+}
+
+.Modal__errorSelect {
+  left: 10px;
+  bottom: 30px;
+}
+
+.Modal__errorAmount {
+  left: 0px;
+  bottom: 20px;
+}
+
+.Modal__input {
+  font-family: var(--main-font-family);
+  font-style: var(--font-style-norm);
+
+  font-size: var(--font-size-m);
+  line-height: var(--line-heigth-m);
+
+  width: 280px;
+
+  margin-bottom: 40px;
+  padding: 10px 20px;
+
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--color-light-grey);
+}
+
+.Modal__input__boxRelative {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .Modal__category,
+  .Modal__input__hight {
+    width: 409px;
+  }
+}
+
+@media screen and (min-width: 540px) {
+  .Modal__input__hight {
+    margin-bottom: 50px;
+  }
+}
+
+.Modal__amount {
+  font-weight: var(--font-weigth-bold);
+}
+
+.Modal__amount::placeholder {
+  color: var(--color-grey);
+}
+
+.Modal__date {
+  border: none;
+  outline: none;
+}
+
+@media screen and (min-width: 768px) {
+  .Modal__wrapperAmountDate {
+    width: 409px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Modal__amount,
+  .Modal__input__boxRelative {
+    width: 190px;
+  }
+}
+
+.Modal__iconDate {
+  position: absolute;
+
+  right: 20px;
+  z-index: 1;
+}
+
+.Modal__input__hight {
+  resize: none;
+}
+
+.Modal__input__hight::placeholder {
+  color: var(--color-grey);
+}
+
+.Modal__button {
+  margin-bottom: 20px;
+}
+
+.Modal__close {
+  position: absolute;
+
+  cursor: pointer;
+
+  right: 20px;
+  top: 20px;
+}

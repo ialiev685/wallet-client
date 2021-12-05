@@ -1,8 +1,14 @@
 // import './stylesheet/index.css'
 
+
+import { useEffect, useState } from 'react';
+
+
+import { ModalTransaction } from 'components/ModalTransaction';
+
 import Currency from './components/Currency/Сurrency.jsx';
 
-import { useEffect } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 // import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
@@ -23,7 +29,14 @@ import RegistrationPage from './pages/RegistrationPage';
 
 
 
+
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(prevShowModal => !prevShowModal);
+  };
+
   const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
   const dispatch = useDispatch();
 
@@ -35,12 +48,20 @@ function App() {
     !isFetchingCurrentUser && (
       <div className="App">
 
+   
+      
+
+
         {/* <RegistrationForm /> */}
         {/* <LoginForm /> */}
         <Section>
           <Container>
                  <RegistrationPage />
-
+  <button onClick={() => setShowModal(prevShowModal => !prevShowModal)}>
+          Показать модалку
+        </button>
+        {/*тестовая кнопка, удалить после установки боевой*/}
+        {showModal && <ModalTransaction onClose={toggleModal} />}
     
         <LoginForm />
             <Currency />
