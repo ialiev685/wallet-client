@@ -1,0 +1,15 @@
+.table {
+  margin: 0 auto;
+  height: 319px;
+}
+
+@media (min-width: 768px) {
+  .table {
+    width: 688px;
+  }
+}
+@media (min-width: 1280px) {
+  .table {
+    width: 700px;
+  }
+}
