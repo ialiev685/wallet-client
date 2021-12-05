@@ -29,8 +29,7 @@
   margin-top: 0;
   margin-bottom: 10px;
   text-transform: uppercase;
-  font-family: var(--main-font-family);
-  font-weight: var(--font-weigth-norm);
+  font-family: var(--main-font-family-normal-w);
   font-style: var(--font-style-norm);
   font-size: var(--font-size-xs);
   line-height: var(--line-heigth-m);
@@ -43,10 +42,14 @@
   width: 175px;
   height: 36px;
   margin: 0;
-  font-family: var(--secondary-font-family);
-  font-weight: var(--font-weigth-bold);
+  font-family: var(--secondary-font-family-bold-w);
   font-style: var(--font-style-norm);
   font-size: var(--font-size-xl);
   line-height: var(--line-heigth-m);
   color: var(--color-black);
+}
+
+.sign {
+  font-family: var(--secondary-font-family-normal-w);
+  margin-right: 5px;
 }
