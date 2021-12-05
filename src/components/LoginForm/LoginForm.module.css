@@ -2,22 +2,27 @@
   position: absolute;
   top: 40px;
 }
+@media screen and (max-width: 768px) {
+  .logoIcon {
+    top: 110px;
+  }
+}
 
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 130px;
-  /* padding-right: auto; */
+  padding-right: auto;
   padding-bottom: 60px;
-  /* padding-left: auto; */
-  /* margin-left: auto;
-  margin-right: auto; */
+  padding-left: auto;
+  margin-left: auto;
+  margin-right: auto;
 
   width: 540px;
-  min-height: 616px;
+  min-height: 468px;
   border-radius: 20px;
-  /* border: solid 1px grey; */
+  border: solid 1px grey;
   background-color: var(--color-white);
 }
 
@@ -26,8 +31,10 @@
     width: 320px;
     min-height: 568px;
     text-align: center;
-    /* margin-right: auto;
-    margin-left: auto; */
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 190px;
+    padding-bottom: 110px;
   }
 }
 .wrapper {
@@ -123,26 +130,8 @@
   height: 21px;
 }
 
-.iconLockPass {
-  width: 16px;
-  height: 21px;
-}
-
-.iconUser {
-  width: 18px;
-  height: 18px;
-}
-
 .errorMessage {
   margin: 0;
   padding: 0;
   color: var(--color-green);
-}
-
-.progressNone {
-  background-color: var(--secondary-grey-color);
-}
-
-.progressDone {
-  background-color: var(--color-green);
 }

@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-// import { Navigation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from 'redux/auth/auth-operations';
 import s from './RegistrationForm.module.css';
 import Button from '@mui/material/Button';
@@ -27,8 +27,9 @@ const validationSchema = Yup.object({
     .required('Password is required'),
 });
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ classPosition }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <Formik
@@ -44,7 +45,7 @@ const RegistrationForm = () => {
       }}
     >
       {props => (
-        <Form className={s.form}>
+        <Form className={`${s.form} ${classPosition}`}>
           <img className={s.logoIcon} src={logo} alt="логотип" />
 
           <Grid className={s.wrapper}>
@@ -116,7 +117,12 @@ const RegistrationForm = () => {
           <Button variant="contained" type="submit" className={s.button}>
             РЕГИСТРАЦИЯ
           </Button>
-          <Button variant="outlined" type="button" className={s.buttonLogin}>
+          <Button
+            variant="outlined"
+            type="button"
+            className={s.buttonLogin}
+            onClick={() => navigate('/login')}
+          >
             ВХОД
           </Button>
         </Form>

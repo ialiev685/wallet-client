@@ -14,6 +14,7 @@
 
   --background-color: rgba(255, 255, 255, 0.4);
   --modal-background-color: rgba(0, 0, 0, 0.25);
+  --page-background-color: rgba(231, 234, 242, 1);
 
   --backdrop-filter: blur(50px);
 
@@ -27,6 +28,7 @@
     rgba(255, 255, 255, 0.2) -8.67%,
     rgba(255, 255, 255, 0) 116.22%
   );
+
   /* Geometry */
   --border-radius-small: 20px;
   --border-radius-large: 30px;
@@ -52,8 +54,11 @@
 
   --letter-spacing: 0.1rem;
 
-  --main-font-family: 'Circe';
-  --secondary-font-family: 'Poppins';
+  --main-font-family-normal-w: 'Circe', sans-serif;
+  --main-font-family-bold-w: 'Circe Bold', sans-serif;
+
+  --secondary-font-family-normal-w: 'Poppins Regular', sans-serif;
+  --secondary-font-family-bold-w: 'Poppins Bold', sans-serif;
 
   /* Media */
   --mobile: 320px;
