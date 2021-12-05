@@ -39,6 +39,12 @@
     width: var(--tablet);
     height: 1024px;
     background-color: var(--page-background-color);
+
+    background-image: url('../../pictures/EllipseOneTablet.png'),
+      url('../../pictures/EllipseTwoTablet.png'),
+      url('../../pictures/PictureTablet.png');
+    background-position: 400px 0, 0 700px, 114px 60px;
+    background-repeat: no-repeat;
   }
 
   .subBox {
@@ -67,42 +73,17 @@
     width: 540px;
     border-radius: 20px;
   }
-
-  .ellipseOne {
-    position: absolute;
-    width: 618px;
-    height: 547px;
-    left: 400px;
-    top: 0;
-    background-image: url('../../pictures/EllipseOneTablet.png');
-    background-repeat: no-repeat;
-  }
-
-  .ellipseTwo {
-    position: absolute;
-    width: 618px;
-    height: 547px;
-    left: 0;
-    top: 700px;
-    background-image: url('../../pictures/EllipseTwoTablet.png');
-    background-repeat: no-repeat;
-  }
-
-  .pictureTablet {
-    position: absolute;
-    width: 274px;
-    height: 250px;
-    left: 114px;
-    top: 60px;
-    background-image: url('../../pictures/PictureTablet.png');
-    background-repeat: no-repeat;
-  }
 }
 
 @media screen and (min-width: 1280px) {
   .box {
     width: var(--desktop);
     height: 720px;
+
+    background-image: url('../../pictures/PictureDesktop.png'),
+      url('../../pictures/EllipseOneDesktop.png'),
+      url('../../pictures/EllipseTwoTablet.png');
+    background-position: 66px 153px, 727px 0, 0 397px;
   }
 
   .subBox {
@@ -120,28 +101,5 @@
     top: 52px;
     width: 540px;
     z-index: 2;
-  }
-
-  .ellipseOne {
-    left: 727px;
-    background-image: url('../../pictures/EllipseOneDesktop.png');
-  }
-
-  .ellipseTwo {
-    top: 397px;
-  }
-
-  .pictureDesktop {
-    position: absolute;
-    width: 452px;
-    height: 413px;
-    left: 66px;
-    top: 153px;
-    background-image: url('../../pictures/PictureDesktop.png');
-    background-repeat: no-repeat;
-  }
-
-  .pictureTablet {
-    height: 0;
   }
 }
