@@ -1,0 +1,103 @@
+.box {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subBox {
+  position: absolute;
+  left: 560px;
+  top: 0px;
+  width: 720px;
+  background-color: var(--background-color);
+  backdrop-filter: blur(50px);
+}
+
+@media screen and (min-width: 320px) {
+  .box {
+    min-width: var(--mobile);
+    height: 568px;
+    background-color: var(--color-white);
+  }
+
+  .title {
+    position: absolute;
+    z-index: -3;
+  }
+
+  .registrationForm {
+    margin-left: auto;
+    margin-right: auto;
+    width: var(--mobile);
+    height: 568px;
+    background-color: var(--color-white);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .box {
+    width: var(--tablet);
+    height: 1024px;
+    background-color: var(--page-background-color);
+
+    background-image: url('../../pictures/EllipseOneTablet.png'),
+      url('../../pictures/EllipseTwoTablet.png'),
+      url('../../pictures/PictureTablet.png');
+    background-position: 400px 0, 0 700px, 114px 60px;
+    background-repeat: no-repeat;
+  }
+
+  .subBox {
+    height: 0;
+  }
+
+  .title {
+    z-index: 3;
+    left: 428px;
+    top: 137px;
+    font-family: var(--secondary-font-family);
+    font-style: var(--font-style-norm);
+    font-weight: var(--font-weigth-norm);
+    font-size: var(--font-size-xl);
+    line-height: var(--line-heigth-m);
+    align-items: center;
+    text-align: center;
+    color: var(--color-black);
+  }
+
+  .registrationForm {
+    position: absolute;
+    left: 114px;
+    top: 360px;
+    height: 616px;
+    width: 540px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .box {
+    width: var(--desktop);
+    height: 720px;
+
+    background-image: url('../../pictures/PictureDesktop.png'),
+      url('../../pictures/EllipseOneDesktop.png'),
+      url('../../pictures/EllipseTwoTablet.png');
+    background-position: 66px 153px, 727px 0, 0 397px;
+  }
+
+  .subBox {
+    height: 100%;
+  }
+
+  .title {
+    left: 200px;
+    top: 575px;
+  }
+
+  .registrationForm {
+    left: 655px;
+    top: 52px;
+    width: 540px;
+    z-index: 2;
+  }
+}

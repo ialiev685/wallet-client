@@ -1,3 +1,20 @@
+button {
+  display: block;
+  padding: 0;
+
+  background-color: transparent;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   background-color: var(--color-white);
   display: block;
@@ -17,11 +34,8 @@
 }
 
 .logo {
-  font-family: 'Poppins Bold';
-  font-style: normal;
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 45px;
+  width: 181px;
+  height: 40px;
 }
 
 .logout {
@@ -31,26 +45,30 @@
 }
 
 .logoutItem {
-  font-family: 'Circe Light';
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  font-family: var(--main-font-family-normal-w);
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
+  font-size: var(--font-size-m);
   line-height: 27px;
 
   color: var(--color-grey);
 }
 
-button {
-  display: block;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
+.logoutItemButton {
+  composes: logoutItem;
+  border-left: 1px solid var(--color-grey);
+  margin: 0;
+  padding: 1px 15px;
+  margin-left: 14.5px;
 }
 
-li {
-  margin: 0;
-  padding: 0;
+.logoutItemText {
+  margin-left: 10px;
 }
 
 /* Mobile version */
@@ -59,7 +77,16 @@ li {
     padding: 0 20px;
   }
   .logo {
-    font-size: 20px;
+    width: 120px;
+    height: 30px;
+  }
+  .logoutItemText {
+    display: none;
+  }
+  .logoutItemButton {
+    border: none;
+    padding: 1px 0;
+    margin-left: 10px;
   }
 }
 
