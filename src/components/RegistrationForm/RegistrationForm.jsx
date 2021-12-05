@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from 'redux/auth/auth-operations';
 import s from './RegistrationForm.module.css';
+import stylePosition from 'pages/RegistrationPage/RegistrationPage.module.css';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import EmailIcon from '@mui/icons-material/Email';
@@ -45,7 +46,7 @@ const RegistrationForm = () => {
       }}
     >
       {props => (
-        <Form className={s.form}>
+        <Form className={`${s.form} ${stylePosition.registrationForm}`}>
           <img className={s.logoIcon} src={logo} alt="логотип" />
 
           <Grid className={s.wrapper}>

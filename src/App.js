@@ -4,7 +4,7 @@ import Currency from './components/Currency/Сurrency.jsx';
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-//import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
+// import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 import LoginForm from 'components/LoginForm/LoginForm';
 
 import { authOperations, authSelectors } from 'redux/auth';
@@ -25,11 +25,11 @@ function App() {
     !isFetchingCurrentUser && (
       <div className="App">
         <RegistrationPage />
+
+        {/* <RegistrationForm /> */}
         <LoginForm />
 
         <Currency />
-
-        {/* <RegistrationForm /> */}
 
         <Navigation />
         <Balance />

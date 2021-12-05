@@ -71,7 +71,6 @@
     top: 360px;
     height: 616px;
     width: 540px;
-    border-radius: 20px;
   }
 }
 
@@ -88,7 +87,6 @@
 
   .subBox {
     height: 100%;
-    z-index: 1;
   }
 
   .title {
