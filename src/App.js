@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { authOperations, authSelectors } from 'redux/auth';
 import Container from 'components/Container';
+import Section from 'components/Section';
 
 // import Balance from './components/Balance';
 // import Navigation from './components/Navigation';
@@ -26,10 +27,11 @@ function App() {
       <div className="App">
         {/* <RegistrationForm /> */}
         {/* <LoginForm /> */}
-
-        <Container>
-          <Currency />
-        </Container>
+        <Section>
+          <Container>
+            <Currency />
+          </Container>
+        </Section>
 
         {/* <RegistrationForm /> */}
 
