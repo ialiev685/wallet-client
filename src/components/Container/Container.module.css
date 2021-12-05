@@ -1,0 +1,28 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media screen and (min-width: 320px) {
+  .container {
+    max-width: var(--mobile);
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: var(--tablet);
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: var(--desktop);
+    width: 100%;
+    padding-left: 85px;
+    padding-right: 85px;
+  }
+}
