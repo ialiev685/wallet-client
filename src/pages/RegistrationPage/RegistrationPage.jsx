@@ -3,7 +3,7 @@ import RegistrationForm from 'components/RegistrationForm';
 
 const RegistrationPage = () => {
   return (
-    <div className={s.box}>
+    <div className={s.registrBox}>
       <h1 className={s.title}>Finance App</h1>
       <div className={s.subBox}></div>
       <RegistrationForm classPosition={s.registrationForm} />
