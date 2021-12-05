@@ -1,0 +1,137 @@
+.logoIcon {
+  position: absolute;
+  top: 40px;
+}
+@media screen and (max-width: 768px) {
+  .logoIcon {
+    top: 110px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 130px;
+  padding-right: auto;
+  padding-bottom: 60px;
+  padding-left: auto;
+  margin-left: auto;
+  margin-right: auto;
+
+  width: 540px;
+  min-height: 468px;
+  border-radius: 20px;
+  border: solid 1px grey;
+  background-color: var(--color-white);
+}
+
+@media screen and (max-width: 768px) {
+  .form {
+    width: 320px;
+    min-height: 568px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 190px;
+    padding-bottom: 110px;
+  }
+}
+.wrapper {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.wrapper:last-child {
+  margin-bottom: 50px;
+}
+
+.input {
+  width: 409px;
+  padding-left: 54.5px;
+  padding-bottom: 10px;
+  height: 34px;
+  cursor: pointer;
+  border: none;
+  border-bottom: 1px solid var(--color-light-grey);
+}
+
+@media screen and (max-width: 768px) {
+  .input {
+    width: 280px;
+  }
+}
+
+.input::placeholder {
+  color: var(--color-grey);
+  font-family: var(--main-font-family);
+  font-style: var(--font-style-norm);
+  font-weight: var(--font-weigth-norm);
+  font-size: var(--font-size-m);
+  line-height: var(--line-heigth-m);
+}
+
+.button {
+  width: 300px;
+  height: 50px;
+
+  border-radius: 20px;
+  background-color: var(--color-green);
+  margin-bottom: 20px;
+  margin-top: 50px;
+
+  font-family: var(--main-font-family);
+  font-style: var(--font-style-norm);
+  font-weight: var(--font-weigth-norm);
+  font-size: var(--font-size-m);
+  line-height: var(--line-heigth-m);
+}
+
+@media screen and (max-width: 768px) {
+  .button {
+    width: 280px;
+    margin-top: 40px;
+  }
+}
+
+.buttonLogin {
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  border: 1px solid var(--color-blue);
+  color: var(--color-blue);
+
+  font-family: var(--main-font-family);
+  font-style: var(--font-style-norm);
+  font-weight: var(--font-weigth-norm);
+  font-size: var(--font-size-m);
+  line-height: var(--line-heigth-m);
+}
+@media screen and (max-width: 768px) {
+  .buttonLogin {
+    width: 280px;
+  }
+}
+
+.icon {
+  position: absolute;
+  left: 5px;
+  z-index: 1;
+  color: var(--color-light-grey);
+}
+
+.iconEmail {
+  width: 20px;
+  height: 16px;
+}
+
+.iconLock {
+  width: 16px;
+  height: 21px;
+}
+
+.errorMessage {
+  margin: 0;
+  padding: 0;
+  color: var(--color-green);
+}
