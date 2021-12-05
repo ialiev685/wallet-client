@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from 'redux/auth/auth-operations';
 import s from './RegistrationForm.module.css';
-import stylePosition from 'pages/RegistrationPage/RegistrationPage.module.css';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import EmailIcon from '@mui/icons-material/Email';
@@ -28,7 +27,7 @@ const validationSchema = Yup.object({
     .required('Password is required'),
 });
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ classPosition }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -46,7 +45,7 @@ const RegistrationForm = () => {
       }}
     >
       {props => (
-        <Form className={`${s.form} ${stylePosition.registrationForm}`}>
+        <Form className={`${s.form} ${classPosition}`}>
           <img className={s.logoIcon} src={logo} alt="логотип" />
 
           <Grid className={s.wrapper}>

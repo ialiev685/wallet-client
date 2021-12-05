@@ -6,7 +6,7 @@ const RegistrationPage = () => {
     <div className={s.box}>
       <h1 className={s.title}>Finance App</h1>
       <div className={s.subBox}></div>
-      <RegistrationForm />
+      <RegistrationForm classPosition={s.registrationForm} />
     </div>
   );
 };
