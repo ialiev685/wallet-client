@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { createPortal } from 'react-dom';
 import * as Yup from 'yup';
@@ -20,7 +20,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import './GlobalCssSlider.css';
 //кнопка
-import { ButtonWindow } from 'components/BattonWindow';
+import { ButtonWindow } from 'components/ButtonWindow';
 
 const validation = Yup.object({
   type_pay: Yup.boolean(),
@@ -71,7 +71,6 @@ export const ModalTransaction = ({ onClose }) => {
 
     onSubmit: values => {
       console.log(values);
-      alert(JSON.stringify(values, null, 2));
     },
   });
 
