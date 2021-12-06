@@ -9,21 +9,17 @@ function ButtonAddTransactions() {
   const showModal = useSelector(modalSelectors.getIsModal);
   const dispatch = useDispatch();
 
-  const toggleModal = () => {
-    dispatch(modalAction.openModal());
-  };
-
   const { buttonContainer, button, span, rotateSpan } = s;
 
   return (
     <div className={buttonContainer}>
-      <button className={button} type="button" onClick={() => toggleModal()}>
+      <button className={button} type="button" onClick={() => dispatch(modalAction.openModal())}>
         <span className={span}></span>
         <span className={rotateSpan}></span>
       </button>
 
       {showModal && (
-            <Modal>
+            <Modal onCloseModal={() => dispatch(modalAction.closeModal())} showModal={showModal}>
               <ModalTransaction />
             </Modal>
           )}

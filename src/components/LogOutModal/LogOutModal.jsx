@@ -1,8 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { modalAction, modalSelectors } from 'redux/modal';
 import Modal from '../Modal';
-import s from './LogOutModal.module.css'
+import s from './LogoutModal.module.css'
 
-function LogOutModal(props) {
-  const {showModal, toggleModal, logOutHandler} = props;
+function LogoutModal(props) {
+  const { logoutHandler } = props;
+
+  const showModal = useSelector(modalSelectors.getIsLogoutModal);
+  const dispatch = useDispatch();
 
   const {
     modalConatiner,
@@ -13,30 +18,30 @@ function LogOutModal(props) {
 
   return <div>
    {showModal && (
-        <Modal onToggleModal={toggleModal} showModal={showModal}>
-          <div className={modalConatiner}>
-            <h4 className={modalTitle}>Вы уверены, что хотите выйти?</h4>
-            <div>
-              <button
-                className={button}
-                type="button"
-                onClick={() => logOutHandler()}
-              >
-                Да
-              </button>
+      <Modal onCloseModal={() => dispatch(modalAction.closeLogouteModal())} showModal={showModal}>
+        <div className={modalConatiner}>
+          <h4 className={modalTitle}>Вы уверены, что хотите выйти?</h4>
+          <div>
+            <button
+              className={button}
+              type="button"
+              onClick={() => logoutHandler()}
+            >
+              Да
+            </button>
 
-              <button
-                className={modalButton}
-                type="button"
-                onClick={() => toggleModal()}
-              >
-                Нет
-              </button>
-            </div>
+            <button
+              className={modalButton}
+              type="button"
+              onClick={() => dispatch(modalAction.closeLogouteModal())}
+            >
+              Нет
+            </button>
           </div>
-        </Modal>
-      )}
+        </div>
+      </Modal>
+    )}
 </div>
 }
 
-export default LogOutModal;
+export default LogoutModal;

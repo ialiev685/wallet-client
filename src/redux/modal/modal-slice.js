@@ -3,6 +3,7 @@ import * as modalAction from './modal-action';
 
 const initialState = {
   isOpenModal: false,
+  isOpenLogoutModal: false,
 };
 
 const modalSlice = createSlice({
@@ -15,6 +16,14 @@ const modalSlice = createSlice({
 
     [modalAction.closeModal](state, _) {
       state.isOpenModal = false;
+    },
+
+    [modalAction.openLogoutModal](state, _) {
+      state.isOpenLogoutModal = true;
+    },
+
+    [modalAction.closeLogouteModal](state, _) {
+      state.isOpenLogoutModal = false;
     }
   },
 });
