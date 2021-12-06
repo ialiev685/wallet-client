@@ -5,7 +5,8 @@
 .button {
   position: fixed;
   bottom: 30px;
-  right: 0;
+  right: 30px;
+  z-index: 4;
 
   display: flex;
   justify-content: center;
@@ -34,5 +35,12 @@
 @media screen and (min-width: 768px) {
   .button {
     bottom: 40px;
+    right: 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .button {
+    right: 85px;
   }
 }
