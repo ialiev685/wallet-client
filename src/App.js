@@ -1,6 +1,8 @@
 // import './stylesheet/index.css'
 
 import { useEffect, useState } from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+// import { Switch } from 'react-router-dom';
 
 // import { ModalTransaction } from 'components/ModalTransaction';
 
@@ -15,6 +17,7 @@ import { authOperations, authSelectors } from 'redux/auth';
 // import Balance from './components/Balance';
 // import Navigation from './components/Navigation';
 import { HomeTab } from './pages/HomeTab/HomeTab';
+import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 
 // import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 // import LoginForm from 'components/LoginForm/LoginForm';
@@ -37,6 +40,7 @@ function App() {
   // };
 
   const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -44,13 +48,71 @@ function App() {
   }, [dispatch]);
 
   return (
-    !isFetchingCurrentUser && (
-      <div className="App">
+    <>
+      {/* {!isFetchingCurrentUser ? ( */}
+      <>
+        <Routes>
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute>
+                <Header />
+                <HomeTab />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/diagram"
+            element={
+              <PrivateRoute>
+                <Header />
+                {/* //страница с диаграммой */}
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/currency"
+            element={
+              <PrivateRoute>
+                <Header />
+                <HomeTab />
+                {/* //страница с диаграммой */}
+              </PrivateRoute>
+            }
+          />
+
+          {/* <PrivateRoute path="/diagram" redirectTo="/login">
+              {
+                <>
+                  <Header />
+
+                </>
+              }
+            </PrivateRoute>
+            <PrivateRoute path="/currency" redirectTo="/login">
+              {
+                <>
+                  <Header />
+                  <HomeTab/>
+                </>
+              }
+            </PrivateRoute> */}
+        </Routes>
+      </>
+      {/* ) : (
         <Header />
-        <HomeTab />
-      </div>
-    )
+      ) */}
+    </>
   );
+  // return (
+  //   !isFetchingCurrentUser && (
+  //     <div className="App">
+  //       <Header />
+
+  //       <HomeTab />
+  //     </div>
+  //   )
+  // );
 }
 
 export default App;
