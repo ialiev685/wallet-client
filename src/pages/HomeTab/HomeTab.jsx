@@ -6,7 +6,7 @@ import ButtonAddTransactions from 'components/ButtonAddTransactions';
 import Container from 'components/Container';
 import Section from 'components/Section';
 import Background from 'pages/Background';
-import TableTransaction from '../../components/BasicTable';
+import TableTransaction from 'components/TableTransaction';
 
 import { TableData, TableTitleData } from '../../data/tableData';
 import s from './HomeTab.module.css';
