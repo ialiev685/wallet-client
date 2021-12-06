@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { authSelectors, authOperations } from 'redux/auth';
 import { modalAction } from 'redux/modal';
-import LogoutModal from '../LogoutModal'
+import LogoutModal from '../LogOutModal';
 import style from './Header.module.css';
 import logo from 'helpers/svg/logo.svg';
 import logout from 'helpers/svg/logout.svg';
@@ -36,7 +36,11 @@ const Header = () => {
           <span className={style.logoutItem}>{name}</span>
           {/* отправить на модалку подтверждения выхода */}
 
-          <button type="button" className={style.logoutItemButton} onClick={() => dispatch(modalAction.openLogoutModal())}>
+          <button
+            type="button"
+            className={style.logoutItemButton}
+            onClick={() => dispatch(modalAction.openLogoutModal())}
+          >
             <img className="" src={logout} height="18" width="18" />
 
             <span className={style.logoutItemText}>Выйти</span>
