@@ -21,7 +21,7 @@ const validationSchema = Yup.object({
     .required('Password is required'),
 });
 
-const LoginForm = () => {
+const LoginForm = ({ classPosition }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ const LoginForm = () => {
         dispatch(logInUser({ email, password }));
       }}
     >
-      <Form className={s.form}>
+      <Form className={`${s.form} ${classPosition}`}>
         <img className={s.logoIcon} src={logo} alt="логотип" />
 
         <Grid className={s.wrapper}>
