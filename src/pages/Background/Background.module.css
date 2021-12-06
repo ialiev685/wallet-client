@@ -14,7 +14,7 @@
 
 @media screen and (min-width: 768px) {
   .box {
-    width: var(--tablet);
+    /* width: var(--tablet); */
     height: 1024px;
     background-color: var(--page-background-color);
 
@@ -27,7 +27,7 @@
 
 @media screen and (min-width: 1280px) {
   .box {
-    width: var(--desktop);
+    /* width: var(--desktop); */
     height: 720px;
 
     background-image: url('../../pictures/EllipseOneDesktop.png'),

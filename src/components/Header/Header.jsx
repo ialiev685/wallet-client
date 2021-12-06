@@ -9,7 +9,7 @@ const Header = () => {
         <li>
           {/* переход на главную страницу */}
           <button onClick={() => {}}>
-            <img className={style.logo} src={logo} />
+            <img className={style.logo} src={logo} alt="logo wallet" />
           </button>
         </li>
         <li className={style.logout}>
@@ -17,7 +17,13 @@ const Header = () => {
           <span className={style.logoutItem}>Имя</span>
           {/* отправить на модалку подтверждения выхода */}
           <button className={style.logoutItemButton} onClick={() => {}}>
-            <img className="" src={logout} height="18" width="18" />
+            <img
+              className=""
+              src={logout}
+              height="18"
+              width="18"
+              alt="logo wallet"
+            />
             <span className={style.logoutItemText}>Выйти</span>
           </button>
         </li>
