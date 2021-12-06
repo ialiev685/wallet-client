@@ -1,3 +1,8 @@
+// import './stylesheet/index.css';
+
+import TableTransaction from 'components/BasicTable/TableTransaction';
+
+import { TableData, TableTitleData } from 'data/tableData';
 // import './stylesheet/index.css'
 
 import { useEffect, useState } from 'react';
@@ -45,6 +50,7 @@ function App() {
         <Header />
         <Section>
           <Container>
+            <TableTransaction data={TableData} titles={TableTitleData} />
             <Background>
               <RegistrationPage />
             </Background>
