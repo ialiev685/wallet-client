@@ -1,16 +1,19 @@
+// import './stylesheet/index.css';
+
+import TableTransaction from 'components/BasicTable/TableTransaction';
+
+import { TableData, TableTitleData } from 'data/tableData';
 // import './stylesheet/index.css'
 
 import { useEffect, useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 // import { Switch } from 'react-router-dom';
 
-// import { ModalTransaction } from 'components/ModalTransaction';
+import { ModalTransaction } from 'components/ModalTransaction';
 
 // import Currency from './components/Currency/Сurrency.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';
-//import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
-// import LoginForm from 'components/LoginForm/LoginForm';
 
 import { authOperations, authSelectors } from 'redux/auth';
 
@@ -33,7 +36,10 @@ import Header from 'components/Header';
 import RegistrationPage from './pages/RegistrationPage';
 // import LoginPage from './pages/LoginPage';
 
-// import Background from './pages/Background';
+import LoginPage from './pages/LoginPage';
+
+import Background from './pages/Background';
+import ButtonAddTransactions from 'components/ButtonAddTransactions';
 
 function App() {
   //проверка на текущего пользователя (не удалять)
@@ -103,15 +109,6 @@ function App() {
       )}
     </>
   );
-  // return (
-  //   !isFetchingCurrentUser && (
-  //     <div className="App">
-  //       <Header />
-
-  //       <HomeTab />
-  //     </div>
-  //   )
-  // );
 }
 
 export default App;
