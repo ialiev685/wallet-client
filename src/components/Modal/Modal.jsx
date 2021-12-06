@@ -1,21 +1,20 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { modalAction, modalSelectors } from 'redux/modal';
+import { useSelector } from 'react-redux';
+import { modalSelectors } from 'redux/modal';
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#root-modal');
 
 function Modal(props) {
-  const { children } = props;
+  const { children, onCloseModal, showModal } = props;
 
-  const showModal = useSelector(modalSelectors.getIsModal);
-  const dispatch = useDispatch();
+  console.log(onCloseModal)
 
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
-        dispatch(modalAction.closeModal());
+        onCloseModal();
       }
     };
 
@@ -24,11 +23,11 @@ function Modal(props) {
     }
 
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [dispatch, showModal]);
+  }, [onCloseModal, showModal]);
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
-      dispatch(modalAction.closeModal());
+      onCloseModal();
     }
   };
 
