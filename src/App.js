@@ -17,6 +17,7 @@ import { authOperations, authSelectors } from 'redux/auth';
 // import Balance from './components/Balance';
 // import Navigation from './components/Navigation';
 import { HomeTab } from './pages/HomeTab/HomeTab';
+import { CurrencyPage } from './pages/CurrencyPage/CurrencyPage';
 import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 
 // import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
@@ -33,13 +34,9 @@ import Header from 'components/Header';
 // import Background from './pages/Background';
 
 function App() {
-  // const [showModal, setShowModal] = useState(false);
-
-  // const toggleModal = () => {
-  //   setShowModal(prevShowModal => !prevShowModal);
-  // };
-
-  const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
+  //проверка на текущего пользователя (не удалять)
+  // const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
+  const isFetchingCurrentUser = true; //заглушка для рендера приватных роутов
 
   const dispatch = useDispatch();
 
@@ -49,59 +46,41 @@ function App() {
 
   return (
     <>
-      {/* {!isFetchingCurrentUser ? ( */}
-      <>
-        <Routes>
-          <Route
-            path="/home"
-            element={
-              <PrivateRoute>
-                <Header />
-                <HomeTab />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/diagram"
-            element={
-              <PrivateRoute>
-                <Header />
-                {/* //страница с диаграммой */}
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/currency"
-            element={
-              <PrivateRoute>
-                <Header />
-                <HomeTab />
-                {/* //страница с диаграммой */}
-              </PrivateRoute>
-            }
-          />
-
-          {/* <PrivateRoute path="/diagram" redirectTo="/login">
-              {
-                <>
+      {isFetchingCurrentUser ? (
+        <>
+          <Routes>
+            <Route
+              path="/home"
+              element={
+                <PrivateRoute>
                   <Header />
-
-                </>
+                  <HomeTab />
+                </PrivateRoute>
               }
-            </PrivateRoute>
-            <PrivateRoute path="/currency" redirectTo="/login">
-              {
-                <>
+            />
+            <Route
+              path="/diagram"
+              element={
+                <PrivateRoute>
                   <Header />
-                  <HomeTab/>
-                </>
+                  {/* //страница с диаграммой DashboardPage*/}
+                </PrivateRoute>
               }
-            </PrivateRoute> */}
-        </Routes>
-      </>
-      {/* ) : (
+            />
+            <Route
+              path="/currency"
+              element={
+                <PrivateRoute>
+                  <Header />
+                  <CurrencyPage />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </>
+      ) : (
         <Header />
-      ) */}
+      )}
     </>
   );
   // return (
