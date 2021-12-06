@@ -1,0 +1,101 @@
+.backdrop {
+  backdrop-filter: var(--backdrop-filter);
+  height: 100%;
+}
+.hometabBackground {
+  background-color: var(--background-color);
+  backdrop-filter: var(--backdrop-filter);
+  height: 100vh;
+}
+
+.hometab {
+  position: relative;
+}
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--margin-s);
+}
+
+.balance {
+  margin-bottom: var(--margin-l);
+}
+
+.table {
+  width: 280px;
+  height: 60vh;
+}
+
+.btnAdd {
+  position: absolute;
+  z-index: 4;
+  bottom: 30px;
+  right: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .hometab {
+    height: 944px;
+  }
+  .hometabBackground {
+    background-color: transparent;
+    backdrop-filter: var(--backdrop-filter);
+    height: 944px;
+  }
+  .navigation {
+    justify-content: start;
+    align-items: center;
+    margin-bottom: var(--margin-m);
+  }
+  .balance {
+    margin-bottom: 0;
+    margin-right: var(--margin-m);
+  }
+  .leftSideBox {
+    display: flex;
+    margin-bottom: var(--margin-xl);
+  }
+
+  .table {
+    width: 688px;
+    height: 100%;
+  }
+  .btnAdd {
+    bottom: 40px;
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .hometabBackground {
+    height: 720px;
+  }
+  .hometab {
+    display: flex;
+    height: 640px;
+  }
+  .navigation {
+    margin-bottom: var(--margin-l);
+  }
+  .leftSideBox {
+    flex-direction: column;
+    padding-right: var(--margin-l);
+    border-right: 1px solid var(--third-grey-color);
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
+  }
+  .balance {
+    margin-bottom: var(--margin-l);
+    margin-right: 0;
+  }
+
+  .table {
+    width: 700px;
+    height: inherit;
+    margin-left: var(--margin-l);
+  }
+  .btnAdd {
+    right: 0;
+  }
+}

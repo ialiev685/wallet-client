@@ -1,7 +1,7 @@
 import s from './Background.module.css';
 
-const Background = ({ children }) => {
-  return <div className={s.box}>{children}</div>;
+const Background = ({ children, className = '' }) => {
+  return <div className={`${s.box} ${className}`}>{children}</div>;
 };
 
 export default Background;

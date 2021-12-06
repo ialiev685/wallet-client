@@ -1,3 +1,7 @@
+
+
+import { Route, Routes, Navigate } from 'react-router-dom';
+
 // import './stylesheet/index.css';
 
 
@@ -20,25 +24,27 @@ import { ModalTransaction } from 'components/ModalTransaction';
 import Currency from './components/Currency/Сurrency.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';
-
 import { authOperations, authSelectors } from 'redux/auth';
-
+import { HomeTab } from './pages/HomeTab/HomeTab';
+import { CurrencyPage } from './pages/CurrencyPage/CurrencyPage';
+import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
+import PublicRoute from './components/ProtectedRoute/PublicRoute';
 import Header from 'components/Header';
-import Container from 'components/Container';
-import Section from 'components/Section';
-
-import Balance from 'components/Balance';
-import Navigation from './components/Navigation';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
+
 
 
 import Background from './pages/Background';
 
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 
+
 function App() {
-  const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
+  //проверка на текущего пользователя (не удалять)
+  // const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
+  const isFetchingCurrentUser = true; //заглушка для рендера приватных роутов
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -46,35 +52,64 @@ function App() {
   }, [dispatch]);
 
   return (
-    !isFetchingCurrentUser && (
-      <div className="App">
 
-        {/* <RegistrationForm /> */}
-        {/* <LoginForm /> */}
-
-        <Header />
-        <Section>
-          <Container>
-            <TableTransaction data={TableData} titles={TableTitleData} />
-
-            <RegistrationPage />
-            <LoginPage />
-
-            <ButtonAddTransactions />
-
-            <Currency />
-
-            <TableStatistic
-              titles={TableStatisticTitleData}
-              data={TableStatisticData}
+    <>
+      {isFetchingCurrentUser ? (
+        <>
+          <Routes>
+            <Route path="/" exact element={<Navigate to="/home" />} />
+            <Route
+              path="/login"
+              element={
+                // <PublicRoute restricted>
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
             />
-          </Container>
-        </Section>
+            <Route
+              path="/register"
+              element={
+                // <PublicRoute restricted>
+                <PublicRoute>
+                  <RegistrationPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/home"
+              element={
+                <PrivateRoute redirectTo="/login">
+                  <Header />
+                  <HomeTab />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/diagram"
+              element={
+                <PrivateRoute redirectTo="/login">
+                  <Header />
+                  {/* //страница с диаграммой DashboardPage*/}
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/currency"
+              element={
+                <PrivateRoute redirectTo="/login">
+                  <Header />
+                  <CurrencyPage />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </>
+      ) : (
+        <Header />
+      )}
+    </>
 
-        {/* <Navigation /> */}
-        {/* <Balance /> */}
-      </div>
-    )
   );
 }
 
