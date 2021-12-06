@@ -1,0 +1,111 @@
+button {
+  display: block;
+  padding: 0;
+
+  background-color: transparent;
+
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: var(--color-white);
+  display: block;
+  margin: 0 auto;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0;
+  padding: 15px 0;
+
+  list-style: none;
+}
+
+.logo {
+  width: 181px;
+  height: 40px;
+}
+
+.logout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logoutItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  font-family: var(--main-font-family-normal-w);
+  font-style: normal;
+  font-weight: normal;
+  font-size: var(--font-size-m);
+  line-height: 27px;
+
+  color: var(--color-grey);
+}
+
+.logoutItemButton {
+  composes: logoutItem;
+  border-left: 1px solid var(--color-grey);
+  margin: 0;
+  padding: 1px 15px;
+  margin-left: 14.5px;
+}
+
+.logoutItemText {
+  margin-left: 10px;
+}
+
+/* Mobile version */
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 0 20px;
+  }
+  .logo {
+    width: 120px;
+    height: 30px;
+  }
+  .logoutItemText {
+    display: none;
+  }
+  .logoutItemButton {
+    border: none;
+    padding: 1px 0;
+    margin-left: 10px;
+  }
+}
+
+/* Tablet version */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    padding: 0 40px;
+  }
+  .menuList {
+    padding: 20px 0;
+  }
+}
+
+/* Desktop version */
+@media screen and (min-width: 1280px) {
+  .container {
+    padding: 0 85px;
+  }
+  .menuList {
+    padding: 20px 0;
+  }
+}
