@@ -21,6 +21,9 @@ import Select from '@mui/material/Select';
 import './GlobalCssSlider.css';
 //кнопка
 import { ButtonWindow } from 'components/ButtonWindow';
+//модалка
+import { useDispatch } from 'react-redux';
+import { modalAction } from 'redux/modal';
 
 const validation = Yup.object({
   type_pay: Yup.boolean(),
@@ -40,7 +43,7 @@ const validation = Yup.object({
 
 //const rootModal = document.querySelector('#root-modal');
 
-export const ModalTransaction = ({ onClose }) => {
+export const ModalTransaction = (/*{ onClose }*/) => {
   /*useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
 
@@ -54,9 +57,10 @@ export const ModalTransaction = ({ onClose }) => {
       onClose();
     }
   };*/
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    onClose();
+    dispatch(modalAction.closeModal());
   };
 
   const formik = useFormik({
