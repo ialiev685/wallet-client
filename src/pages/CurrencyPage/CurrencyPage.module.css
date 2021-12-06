@@ -1,0 +1,9 @@
+.currencyBackground {
+  background-color: var(--background-color);
+}
+
+.navigation {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--margin-s);
+}
