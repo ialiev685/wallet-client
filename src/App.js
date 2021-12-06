@@ -19,6 +19,7 @@ import { authOperations, authSelectors } from 'redux/auth';
 import { HomeTab } from './pages/HomeTab/HomeTab';
 import { CurrencyPage } from './pages/CurrencyPage/CurrencyPage';
 import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
+import PublicRoute from './components/ProtectedRoute/PublicRoute';
 
 // import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
 // import LoginForm from 'components/LoginForm/LoginForm';
@@ -29,7 +30,8 @@ import Header from 'components/Header';
 
 // import Balance from 'components/Balance';
 // import Navigation from './components/Navigation';
-// import RegistrationPage from './pages/RegistrationPage';
+import RegistrationPage from './pages/RegistrationPage';
+// import LoginPage from './pages/LoginPage';
 
 // import Background from './pages/Background';
 
@@ -49,10 +51,28 @@ function App() {
       {isFetchingCurrentUser ? (
         <>
           <Routes>
+            <Route path="/" exact element={<Navigate to="/home" />} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  {/* //страница логина */}
+                  {/* <LoginPage/> */}
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <RegistrationPage />
+                </PublicRoute>
+              }
+            />
             <Route
               path="/home"
               element={
-                <PrivateRoute>
+                <PrivateRoute redirectTo="/login">
                   <Header />
                   <HomeTab />
                 </PrivateRoute>
@@ -61,7 +81,7 @@ function App() {
             <Route
               path="/diagram"
               element={
-                <PrivateRoute>
+                <PrivateRoute redirectTo="/login">
                   <Header />
                   {/* //страница с диаграммой DashboardPage*/}
                 </PrivateRoute>
@@ -70,7 +90,7 @@ function App() {
             <Route
               path="/currency"
               element={
-                <PrivateRoute>
+                <PrivateRoute redirectTo="/login">
                   <Header />
                   <CurrencyPage />
                 </PrivateRoute>
