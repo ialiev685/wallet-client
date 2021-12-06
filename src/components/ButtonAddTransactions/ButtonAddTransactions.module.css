@@ -3,10 +3,10 @@
 } */
 
 .button {
-  /* position: fixed; */
-  position: absolute;
-  /* bottom: 30px; */
-  /* right: 0; */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 4;
 
   display: flex;
   justify-content: center;
@@ -31,9 +31,3 @@
 .rotateSpan {
   transform: rotate(-90deg);
 }
-
-/* @media screen and (min-width: 768px) {
-  .button {
-    bottom: 40px;
-  }
-} */
