@@ -1,0 +1,124 @@
+.switch_box {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  max-width: 80px;
+  min-width: 80px;
+  height: 40px;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+/* Switch 1 Specific Styles Start */
+
+.box {
+  position: absolute;
+  left: 50%;
+
+  transform: translate(-50%);
+  background: none;
+}
+
+/*false*/
+.switch {
+  font-size: 30px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 80px;
+
+  height: 40px;
+  background: #fff;
+
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+/*true*/
+.switch:checked {
+  background: #fff;
+}
+
+.switch:after {
+  position: absolute;
+
+  content: '';
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+
+  background-color: #24cca7;
+  -webkit-box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+
+  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  left: -2px;
+  top: -2px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.switch:checked:after {
+  left: calc(100% - 44px);
+  background-color: #ff6596;
+  box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+}
+
+.cross {
+  background-color: #fff;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  width: 20px;
+  height: 2px;
+
+  z-index: 3;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.switch:not(:checked) ~ .cross:after {
+  display: block;
+  content: '';
+
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+
+  transform: rotate(90deg);
+  z-index: 4;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+.switch:checked ~ .cross {
+  left: calc(100% - 32px);
+  background-color: #fff;
+  box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+}
+
+.switch:checked:before {
+  left: calc(100% - 30px);
+  background-color: #fff;
+  box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
+}
+
+/* Switch 1 Specific Style End */

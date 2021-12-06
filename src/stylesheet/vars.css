@@ -4,6 +4,8 @@
   --color-white: #ffffff;
   --color-green: #24cca7;
   --color-blue: #4a56e2;
+  --color-light-blue: #6e78e8;
+
   --color-pink: #ff6596;
 
   --color-light-grey: #e0e0e0;
@@ -12,6 +14,7 @@
 
   --background-color: rgba(255, 255, 255, 0.4);
   --modal-background-color: rgba(0, 0, 0, 0.25);
+  --page-background-color: rgba(231, 234, 242, 1);
 
   --backdrop-filter: blur(50px);
 
@@ -25,6 +28,7 @@
     rgba(255, 255, 255, 0.2) -8.67%,
     rgba(255, 255, 255, 0) 116.22%
   );
+
   /* Geometry */
   --border-radius-small: 20px;
   --border-radius-large: 30px;
@@ -34,6 +38,7 @@
   --margin-xl: 40px;
 
   /* Fonts */
+  --font-size-xs: 12px;
   --font-size-s: 16px;
   --font-size-m: 18px;
   --font-size-l: 24px;
@@ -49,8 +54,11 @@
 
   --letter-spacing: 0.1rem;
 
-  --main-font-family: "Circe";
-  --secondary-font-family: "Poppins";
+  --main-font-family-normal-w: 'Circe', sans-serif;
+  --main-font-family-bold-w: 'Circe Bold', sans-serif;
+
+  --secondary-font-family-normal-w: 'Poppins Regular', sans-serif;
+  --secondary-font-family-bold-w: 'Poppins Bold', sans-serif;
 
   /* Media */
   --mobile: 320px;
