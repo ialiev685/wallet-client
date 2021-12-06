@@ -1,13 +1,17 @@
 // import './stylesheet/index.css';
 
+import TableTransaction from 'components/TableTransaction';
+import TableStatistic from 'components/TableStatistic';
 
-import TableTransaction from 'components/BasicTable/TableTransaction';
-
-import { TableData, TableTitleData } from 'data/tableData';
+import {
+  TableData,
+  TableTitleData,
+  TableStatisticData,
+  TableStatisticTitleData,
+} from 'data/tableData';
 // import './stylesheet/index.css'
 
 import { useEffect, useState } from 'react';
-
 
 import { ModalTransaction } from 'components/ModalTransaction';
 
@@ -27,11 +31,7 @@ import RegistrationPage from './pages/RegistrationPage';
 
 import LoginPage from './pages/LoginPage';
 
-
-
-
 import Background from './pages/Background';
-
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -50,7 +50,6 @@ function App() {
   return (
     !isFetchingCurrentUser && (
       <div className="App">
-
         {/* <RegistrationForm /> */}
         {/* <LoginForm /> */}
         <Header />
@@ -75,6 +74,11 @@ function App() {
             {showModal && <ModalTransaction onClose={toggleModal} />}
 
             <Currency />
+
+            <TableStatistic
+              titles={TableStatisticTitleData}
+              data={TableStatisticData}
+            />
           </Container>
         </Section>
 
