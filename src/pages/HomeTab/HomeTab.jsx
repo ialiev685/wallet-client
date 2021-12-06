@@ -5,6 +5,7 @@ import Currency from 'components/Currency/Сurrency';
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 import Container from 'components/Container';
 import Section from 'components/Section';
+import Background from 'pages/Background';
 import s from './HomeTab.module.css';
 
 export const HomeTab = () => {
@@ -13,22 +14,25 @@ export const HomeTab = () => {
   });
   return (
     <>
-      <Section>
-        <Container>
-          <div className={s.hometab}>
-            <div className={s.leftSideBox}>
-              <div>
-                <Navigation className={s.navigation} />
-                <Balance className={s.balance} />
+      <Background className={s.backdrop}>
+        <Section className={s.hometabBackground}>
+          <Container>
+            <div className={s.hometab}>
+              <div className={s.leftSideBox}>
+                <div>
+                  <Navigation className={s.navigation} />
+                  <Balance className={s.balance} />
+                </div>
+                {!isMobile && <Currency />}
               </div>
-              {!isMobile && <Currency />}
+              {/* <div className={s.rigthSideBox}> */}
+              <div className={s.table}>Table</div>
+              <ButtonAddTransactions className={s.btnAdd} />
+              {/* </div> */}
             </div>
-            <div className={s.table}>Table</div>
-          </div>
-
-          <ButtonAddTransactions />
-        </Container>
-      </Section>
+          </Container>
+        </Section>
+      </Background>
     </>
   );
 };

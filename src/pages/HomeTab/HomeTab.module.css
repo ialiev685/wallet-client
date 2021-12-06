@@ -1,3 +1,21 @@
+.backdrop {
+  backdrop-filter: var(--backdrop-filter);
+}
+.hometabBackground {
+  /* background-color: red; */
+  background-color: var(--background-color);
+  backdrop-filter: var(--backdrop-filter);
+  height: 100vh;
+  position: relative;
+}
+
+/* .rigthSideBox {
+  position: relative;
+} */
+
+/* .hometab {
+  position: relative;
+} */
 .navigation {
   justify-content: center;
   align-items: center;
@@ -14,7 +32,20 @@
   background-color: blueviolet;
 }
 
+.btnAdd {
+  bottom: 30px;
+  right: 20px;
+}
+
 @media screen and (min-width: 768px) {
+  /* .backdrop {
+    background-color: transparent;
+  } */
+  .hometabBackground {
+    background-color: transparent;
+    backdrop-filter: var(--backdrop-filter);
+    height: 944px;
+  }
   .navigation {
     justify-content: start;
     align-items: flex-start;
@@ -29,13 +60,23 @@
     margin-bottom: var(--margin-xl);
     /* align-items: center; */
   }
+
   .table {
     width: 688px;
-    height: 100vh;
+    /* height: 100vh; */
+    height: 100%;
+    /* height: inherit; */
+  }
+  .btnAdd {
+    bottom: 40px;
+    right: 40px;
   }
 }
 
 @media screen and (min-width: 1280px) {
+  .hometabBackground {
+    height: 720px;
+  }
   .hometab {
     display: flex;
   }
@@ -45,8 +86,8 @@
   .leftSideBox {
     flex-direction: column;
     padding-right: var(--margin-l);
-    /* border-right: 1px solid var(--third-grey-color); */
-    border-right: 1px solid red;
+    border-right: 1px solid var(--third-grey-color);
+    /* border-right: 1px solid red; */
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);
   }
@@ -57,6 +98,10 @@
 
   .table {
     width: 700px;
+    height: inherit;
     margin-left: var(--margin-l);
+  }
+  .btnAdd {
+    right: 85px;
   }
 }

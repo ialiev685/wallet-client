@@ -1,11 +1,12 @@
 .buttonContainer {
-  position: relative;
+  /* position: relative; */
 }
 
 .button {
-  position: fixed;
-  bottom: 30px;
-  right: 0;
+  /* position: fixed; */
+  position: absolute;
+  /* bottom: 30px; */
+  /* right: 0; */
 
   display: flex;
   justify-content: center;
@@ -31,8 +32,8 @@
   transform: rotate(-90deg);
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .button {
     bottom: 40px;
   }
-}
+} */
