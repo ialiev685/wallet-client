@@ -6,6 +6,9 @@ import ButtonAddTransactions from 'components/ButtonAddTransactions';
 import Container from 'components/Container';
 import Section from 'components/Section';
 import Background from 'pages/Background';
+import TableTransaction from '../../components/BasicTable';
+
+import { TableData, TableTitleData } from '../../data/tableData';
 import s from './HomeTab.module.css';
 
 export const HomeTab = () => {
@@ -20,14 +23,25 @@ export const HomeTab = () => {
             <div className={s.hometab}>
               <div className={s.leftSideBox}>
                 <div>
-                  <Navigation className={s.navigation} />
-                  <Balance className={s.balance} />
+                  <div className={s.navigation}>
+                    <Navigation />
+                  </div>
+                  <div className={s.balance}>
+                    <Balance />
+                  </div>
                 </div>
                 {!isMobile && <Currency />}
               </div>
               {/* <div className={s.rigthSideBox}> */}
-              <div className={s.table}>Table</div>
-              <ButtonAddTransactions className={s.btnAdd} />
+              {/* <div className={s.table}>Table</div> */}
+              <div className={s.table}>
+                <TableTransaction data={TableData} titles={TableTitleData} />
+              </div>
+              <div className={s.btnAdd}>
+                <ButtonAddTransactions />
+                {/* <ButtonAddTransactions className={s.btnAdd} /> */}
+              </div>
+
               {/* </div> */}
             </div>
           </Container>

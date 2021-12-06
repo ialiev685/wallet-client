@@ -6,8 +6,8 @@
   /* position: fixed; */
   /* bottom: 30px; */
   /* right: 30px; */
-  position: absolute;
-  z-index: 4;
+  /* position: absolute;
+  z-index: 4; */
 
   display: flex;
   justify-content: center;

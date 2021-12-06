@@ -3,7 +3,7 @@ import Modal from '../Modal';
 import { ModalTransaction } from '../ModalTransaction';
 import s from './ButtonAddTransactions.module.css';
 
-function ButtonAddTransactions({ className = '' }) {
+function ButtonAddTransactions() {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
@@ -16,7 +16,8 @@ function ButtonAddTransactions({ className = '' }) {
     // <div className={buttonContainer}>
     <>
       <button
-        className={`${button} ${className}`}
+        // className={`${button} ${className}`}
+        className={button}
         type="button"
         onClick={() => toggleModal()}
       >

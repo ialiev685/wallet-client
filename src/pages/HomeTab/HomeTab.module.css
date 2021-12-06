@@ -1,22 +1,24 @@
 .backdrop {
   backdrop-filter: var(--backdrop-filter);
+  height: 100%;
 }
 .hometabBackground {
   /* background-color: red; */
   background-color: var(--background-color);
   backdrop-filter: var(--backdrop-filter);
   height: 100vh;
-  position: relative;
+  /* position: relative; */
 }
 
 /* .rigthSideBox {
   position: relative;
 } */
 
-/* .hometab {
+.hometab {
   position: relative;
-} */
+}
 .navigation {
+  display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: var(--margin-s);
@@ -29,18 +31,24 @@
 .table {
   width: 280px;
   height: 60vh;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
 }
 
 .btnAdd {
+  position: absolute;
+  z-index: 4;
   bottom: 30px;
-  right: 20px;
+  /* right: 20px; */
+  right: 0;
 }
 
 @media screen and (min-width: 768px) {
   /* .backdrop {
     background-color: transparent;
   } */
+  .hometab {
+    height: 944px;
+  }
   .hometabBackground {
     background-color: transparent;
     backdrop-filter: var(--backdrop-filter);
@@ -48,7 +56,9 @@
   }
   .navigation {
     justify-content: start;
-    align-items: flex-start;
+    /* justify-content: center; */
+    /* align-items: flex-start; */
+    align-items: center;
     margin-bottom: var(--margin-m);
   }
   .balance {
@@ -69,7 +79,8 @@
   }
   .btnAdd {
     bottom: 40px;
-    right: 40px;
+    /* right: 40px; */
+    right: 0;
   }
 }
 
@@ -79,6 +90,7 @@
   }
   .hometab {
     display: flex;
+    height: 640px;
   }
   .navigation {
     margin-bottom: var(--margin-l);
@@ -102,6 +114,7 @@
     margin-left: var(--margin-l);
   }
   .btnAdd {
-    right: 85px;
+    /* right: 85px; */
+    right: 0;
   }
 }

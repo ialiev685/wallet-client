@@ -5,7 +5,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import HomeIcon from '@mui/icons-material/Home';
 import TimelineIcon from '@mui/icons-material/Timeline';
 
-const Navigation = ({ className = '' }) => {
+const Navigation = () => {
   const setActiveClass = ({ isActive }) =>
     `${s.navLink}` + (isActive ? ` ${s.activeNavLink}` : '');
 
@@ -14,8 +14,8 @@ const Navigation = ({ className = '' }) => {
   });
 
   return (
-    <nav className={`${s.navigation} ${className}`}>
-      {/* // <nav className={s.navigation}> */}
+    // <nav className={`${s.navigation} ${className}`}>
+    <nav className={s.navigation}>
       <NavLink to="/home" className={setActiveClass}>
         <HomeIcon className={s.icon} />
         {!isMobile && <span className={s.routeName}>Главная</span>}
