@@ -1,13 +1,16 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { modalAction, modalSelectors } from 'redux/modal';
 import Modal from '../Modal';
 import { ModalTransaction } from '../ModalTransaction';
 import s from './ButtonAddTransactions.module.css';
 
 function ButtonAddTransactions() {
-  const [showModal, setShowModal] = useState(false);
+  const showModal = useSelector(modalSelectors.getIsModal);
+  const dispatch = useDispatch();
 
-const toggleModal = () => {
-    setShowModal(!showModal);
+  const toggleModal = () => {
+    dispatch(modalAction.openModal());
   };
 
   const { buttonContainer, button, span, rotateSpan } = s;
@@ -20,8 +23,8 @@ const toggleModal = () => {
       </button>
 
       {showModal && (
-            <Modal onToggleModal={toggleModal} showModal={showModal}>
-              <ModalTransaction onClose={toggleModal} />
+            <Modal>
+              <ModalTransaction />
             </Modal>
           )}
     </div>
