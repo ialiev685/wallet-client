@@ -3,35 +3,29 @@ export const TableTitleData = [
     key: 'date',
     title: 'Дата',
     type: 'date',
-    width: 60,
   },
   {
     key: 'transactionType',
     title: 'Тип',
     type: 'boolean',
-    width: 120,
   },
   {
     key: 'category',
     title: 'Категория',
-    width: 142,
   },
   {
     key: 'comment',
     title: 'Комментарий',
-    width: 115,
   },
   {
     key: 'sum',
     title: 'Сумма',
     type: 'number',
-    width: 102,
   },
   {
     key: 'balance',
     title: 'Баланс',
     type: 'number',
-    width: 107,
   },
 ];
 
@@ -83,14 +77,70 @@ export const TableData = [
   },
 ];
 
-export const TableAnotherTitleData = [
+export const TableStatisticTitleData = [
   {
     key: 'category',
     title: 'Категория',
-    type: 'number',
   },
   {
     key: 'sum',
     title: 'Сумма',
+    type: 'number',
+  },
+];
+export const TableStatisticData = [
+  {
+    id: '#FED057',
+    color: '#FED057',
+    category: 'Основные расходы',
+    sum: '8 700.00',
+  },
+  {
+    id: '#FFD8D0',
+    color: '#FFD8D0',
+    category: 'Продукты',
+    sum: '3 800.74',
+  },
+  {
+    id: '#FD9498',
+    color: '#FD9498',
+    category: 'Машина',
+    sum: '1 500.00',
+  },
+  {
+    id: '#C5BAFF',
+    color: '#C5BAFF',
+    category: 'Забота о себе',
+    sum: '800.00',
+  },
+  {
+    id: '#6E78E8',
+    color: '#6E78E8',
+    category: 'Забота о детях',
+    sum: '2 208.50',
+  },
+  {
+    id: '#4A56E2',
+    color: '#4A56E2',
+    category: 'Товары для дома',
+    sum: '300.00',
+  },
+  {
+    id: '#81E1FF',
+    color: '#81E1FF',
+    category: 'Образование',
+    sum: '3 400.00',
+  },
+  {
+    id: '#24CCA7',
+    color: '#24CCA7',
+    category: 'Досуг',
+    sum: '1 230.00',
+  },
+  {
+    id: '#00AD84',
+    color: '#00AD84',
+    category: 'Другие расходы',
+    sum: '610.00',
   },
 ];
