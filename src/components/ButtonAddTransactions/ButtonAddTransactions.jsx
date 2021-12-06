@@ -13,14 +13,8 @@ function ButtonAddTransactions() {
   const { buttonContainer, button, span, rotateSpan } = s;
 
   return (
-    // <div className={buttonContainer}>
     <>
-      <button
-        // className={`${button} ${className}`}
-        className={button}
-        type="button"
-        onClick={() => toggleModal()}
-      >
+      <button className={button} type="button" onClick={() => toggleModal()}>
         <span className={span}></span>
         <span className={rotateSpan}></span>
       </button>
@@ -31,7 +25,6 @@ function ButtonAddTransactions() {
         </Modal>
       )}
     </>
-    // </div>
   );
 }
 

@@ -1,8 +1,5 @@
 .navigation {
   display: flex;
-  /* justify-content: center;
-  align-items: center;
-  margin-bottom: var(--margin-s); */
 }
 
 .navigation .navLink:not(:last-child) {
@@ -41,17 +38,11 @@
     flex-direction: column;
     width: 200px;
     justify-content: center;
-
-    /* justify-content: start;
-    align-items: flex-start;
-    margin-bottom: var(--margin-m); */
   }
 
   .navLink {
     display: flex;
-    /* margin-bottom: 10px; */
     font-family: var(--secondary-font-family-normal-w);
-    /* font-weight: var(--font-weigth-norm); */
     font-size: var(--font-size-m);
     color: var(--color-black);
   }

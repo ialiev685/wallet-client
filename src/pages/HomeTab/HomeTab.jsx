@@ -32,17 +32,12 @@ export const HomeTab = () => {
                 </div>
                 {!isMobile && <Currency />}
               </div>
-              {/* <div className={s.rigthSideBox}> */}
-              {/* <div className={s.table}>Table</div> */}
               <div className={s.table}>
                 <TableTransaction data={TableData} titles={TableTitleData} />
               </div>
               <div className={s.btnAdd}>
                 <ButtonAddTransactions />
-                {/* <ButtonAddTransactions className={s.btnAdd} /> */}
               </div>
-
-              {/* </div> */}
             </div>
           </Container>
         </Section>

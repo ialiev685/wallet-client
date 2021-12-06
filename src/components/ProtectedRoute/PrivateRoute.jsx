@@ -8,8 +8,6 @@ function PrivateRoute({ children, redirectTo = '/' }) {
   const isLoggedIn = true; //заглушка
   // const isLoggedIn = false; //заглушка
   if (!isLoggedIn) {
-    // if (isLoggedIn) {
-    // return <Navigate to="/login" state={{ from: location.pathname }} />;
     return <Navigate to={redirectTo} state={{ from: location.pathname }} />;
   }
 

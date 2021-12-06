@@ -8,7 +8,6 @@ function PublicRoute({ children, restricted = false, redirectTo = '/' }) {
   const isLoggedIn = true; //заглушка
   // const isLoggedIn = false; //заглушка
   const shouldRedirect = isLoggedIn && restricted;
-  // if (!isloggedIn) {
   if (shouldRedirect) {
     return <Navigate to={redirectTo} state={{ from: location.pathname }} />;
   }
