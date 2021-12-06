@@ -14,6 +14,7 @@ const Navigation = () => {
   });
 
   return (
+    // <nav className={`${s.navigation} ${className}`}>
     <nav className={s.navigation}>
       <NavLink to="/home" className={setActiveClass}>
         <HomeIcon className={s.icon} />

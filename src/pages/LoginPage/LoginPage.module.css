@@ -17,7 +17,6 @@
     margin-left: auto;
     margin-right: auto;
     width: var(--mobile);
-    height: 568px;
     background-color: var(--color-white);
   }
 }
@@ -77,7 +76,6 @@
   .loginForm {
     left: 655px;
     top: 136px;
-    width: 540px;
     z-index: 2;
   }
 }
