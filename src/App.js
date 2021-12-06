@@ -1,5 +1,6 @@
 // import './stylesheet/index.css';
 
+
 import TableTransaction from 'components/TableTransaction';
 import TableStatistic from 'components/TableStatistic';
 
@@ -9,6 +10,7 @@ import {
   TableStatisticData,
   TableStatisticTitleData,
 } from 'data/tableData';
+
 // import './stylesheet/index.css'
 
 import { useEffect, useState } from 'react';
@@ -28,10 +30,11 @@ import Section from 'components/Section';
 import Balance from 'components/Balance';
 import Navigation from './components/Navigation';
 import RegistrationPage from './pages/RegistrationPage';
-
 import LoginPage from './pages/LoginPage';
 
+
 import Background from './pages/Background';
+
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 
 function App() {
@@ -45,20 +48,17 @@ function App() {
   return (
     !isFetchingCurrentUser && (
       <div className="App">
+
         {/* <RegistrationForm /> */}
         {/* <LoginForm /> */}
+
         <Header />
         <Section>
           <Container>
             <TableTransaction data={TableData} titles={TableTitleData} />
 
-            <Background>
-              <RegistrationPage />
-            </Background>
-
-            <Background>
-              <LoginPage />
-            </Background>
+            <RegistrationPage />
+            <LoginPage />
 
             <ButtonAddTransactions />
 
@@ -73,7 +73,6 @@ function App() {
 
         {/* <Navigation /> */}
         {/* <Balance /> */}
-
       </div>
     )
   );
