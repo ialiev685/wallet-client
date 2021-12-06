@@ -1,13 +1,11 @@
 // import './stylesheet/index.css';
 
-
-import TableTransaction from 'components/BasicTable/TableTransaction';
+import TableTransaction from 'components/TableTransaction/TableTransaction';
 
 import { TableData, TableTitleData } from 'data/tableData';
 // import './stylesheet/index.css'
 
 import { useEffect, useState } from 'react';
-
 
 import { ModalTransaction } from 'components/ModalTransaction';
 
@@ -27,12 +25,8 @@ import RegistrationPage from './pages/RegistrationPage';
 
 import LoginPage from './pages/LoginPage';
 
-
-
-
 import Background from './pages/Background';
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
-
 
 function App() {
   const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
@@ -45,7 +39,6 @@ function App() {
   return (
     !isFetchingCurrentUser && (
       <div className="App">
-
         {/* <RegistrationForm /> */}
         {/* <LoginForm /> */}
         <Header />
@@ -69,7 +62,6 @@ function App() {
 
         {/* <Navigation /> */}
         {/* <Balance /> */}
-
       </div>
     )
   );
