@@ -31,15 +31,10 @@ import LoginPage from './pages/LoginPage';
 
 
 import Background from './pages/Background';
+import ButtonAddTransactions from 'components/ButtonAddTransactions';
 
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-
-  const toggleModal = () => {
-    setShowModal(prevShowModal => !prevShowModal);
-  };
-
   const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
   const dispatch = useDispatch();
 
@@ -66,13 +61,7 @@ function App() {
               <LoginPage />
             </Background>
 
-            <button
-              onClick={() => setShowModal(prevShowModal => !prevShowModal)}
-            >
-              Показать модалку
-            </button>
-            {/*тестовая кнопка, удалить после установки боевой*/}
-            {showModal && <ModalTransaction onClose={toggleModal} />}
+            <ButtonAddTransactions />
 
             <Currency />
           </Container>
@@ -80,6 +69,7 @@ function App() {
 
         {/* <Navigation /> */}
         {/* <Balance /> */}
+
       </div>
     )
   );

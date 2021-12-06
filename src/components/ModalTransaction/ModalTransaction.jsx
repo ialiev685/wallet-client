@@ -38,10 +38,10 @@ const validation = Yup.object({
   discription: Yup.mixed(),
 });
 
-const rootModal = document.querySelector('#root-modal');
+//const rootModal = document.querySelector('#root-modal');
 
 export const ModalTransaction = ({ onClose }) => {
-  useEffect(() => {
+  /*useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
@@ -53,7 +53,7 @@ export const ModalTransaction = ({ onClose }) => {
     if (e.code === 'Escape') {
       onClose();
     }
-  };
+  };*/
 
   const handleClick = () => {
     onClose();
@@ -79,8 +79,8 @@ export const ModalTransaction = ({ onClose }) => {
     name: 'date',
     className: style.Modal__date,
   };
-  return createPortal(
-    <div className={style.Overlay}>
+  return (//createPortal(
+    // <div className={style.Overlay}>
       <div className={style.Modal}>
         <h1 className={style.Modal__title}>Добавить транзакцию</h1>
         <form onSubmit={formik.handleSubmit} className={style.Modal__form}>
@@ -222,7 +222,7 @@ export const ModalTransaction = ({ onClose }) => {
         <ButtonWindow onClick={handleClick} title={'отмена'} />
         <CrossIcon onClick={handleClick} className={style.Modal__close} />
       </div>
-    </div>,
-    rootModal,
+    //</div>,
+    //rootModal,
   );
 };
