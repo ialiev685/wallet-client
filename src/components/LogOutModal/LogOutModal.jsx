@@ -1,7 +1,7 @@
 import Modal from '../Modal';
-import s from './LogoutModal.module.css';
+import s from './LogOutModal.module.css';
 
-function LogoutModal(props) {
+function LogOutModal(props) {
   const { logoutHandler, showModal, toggleModal } = props;
 
   const { modalConatiner, modalTitle, button, modalButton } = s;
@@ -36,4 +36,4 @@ function LogoutModal(props) {
   );
 }
 
-export default LogoutModal;
+export default LogOutModal;

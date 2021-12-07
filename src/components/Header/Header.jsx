@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { authSelectors, authOperations } from 'redux/auth';
-import LogoutModal from '../LogoutModal';
+import LogutModal from 'components/LogOutModal';
 import style from './Header.module.css';
 import logo from 'helpers/svg/logo.svg';
 import logout from 'helpers/svg/logout.svg';
@@ -55,7 +55,7 @@ const Header = () => {
             />
 
             <span className={style.logoutItemText}>Выйти</span>
-            <LogoutModal
+            <LogutModal
               logoutHandler={logoutHandler}
               toggleModal={toggleModal}
               showModal={showModal}
