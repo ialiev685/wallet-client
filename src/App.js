@@ -73,7 +73,6 @@ function App() {
               path="/home"
               element={
                 <PrivateRoute redirectTo="/login">
-                  <Header />
                   <HomeTab />
                 </PrivateRoute>
               }

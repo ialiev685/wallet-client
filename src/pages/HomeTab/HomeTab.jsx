@@ -9,6 +9,7 @@ import Container from 'components/Container';
 import Section from 'components/Section';
 import Background from 'pages/Background';
 import TableTransaction from 'components/TableTransaction';
+import Header from 'components/Header/Header';
 import { financeSelectors, financeOperations } from 'redux/finance';
 
 import { TableData, TableTitleData } from '../../data/tableData';
@@ -27,27 +28,28 @@ export const HomeTab = () => {
   }, [dispatch]);
   return (
     <>
+      <Container>
+        <Header />
+      </Container>
       <Background className={s.backdrop}>
         <Section className={s.hometabBackground}>
-          <Container>
+          <Container className={s.container}>
+            <div className={s.border}></div>
             <div className={s.hometab}>
               <div className={s.leftSideBox}>
                 <div>
-                  <div className={s.navigation}>
-                    <Navigation />
-                  </div>
-                  <div className={s.balance}>
-                    <Balance />
-                  </div>
+                  <Navigation className={s.navigation} />
+                  <Balance className={s.balance} />
                 </div>
                 {!isMobile && <Currency />}
-                <div className={s.border}></div>
               </div>
-              <div className={s.table}>
-                <TableTransaction data={transactions} titles={TableTitleData} />
-              </div>
-              <div className={s.btnAdd}>
-                <ButtonAddTransactions />
+              <div className={s.rightSideBox}>
+                <TableTransaction
+                  data={transactions}
+                  titles={TableTitleData}
+                  className={s.table}
+                />
+                <ButtonAddTransactions className={s.btnAdd} />
               </div>
             </div>
           </Container>

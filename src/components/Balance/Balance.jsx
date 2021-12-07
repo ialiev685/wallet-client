@@ -4,7 +4,7 @@ import { financeSelectors, financeOperations } from 'redux/finance';
 
 import s from './Balance.module.css';
 
-const Balance = () => {
+const Balance = ({ className = '' }) => {
   const sign = String.fromCharCode(8372);
   const totalBalance = useSelector(financeSelectors.totalBalance);
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const Balance = () => {
   }, [dispatch]);
 
   return (
-    <div className={s.balanceBox}>
+    <div className={`${s.balanceBox} ${className}`}>
       <p className={s.balanceText}>ваш баланс</p>
       <p className={s.balanceNum}>
         <span className={s.sign}>{sign} </span>{' '}

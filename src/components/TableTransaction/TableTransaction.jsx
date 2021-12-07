@@ -124,9 +124,9 @@ const theme = createTheme({
   },
 });
 
-const TableTransaction = ({ data, titles }) => {
+const TableTransaction = ({ data, titles, className = '' }) => {
   return (
-    <div className={s.table}>
+    <div className={`${s.table} ${className}`}>
       <ThemeProvider theme={theme}>
         <TableContainer>
           <Table aria-label="simple table">

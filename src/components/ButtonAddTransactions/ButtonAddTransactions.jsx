@@ -3,7 +3,7 @@ import Modal from '../Modal';
 import { ModalTransaction } from '../ModalTransaction';
 import s from './ButtonAddTransactions.module.css';
 
-function ButtonAddTransactions() {
+function ButtonAddTransactions({ className = '' }) {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
@@ -14,7 +14,11 @@ function ButtonAddTransactions() {
 
   return (
     <>
-      <button className={button} type="button" onClick={() => toggleModal()}>
+      <button
+        className={`${button} ${className}`}
+        type="button"
+        onClick={() => toggleModal()}
+      >
         <span className={span}></span>
         <span className={rotateSpan}></span>
       </button>
