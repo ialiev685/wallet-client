@@ -2,6 +2,16 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 
 // import './stylesheet/index.css';
 
+import TableTransaction from 'components/TableTransaction';
+import TableStatistic from 'components/TableStatistic';
+
+import {
+  TableData,
+  TableTitleData,
+  TableStatisticData,
+  TableStatisticTitleData,
+} from 'data/tableData';
+
 // import './stylesheet/index.css'
 
 import { useEffect, useState } from 'react';
@@ -19,6 +29,8 @@ import PublicRoute from './components/ProtectedRoute/PublicRoute';
 import Header from 'components/Header';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
+import Loader from './components/Loader';
+
 
 import Background from './pages/Background';
 
@@ -26,7 +38,7 @@ import ButtonAddTransactions from 'components/ButtonAddTransactions';
 
 function App() {
   //проверка на текущего пользователя (не удалять)
-  // const isFetchingCurrentUser = useSelector(authSelectors.getisFetchingCurrent);
+  // const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
   const isFetchingCurrentUser = true; //заглушка для рендера приватных роутов
 
   const dispatch = useDispatch();
@@ -91,6 +103,9 @@ function App() {
       ) : (
         <Header />
       )}
+
+
+      <Loader />
     </>
   );
 }

@@ -5,12 +5,12 @@ import s from './Modal.module.css';
 const modalRoot = document.querySelector('#root-modal');
 
 function Modal(props) {
-  const { onToggleModal, children, showModal } = props;
+  const { children, onCloseModal, showModal } = props;
 
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
-        onToggleModal();
+        onCloseModal();
       }
     };
 
@@ -19,11 +19,11 @@ function Modal(props) {
     }
 
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onToggleModal, showModal]);
+  }, [onCloseModal, showModal]);
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
-      onToggleModal();
+      onCloseModal();
     }
   };
 
