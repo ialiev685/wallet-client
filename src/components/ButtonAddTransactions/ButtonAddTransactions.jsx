@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalAction, modalSelectors } from 'redux/modal';
 import Modal from '../Modal';
@@ -13,16 +12,23 @@ function ButtonAddTransactions() {
 
   return (
     <div className={buttonContainer}>
-      <button className={button} type="button" onClick={() => dispatch(modalAction.openModal())}>
+      <button
+        className={button}
+        type="button"
+        onClick={() => dispatch(modalAction.openModal())}
+      >
         <span className={span}></span>
         <span className={rotateSpan}></span>
       </button>
 
       {showModal && (
-            <Modal onCloseModal={() => dispatch(modalAction.closeModal())} showModal={showModal}>
-              <ModalTransaction />
-            </Modal>
-          )}
+        <Modal
+          onCloseModal={() => dispatch(modalAction.closeModal())}
+          showModal={showModal}
+        >
+          <ModalTransaction />
+        </Modal>
+      )}
     </div>
   );
 }

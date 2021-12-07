@@ -1,15 +1,11 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { useSelector } from 'react-redux';
-import { modalSelectors } from 'redux/modal';
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#root-modal');
 
 function Modal(props) {
   const { children, onCloseModal, showModal } = props;
-
-  console.log(onCloseModal)
 
   useEffect(() => {
     const handleKeyDown = e => {
