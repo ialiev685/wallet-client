@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as authApi from 'services/auth-api';
 
@@ -26,7 +25,7 @@ export const logInUser = createAsyncThunk(
   },
 );
 
-export const logOutUser = createAsyncThunk(
+export const logoutUser = createAsyncThunk(
   'auth/logout',
   async () => await authApi.logout(),
 );

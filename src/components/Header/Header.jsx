@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { authSelectors, authOperations } from 'redux/auth';
-import LogoutModal from '../LogOutModal';
+import LogoutModal from '../LogoutModal';
 import style from './Header.module.css';
 import logo from 'helpers/svg/logo.svg';
 import logout from 'helpers/svg/logout.svg';
@@ -20,7 +20,7 @@ const Header = () => {
 
   const logoutHandler = () => {
     if (token) {
-      dispatch(authOperations.logOutUser());
+      dispatch(authOperations.logoutUser());
     } else {
       toast.error('Something went wrong!');
       toggleModal();
