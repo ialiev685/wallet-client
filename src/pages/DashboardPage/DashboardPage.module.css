@@ -18,7 +18,7 @@
   height: 100%;
   width: 100%;
   background: var(--background-color);
-  backdrop-filter: blur(50px);
+  backdrop-filter: var(--backdrop-filter);
 }
 
 .border {

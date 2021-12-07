@@ -30,8 +30,6 @@ import Header from 'components/Header';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from 'pages/DashboardPage';
-import Background from './pages/Background';
-
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 
 function App() {
