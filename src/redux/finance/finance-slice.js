@@ -4,6 +4,7 @@ import { fetchTotalBalance } from './finance-operations';
 const initialState = {
   totalBalance: '',
   isFetchingTotalBalance: false,
+  isLoading: false,
 };
 
 const financeSlice = createSlice({
@@ -12,13 +13,16 @@ const financeSlice = createSlice({
   extraReducers: {
     [fetchTotalBalance.pending](state) {
       state.isFetchingTotalBalance = true;
+      state.isLoading = true;
     },
     [fetchTotalBalance.fulfilled](state, { payload }) {
       state.totalBalance = payload;
       state.isFetchingTotalBalance = false;
+      state.isLoading = false;
     },
     [fetchTotalBalance.rejected](state, _) {
       state.isFetchingTotalBalance = false;
+      state.isLoading = false;
     },
   },
 });
