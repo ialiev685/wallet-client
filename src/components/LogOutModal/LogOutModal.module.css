@@ -13,6 +13,7 @@
   height: 300px;
   border-radius: 20px;
   background-color: white;
+  pointer-events: painted;
 }
 
 .modalTitle {

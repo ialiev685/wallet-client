@@ -2,23 +2,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { authSelectors, authOperations } from 'redux/auth';
-import { modalAction } from 'redux/modal';
 import LogoutModal from '../LogOutModal';
 import style from './Header.module.css';
 import logo from 'helpers/svg/logo.svg';
 import logout from 'helpers/svg/logout.svg';
 
 const Header = () => {
-  const name = useSelector(state => state.auth.user.name);
-  const token = useSelector(state => state.auth.token);
+  const name = useSelector(authSelectors.getIsUserName);
+  const token = useSelector(authSelectors.getIsAuthToken);
   const dispatch = useDispatch();
+
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
 
   const logoutHandler = () => {
     if (token) {
       dispatch(authOperations.logOutUser());
     } else {
       toast.error('Something went wrong!');
-      dispatch(modalAction.closeLogouteModal());
+      toggleModal();
     }
   };
 
@@ -39,12 +44,22 @@ const Header = () => {
           <button
             type="button"
             className={style.logoutItemButton}
-            onClick={() => dispatch(modalAction.openLogoutModal())}
+            onClick={() => toggleModal()}
           >
-            <img className="" src={logout} height="18" width="18" />
+            <img
+              className=""
+              src={logout}
+              height="18"
+              width="18"
+              alt="logout"
+            />
 
             <span className={style.logoutItemText}>Выйти</span>
-            <LogoutModal logoutHandler={logoutHandler} />
+            <LogoutModal
+              logoutHandler={logoutHandler}
+              toggleModal={toggleModal}
+              showModal={showModal}
+            />
           </button>
         </li>
       </ul>
