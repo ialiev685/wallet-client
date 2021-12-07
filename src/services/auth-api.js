@@ -1,8 +1,12 @@
 import axios from 'axios';
 
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-const token = {
+export const token = {
+  // set(tmpToken) {
+  //   axios.defaults.headers.common.Authorization = `Bearer ${tmpToken}`;
+  // },
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },

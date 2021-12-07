@@ -17,7 +17,9 @@ export const CurrencyPage = () => {
         <Container>
           {isMobile ? (
             <>
-              <Navigation className={s.navigation} />
+              <div className={s.navigation}>
+                <Navigation />
+              </div>
               <Currency />
             </>
           ) : (

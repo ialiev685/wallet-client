@@ -27,11 +27,16 @@ const authPersistConfig = {
   storage,
   whitelist: ['token'],
 };
+const financePersistConfig = {
+  key: 'finance',
+  storage,
+};
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    finance: financeReducer,
+    // finance: financeReducer,
+    finance: persistReducer(financePersistConfig, financeReducer),
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
