@@ -13,6 +13,8 @@ const token = {
 
 export const ApiTransaction = async (validToken, data) => {
   token.set(validToken);
+
   const result = await axios.post('/', data);
+  console.log(result);
   return result;
 };

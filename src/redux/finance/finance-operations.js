@@ -23,11 +23,14 @@ export const fetchTransactionOperation = createAsyncThunk(
   'finance/transaction',
   async (data, { getState, rejectWithValue }) => {
     try {
-      const state = getState();
-      const persistedToken = state.auth.token;
+      // const state = getState();
+      // const persistedToken = state.auth.token;
 
+      const persistedToken =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWFmYzU4ZmNlYjc2N2VlNjc5Njk2NTkiLCJuYW1lIjoiaWxmYXQiLCJpYXQiOjE2Mzg5MTEzODl9.qxTjUtYiD_5v_gFUybM4BrbqPT58DUYbXEgW9tycSkk';
       if (persistedToken) {
         const result = await ApiTransaction(persistedToken, data);
+
         return result;
       }
     } catch (error) {

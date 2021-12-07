@@ -41,13 +41,13 @@ const validation = Yup.object({
       is: false,
       then: Yup.mixed().oneOf([
         'Выберите категорию',
-        'Основной',
-        'Еда',
-        'Авто',
-        'Дети',
-        'Дом',
-        'Образование',
-        'Остальное',
+        '61ad865bc505a94bdf06939f',
+        '61ad8719c505a94bdf0693a0',
+        '61ad87a7c505a94bdf0693a2',
+        '61ad8892c505a94bdf0693a4',
+        '61ad881ac505a94bdf0693a3',
+        '61ad8aadc505a94bdf0693a5',
+        '61ad8b50c505a94bdf0693a7',
       ]),
     }),
 
@@ -77,9 +77,10 @@ export const ModalTransaction = (/*{ onClose }*/) => {
     validationSchema: validation,
 
     onSubmit: (values, { resetForm }) => {
+      console.log(values);
       const normalizeDate = [
-        values.date.getDate(),
         values.date.getMonth() + 1,
+        values.date.getDate(),
         values.date.getFullYear(),
       ].join('.');
 
@@ -146,13 +147,16 @@ export const ModalTransaction = (/*{ onClose }*/) => {
                 <MenuItem disabled value="Выберите категорию">
                   Выберите категорию
                 </MenuItem>
-                <MenuItem value="Основной">Основной</MenuItem>
-                <MenuItem value="Еда">Еда</MenuItem>
-                <MenuItem value="Авто">Авто</MenuItem>
-                <MenuItem value="Развитие">Развитие</MenuItem>
-                <MenuItem value="Дети">Дети</MenuItem>
-                <MenuItem value="Дом">Дом</MenuItem>
-                <MenuItem value="Образование">Образование</MenuItem>
+
+                <MenuItem value="61ad865bc505a94bdf06939f">Основной</MenuItem>
+                <MenuItem value="61ad87a7c505a94bdf0693a2">Еда</MenuItem>
+                <MenuItem value="61ad881ac505a94bdf0693a3">Авто</MenuItem>
+                <MenuItem value="61ad8b50c505a94bdf0693a7">Развитие</MenuItem>
+                <MenuItem value="61ad8719c505a94bdf0693a0">Дети</MenuItem>
+                <MenuItem value="61ad8892c505a94bdf0693a4">Дом</MenuItem>
+                <MenuItem value="61ad8aadc505a94bdf0693a5">
+                  Образование
+                </MenuItem>
                 <MenuItem value="Остальное">Остальное</MenuItem>
               </Select>
             </FormControl>
