@@ -41,6 +41,7 @@ export const HomeTab = () => {
                   </div>
                 </div>
                 {!isMobile && <Currency />}
+                <div className={s.border}></div>
               </div>
               <div className={s.table}>
                 <TableTransaction data={transactions} titles={TableTitleData} />

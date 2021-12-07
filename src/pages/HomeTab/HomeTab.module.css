@@ -41,7 +41,7 @@
   .hometabBackground {
     background-color: transparent;
     backdrop-filter: var(--backdrop-filter);
-    height: 944px;
+    /* height: 944px; */
   }
   .navigation {
     justify-content: start;
@@ -81,10 +81,19 @@
   .leftSideBox {
     flex-direction: column;
     padding-right: var(--margin-l);
-    border-right: 1px solid var(--third-grey-color);
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .border {
+    position: absolute;
+    height: 641px;
+    border: 1px solid var(--third-grey-color);
+    right: 0;
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);
   }
+
   .balance {
     margin-bottom: var(--margin-l);
     margin-right: 0;

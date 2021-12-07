@@ -2,23 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchTotalBalance, fetchData } from './finance-operations';
 
 const initialState = {
-  // totalBalance: '',
-  isFetchingTotalBalance: false,
-  isFetchingData: false,
+  // isFetchingTotalBalance: false,
+  // isFetchingData: false,
   error: null,
-  // totalBalance: { balance: 0 },
   totalBalance: 0,
-  data: {
-    transactionType: false,
-    sum: 0,
-    date: '',
-    trDay: 0,
-    trMonth: 0,
-    trYear: 0,
-    comment: '',
-    category: '',
-    balance: 0,
-  },
+  // data: {},
+  data: null,
 };
 
 const financeSlice = createSlice({
@@ -26,29 +15,32 @@ const financeSlice = createSlice({
   initialState,
   extraReducers: {
     [fetchTotalBalance.pending](state, _) {
-      state.isFetchingTotalBalance = true;
+      // state.isFetchingTotalBalance = true;
+      //спиннер
       state.error = null;
     },
     [fetchTotalBalance.fulfilled](state, { payload }) {
-      // console.log(payload);
       state.totalBalance = payload;
-      // state.totalBalance = payload;
-      state.isFetchingTotalBalance = false;
+      // state.isFetchingTotalBalance = false;
+      //спиннер
     },
     [fetchTotalBalance.rejected](state, _) {
-      state.isFetchingTotalBalance = false;
+      // state.isFetchingTotalBalance = false;
+      //спиннер
     },
     [fetchData.pending](state) {
-      state.isFetchingData = true;
+      // state.isFetchingData = true;
+      //спиннер
       state.error = null;
     },
     [fetchData.fulfilled](state, { payload }) {
-      console.log('payload', payload);
       state.data = payload;
-      state.isFetchingData = false;
+      // state.isFetchingData = false;
+      //спиннер
     },
     [fetchData.rejected](state, { payload }) {
-      state.isFetchingData = false;
+      // state.isFetchingData = false;
+      //спиннер
       state.error = payload;
     },
   },

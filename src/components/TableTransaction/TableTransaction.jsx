@@ -137,53 +137,55 @@ const TableTransaction = ({ data, titles }) => {
                 ))}
               </TableRow>
             </TableHead>
-            <TableBody>
-              {data.map(
-                ({
-                  _id,
-                  date,
-                  transactionType,
-                  category,
-                  comment,
-                  sum,
-                  balance,
-                }) => {
-                  return (
-                    <TableRow key={_id}>
-                      <TableCell type="date">{dateFormatter(date)}</TableCell>
-                      <TableCell align="center">
-                        {transactionType ? '+' : '-'}
-                      </TableCell>
-                      <TableCell>{category}</TableCell>
-                      <TableCell>{comment}</TableCell>
-                      {!transactionType ? (
-                        <TableCell
-                          align="right"
-                          sx={{
-                            color: 'var(--color-pink)',
-                            fontWeight: 'bold',
-                          }}
-                        >
-                          {sum}.00
+            {data && (
+              <TableBody>
+                {data.map(
+                  ({
+                    _id,
+                    date,
+                    transactionType,
+                    category,
+                    comment,
+                    sum,
+                    balance,
+                  }) => {
+                    return (
+                      <TableRow key={_id}>
+                        <TableCell type="date">{dateFormatter(date)}</TableCell>
+                        <TableCell align="center">
+                          {transactionType ? '+' : '-'}
                         </TableCell>
-                      ) : (
-                        <TableCell
-                          align="right"
-                          sx={{
-                            color: 'var(--color-green)',
-                            fontWeight: 'bold',
-                          }}
-                        >
-                          {sum}.00
-                        </TableCell>
-                      )}
+                        <TableCell>{category}</TableCell>
+                        <TableCell>{comment}</TableCell>
+                        {!transactionType ? (
+                          <TableCell
+                            align="right"
+                            sx={{
+                              color: 'var(--color-pink)',
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            {sum}.00
+                          </TableCell>
+                        ) : (
+                          <TableCell
+                            align="right"
+                            sx={{
+                              color: 'var(--color-green)',
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            {sum}.00
+                          </TableCell>
+                        )}
 
-                      <TableCell align="right">{balance}.00</TableCell>
-                    </TableRow>
-                  );
-                },
-              )}
-            </TableBody>
+                        <TableCell align="right">{balance}.00</TableCell>
+                      </TableRow>
+                    );
+                  },
+                )}
+              </TableBody>
+            )}
           </Table>
         </TableContainer>
       </ThemeProvider>
