@@ -30,7 +30,7 @@ const financeSlice = createSlice({
       state.error = null;
     },
     [fetchTotalBalance.fulfilled](state, { payload }) {
-      console.log(payload);
+      // console.log(payload);
       state.totalBalance = payload;
       // state.totalBalance = payload;
       state.isFetchingTotalBalance = false;
@@ -43,6 +43,7 @@ const financeSlice = createSlice({
       state.error = null;
     },
     [fetchData.fulfilled](state, { payload }) {
+      console.log('payload', payload);
       state.data = payload;
       state.isFetchingData = false;
     },

@@ -6,6 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { dateFormatter } from '../../helpers/dateFormatter';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import s from './TableTransaction.module.css';
@@ -139,40 +140,48 @@ const TableTransaction = ({ data, titles }) => {
             <TableBody>
               {data.map(
                 ({
-                  id,
+                  _id,
                   date,
                   transactionType,
                   category,
                   comment,
                   sum,
                   balance,
-                }) => (
-                  <TableRow key={id}>
-                    <TableCell type="date">{date}</TableCell>
-                    <TableCell align="center">
-                      {transactionType ? '+' : '-'}
-                    </TableCell>
-                    <TableCell>{category}</TableCell>
-                    <TableCell>{comment}</TableCell>
-                    {!transactionType ? (
-                      <TableCell
-                        align="right"
-                        sx={{ color: 'var(--color-pink)', fontWeight: 'bold' }}
-                      >
-                        {sum}.00
+                }) => {
+                  return (
+                    <TableRow key={_id}>
+                      <TableCell type="date">{dateFormatter(date)}</TableCell>
+                      <TableCell align="center">
+                        {transactionType ? '+' : '-'}
                       </TableCell>
-                    ) : (
-                      <TableCell
-                        align="right"
-                        sx={{ color: 'var(--color-green)', fontWeight: 'bold' }}
-                      >
-                        {sum}.00
-                      </TableCell>
-                    )}
+                      <TableCell>{category}</TableCell>
+                      <TableCell>{comment}</TableCell>
+                      {!transactionType ? (
+                        <TableCell
+                          align="right"
+                          sx={{
+                            color: 'var(--color-pink)',
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          {sum}.00
+                        </TableCell>
+                      ) : (
+                        <TableCell
+                          align="right"
+                          sx={{
+                            color: 'var(--color-green)',
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          {sum}.00
+                        </TableCell>
+                      )}
 
-                    <TableCell align="right">{balance}.00</TableCell>
-                  </TableRow>
-                ),
+                      <TableCell align="right">{balance}.00</TableCell>
+                    </TableRow>
+                  );
+                },
               )}
             </TableBody>
           </Table>

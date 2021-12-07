@@ -11,7 +11,7 @@ async function fetchTotalBalance() {
   // const data = await axios.get('/finance'); // путь потом изменить
   // const data = await axios.get('users/current');
   const info = await axios.get('users/current');
-  console.log('голые данные запроса', info);
+  // console.log('голые данные запроса', info);
   const balance = info.data.data.balance;
   // console.log(balance);
   // console.log(data);
@@ -21,7 +21,11 @@ async function fetchTotalBalance() {
 async function fetchData() {
   // const data = await axios.get('/finance'); // путь потом изменить
   const data = await axios.get('/transactions');
-  return data;
+  console.log('голые данные с запроса', data);
+  const transactions = data.data.userTransactions.transactions;
+  console.log('transactions', transactions);
+  // return data;
+  return transactions;
 }
 
 const API = {
