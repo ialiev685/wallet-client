@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import MobileTable from 'components/MobileTable';
+import { dateFormatter } from '../../helpers/dateFormatter';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import s from './TableTransaction.module.css';
@@ -89,10 +90,14 @@ const TableTransaction = ({ data, titles, className = '' }) => {
   return (
     <>
       <MediaQuery minWidth={320} maxWidth={767}>
-        <MobileTable data={data} titles={titles} />
+        <MobileTable
+          data={data}
+          titles={titles}
+          className={`${s.table} ${className}`}
+        />
       </MediaQuery>
       <MediaQuery minWidth={768}>
-        <div className={s.table}>
+        <div className={`${s.table} ${className}`}>
           <ThemeProvider theme={theme}>
             <TableContainer>
               <Table aria-label="simple table">
@@ -106,7 +111,7 @@ const TableTransaction = ({ data, titles, className = '' }) => {
                 <TableBody>
                   {data.map(
                     ({
-                      id,
+                      _id: id,
                       date,
                       transactionType,
                       category,
@@ -115,7 +120,7 @@ const TableTransaction = ({ data, titles, className = '' }) => {
                       balance,
                     }) => (
                       <TableRow key={id}>
-                        <TableCell type="date">{date}</TableCell>
+                        <TableCell type="date">{dateFormatter(date)}</TableCell>
                         <TableCell align="center">
                           {transactionType ? '+' : '-'}
                         </TableCell>

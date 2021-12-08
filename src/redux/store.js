@@ -37,7 +37,8 @@ const financePersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    finance: financeReducer,
+    // finance: financeReducer,
+    finance: persistReducer(financePersistConfig, financeReducer),
     modal: modalReducer,
     loader: loaderReducer,
   },

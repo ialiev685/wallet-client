@@ -5,6 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { Box } from '@mui/system';
 import s from './MobileTable.module.css';
+import { dateFormatter } from '../../helpers/dateFormatter';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -62,12 +63,15 @@ const theme = createTheme({
     },
   },
 });
-const MobileTable = ({ data, titles }) => {
+const MobileTable = ({ data, titles, className = '' }) => {
   return (
-    <div>
+    <div className={className}>
       <ul className={s.list}>
         {data.map(
-          ({ id, date, transactionType, category, comment, sum, balance }) => (
+          (
+            { _id: id, date, transactionType, category, comment, sum, balance },
+            index,
+          ) => (
             <li key={id} className={s.card}>
               {!transactionType ? (
                 <Box
@@ -97,8 +101,8 @@ const MobileTable = ({ data, titles }) => {
                       </>
                     ))}
                   </TableRow>
-                  <TableRow>
-                    <TableCell>{date}</TableCell>
+                  <TableRow key={id}>
+                    <TableCell>{dateFormatter(date)}</TableCell>
                     <TableCell>{transactionType ? '+' : '-'}</TableCell>
                     <TableCell>{category}</TableCell>
                     <TableCell>{comment}</TableCell>
