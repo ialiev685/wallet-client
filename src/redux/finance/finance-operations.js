@@ -23,8 +23,8 @@ export const fetchTotalBalance = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
     // console.log(state);
-    const persistedToken = state.auth.user.token;
-    // const persistedToken = tmpToken;
+    // const persistedToken = state.auth.token;
+    const persistedToken = tmpToken;
 
     // token.set(persistedToken)
     // token.set(tmpToken)
@@ -44,7 +44,8 @@ export const fetchData = createAsyncThunk(
   'finance/fetchData',
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
-    const persistedToken = state.auth.token;
+    // const persistedToken = state.auth.token;
+    const persistedToken = tmpToken;
 
     if (persistedToken !== null) {
       try {
