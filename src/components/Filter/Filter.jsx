@@ -18,17 +18,15 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   '& .MuiInputBase-input': {
     borderRadius: 30,
     position: 'relative',
-    backgroundColor: theme.palette.background.paper,
     border: '1px solid rgba(0, 0, 0, 0.54)',
     fontSize: 16,
-    padding: '10px 36px 10px 12px',
+    padding: '10px 36px 10px 16px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     fontFamily: ['Circe', 'sans-serif'].join(','),
     '&:focus': {
       borderRadius: 30,
       borderColor: '#80bdff',
       boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-      backgroundColor: '#ffffff',
     },
   },
 }));
@@ -66,13 +64,12 @@ export default function CustomizedSelects() {
         <FormControl sx={{ m: 0 }} variant="standard" fullWidth={true}>
           <InputLabel
             sx={{
-              top: '-8px',
-              left: '20px',
+              top: '-4px',
+              left: '8px',
               fontFamily: 'Circe',
-              background: '#ffffff',
-              zIndex: 3,
             }}
             id="filter-month-label"
+            variant="outlined"
           >
             Month
           </InputLabel>
@@ -108,13 +105,12 @@ export default function CustomizedSelects() {
         <FormControl sx={{ m: 0 }} variant="standard" fullWidth={true}>
           <InputLabel
             sx={{
-              top: '-8px',
-              left: '20px',
+              top: '-4px',
+              left: '8px',
               fontFamily: 'Circe',
-              background: '#ffffff',
-              zIndex: 3,
             }}
             id="filter-year-label"
+            variant="outlined"
           >
             Year
           </InputLabel>

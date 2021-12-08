@@ -6,6 +6,8 @@ import s from './DiagramTab.module.css';
 
 export default function DiagramTab() {
   const number = 24000;
+  const costs = 4568565;
+  const income = 9523545;
   const titles = [
     { key: 1, title: 'Категория' },
     { key: 2, title: 'Сумма' },
@@ -21,7 +23,7 @@ export default function DiagramTab() {
       <div className={s.wrapper}>
         <div className={s.chart}>
           <div className={s.balance}>
-            <span>₴</span> {number.toLocaleString('ru-RU')}.00
+            <span>₴</span> {number.toLocaleString('uk-UA')}.00
           </div>
           <Chart />
         </div>
@@ -32,10 +34,16 @@ export default function DiagramTab() {
           <TableStatistic titles={titles} data={data} />
           <div className={s.holder}>
             <div className={s.result}>
-              <span>Расходы:</span> <span className={s.costs}>100500</span>
+              <span>Расходы:</span>{' '}
+              <span className={s.costs}>
+                {costs.toLocaleString('uk-UA')}.00
+              </span>
             </div>
             <div className={s.result}>
-              <span>Доходы:</span> <span className={s.income}>8416816</span>
+              <span>Доходы:</span>{' '}
+              <span className={s.income}>
+                {income.toLocaleString('uk-UA')}.00
+              </span>
             </div>
           </div>
         </div>
