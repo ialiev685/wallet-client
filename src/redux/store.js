@@ -13,6 +13,8 @@ import storage from 'redux-persist/lib/storage';
 
 import authReducer from './auth/auth-slice';
 import financeReducer from './finance/finance-slice';
+import modalReducer from './modal/modal-slice';
+import loaderReducer from './loader/loader-slice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -32,6 +34,8 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     finance: financeReducer,
+    modal: modalReducer,
+    loader: loaderReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

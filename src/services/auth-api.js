@@ -22,3 +22,22 @@ export const logIn = async credentials => {
   token.set(data.token);
   return data;
 };
+
+export const logout = async () => {
+  try {
+    await axios.post('/users/logout');
+    token.unset();
+  } catch (error) {
+    return error.message;
+  }
+};
+
+export const fetchCurrent = async persistedToken => {
+  token.set(persistedToken);
+  try {
+    const { data } = await axios.get('/users/current');
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+};
