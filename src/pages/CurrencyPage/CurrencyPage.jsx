@@ -4,7 +4,7 @@ import Navigation from 'components/Navigation';
 import Currency from 'components/Currency/Сurrency';
 import Container from 'components/Container';
 import Section from 'components/Section';
-
+import Header from 'components/Header';
 import s from './CurrencyPage.module.css';
 
 export const CurrencyPage = () => {
@@ -13,6 +13,7 @@ export const CurrencyPage = () => {
   });
   return (
     <>
+      <Header />
       <Section className={s.currencyBackground}>
         <Container>
           {isMobile ? (

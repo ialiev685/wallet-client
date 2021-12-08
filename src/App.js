@@ -29,10 +29,14 @@ import PublicRoute from './components/ProtectedRoute/PublicRoute';
 import Header from 'components/Header';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
+import DashboardPage from 'pages/DashboardPage';
 import Loader from './components/Loader';
+
+
 import NotFound from './components/NotFound';
 
 import Background from './pages/Background';
+
 
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 
@@ -75,7 +79,6 @@ function App() {
               path="/home"
               element={
                 <PrivateRoute redirectTo="/login">
-                  <Header />
                   <HomeTab />
                 </PrivateRoute>
               }
@@ -84,8 +87,7 @@ function App() {
               path="/diagram"
               element={
                 <PrivateRoute redirectTo="/login">
-                  <Header />
-                  {/* //страница с диаграммой DashboardPage*/}
+                  <DashboardPage />
                 </PrivateRoute>
               }
             />
@@ -93,7 +95,6 @@ function App() {
               path="/currency"
               element={
                 <PrivateRoute redirectTo="/login">
-                  <Header />
                   <CurrencyPage />
                 </PrivateRoute>
               }

@@ -39,7 +39,7 @@
     height: 944px;
   }
   .hometabBackground {
-    background-color: transparent;
+    /* background-color: transparent; */
     backdrop-filter: var(--backdrop-filter);
     height: 944px;
   }
