@@ -25,6 +25,7 @@ import DashboardPage from 'pages/DashboardPage';
 import Loader from './components/Loader';
 
 
+
 import NotFound from './components/NotFound';
 
 import Background from './pages/Background';
@@ -72,6 +73,7 @@ function App() {
     <>
       {isFetchingCurrentUser ? (
         <>
+
 
           <Suspense fallback={<h1>Loading...</h1>}>
             <Routes>
@@ -123,6 +125,7 @@ function App() {
               />
             </Routes>
           </Suspense>
+
 
         </>
       ) : (

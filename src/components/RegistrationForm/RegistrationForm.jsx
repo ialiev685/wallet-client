@@ -5,13 +5,13 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from 'redux/auth/auth-operations';
 import s from './RegistrationForm.module.css';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import logo from 'images/icons/logo.svg';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import { ButtonWindow } from '../ButtonWindow/ButtonWindow';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -59,7 +59,7 @@ const RegistrationForm = ({ classPosition }) => {
               value={props.values.email}
             />
             <Grid className={s.errorMessage}>
-              <ErrorMessage name="email" className={s.errorMessage} />
+              <ErrorMessage name="email" />
             </Grid>
           </Grid>
 
@@ -79,7 +79,7 @@ const RegistrationForm = ({ classPosition }) => {
           </Grid>
 
           <Grid className={s.wrapper}>
-            <LockIcon className={`${s.icon} ${s.iconLockPass}`} />
+            <LockIcon className={`${s.icon} ${s.iconLock}`} />
             <Field
               className={s.input}
               type="password"
@@ -88,8 +88,8 @@ const RegistrationForm = ({ classPosition }) => {
               onChange={props.handleChange}
               value={props.values.passwordConfirm}
             />
-            <Grid className={s.errorMessage}>
-              <ErrorMessage name="password" className={s.errorMessage} />
+            <Grid className={`${s.errorMessage} ${s.errorPass}`}>
+              <ErrorMessage name="password" />
             </Grid>
             {props.values.password === props.values.passwordConfirm &&
             (props.values.password !== '' ||
@@ -111,20 +111,20 @@ const RegistrationForm = ({ classPosition }) => {
               value={props.values.name}
             />
             <Grid className={s.errorMessage}>
-              <ErrorMessage name="name" className={s.errorMessage} />
+              <ErrorMessage name="name" />
             </Grid>
           </Grid>
-          <Button variant="contained" type="submit" className={s.button}>
-            РЕГИСТРАЦИЯ
-          </Button>
-          <Button
-            variant="outlined"
-            type="button"
-            className={s.buttonLogin}
+          <ButtonWindow
+            type="submit"
+            title="РЕГИСТРАЦИЯ"
+            className={s.button}
+            action="добавить"
+          />
+          <ButtonWindow
+            type="submit"
+            title="ВХОД"
             onClick={() => navigate('/login')}
-          >
-            ВХОД
-          </Button>
+          />
         </Form>
       )}
     </Formik>
