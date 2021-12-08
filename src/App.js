@@ -30,7 +30,7 @@ import Header from 'components/Header';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import Loader from './components/Loader';
-
+import NotFound from './components/NotFound';
 
 import Background from './pages/Background';
 
@@ -98,12 +98,13 @@ function App() {
                 </PrivateRoute>
               }
             />
+
+            <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </>
       ) : (
         <Header />
       )}
-
 
       <Loader />
     </>
