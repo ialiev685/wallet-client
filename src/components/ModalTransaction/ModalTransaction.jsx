@@ -6,8 +6,10 @@ import * as Yup from 'yup';
 import Datetime from 'react-datetime';
 import 'react-datetime/css/react-datetime.css';
 //иконка
-import { ReactComponent as DateIcon } from 'icons/date-icon.svg';
-import { ReactComponent as CrossIcon } from 'icons/cross-close.svg';
+import { ReactComponent as DateIcon } from 'images/icons/date-icon.svg';
+import { ReactComponent as CrossIcon } from 'images/icons/cross-close.svg';
+// import { ReactComponent as DateIcon } from 'icons/date-icon.svg';
+// import { ReactComponent as CrossIcon } from 'icons/cross-close.svg';
 //сумма
 import NumberFormat from 'react-number-format';
 //чекбокс
