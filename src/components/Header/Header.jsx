@@ -4,10 +4,8 @@ import { toast } from 'react-toastify';
 import { authSelectors, authOperations } from 'redux/auth';
 import LogoutModal from '../LogOutModal';
 import style from './Header.module.css';
-// import logo from 'helpers/svg/logo.svg';
 import logo from 'images/icons/logo.svg';
 import logout from 'images/icons/logout.svg';
-// import logout from 'helpers/svg/logout.svg';
 
 const Header = () => {
   const name = useSelector(authSelectors.getIsUserName);

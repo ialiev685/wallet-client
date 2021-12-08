@@ -10,7 +10,6 @@ import Grid from '@mui/material/Grid';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import logo from 'images/icons/logo.svg';
-// import logo from 'helpers/svg/logo.svg';
 
 const validationSchema = Yup.object({
   email: Yup.string('Enter your email')

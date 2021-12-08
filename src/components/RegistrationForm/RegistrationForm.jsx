@@ -11,7 +11,6 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import logo from 'images/icons/logo.svg';
-// import logo from 'helpers/svg/logo.svg';
 import ProgressBar from '../ProgressBar/ProgressBar';
 
 const validationSchema = Yup.object({
