@@ -1,5 +1,10 @@
 import React from 'react';
 
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableBody from '@mui/material/TableBody';
 import Table from '@mui/material/Table';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
@@ -87,37 +92,53 @@ const MobileTable = ({ data, titles }) => {
                 />
               )}
               <ThemeProvider theme={theme}>
-                <Table key={id}>
-                  <TableRow key={id}>
-                    {titles.map(({ key, title, type }) => (
-                      <>
-                        <TableCell variant="head" key={key} type={type}>
-                          {title}
-                        </TableCell>
-                      </>
-                    ))}
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>{date}</TableCell>
-                    <TableCell>{transactionType ? '+' : '-'}</TableCell>
-                    <TableCell>{category}</TableCell>
-                    <TableCell>{comment}</TableCell>
-                    {!transactionType ? (
-                      <TableCell
-                        sx={{ color: 'var(--color-pink)', fontWeight: 'bold' }}
-                      >
-                        {sum}.00
-                      </TableCell>
-                    ) : (
-                      <TableCell
-                        sx={{ color: 'var(--color-green)', fontWeight: 'bold' }}
-                      >
-                        {sum}.00
-                      </TableCell>
-                    )}
-                    <TableCell>{balance}</TableCell>
-                  </TableRow>
-                </Table>
+                <TableContainer>
+                  <Table>
+                    <TableHead>
+                      <TableRow>
+                        {titles.map(({ key, title, type }) => (
+                          <>
+                            <TableCell
+                              key={`${id}${key}`}
+                              variant="head"
+                              type={type}
+                            >
+                              {title}
+                            </TableCell>
+                          </>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      <TableRow key={`${id}${date}`}>
+                        <TableCell>{date}</TableCell>
+                        <TableCell>{transactionType ? '+' : '-'}</TableCell>
+                        <TableCell>{category}</TableCell>
+                        <TableCell>{comment}</TableCell>
+                        {!transactionType ? (
+                          <TableCell
+                            sx={{
+                              color: 'var(--color-pink)',
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            {sum}.00
+                          </TableCell>
+                        ) : (
+                          <TableCell
+                            sx={{
+                              color: 'var(--color-green)',
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            {sum}.00
+                          </TableCell>
+                        )}
+                        <TableCell>{balance}</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </TableContainer>
               </ThemeProvider>
             </li>
           ),
