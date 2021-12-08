@@ -32,6 +32,12 @@ import LoginPage from './pages/LoginPage';
 import DashboardPage from 'pages/DashboardPage';
 import Loader from './components/Loader';
 
+
+import NotFound from './components/NotFound';
+
+import Background from './pages/Background';
+
+
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 
 function App() {
@@ -93,11 +99,14 @@ function App() {
                 </PrivateRoute>
               }
             />
+
+            <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </>
       ) : (
         <Header />
       )}
+
       <Loader />
     </>
   );
