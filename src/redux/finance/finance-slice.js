@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { fetchTotalBalance } from './finance-operations';
 
 const initialState = {
-  totalBalance: '',
+  totalBalance: 0,
   isFetchingTotalBalance: false,
   isLoading: false,
 };
