@@ -120,7 +120,7 @@ const theme = createTheme({
   },
 });
 
-export default function Currency() {
+export default function Currency({ className = '' }) {
   const [currency, setCurrency] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -148,7 +148,7 @@ export default function Currency() {
 
   return (
     <>
-      <div>
+      <div className={className}>
         {/*className={s.table_wrapper}*/}
         <ThemeProvider theme={theme}>
           <TableContainer>

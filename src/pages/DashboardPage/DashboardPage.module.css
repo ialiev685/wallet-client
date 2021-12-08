@@ -1,33 +1,110 @@
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.balance {
+  margin-bottom: var(--margin-l);
+}
+
 @media screen and (min-width: 320px) {
+  .rightSideBox {
+    padding: 43px 0;
+  }
 }
 
 @media screen and (min-width: 768px) {
+  .container {
+    height: 100%;
+  }
+
+  .transparentBackground {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: var(--background-color);
+    backdrop-filter: var(--backdrop-filter);
+  }
+
+  .leftSideBox {
+    display: flex;
+    margin-bottom: var(--margin-xl);
+  }
+
+  .navEndBalance {
+    margin-top: 10px;
+  }
+
+  .navigation {
+    justify-content: start;
+    align-items: flex-start;
+    margin-bottom: var(--margin-m);
+  }
+
+  .balance {
+    margin-bottom: 0;
+  }
+
+  .currencyPosition {
+    margin-left: 20px;
+    width: 334px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   div.dashboardPage {
-    height: 897px;
+    height: 963px;
 
     background-image: url('../../pictures/EllipseOneDesktop.png'),
       url('../../pictures/EllipseTwoDesktopDashboardPage.png');
-    background-position: 727px 0, -53px 470px;
+    background-position: 727px 0, -53px 430px;
   }
-}
 
-.transparentBackground {
-  height: 100%;
-  width: 100%;
-  background: var(--background-color);
-  backdrop-filter: var(--backdrop-filter);
-}
+  .container {
+    display: flex;
+    position: relative;
+  }
 
-.border {
-  position: absolute;
-  width: 0px;
-  height: 100%;
-  left: 465px;
-  top: 0;
+  .transparentBackground {
+    padding: 0;
+  }
 
-  border: 1px solid #e7e5f2;
-  box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05), 1px 0px 0px var(--shadow-color);
+  .leftSideBox {
+    flex-direction: column;
+    padding-right: var(--margin-l);
+    padding-top: 40px;
+  }
+
+  .rightSideBox {
+    padding: 30px;
+  }
+
+  .navEndBalance {
+    margin-top: 0;
+  }
+
+  .border {
+    position: absolute;
+    width: 0px;
+    height: 100%;
+    left: 465px;
+    top: 0;
+    border: 1px solid var(--third-grey-color);
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
+  }
+
+  .navigation {
+    margin-bottom: var(--margin-l);
+  }
+
+  .balance {
+    margin-bottom: var(--margin-l);
+    margin-right: 0;
+  }
+
+  .currencyPosition {
+    margin-left: 0;
+  }
 }
