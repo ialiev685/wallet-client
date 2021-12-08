@@ -2,6 +2,8 @@ import API from 'services/wallet-API';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ApiTransaction } from 'services/transaction-api';
 
+import { closeModal } from 'redux/modal/modal-action';
+
 export const fetchTotalBalance = createAsyncThunk(
   'finance/fetchBalance',
   async (_, { getState, rejectWithValue }) => {
@@ -21,20 +23,22 @@ export const fetchTotalBalance = createAsyncThunk(
 
 export const fetchTransactionOperation = createAsyncThunk(
   'finance/transaction',
-  async (data, { getState, rejectWithValue }) => {
+  async (data, thunkAPI) => {
     try {
-      // const state = getState();
+      // const state = thunkAPI.getState();
       // const persistedToken = state.auth.token;
 
       const persistedToken =
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWFmYzU4ZmNlYjc2N2VlNjc5Njk2NTkiLCJuYW1lIjoiaWxmYXQiLCJpYXQiOjE2Mzg5MTEzODl9.qxTjUtYiD_5v_gFUybM4BrbqPT58DUYbXEgW9tycSkk';
+
       if (persistedToken) {
         const result = await ApiTransaction(persistedToken, data);
 
-        return result;
+        if (result.data.data.transaction) thunkAPI.dispatch(closeModal());
+        return result.data.data.transaction;
       }
     } catch (error) {
-      return rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );

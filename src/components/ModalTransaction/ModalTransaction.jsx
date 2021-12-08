@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//селекторы
+import { financeSelectors } from 'redux/finance';
+import 'react-toastify/dist/ReactToastify.css';
 import * as Yup from 'yup';
 //дата
 import Datetime from 'react-datetime';
@@ -23,8 +27,10 @@ import './GlobalCssSlider.css';
 import { ButtonWindow } from 'components/ButtonWindow';
 //модалка
 import { fetchTransactionOperation } from 'redux/finance';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { modalAction } from 'redux/modal';
+
+//нормализация даты
 
 const validation = Yup.object({
   transactionType: Yup.boolean(),
@@ -59,32 +65,57 @@ const validation = Yup.object({
   discription: Yup.mixed(),
 });
 
-export const ModalTransaction = (/*{ onClose }*/) => {
+export const ModalTransaction = () => {
   const dispatch = useDispatch();
+  const isError = useSelector(financeSelectors.getIsError);
+  const errorMessage = useSelector(financeSelectors.getErrorMessage);
 
   const handleClick = () => {
     dispatch(modalAction.closeModal());
   };
 
+  useEffect(() => {
+    if (isError) {
+      toast.error(errorMessage, {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }, [errorMessage, isError]);
+
   const formik = useFormik({
     initialValues: {
       transactionType: true,
-      category: 'Выберите категорию',
       sum: '',
       date: new Date(),
+      category: 'Выберите категорию',
       comment: '',
     },
     validationSchema: validation,
 
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      const normalizeFormatMonth =
+        values.date.getMonth() < 10
+          ? '0' + (values.date.getMonth() + 1)
+          : values.date.getMonth() + 1;
+
+      const normalizeFormatDate =
+        values.date.getDate() < 10
+          ? '0' + values.date.getDate()
+          : values.date.getDate();
       const normalizeDate = [
-        values.date.getMonth() + 1,
-        values.date.getDate(),
+        normalizeFormatMonth,
+        normalizeFormatDate,
         values.date.getFullYear(),
       ].join('.');
 
       // values.transactionType = String(values.transactionType);
+
       values.sum = Number(values.sum);
       values.date = normalizeDate;
 
@@ -100,6 +131,7 @@ export const ModalTransaction = (/*{ onClose }*/) => {
   };
   return (
     <div className={style.Modal}>
+      {isError && <ToastContainer />}
       <h1 className={style.Modal__title}>Добавить транзакцию</h1>
       <form onSubmit={formik.handleSubmit} className={style.Modal__form}>
         <div className={style.Modal__type}>
