@@ -14,12 +14,12 @@
 
 @media screen and (min-width: 768px) {
   .box {
-    /* width: var(--tablet); */
+    min-width: var(--tablet);
     height: 1024px;
     background-color: var(--page-background-color);
 
-    background-image: url('../../pictures/EllipseOneTablet.png'),
-      url('../../pictures/EllipseTwoTablet.png');
+    background-image: url('../../images/background-images/EllipseOneTablet.png'),
+      url('../../images/background-images/EllipseTwoTablet.png');
     background-position: 400px 0, 0 700px;
     background-repeat: no-repeat;
   }
@@ -27,11 +27,11 @@
 
 @media screen and (min-width: 1280px) {
   .box {
-    /* width: var(--desktop); */
+    min-width: var(--desktop);
     height: 720px;
 
-    background-image: url('../../pictures/EllipseOneDesktop.png'),
-      url('../../pictures/EllipseTwoTablet.png');
+    background-image: url('../../images/background-images/EllipseOneDesktop.png'),
+      url('../../images/background-images/EllipseTwoTablet.png');
     background-position: 727px 0, 0 397px;
   }
 }

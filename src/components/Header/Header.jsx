@@ -2,10 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { authSelectors, authOperations } from 'redux/auth';
-import LogoutModal from '../LogOutModal';
+import LogoutModal from '../LogoutModal';
 import style from './Header.module.css';
-import logo from 'helpers/svg/logo.svg';
-import logout from 'helpers/svg/logout.svg';
+import logo from 'images/icons/logo.svg';
+import logout from 'images/icons/logout.svg';
 
 const Header = () => {
   const name = useSelector(authSelectors.getIsUserName);

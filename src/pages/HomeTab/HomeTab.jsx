@@ -7,7 +7,7 @@ import Container from 'components/Container';
 import Section from 'components/Section';
 import Background from 'pages/Background';
 import TableTransaction from 'components/TableTransaction';
-
+import Header from 'components/Header';
 import { TableData, TableTitleData } from '../../data/tableData';
 import s from './HomeTab.module.css';
 
@@ -18,6 +18,7 @@ const HomeTab = () => {
   return (
     <>
       <Background className={s.backdrop}>
+        <Header />
         <Section className={s.hometabBackground}>
           <Container>
             <div className={s.hometab}>

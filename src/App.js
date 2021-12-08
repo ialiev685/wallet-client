@@ -18,9 +18,18 @@ import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute';
 
 import Header from 'components/Header';
+
+import RegistrationPage from './pages/RegistrationPage';
+import LoginPage from './pages/LoginPage';
+import DashboardPage from 'pages/DashboardPage';
 import Loader from './components/Loader';
 
+
+import NotFound from './components/NotFound';
+
 import Background from './pages/Background';
+
+
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 
 // import  HomeTab  from './pages/HomeTab/HomeTab'; // замена динамич. импорт
@@ -63,6 +72,7 @@ function App() {
     <>
       {isFetchingCurrentUser ? (
         <>
+
           <Suspense fallback={<h1>Loading...</h1>}>
             <Routes>
               <Route path="/" exact element={<Navigate to="/home" />} />
@@ -113,6 +123,7 @@ function App() {
               />
             </Routes>
           </Suspense>
+
         </>
       ) : (
         <Header />
