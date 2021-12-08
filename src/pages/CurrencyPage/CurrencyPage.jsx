@@ -1,13 +1,13 @@
 import { useMediaQuery } from 'react-responsive';
 import { Navigate } from 'react-router-dom';
 import Navigation from 'components/Navigation';
-import Currency from 'components/Currency/Сurrency';
+import Currency from 'components/Currency';
 import Container from 'components/Container';
 import Section from 'components/Section';
 import Header from 'components/Header';
 import s from './CurrencyPage.module.css';
 
-export const CurrencyPage = () => {
+const CurrencyPage = () => {
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });
@@ -29,3 +29,5 @@ export const CurrencyPage = () => {
     </>
   );
 };
+
+export default CurrencyPage;
