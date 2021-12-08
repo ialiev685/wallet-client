@@ -1,61 +1,27 @@
 import React from 'react';
 
+import MediaQuery from 'react-responsive';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { dateFormatter } from '../../helpers/dateFormatter';
+import MobileTable from 'components/MobileTable';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import s from './TableTransaction.module.css';
 
 const theme = createTheme({
   components: {
-    MuiTableContainer: {
-      styleOverrides: {
-        root: {
-          fontFamily: 'var(--main-font-family)',
-          fontStyle: 'normal',
-          fontWeight: 'normal',
-          fontSize: 25,
-          lineHeight: 1.5,
-
-          color: 'var(--color-black)',
-        },
-      },
-    },
-    MuiTableHead: {
-      styleOverrides: {
-        root: {
-          border: 0,
-          fontFamily: 'var(--main-font-family)',
-          fontStyle: 'normal',
-          fontWeight: 'normal',
-          fontSize: 25,
-          lineHeight: 1.5,
-
-          color: 'var(--color-black)',
-        },
-      },
-    },
     MuiTableRow: {
       styleOverrides: {
         root: {
-          fontFamily: 'var(--main-font-family)',
-          fontStyle: 'normal',
-          fontWeight: 'normal',
-          fontSize: 25,
-          lineHeight: 1.5,
-
-          color: 'var(--color-black)',
           '&:not(:last-child)': {
             borderBottom: '1px solid var(--border-color)',
             boxShadow: '0px 1px 0px var(--shadow-color)',
           },
         },
-        head: {},
       },
     },
     MuiTableCell: {
@@ -116,42 +82,40 @@ const theme = createTheme({
         },
       },
     },
-    MuiTableBody: {
-      styleOverrides: {
-        root: {},
-      },
-    },
   },
 });
 
 const TableTransaction = ({ data, titles, className = '' }) => {
   return (
-    <div className={`${s.table} ${className}`}>
-      <ThemeProvider theme={theme}>
-        <TableContainer>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                {titles.map(({ key, title }) => (
-                  <TableCell key={key}>{title}</TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            {data && (
-              <TableBody>
-                {data.map(
-                  ({
-                    _id,
-                    date,
-                    transactionType,
-                    category,
-                    comment,
-                    sum,
-                    balance,
-                  }) => {
-                    return (
-                      <TableRow key={_id}>
-                        <TableCell type="date">{dateFormatter(date)}</TableCell>
+    <>
+      <MediaQuery minWidth={320} maxWidth={767}>
+        <MobileTable data={data} titles={titles} />
+      </MediaQuery>
+      <MediaQuery minWidth={768}>
+        <div className={s.table}>
+          <ThemeProvider theme={theme}>
+            <TableContainer>
+              <Table aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    {titles.map(({ key, title }) => (
+                      <TableCell key={key}>{title}</TableCell>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {data.map(
+                    ({
+                      id,
+                      date,
+                      transactionType,
+                      category,
+                      comment,
+                      sum,
+                      balance,
+                    }) => (
+                      <TableRow key={id}>
+                        <TableCell type="date">{date}</TableCell>
                         <TableCell align="center">
                           {transactionType ? '+' : '-'}
                         </TableCell>
@@ -181,15 +145,15 @@ const TableTransaction = ({ data, titles, className = '' }) => {
 
                         <TableCell align="right">{balance}.00</TableCell>
                       </TableRow>
-                    );
-                  },
-                )}
-              </TableBody>
-            )}
-          </Table>
-        </TableContainer>
-      </ThemeProvider>
-    </div>
+                    ),
+                  )}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </ThemeProvider>
+        </div>
+      </MediaQuery>
+    </>
   );
 };
 

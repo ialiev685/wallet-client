@@ -3,4 +3,5 @@ export const data = state => state.finance.data;
 
 export const isFetchingTotalBalance = state =>
   state.finance.isFetchingTotalBalance;
-export const isFetchingData = state => state.finance.isFetchingData;
+
+export const getIsFinanceLoader = state => state.finance.isLoading;
