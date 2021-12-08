@@ -65,6 +65,21 @@ const validation = Yup.object({
   discription: Yup.mixed(),
 });
 
+//приводит дату в нормальный формат
+const norlmalizeData = value => {
+  const normalizeFormatMonth =
+    value.getMonth() < 10 ? '0' + (value.getMonth() + 1) : value.getMonth() + 1;
+
+  const normalizeFormatDate =
+    value.getDate() < 10 ? '0' + value.getDate() : value.getDate();
+  const normalizeDate = [
+    normalizeFormatMonth,
+    normalizeFormatDate,
+    value.getFullYear(),
+  ].join('.');
+  return normalizeDate;
+};
+
 export const ModalTransaction = () => {
   const dispatch = useDispatch();
   const isError = useSelector(financeSelectors.getIsError);
@@ -99,27 +114,14 @@ export const ModalTransaction = () => {
     validationSchema: validation,
 
     onSubmit: (values, { resetForm }) => {
-      const normalizeFormatMonth =
-        values.date.getMonth() < 10
-          ? '0' + (values.date.getMonth() + 1)
-          : values.date.getMonth() + 1;
-
-      const normalizeFormatDate =
-        values.date.getDate() < 10
-          ? '0' + values.date.getDate()
-          : values.date.getDate();
-      const normalizeDate = [
-        normalizeFormatMonth,
-        normalizeFormatDate,
-        values.date.getFullYear(),
-      ].join('.');
-
-      // values.transactionType = String(values.transactionType);
-
       values.sum = Number(values.sum);
-      values.date = normalizeDate;
+      values.date = norlmalizeData(values.date);
+
+      if (!values.transactionType) delete values.category;
+      if (!values.comment) delete values.comment;
 
       dispatch(fetchTransactionOperation(values));
+
       resetForm();
     },
   });

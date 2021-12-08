@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ApiTransaction } from 'services/transaction-api';
 
 import { closeModal } from 'redux/modal/modal-action';
+const { Unauthorized } = require('http-errors');
 
 export const fetchTotalBalance = createAsyncThunk(
   'finance/fetchBalance',
@@ -36,6 +37,8 @@ export const fetchTransactionOperation = createAsyncThunk(
 
         if (result.data.data.transaction) thunkAPI.dispatch(closeModal());
         return result.data.data.transaction;
+      } else {
+        throw new Unauthorized('Не авторизирован');
       }
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
