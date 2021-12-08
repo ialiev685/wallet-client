@@ -12,6 +12,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import logo from 'helpers/svg/logo.svg';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import { ButtonWindow } from '../ButtonWindow/ButtonWindow';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -114,6 +115,7 @@ const RegistrationForm = ({ classPosition }) => {
               <ErrorMessage name="name" className={s.errorMessage} />
             </Grid>
           </Grid>
+          {/* <ButtonWindow type="submit" className={s.button}>`РЕГИСТРАЦИЯ</ButtonWindow> */}
           <Button variant="contained" type="submit" className={s.button}>
             РЕГИСТРАЦИЯ
           </Button>
