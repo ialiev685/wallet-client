@@ -1,23 +1,24 @@
 import { useMediaQuery } from 'react-responsive';
 import Navigation from 'components/Navigation';
 import Balance from 'components/Balance';
-import Currency from 'components/Currency/Сurrency';
+import Currency from 'components/Currency';
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 import Container from 'components/Container';
 import Section from 'components/Section';
 import Background from 'pages/Background';
 import TableTransaction from 'components/TableTransaction';
-
+import Header from 'components/Header';
 import { TableData, TableTitleData } from '../../data/tableData';
 import s from './HomeTab.module.css';
 
-export const HomeTab = () => {
+const HomeTab = () => {
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });
   return (
     <>
       <Background className={s.backdrop}>
+        <Header />
         <Section className={s.hometabBackground}>
           <Container>
             <div className={s.hometab}>
@@ -45,3 +46,5 @@ export const HomeTab = () => {
     </>
   );
 };
+
+export default HomeTab;

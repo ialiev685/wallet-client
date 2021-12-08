@@ -10,7 +10,8 @@ const Balance = ({ className = '' }) => {
     <div className={`${s.balanceBox} ${className}`}>
       <p className={s.balanceText}>ваш баланс</p>
       <p className={s.balanceNum}>
-        <span className={s.sign}>{sign} </span> 24 000.00
+        <span className={s.sign}>{sign} </span>
+        {totalBalance}
       </p>
     </div>
   );
