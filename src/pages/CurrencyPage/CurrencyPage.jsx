@@ -7,7 +7,7 @@ import Section from 'components/Section';
 
 import s from './CurrencyPage.module.css';
 
-export const CurrencyPage = () => {
+const CurrencyPage = () => {
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });
@@ -28,3 +28,5 @@ export const CurrencyPage = () => {
     </>
   );
 };
+
+export default CurrencyPage;

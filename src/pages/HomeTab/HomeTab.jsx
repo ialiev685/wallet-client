@@ -11,7 +11,7 @@ import TableTransaction from 'components/TableTransaction';
 import { TableData, TableTitleData } from '../../data/tableData';
 import s from './HomeTab.module.css';
 
-export const HomeTab = () => {
+const HomeTab = () => {
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });
@@ -45,3 +45,5 @@ export const HomeTab = () => {
     </>
   );
 };
+
+export default HomeTab;
