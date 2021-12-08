@@ -9,7 +9,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import s from './Сurrency.module.css';
+// import s from './Сurrency.module.css';
 import fetchCurrency from '../../services/currency-api';
 import bgDesktop from '../../images/bg-currency/bg-currency-desktop.svg';
 import bgTablet from '../../images/bg-currency/bg-currency-tablet.svg';
@@ -30,17 +30,13 @@ const theme = createTheme({
         },
       },
     },
+
     MuiTableContainer: {
       styleOverrides: {
         root: {
-          minWidth: 280,
-          maxWidth: 348,
-          maxHeight: 347,
-          minHeight: 174,
           borderRadius: 30,
           backgroundColor: 'rgba(74, 86, 226, 1)',
           boxShadow: '0px 0px 26px -6px rgba(0, 0, 0, 0.25)',
-          backgroundImage: `url(${bgTablet})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain',
           backgroundPosition: 'bottom',
@@ -50,71 +46,54 @@ const theme = createTheme({
             height: 347,
             backgroundImage: `url(${bgDesktop})`,
           },
-          //      "@media (min-width:768px) and (max-width:1279px)": {
-          //   width: 334,
-          //   height: 174,
-          // },
+          '@media (min-width:768px) and (max-width:1279px)': {
+            width: 334,
+            height: 174,
+            backgroundImage: `url(${bgTablet})`,
+          },
           '@media (max-width:767px)': {
-            // width: 280,
-            // height: 174,
+            maxWidth: 280,
+            height: 174,
             backgroundImage: `url(${bgMobile})`,
           },
         },
       },
     },
+
     MuiTableHead: {
       styleOverrides: {
         root: {
           borderRadius: '30px 30px 0px 0px',
           background: 'rgba(255, 255, 255, .2)',
-          //  paddingBottom: 10,
-          // '@media (min-width:1280px)': {
-          //   paddingBottom: 20,
-          // },
         },
       },
     },
-    MuiTableRow: {
-      styleOverrides: {
-        root: {},
-        head: {
-          //           paddingBottom: 10,
-          // '@media (min-width:1280px)': {
-          //   paddingBottom: 20,
-          // },
-        },
-      },
-    },
+
     MuiTableCell: {
       styleOverrides: {
         root: {
-          // paddingTop: 10,
-          padding: '10px 0px 10px',
+          padding: '10px 10px 0px',
           border: 'none',
           fontFamily: 'Circe, sans-serif',
+          textAlign: 'center',
           fontWeight: 400,
           fontSize: 16,
           color: '#ffffff',
           '@media (min-width:1280px)': {
-            //  paddingTop: 20,
-            //  paddingBottom: 23,
             padding: '20px 10px 0px',
           },
         },
 
         head: {
-          padding: '11px 0px 12px',
-          fontWeight: 700,
+          padding: '11px 10px 12px',
+          fontWeight: 'bold',
           fontSize: 18,
+          lineHeight: 1.5,
+          letterSpacing: '0.03em',
           '@media (min-width:1280px)': {
             padding: '17px 10px 16px',
           },
         },
-      },
-    },
-    MuiTableBody: {
-      styleOverrides: {
-        root: {},
       },
     },
   },

@@ -45,7 +45,7 @@ export const HomeTab = () => {
               </div>
               <div className={s.rightSideBox}>
                 <TableTransaction
-                  data={transactions}
+                  data={transactions || []}
                   titles={TableTitleData}
                   className={s.table}
                 />

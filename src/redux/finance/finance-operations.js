@@ -3,8 +3,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 // import {token} from '../../services/auth-api'
 
-const tmpToken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWE4MGU4YTU4YjVhNDg5ZTEzM2Y3MDMiLCJuYW1lIjoiYW5uYSIsImlhdCI6MTYzODU0MDc1NH0.qzIj6Y2tbwS8p4xZYp65Hkhtdu6VUrj8Ptge_OTB2rM';
+// const tmpToken =
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWE4MGU4YTU4YjVhNDg5ZTEzM2Y3MDMiLCJuYW1lIjoiYW5uYSIsImlhdCI6MTYzODU0MDc1NH0.qzIj6Y2tbwS8p4xZYp65Hkhtdu6VUrj8Ptge_OTB2rM';
+// без операций
+// const tmpToken =
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWFmNTQwOGNiMTg5YzM0OWI2YzUwZTIiLCJuYW1lIjoiSnVsaWEiLCJpYXQiOjE2Mzg4ODAzMjJ9.SvSYgAR-Vj2nwJ5Q_XYpJsYkHZ8nfNuc0DY0oyZWNqQ';
+const tmpToken = '';
 
 // export const token = {
 //   // set(tmpToken) {

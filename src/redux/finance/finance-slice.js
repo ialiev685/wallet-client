@@ -8,6 +8,7 @@ const initialState = {
   totalBalance: 0,
   // data: {},
   data: null,
+  isLoading: false,
 };
 
 const financeSlice = createSlice({
@@ -16,31 +17,37 @@ const financeSlice = createSlice({
   extraReducers: {
     [fetchTotalBalance.pending](state, _) {
       // state.isFetchingTotalBalance = true;
-      //спиннер
+      state.isLoading = true;
       state.error = null;
     },
     [fetchTotalBalance.fulfilled](state, { payload }) {
       state.totalBalance = payload;
       // state.isFetchingTotalBalance = false;
-      //спиннер
+      state.isLoading = false;
     },
     [fetchTotalBalance.rejected](state, _) {
       // state.isFetchingTotalBalance = false;
+      // state.isFetchingTotalBalance = false;
+      state.isLoading = false;
       //спиннер
     },
     [fetchData.pending](state) {
       // state.isFetchingData = true;
       //спиннер
+      state.isLoading = true;
       state.error = null;
     },
     [fetchData.fulfilled](state, { payload }) {
       state.data = payload;
+      state.isLoading = false;
       // state.isFetchingData = false;
       //спиннер
     },
     [fetchData.rejected](state, { payload }) {
       // state.isFetchingData = false;
+      state.isLoading = false;
       //спиннер
+
       state.error = payload;
     },
   },
