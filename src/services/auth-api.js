@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+axios.defaults.baseURL = 'https://wallet-rf1.herokuapp.com/api/';
 
 export const token = {
   // set(tmpToken) {
