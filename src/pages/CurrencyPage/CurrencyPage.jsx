@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { Navigate } from 'react-router-dom';
 import Navigation from 'components/Navigation';
-import Currency from 'components/Currency/Сurrency';
+import Currency from 'components/Currency';
 import Container from 'components/Container';
 import Section from 'components/Section';
 

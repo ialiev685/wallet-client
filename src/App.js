@@ -14,11 +14,9 @@ import {
 
 // import './stylesheet/index.css'
 
-import { useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 
 import { ModalTransaction } from 'components/ModalTransaction';
-
-import Currency from './components/Currency/Сurrency.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
@@ -30,7 +28,6 @@ import Header from 'components/Header';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import Loader from './components/Loader';
-
 
 import Background from './pages/Background';
 
@@ -103,7 +100,6 @@ function App() {
       ) : (
         <Header />
       )}
-
 
       <Loader />
     </>
