@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logInUser } from 'redux/auth/auth-operations';
 import s from './LoginForm.module.css';
-import Button from '@mui/material/Button';
+import { ButtonWindow } from '../ButtonWindow/ButtonWindow';
 import Grid from '@mui/material/Grid';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
@@ -47,7 +47,7 @@ const LoginForm = ({ classPosition }) => {
             placeholder="E-mail"
           />
           <Grid className={s.errorMessage}>
-            <ErrorMessage name="email" className={s.errorMessage} />
+            <ErrorMessage name="email" />
           </Grid>
         </Grid>
 
@@ -64,17 +64,17 @@ const LoginForm = ({ classPosition }) => {
           </Grid>
         </Grid>
 
-        <Button variant="contained" type="submit" className={s.button}>
-          ВХОД
-        </Button>
-        <Button
-          variant="outlined"
-          type="button"
-          className={s.buttonLogin}
+        <ButtonWindow
+          type="submit"
+          title="ВХОД"
+          className={s.button}
+          action="добавить"
+        />
+        <ButtonWindow
+          type="submit"
+          title="РЕГИСТРАЦИЯ"
           onClick={() => navigate('/signup')}
-        >
-          РЕГИСТРАЦИЯ
-        </Button>
+        />
       </Form>
     </Formik>
   );
