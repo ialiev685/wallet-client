@@ -17,16 +17,17 @@
     margin-left: auto;
     margin-right: auto;
     width: var(--mobile);
-    height: 568px;
     background-color: var(--color-white);
   }
 }
 
 @media screen and (min-width: 768px) {
   .registrBox {
-    height: 1024px;
+    min-height: 1024px;
 
-    background-image: url('../../pictures/PictureTablet.png');
+    /* background-image: url('../../pictures/PictureTablet.png'); */
+    background-image: url('../../images/background-images/PictureTablet.png');
+
     background-position: 114px 60px;
     background-repeat: no-repeat;
   }
@@ -59,9 +60,9 @@
 
 @media screen and (min-width: 1280px) {
   .registrBox {
-    height: 720px;
+    min-height: 720px;
 
-    background-image: url('../../pictures/PictureDesktop.png');
+    background-image: url('../../images/background-images/PictureDesktop.png');
     background-position: 66px 153px;
   }
 

@@ -23,6 +23,12 @@
   margin-bottom: 20px;
 }
 
+@media screen and (max-width: 768px) {
+  .button {
+    width: 280px;
+  }
+}
+
 .button.confirm {
   background-color: var(--color-green);
 }

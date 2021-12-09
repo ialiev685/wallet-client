@@ -13,14 +13,12 @@ function Loader() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (authLoader || financeLoader) {
-      dispatch(loaderAction.showLoader());
-    }
-
-    if (!authLoader || !financeLoader) {
+    authLoader && dispatch(loaderAction.showLoader());
+    financeLoader && dispatch(loaderAction.showLoader());
+    return () => {
       dispatch(loaderAction.hideLoader());
-    }
-  }, [authLoader, dispatch, financeLoader]);
+    };
+  }, [dispatch, authLoader, financeLoader]);
 
   const { loader } = s;
 
