@@ -20,3 +20,11 @@ export const ApiTransaction = async (validToken, data) => {
 
   return result;
 };
+
+export const ApiTransactionCategory = async validToken => {
+  token.set(validToken);
+
+  const result = await axios.get('/transactions/categories');
+
+  return result;
+};

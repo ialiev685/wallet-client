@@ -1,6 +1,9 @@
 import API from 'services/wallet-API';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ApiTransaction } from 'services/transaction-api';
+import {
+  ApiTransaction,
+  ApiTransactionCategory,
+} from 'services/transaction-api';
 
 import { closeModal } from 'redux/modal/modal-action';
 const { Unauthorized } = require('http-errors');
@@ -72,6 +75,28 @@ export const fetchTransactionOperation = createAsyncThunk(
     }
   },
 );
+
+export const fetchTransactionCategory = createAsyncThunk(
+  'finance/transactionCategory',
+  async (_, thunkAPI) => {
+    try {
+      // const state = thunkAPI.getState();
+      // const persistedToken = state.auth.token;
+
+      const persistedToken =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWFmYzU4ZmNlYjc2N2VlNjc5Njk2NTkiLCJuYW1lIjoiaWxmYXQiLCJpYXQiOjE2Mzg5MTEzODl9.qxTjUtYiD_5v_gFUybM4BrbqPT58DUYbXEgW9tycSkk';
+
+      if (persistedToken) {
+        const result = await ApiTransactionCategory(persistedToken);
+
+        return result.data.data.categories;
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
 export const fetchData = createAsyncThunk(
   'finance/fetchData',
   async (_, { getState, rejectWithValue }) => {

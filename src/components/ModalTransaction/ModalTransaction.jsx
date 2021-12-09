@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //селекторы
@@ -27,9 +27,14 @@ import './GlobalCssSlider.css';
 //кнопка
 import { ButtonWindow } from 'components/ButtonWindow';
 //модалка
-import { fetchTransactionOperation } from 'redux/finance';
+import {
+  fetchTransactionOperation,
+  fetchTransactionCategory,
+} from 'redux/finance';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalAction } from 'redux/modal';
+//select
+import { SelectCategory } from 'components/SelectCategory';
 
 //нормализация даты
 
@@ -85,6 +90,7 @@ export const ModalTransaction = () => {
   const dispatch = useDispatch();
   const isError = useSelector(financeSelectors.getIsError);
   const errorMessage = useSelector(financeSelectors.getErrorMessage);
+  const listCategories = useSelector(financeSelectors.getListCategories);
 
   const handleClick = () => {
     dispatch(modalAction.closeModal());
@@ -104,6 +110,10 @@ export const ModalTransaction = () => {
     }
   }, [errorMessage, isError]);
 
+  useEffect(() => {
+    dispatch(fetchTransactionCategory());
+  }, [dispatch]);
+
   const formik = useFormik({
     initialValues: {
       transactionType: true,
@@ -115,14 +125,12 @@ export const ModalTransaction = () => {
     validationSchema: validation,
 
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
       values.sum = Number(values.sum);
       values.date = norlmalizeData(values.date);
 
       if (!values.transactionType) delete values.category;
       if (!values.comment) delete values.comment;
 
-      console.log(values);
       dispatch(fetchTransactionOperation(values));
 
       resetForm();
@@ -172,6 +180,7 @@ export const ModalTransaction = () => {
 
         {formik.values.transactionType && (
           <div className={style.Modal__wrapperSelect}>
+            <SelectCategory list={listCategories} />
             <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
               <Select
                 id="category"
