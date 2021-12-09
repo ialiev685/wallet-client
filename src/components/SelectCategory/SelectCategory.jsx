@@ -1,17 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import style from './SelectCategory.module.css';
 import { ReactComponent as ArrowIcon } from './arrow.svg';
 
-export const SelectCategory = ({ list }) => {
+export const SelectCategory = props => {
+  const { value, list, onChange, id = 'unknow', name = 'unknow' } = props;
+
+  const initValue = {
+    target: { value: 0, text: 'Выберите категорию', id, name },
+  };
+
   const [hiddenList, setHiddenList] = useState(true);
-  const [currentValue, setCurrentValue] = useState({
-    value: 0,
-    text: 'Выберите категорию',
-  });
+  const [currentValue, setCurrentValue] = useState(initValue);
   const [currentColor, setCurrentColor] = useState(false);
+  const wrapperRef = useRef();
 
   useEffect(() => {
     if (!hiddenList) {
+      document.addEventListener('mousedown', handleClickOutside);
+
       window.addEventListener('keydown', function handleClick(e) {
         if (e.code === 'Escape') {
           setHiddenList(true);
@@ -19,7 +25,17 @@ export const SelectCategory = ({ list }) => {
         }
       });
     }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, [hiddenList]);
+
+  const handleClickOutside = e => {
+    if (!wrapperRef.current.contains(e.target)) {
+      setHiddenList(true);
+    }
+  };
 
   const handleShowList = e => {
     setHiddenList(prevState => !prevState);
@@ -27,26 +43,33 @@ export const SelectCategory = ({ list }) => {
 
   const handleChoose = e => {
     const newCurrentValue = {
-      value: e.target.dataset.value,
-      text: e.target.textContent,
+      target: {
+        value: e.target.dataset.value,
+        text: e.target.textContent,
+        id,
+        name,
+      },
     };
 
     if (newCurrentValue.value !== 0) setCurrentColor(true);
     setCurrentValue(newCurrentValue);
     setHiddenList(true);
+
+    if (typeof onChange === 'function') onChange(newCurrentValue);
   };
 
   return (
-    <div className={style.select}>
+    <div ref={wrapperRef} className={style.select}>
       <div onClick={handleShowList} className={style.select__header}>
         <span
           className={[
             style.select__current,
             currentColor && style.select__currentCategory,
           ].join(' ')}
-          data-value={currentValue.value}
+          data-value={currentValue.target.value}
         >
-          {currentValue.text}
+          {/* {currentValue.target.text} */}
+          {value}
         </span>
         <span
           className={[
@@ -62,11 +85,11 @@ export const SelectCategory = ({ list }) => {
         className={[style.select__body, hiddenList && style.isHidden].join(' ')}
       >
         <div className={style.wrapperItems}>
-          {list.map(({ id, name, index }) => (
+          {list.map(({ _id, name }) => (
             <div
-              key={id}
+              key={_id}
               className={style.select__item}
-              data-value={index}
+              data-value={_id}
               onClick={handleChoose}
             >
               {name}

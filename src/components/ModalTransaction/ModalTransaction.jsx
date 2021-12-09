@@ -51,16 +51,7 @@ const validation = Yup.object({
     .notOneOf(['Выберите категорию'], 'Выберите категорию')
     .when('transactionType', {
       is: false,
-      then: Yup.mixed().oneOf([
-        'Выберите категорию',
-        '61ad865bc505a94bdf06939f',
-        '61ad8719c505a94bdf0693a0',
-        '61ad87a7c505a94bdf0693a2',
-        '61ad8892c505a94bdf0693a4',
-        '61ad881ac505a94bdf0693a3',
-        '61ad8aadc505a94bdf0693a5',
-        '61ad8b50c505a94bdf0693a7',
-      ]),
+      then: Yup.mixed().oneOf(['']),
     }),
 
   sum: Yup.number()
@@ -118,8 +109,9 @@ export const ModalTransaction = () => {
     initialValues: {
       transactionType: true,
       sum: '',
-      date: new Date(),
       category: 'Выберите категорию',
+      date: new Date(),
+
       comment: '',
     },
     validationSchema: validation,
@@ -130,7 +122,7 @@ export const ModalTransaction = () => {
 
       if (!values.transactionType) delete values.category;
       if (!values.comment) delete values.comment;
-
+      console.log(values);
       dispatch(fetchTransactionOperation(values));
 
       resetForm();
@@ -180,8 +172,14 @@ export const ModalTransaction = () => {
 
         {formik.values.transactionType && (
           <div className={style.Modal__wrapperSelect}>
-            <SelectCategory list={listCategories} />
-            <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
+            <SelectCategory
+              list={listCategories}
+              onChange={formik.handleChange}
+              id={'category'}
+              name={'category'}
+              value={formik.values.category}
+            />
+            {/* <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
               <Select
                 id="category"
                 value={formik.values.category}
@@ -206,7 +204,7 @@ export const ModalTransaction = () => {
                 </MenuItem>
                 <MenuItem value="Остальное">Остальное</MenuItem>
               </Select>
-            </FormControl>
+            </FormControl> */}
             {formik.touched.category && formik.errors.category ? (
               <div className={style.Modal__errorSelect}>
                 {formik.errors.category}

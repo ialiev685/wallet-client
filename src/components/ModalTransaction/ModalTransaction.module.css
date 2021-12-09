@@ -24,8 +24,6 @@
 
   width: 320px;
 
-  /* min-height: 690px; */
-
   padding: 20px 10px 60px 10px;
 
   background-color: var(--color-white);
@@ -114,12 +112,12 @@
 }
 
 .Modal__errorSelect {
-  left: 10px;
-  bottom: 30px;
+  left: 5px;
+  bottom: 20px;
 }
 
 .Modal__errorAmount {
-  left: 0px;
+  left: 5px;
   bottom: 20px;
 }
 

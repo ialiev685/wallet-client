@@ -1,6 +1,14 @@
 .select {
   position: relative;
   width: 280px;
+
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .select {
+    width: 409px;
+  }
 }
 
 .select__header {
