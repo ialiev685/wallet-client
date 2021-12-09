@@ -18,21 +18,17 @@ import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute';
 
 import Header from 'components/Header';
-
-import RegistrationPage from './pages/RegistrationPage';
-import LoginPage from './pages/LoginPage';
-import DashboardPage from 'pages/DashboardPage';
 import Loader from './components/Loader';
-
-
 
 import NotFound from './components/NotFound';
 
 import Background from './pages/Background';
 
-
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 
+// import RegistrationPage from './pages/RegistrationPage';  // замена динамич. импорт
+// import LoginPage from './pages/LoginPage';  // замена динамич. импорт
+// import DashboardPage from 'pages/DashboardPage';  // замена динамич. импорт
 // import  HomeTab  from './pages/HomeTab/HomeTab'; // замена динамич. импорт
 // import CurrencyPage from './pages/CurrencyPage/CurrencyPage'; // замена динамич. импорт
 // import RegistrationPage from './pages/RegistrationPage'; // замена динамич. импорт
@@ -54,9 +50,9 @@ const RegistrationPage = lazy(() =>
 const LoginPage = lazy(() =>
   import('./pages/LoginPage' /* webpackChunkName: "login-page" */),
 );
-// const DashboardPage = lazy(() =>
-//     import('./pages/DashboardPage' /* webpackChunkName: "dashboard-page" */),
-// );
+const DashboardPage = lazy(() =>
+  import('./pages/DashboardPage' /* webpackChunkName: "dashboard-page" */),
+);
 
 function App() {
   //проверка на текущего пользователя (не удалять)
@@ -73,8 +69,6 @@ function App() {
     <>
       {isFetchingCurrentUser ? (
         <>
-
-
           <Suspense fallback={<h1>Loading...</h1>}>
             <Routes>
               <Route path="/" exact element={<Navigate to="/home" />} />
@@ -110,7 +104,7 @@ function App() {
                 element={
                   <PrivateRoute redirectTo="/login">
                     <Header />
-                    {/* //страница с диаграммой DashboardPage*/}
+                    <DashboardPage />
                   </PrivateRoute>
                 }
               />
@@ -125,8 +119,6 @@ function App() {
               />
             </Routes>
           </Suspense>
-
-
         </>
       ) : (
         <Header />

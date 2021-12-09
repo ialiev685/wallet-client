@@ -3,7 +3,7 @@
   font-size: var(--font-size-xl);
   font-weight: var(--font-weigth-norm);
   margin-top: 0;
-  margin-bottom: var(--margin-m);
+  margin-bottom: var(--margin-s);
 }
 
 .wrapper {
@@ -66,6 +66,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .header {
+    margin-bottom: var(--margin-m);
+  }
   .wrapper {
     display: flex;
     align-items: flex-start;

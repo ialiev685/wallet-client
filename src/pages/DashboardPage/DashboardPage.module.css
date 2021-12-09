@@ -1,16 +1,29 @@
+.rightSideBox {
+  padding: 40px 0;
+}
+
 .navigation {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.transparentBackground {
+  background: var(--background-color);
+  backdrop-filter: var(--backdrop-filter);
+}
+
 .balance {
   margin-bottom: var(--margin-l);
 }
 
-@media screen and (min-width: 320px) {
-  .rightSideBox {
-    padding: 43px 0;
+@media screen and (max-width: 767px) {
+  .transparentBackground {
+    background: var(--background-color);
+  }
+  div.dashboardPage {
+    height: 100%;
+    background: var(--page-background-color);
   }
 }
 
@@ -56,8 +69,8 @@
   div.dashboardPage {
     height: 963px;
 
-    background-image: url('../../pictures/EllipseOneDesktop.png'),
-      url('../../pictures/EllipseTwoDesktopDashboardPage.png');
+    background-image: url('../../images/background-images/EllipseOneDesktop.png'),
+      url('../../images/background-images/EllipseTwoDesktopDashboardPage.png');
     background-position: 727px 0, -53px 430px;
   }
 
