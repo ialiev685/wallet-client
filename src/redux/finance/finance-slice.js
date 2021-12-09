@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchTransactionOperation } from './finance-operations';
+
 import { fetchTotalBalance, fetchData } from './finance-operations';
 
 const initialState = {
@@ -9,6 +11,9 @@ const initialState = {
   // data: {},
   data: null,
   isLoading: false,
+  dataNewTransaction: null,
+  isErrorTransation: false,
+  errorMessage: null,
 };
 
 const financeSlice = createSlice({
@@ -49,6 +54,23 @@ const financeSlice = createSlice({
       //спиннер
 
       state.error = payload;
+    },
+
+    [fetchTransactionOperation.pending](state) {
+      state.isErrorTransation = false;
+      state.errorMessage = null;
+      state.isLoading = true;
+    },
+
+    [fetchTransactionOperation.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.dataNewTransaction = payload;
+    },
+
+    [fetchTransactionOperation.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.errorMessage = payload;
+      state.isErrorTransation = true;
     },
   },
 });
