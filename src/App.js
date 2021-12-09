@@ -42,8 +42,8 @@ const DashboardPage = lazy(() =>
 
 function App() {
   //проверка на текущего пользователя (не удалять)
-  // const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
-  const isFetchingCurrentUser = true; //заглушка для рендера приватных роутов
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
+  // const isFetchingCurrentUser = true; //заглушка для рендера приватных роутов
 
   const dispatch = useDispatch();
 
@@ -53,65 +53,63 @@ function App() {
 
   return (
     <>
-      {/* {isFetchingCurrentUser ? ( */}
-      {
-        isFetchingCurrentUser && (
-          <>
-            <Suspense fallback={<h1>Loading...</h1>}>
-              <Routes>
-                <Route path="/" exact element={<Navigate to="/home" />} />
-                <Route
-                  path="/login"
-                  element={
-                    // <PublicRoute restricted>
-                    <PublicRoute>
-                      <LoginPage />
-                    </PublicRoute>
-                  }
-                />
-                <Route
-                  path="/signup"
-                  element={
-                    // <PublicRoute restricted>
-                    <PublicRoute>
-                      <RegistrationPage />
-                    </PublicRoute>
-                  }
-                />
-                <Route
-                  path="/home"
-                  element={
-                    <PrivateRoute redirectTo="/login">
-                      <HomeTab />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/diagram"
-                  element={
-                    <PrivateRoute redirectTo="/login">
-                      <DashboardPage />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/currency"
-                  element={
-                    <PrivateRoute redirectTo="/login">
-                      <CurrencyPage />
-                    </PrivateRoute>
-                  }
-                />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </>
-        )
-
-        // : (
-        // <Header />
-        // )
-      }
+      {/* {!isFetchingCurrentUser && ( */}
+      {!isFetchingCurrentUser ? (
+        <>
+          {/* <Suspense fallback={<h1>Loading...</h1>}> */}
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              {/* <Route path="/" exact element={<Navigate to="/home" />} /> */}
+              <Route path="/" exact element={<Navigate to="/login" />} />
+              <Route
+                path="/login"
+                element={
+                  <PublicRoute restricted redirectTo="/home">
+                    {/* <PublicRoute> */}
+                    <LoginPage />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/signup"
+                element={
+                  <PublicRoute restricted redirectTo="/home">
+                    {/* // <PublicRoute> */}
+                    <RegistrationPage />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/home"
+                element={
+                  <PrivateRoute redirectTo="/login">
+                    <HomeTab />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/diagram"
+                element={
+                  <PrivateRoute redirectTo="/login">
+                    <DashboardPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/currency"
+                element={
+                  <PrivateRoute redirectTo="/login">
+                    <CurrencyPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </>
+      ) : (
+        <Header />
+      )}
 
       <Loader />
     </>

@@ -8,7 +8,7 @@ import axios from 'axios';
 // без операций
 // const tmpToken =
 //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWFmNTQwOGNiMTg5YzM0OWI2YzUwZTIiLCJuYW1lIjoiSnVsaWEiLCJpYXQiOjE2Mzg4ODAzMjJ9.SvSYgAR-Vj2nwJ5Q_XYpJsYkHZ8nfNuc0DY0oyZWNqQ';
-const tmpToken = '';
+// const tmpToken = '';
 
 // export const token = {
 //   // set(tmpToken) {
@@ -27,8 +27,8 @@ export const fetchTotalBalance = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
     // console.log(state);
-    // const persistedToken = state.auth.token;
-    const persistedToken = tmpToken;
+    const persistedToken = state.auth.token;
+    // const persistedToken = tmpToken;
 
     // token.set(persistedToken)
     // token.set(tmpToken)
@@ -48,8 +48,8 @@ export const fetchData = createAsyncThunk(
   'finance/fetchData',
   async (_, { getState, rejectWithValue }) => {
     const state = getState();
-    // const persistedToken = state.auth.token;
-    const persistedToken = tmpToken;
+    const persistedToken = state.auth.token;
+    // const persistedToken = tmpToken;
 
     if (persistedToken !== null) {
       try {
