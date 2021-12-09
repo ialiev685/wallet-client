@@ -41,7 +41,8 @@ const RegistrationForm = ({ classPosition }) => {
         if (password !== passwordConfirm) {
           alert('Пароль не совпадает, попробуйте ещё раз');
         }
-        dispatch(registerUser({ name, email, password, passwordConfirm }));
+        dispatch(registerUser({ name, email, password }));
+        navigate('/login');
       }}
     >
       {props => (
