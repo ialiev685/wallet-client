@@ -53,10 +53,9 @@ function App() {
 
   return (
     <>
-      {/* {!isFetchingCurrentUser && ( */}
-      {!isFetchingCurrentUser ? (
+      {/* {!isFetchingCurrentUser ? ( */}
+      {!isFetchingCurrentUser && (
         <>
-          {/* <Suspense fallback={<h1>Loading...</h1>}> */}
           <Suspense fallback={<Loader />}>
             <Routes>
               {/* <Route path="/" exact element={<Navigate to="/home" />} /> */}
@@ -73,7 +72,7 @@ function App() {
               <Route
                 path="/signup"
                 element={
-                  <PublicRoute restricted redirectTo="/home">
+                  <PublicRoute restricted redirectTo="/login">
                     {/* // <PublicRoute> */}
                     <RegistrationPage />
                   </PublicRoute>
@@ -107,8 +106,6 @@ function App() {
             </Routes>
           </Suspense>
         </>
-      ) : (
-        <Header />
       )}
 
       <Loader />

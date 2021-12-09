@@ -17,9 +17,9 @@ const authSlice = createSlice({
       state.isLoading = true;
     },
     [authOperations.registerUser.fulfilled](state, { payload }) {
-      state.user = payload.user;
-      state.token = payload.token;
-      state.isLoggedIn = true;
+      // state.user = payload.user;
+      // state.token = payload.token;
+      state.isLoggedIn = false;
       state.isLoading = false;
     },
     [authOperations.registerUser.rejected](state) {
@@ -30,7 +30,7 @@ const authSlice = createSlice({
       state.isLoading = true;
     },
     [authOperations.logInUser.fulfilled](state, { payload }) {
-      state.user = payload.user;
+      state.user = { ...payload.userData };
       state.token = payload.token;
       state.isLoggedIn = true;
       state.isLoading = false;
@@ -57,7 +57,7 @@ const authSlice = createSlice({
       state.isLoading = true;
     },
     [authOperations.fetchCurrentUser.fulfilled](state, { payload }) {
-      state.user = payload;
+      state.user = payload.data;
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
       state.isLoading = false;

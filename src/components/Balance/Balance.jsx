@@ -18,7 +18,7 @@ const Balance = ({ className = '' }) => {
       <p className={s.balanceText}>ваш баланс</p>
       <p className={s.balanceNum}>
         <span className={s.sign}>{sign} </span>
-        {`${totalBalance.toLocaleString('ru')}.00`}
+        {`${totalBalance.toLocaleString('ru')}`}
       </p>
     </div>
   );
