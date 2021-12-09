@@ -31,7 +31,6 @@ import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import Loader from './components/Loader';
 
-
 import Background from './pages/Background';
 
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
@@ -103,7 +102,6 @@ function App() {
       ) : (
         <Header />
       )}
-
 
       <Loader />
     </>

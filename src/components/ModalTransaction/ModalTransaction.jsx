@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useFormik } from 'formik';
+import { Formik, useFormik } from 'formik';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //селекторы
@@ -114,12 +114,14 @@ export const ModalTransaction = () => {
     validationSchema: validation,
 
     onSubmit: (values, { resetForm }) => {
+      console.log(values);
       values.sum = Number(values.sum);
       values.date = norlmalizeData(values.date);
 
       if (!values.transactionType) delete values.category;
       if (!values.comment) delete values.comment;
 
+      console.log(values);
       dispatch(fetchTransactionOperation(values));
 
       resetForm();
@@ -130,6 +132,7 @@ export const ModalTransaction = () => {
     id: 'date',
     name: 'date',
     className: style.Modal__date,
+    onChange: {},
   };
   return (
     <div className={style.Modal}>
@@ -253,6 +256,16 @@ export const ModalTransaction = () => {
               timeFormat={false}
               inputProps={inputDateProps}
               initialValue={formik.values.date}
+              onChange={value => {
+                const e = {
+                  target: {
+                    value: value._d,
+                    id: 'date',
+                    name: 'date',
+                  },
+                };
+                formik.handleChange(e);
+              }}
               closeOnSelect={true}
             />
           </div>
