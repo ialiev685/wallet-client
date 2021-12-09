@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
-import { useFormik } from 'formik';
-import { createPortal } from 'react-dom';
+import { Formik, useFormik } from 'formik';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+//селекторы
+import { financeSelectors } from 'redux/finance';
+import 'react-toastify/dist/ReactToastify.css';
 import * as Yup from 'yup';
 //дата
 import Datetime from 'react-datetime';
@@ -23,59 +27,105 @@ import './GlobalCssSlider.css';
 //кнопка
 import { ButtonWindow } from 'components/ButtonWindow';
 //модалка
-import { useDispatch } from 'react-redux';
+import { fetchTransactionOperation } from 'redux/finance';
+import { useDispatch, useSelector } from 'react-redux';
 import { modalAction } from 'redux/modal';
 
+//нормализация даты
+
 const validation = Yup.object({
-  type_pay: Yup.boolean(),
-  category: Yup.number()
-    .min(1, 'Выбери категорию от 1 до 7 ')
-    .when('type_pay', {
+  transactionType: Yup.boolean(),
+  // category: Yup.number()
+  //   .min(1, 'Выбери категорию от 1 до 7 ')
+  //   .when('type_pay', {
+  //     is: false,
+  //     then: Yup.number().min(0),
+  //   }),
+
+  category: Yup.mixed()
+    .notOneOf(['Выберите категорию'], 'Выберите категорию')
+    .when('transactionType', {
       is: false,
-      then: Yup.number().min(0),
+      then: Yup.mixed().oneOf([
+        'Выберите категорию',
+        '61ad865bc505a94bdf06939f',
+        '61ad8719c505a94bdf0693a0',
+        '61ad87a7c505a94bdf0693a2',
+        '61ad8892c505a94bdf0693a4',
+        '61ad881ac505a94bdf0693a3',
+        '61ad8aadc505a94bdf0693a5',
+        '61ad8b50c505a94bdf0693a7',
+      ]),
     }),
-  amount: Yup.number()
+
+  sum: Yup.number()
     .min(0.01, 'Минимальная сумма 0.01')
-    .max(999999999, 'Максимальная сумма 999999')
+    .max(999999999, 'Максимальная сумма 999 999 999')
     .required('Минимальная сумма 0.01'),
   date: Yup.date().required(),
   discription: Yup.mixed(),
 });
 
-//const rootModal = document.querySelector('#root-modal');
+//приводит дату в нормальный формат
+const norlmalizeData = value => {
+  const normalizeFormatMonth =
+    value.getMonth() < 10 ? '0' + (value.getMonth() + 1) : value.getMonth() + 1;
 
-export const ModalTransaction = (/*{ onClose }*/) => {
-  /*useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
+  const normalizeFormatDate =
+    value.getDate() < 10 ? '0' + value.getDate() : value.getDate();
+  const normalizeDate = [
+    normalizeFormatMonth,
+    normalizeFormatDate,
+    value.getFullYear(),
+  ].join('.');
+  return normalizeDate;
+};
 
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
-  const handleKeyDown = e => {
-    if (e.code === 'Escape') {
-      onClose();
-    }
-  };*/
+export const ModalTransaction = () => {
   const dispatch = useDispatch();
+  const isError = useSelector(financeSelectors.getIsError);
+  const errorMessage = useSelector(financeSelectors.getErrorMessage);
 
   const handleClick = () => {
     dispatch(modalAction.closeModal());
   };
 
+  useEffect(() => {
+    if (isError) {
+      toast.error(errorMessage, {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  }, [errorMessage, isError]);
+
   const formik = useFormik({
     initialValues: {
-      type_pay: true,
-      category: 0,
-      amount: '',
+      transactionType: true,
+      sum: '',
       date: new Date(),
-      discription: '',
+      category: 'Выберите категорию',
+      comment: '',
     },
     validationSchema: validation,
 
-    onSubmit: values => {
+    onSubmit: (values, { resetForm }) => {
       console.log(values);
+      values.sum = Number(values.sum);
+      values.date = norlmalizeData(values.date);
+
+      if (!values.transactionType) delete values.category;
+      if (!values.comment) delete values.comment;
+
+      console.log(values);
+      dispatch(fetchTransactionOperation(values));
+
+      resetForm();
     },
   });
 
@@ -83,48 +133,47 @@ export const ModalTransaction = (/*{ onClose }*/) => {
     id: 'date',
     name: 'date',
     className: style.Modal__date,
+    onChange: {},
   };
   return (
-    //createPortal(
-    // <div className={style.Overlay}>
     <div className={style.Modal}>
+      {isError && <ToastContainer />}
       <h1 className={style.Modal__title}>Добавить транзакцию</h1>
       <form onSubmit={formik.handleSubmit} className={style.Modal__form}>
         <div className={style.Modal__type}>
           <Checkbox
-            id="type_pay"
-            name="type_pay"
+            id="transactionType"
+            name="transactionType"
             type="checkbox"
-            checked={formik.values.type_pay}
+            checked={formik.values.transactionType}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.type_pay}
+            value={formik.values.transactionType}
           />
           <label
             className={[
               style.Model__label,
-              !formik.values.type_pay && style.Modal__income,
+              !formik.values.transactionType && style.Modal__income,
             ].join(' ')}
-            htmlFor="type_pay"
+            htmlFor="transactionType"
           >
             Доход
           </label>
           <label
-            htmlFor="type_pay"
+            htmlFor="transactionType"
             className={[
               style.Model__label,
-              formik.values.type_pay && style.Modal__expenses,
+              formik.values.transactionType && style.Modal__expenses,
             ].join(' ')}
           >
             Расход
           </label>
         </div>
 
-        {formik.values.type_pay && (
+        {formik.values.transactionType && (
           <div className={style.Modal__wrapperSelect}>
             <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
               <Select
-                // labelId="category"
                 id="category"
                 value={formik.values.category}
                 name="category"
@@ -133,17 +182,20 @@ export const ModalTransaction = (/*{ onClose }*/) => {
                   ' ',
                 )}
               >
-                <MenuItem disabled value="0">
+                <MenuItem disabled value="Выберите категорию">
                   Выберите категорию
                 </MenuItem>
-                <MenuItem value={1}>Основной</MenuItem>
-                <MenuItem value={2}>Еда</MenuItem>
-                <MenuItem value={3}>Авто</MenuItem>
-                <MenuItem value={4}>Развитие</MenuItem>
-                <MenuItem value={5}>Дети</MenuItem>
-                <MenuItem value={6}>Дом</MenuItem>
-                <MenuItem value={7}>Образование</MenuItem>
-                <MenuItem value={8}>Остальное</MenuItem>
+
+                <MenuItem value="61ad865bc505a94bdf06939f">Основной</MenuItem>
+                <MenuItem value="61ad87a7c505a94bdf0693a2">Еда</MenuItem>
+                <MenuItem value="61ad881ac505a94bdf0693a3">Авто</MenuItem>
+                <MenuItem value="61ad8b50c505a94bdf0693a7">Развитие</MenuItem>
+                <MenuItem value="61ad8719c505a94bdf0693a0">Дети</MenuItem>
+                <MenuItem value="61ad8892c505a94bdf0693a4">Дом</MenuItem>
+                <MenuItem value="61ad8aadc505a94bdf0693a5">
+                  Образование
+                </MenuItem>
+                <MenuItem value="Остальное">Остальное</MenuItem>
               </Select>
             </FormControl>
             {formik.touched.category && formik.errors.category ? (
@@ -157,24 +209,34 @@ export const ModalTransaction = (/*{ onClose }*/) => {
         <div className={style.Modal__wrapperAmountDate}>
           <div className={style.Modal__wrapperAmount}>
             <NumberFormat
-              id="amount"
+              id="sum"
+              name="sum"
               className={[style.Modal__input, style.Modal__amount].join(' ')}
               thousandSeparator={true}
-              format="### ### ###"
               autoComplete="off"
               placeholder="0.00"
               displayType="input"
               type="text"
-              value={formik.values.amount}
+              value={formik.values.sum}
+              allowNegative={true}
+              defaultValue={0}
+              isNumericString={true}
               onValueChange={(values, sourceInfo) => {
-                const { event } = sourceInfo;
-                formik.handleChange(event);
+                const e = {
+                  target: {
+                    value: values.value,
+                    id: 'sum',
+                    name: 'sum',
+                  },
+                };
+
+                formik.handleChange(e);
               }}
               thousandsGroupStyle="thousand"
             />
-            {formik.touched.amount && formik.errors.amount ? (
+            {formik.touched.sum && formik.errors.sum ? (
               <div className={style.Modal__errorAmount}>
-                {formik.errors.amount}
+                {formik.errors.sum}
               </div>
             ) : null}
           </div>
@@ -195,15 +257,25 @@ export const ModalTransaction = (/*{ onClose }*/) => {
               timeFormat={false}
               inputProps={inputDateProps}
               initialValue={formik.values.date}
+              onChange={value => {
+                const e = {
+                  target: {
+                    value: value._d,
+                    id: 'date',
+                    name: 'date',
+                  },
+                };
+                formik.handleChange(e);
+              }}
               closeOnSelect={true}
             />
           </div>
         </div>
 
         <textarea
-          id="discription"
+          id="comment"
           className={[style.Modal__input, style.Modal__input__hight].join(' ')}
-          name="discription"
+          name="comment"
           rows="2"
           maxLength="60"
           placeholder="Комментарий"
@@ -211,10 +283,10 @@ export const ModalTransaction = (/*{ onClose }*/) => {
           type="text"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.discription}
+          value={formik.values.comment}
         ></textarea>
-        {formik.touched.discription && formik.errors.discription ? (
-          <div>{formik.errors.discription}</div>
+        {formik.touched.comment && formik.errors.comment ? (
+          <div>{formik.errors.comment}</div>
         ) : null}
 
         <ButtonWindow
@@ -226,7 +298,5 @@ export const ModalTransaction = (/*{ onClose }*/) => {
       <ButtonWindow onClick={handleClick} title={'отмена'} />
       <CrossIcon onClick={handleClick} className={style.Modal__close} />
     </div>
-    //</div>,
-    //rootModal,
   );
 };

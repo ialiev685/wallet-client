@@ -14,6 +14,7 @@ const DashboardPage = () => {
   });
 
   return (
+
     <Background className={s.dashboardPage}>
       <Section className={s.transparentBackground}>
         <Container className={s.container}>
@@ -31,6 +32,7 @@ const DashboardPage = () => {
         </Container>
       </Section>
     </Background>
+
   );
 };
 

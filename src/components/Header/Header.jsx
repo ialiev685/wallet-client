@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { authSelectors, authOperations } from 'redux/auth';
-import LogoutModal from '../LogoutModal';
+import LogoutModal from 'components/LogoutModal';
 import style from './Header.module.css';
 import logo from 'images/icons/logo.svg';
 import logout from 'images/icons/logout.svg';

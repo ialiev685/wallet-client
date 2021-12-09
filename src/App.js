@@ -2,33 +2,20 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
-
-// import './stylesheet/index.css';
-import TableTransaction from 'components/TableTransaction';
-import TableStatistic from 'components/TableStatistic';
-import {
-  TableData,
-  TableTitleData,
-  TableStatisticData,
-  TableStatisticTitleData,
-} from 'data/tableData';
-import { ModalTransaction } from 'components/ModalTransaction';
-
+// import { HomeTab } from './pages/HomeTab/HomeTab';
+// import { CurrencyPage } from './pages/CurrencyPage/CurrencyPage';
 import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute';
 
 import Header from 'components/Header';
-import Loader from './components/Loader';
 
+
+// import RegistrationPage from './pages/RegistrationPage';
+// import LoginPage from './pages/LoginPage';
+// import DashboardPage from 'pages/DashboardPage';
+import Loader from './components/Loader';
 import NotFound from './components/NotFound';
 
-import Background from './pages/Background';
-
-import ButtonAddTransactions from 'components/ButtonAddTransactions';
-
-// import RegistrationPage from './pages/RegistrationPage';  // замена динамич. импорт
-// import LoginPage from './pages/LoginPage';  // замена динамич. импорт
-// import DashboardPage from 'pages/DashboardPage';  // замена динамич. импорт
 // import  HomeTab  from './pages/HomeTab/HomeTab'; // замена динамич. импорт
 // import CurrencyPage from './pages/CurrencyPage/CurrencyPage'; // замена динамич. импорт
 // import RegistrationPage from './pages/RegistrationPage'; // замена динамич. импорт
@@ -56,8 +43,8 @@ const DashboardPage = lazy(() =>
 
 function App() {
   //проверка на текущего пользователя (не удалять)
-  // const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
-  const isFetchingCurrentUser = true; //заглушка для рендера приватных роутов
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
+  // const isFetchingCurrentUser = true; //заглушка для рендера приватных роутов
 
   const dispatch = useDispatch();
 
@@ -67,25 +54,32 @@ function App() {
 
   return (
     <>
-      {isFetchingCurrentUser ? (
+      {/* {!isFetchingCurrentUser && ( */}
+      {!isFetchingCurrentUser ? (
         <>
-          <Suspense fallback={<h1>Loading...</h1>}>
+
+
+
+          {/* <Suspense fallback={<h1>Loading...</h1>}> */}
+          <Suspense fallback={<Loader />}>
+
             <Routes>
-              <Route path="/" exact element={<Navigate to="/home" />} />
+              {/* <Route path="/" exact element={<Navigate to="/home" />} /> */}
+              <Route path="/" exact element={<Navigate to="/login" />} />
               <Route
                 path="/login"
                 element={
-                  // <PublicRoute restricted>
-                  <PublicRoute>
+                  <PublicRoute restricted redirectTo="/home">
+                    {/* <PublicRoute> */}
                     <LoginPage />
                   </PublicRoute>
                 }
               />
               <Route
-                path="/register"
+                path="/signup"
                 element={
-                  // <PublicRoute restricted>
-                  <PublicRoute>
+                  <PublicRoute restricted redirectTo="/home">
+                    {/* // <PublicRoute> */}
                     <RegistrationPage />
                   </PublicRoute>
                 }
@@ -94,7 +88,6 @@ function App() {
                 path="/home"
                 element={
                   <PrivateRoute redirectTo="/login">
-                    <Header />
                     <HomeTab />
                   </PrivateRoute>
                 }
@@ -103,7 +96,9 @@ function App() {
                 path="/diagram"
                 element={
                   <PrivateRoute redirectTo="/login">
+
                     <Header />
+
                     <DashboardPage />
                   </PrivateRoute>
                 }
@@ -112,11 +107,11 @@ function App() {
                 path="/currency"
                 element={
                   <PrivateRoute redirectTo="/login">
-                    <Header />
                     <CurrencyPage />
                   </PrivateRoute>
                 }
               />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </>

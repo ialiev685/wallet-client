@@ -73,9 +73,9 @@ li {
 
 /* Mobile version */
 @media screen and (max-width: 767px) {
-  .container {
+  /* .container {
     padding: 0 20px;
-  }
+  } */
   .logo {
     width: 120px;
     height: 30px;
@@ -92,9 +92,9 @@ li {
 
 /* Tablet version */
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .container {
+  /* .container {
     padding: 0 40px;
-  }
+  } */
   .menuList {
     padding: 20px 0;
   }
@@ -102,9 +102,9 @@ li {
 
 /* Desktop version */
 @media screen and (min-width: 1280px) {
-  .container {
+  /* .container {
     padding: 0 85px;
-  }
+  } */
   .menuList {
     padding: 20px 0;
   }

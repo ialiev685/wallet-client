@@ -7,6 +7,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { dateFormatter } from '../../helpers/dateFormatter';
 import MobileTable from 'components/MobileTable';
 import TablePagination from '@mui/material/TablePagination';
 
@@ -86,7 +87,7 @@ const theme = createTheme({
   },
 });
 
-const TableTransaction = ({ data, titles }) => {
+const TableTransaction = ({ data, titles, className = '' }) => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -101,10 +102,14 @@ const TableTransaction = ({ data, titles }) => {
   return (
     <>
       <MediaQuery minWidth={320} maxWidth={767}>
-        <MobileTable data={data} titles={titles} />
+        <MobileTable
+          data={data}
+          titles={titles}
+          className={`${s.table} ${className}`}
+        />
       </MediaQuery>
       <MediaQuery minWidth={768}>
-        <div className={s.table}>
+        <div className={`${s.table} ${className}`}>
           <ThemeProvider theme={theme}>
             <TableContainer>
               <Table aria-label="simple table">
@@ -120,7 +125,7 @@ const TableTransaction = ({ data, titles }) => {
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map(
                       ({
-                        id,
+                        _id: id,
                         date,
                         transactionType,
                         category,
@@ -129,11 +134,13 @@ const TableTransaction = ({ data, titles }) => {
                         balance,
                       }) => (
                         <TableRow key={id}>
-                          <TableCell type="date">{date}</TableCell>
+                          <TableCell type="date">
+                            {dateFormatter(date)}
+                          </TableCell>
                           <TableCell align="center">
                             {transactionType ? '+' : '-'}
                           </TableCell>
-                          <TableCell>{category}</TableCell>
+                          <TableCell>{category.name}</TableCell>
                           <TableCell>{comment}</TableCell>
                           {!transactionType ? (
                             <TableCell

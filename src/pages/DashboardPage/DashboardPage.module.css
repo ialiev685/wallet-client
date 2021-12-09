@@ -71,6 +71,11 @@
 
     background-image: url('../../images/background-images/EllipseOneDesktop.png'),
       url('../../images/background-images/EllipseTwoDesktopDashboardPage.png');
+
+    /*
+    background-image: url('../../pictures/EllipseOneDesktop.png'),
+      url('../../pictures/EllipseTwoDesktopDashboardPage.png'); */
+
     background-position: 727px 0, -53px 430px;
   }
 
