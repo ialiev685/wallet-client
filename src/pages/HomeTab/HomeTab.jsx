@@ -21,6 +21,7 @@ const HomeTab = () => {
   });
 
   const transactions = useSelector(financeSelectors.data);
+  console.log(transactions);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -45,7 +46,7 @@ const HomeTab = () => {
               </div>
               <div className={s.rightSideBox}>
                 <TableTransaction
-                  data={transactions || []}
+                  data={TableData || []}
                   titles={TableTitleData}
                   className={s.table}
                 />

@@ -102,11 +102,7 @@ const TableTransaction = ({ data, titles, className = '' }) => {
   return (
     <>
       <MediaQuery minWidth={320} maxWidth={767}>
-        <MobileTable
-          data={data}
-          titles={titles}
-          className={`${s.table} ${className}`}
-        />
+        <MobileTable data={data} className={`${s.table} ${className}`} />
       </MediaQuery>
       <MediaQuery minWidth={768}>
         <div className={`${s.table} ${className}`}>
@@ -150,7 +146,7 @@ const TableTransaction = ({ data, titles, className = '' }) => {
                                 fontWeight: 'bold',
                               }}
                             >
-                              {sum}.00
+                              {sum}
                             </TableCell>
                           ) : (
                             <TableCell
@@ -160,11 +156,11 @@ const TableTransaction = ({ data, titles, className = '' }) => {
                                 fontWeight: 'bold',
                               }}
                             >
-                              {sum}.00
+                              {sum}
                             </TableCell>
                           )}
 
-                          <TableCell align="right">{balance}.00</TableCell>
+                          <TableCell align="right">{balance}</TableCell>
                         </TableRow>
                       ),
                     )}

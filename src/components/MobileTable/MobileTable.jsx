@@ -1,7 +1,5 @@
 import React from 'react';
 
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
@@ -68,7 +66,7 @@ const theme = createTheme({
     },
   },
 });
-const MobileTable = ({ data, titles, className = '' }) => {
+const MobileTable = ({ data, className = '' }) => {
   return (
     <div className={className}>
       <ul className={s.list}>
@@ -104,18 +102,13 @@ const MobileTable = ({ data, titles, className = '' }) => {
                 <TableContainer>
                   <Table>
                     <TableHead>
-                      <TableRow>
-                        {titles.map(({ key, title, type }) => (
-                          <>
-                            <TableCell
-                              key={`${id}${key}`}
-                              variant="head"
-                              type={type}
-                            >
-                              {title}
-                            </TableCell>
-                          </>
-                        ))}
+                      <TableRow variant="head">
+                        <TableCell type="date">Дата</TableCell>
+                        <TableCell type="boolean">Тип</TableCell>
+                        <TableCell>Категория</TableCell>
+                        <TableCell>Комментарий</TableCell>
+                        <TableCell type="number">Сумма</TableCell>
+                        <TableCell type="number">Баланс</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -131,7 +124,7 @@ const MobileTable = ({ data, titles, className = '' }) => {
                               fontWeight: 'bold',
                             }}
                           >
-                            {sum}.00
+                            {sum}
                           </TableCell>
                         ) : (
                           <TableCell
@@ -140,7 +133,7 @@ const MobileTable = ({ data, titles, className = '' }) => {
                               fontWeight: 'bold',
                             }}
                           >
-                            {sum}.00
+                            {sum}
                           </TableCell>
                         )}
                         <TableCell>{balance}</TableCell>
