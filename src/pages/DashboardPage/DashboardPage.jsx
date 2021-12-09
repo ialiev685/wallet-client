@@ -14,23 +14,27 @@ const DashboardPage = () => {
   });
 
   return (
-    <Background className={s.dashboardPage}>
-      <Header />
-      <Section className={s.transparentBackground}>
-        <Container className={s.container}>
-          <div className={s.border}></div>
-          <div className={s.leftSideBox}>
-            <div className={s.navEndBalance}>
-              <Navigation className={s.navigation} />
-              {!isMobile && <Balance className={s.balance} />}
+    <>
+      <Container>
+        <Header />
+      </Container>
+      <Background className={s.dashboardPage}>
+        <Section className={s.transparentBackground}>
+          <Container className={s.container}>
+            <div className={s.border}></div>
+            <div className={s.leftSideBox}>
+              <div className={s.navEndBalance}>
+                <Navigation className={s.navigation} />
+                {!isMobile && <Balance className={s.balance} />}
+              </div>
+              {!isMobile && <Currency className={s.currencyPosition} />}
             </div>
-            {!isMobile && <Currency className={s.currencyPosition} />}
-          </div>
 
-          {/* сюда вставить весь компонент со статистикой (за месяц, год) с классом rightSideBox */}
-        </Container>
-      </Section>
-    </Background>
+            {/* сюда вставить весь компонент со статистикой (за месяц, год) с классом rightSideBox */}
+          </Container>
+        </Section>
+      </Background>
+    </>
   );
 };
 

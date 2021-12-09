@@ -13,12 +13,17 @@ const CurrencyPage = () => {
   });
   return (
     <>
-      <Header />
+      <Container>
+        <Header />
+      </Container>
+
       <Section className={s.currencyBackground}>
         <Container>
           {isMobile ? (
             <>
-              <Navigation className={s.navigation} />
+              <div className={s.navigation}>
+                <Navigation />
+              </div>
               <Currency />
             </>
           ) : (

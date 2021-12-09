@@ -4,7 +4,7 @@ import Modal from '../Modal';
 import { ModalTransaction } from '../ModalTransaction';
 import s from './ButtonAddTransactions.module.css';
 
-function ButtonAddTransactions() {
+function ButtonAddTransactions({ className = '' }) {
   const showModal = useSelector(modalSelectors.getIsModal);
   const dispatch = useDispatch();
 
@@ -13,7 +13,7 @@ function ButtonAddTransactions() {
   return (
     <div className={buttonContainer}>
       <button
-        className={button}
+        className={`${button} ${className}`}
         type="button"
         onClick={() => dispatch(modalAction.openModal())}
       >
