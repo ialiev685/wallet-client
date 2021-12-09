@@ -4,7 +4,6 @@ import * as authOperations from './auth-operations';
 const initialState = {
   user: { name: null, email: null },
   token: null,
-  isAuth: false,
   isLoggedIn: false,
   isFetchingCurrentUser: false,
   isLoading: false,
@@ -21,7 +20,6 @@ const authSlice = createSlice({
       state.user = payload.user;
       state.token = payload.token;
       state.isLoggedIn = true;
-      state.isAuth = true;
       state.isLoading = false;
     },
     [authOperations.registerUser.rejected](state) {
@@ -35,7 +33,6 @@ const authSlice = createSlice({
       state.user = payload.user;
       state.token = payload.token;
       state.isLoggedIn = true;
-      state.isAuth = true;
       state.isLoading = false;
     },
     [authOperations.logInUser.rejected](state) {

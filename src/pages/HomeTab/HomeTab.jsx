@@ -1,42 +1,55 @@
 import { useMediaQuery } from 'react-responsive';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Navigation from 'components/Navigation';
 import Balance from 'components/Balance';
-import Currency from 'components/Currency/Сurrency';
+import Currency from 'components/Currency';
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 import Container from 'components/Container';
 import Section from 'components/Section';
 import Background from 'pages/Background';
 import TableTransaction from 'components/TableTransaction';
+import Header from 'components/Header';
+import { financeSelectors, financeOperations } from 'redux/finance';
 
 import { TableData, TableTitleData } from '../../data/tableData';
 import s from './HomeTab.module.css';
 
-export const HomeTab = () => {
+const HomeTab = () => {
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });
+
+  const transactions = useSelector(financeSelectors.data);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(financeOperations.fetchData());
+  }, [dispatch]);
   return (
     <>
+      <Container>
+        <Header />
+      </Container>
       <Background className={s.backdrop}>
         <Section className={s.hometabBackground}>
-          <Container>
+          <Container className={s.container}>
+            <div className={s.border}></div>
             <div className={s.hometab}>
               <div className={s.leftSideBox}>
                 <div>
-                  <div className={s.navigation}>
-                    <Navigation />
-                  </div>
-                  <div className={s.balance}>
-                    <Balance />
-                  </div>
+                  <Navigation className={s.navigation} />
+                  <Balance className={s.balance} />
                 </div>
                 {!isMobile && <Currency />}
               </div>
-              <div className={s.table}>
-                <TableTransaction data={TableData} titles={TableTitleData} />
-              </div>
-              <div className={s.btnAdd}>
-                <ButtonAddTransactions />
+              <div className={s.rightSideBox}>
+                <TableTransaction
+                  data={transactions || []}
+                  titles={TableTitleData}
+                  className={s.table}
+                />
+                <ButtonAddTransactions className={s.btnAdd} />
               </div>
             </div>
           </Container>
@@ -45,3 +58,5 @@ export const HomeTab = () => {
     </>
   );
 };
+
+export default HomeTab;

@@ -1,5 +1,5 @@
 import Modal from '../Modal';
-import s from './LogOutModal.module.css';
+import s from './LogoutModal.module.css';
 
 function LogOutModal(props) {
   const { logoutHandler, showModal, toggleModal } = props;

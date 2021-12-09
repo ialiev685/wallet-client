@@ -34,9 +34,9 @@ const theme = createTheme({
     MuiTableContainer: {
       styleOverrides: {
         root: {
-          borderRadius: 30,
-          backgroundColor: 'rgba(74, 86, 226, 1)',
-          boxShadow: '0px 0px 26px -6px rgba(0, 0, 0, 0.25)',
+          borderRadius: 'var(--border-radius-large)',
+          backgroundColor: 'var(--color-blue)',
+          boxShadow: '0px 0px 26px -6px var(--modal-background-color)',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'contain',
           backgroundPosition: 'bottom',
@@ -74,11 +74,11 @@ const theme = createTheme({
         root: {
           padding: '10px 10px 0px',
           border: 'none',
-          fontFamily: 'Circe, sans-serif',
+          fontFamily: 'var(--main-font-family-normal-w)',
           textAlign: 'center',
-          fontWeight: 400,
+          fontWeight: 'var(--font-weigth-norm)',
           fontSize: 16,
-          color: '#ffffff',
+          color: 'var(--color-white)',
           '@media (min-width:1280px)': {
             padding: '20px 10px 0px',
           },
@@ -86,9 +86,9 @@ const theme = createTheme({
 
         head: {
           padding: '11px 10px 12px',
-          fontWeight: 'bold',
+          fontWeight: 'var(--font-weigth-bold)',
           fontSize: 18,
-          lineHeight: 1.5,
+          lineHeight: 'var(--line-heigth-m)',
           letterSpacing: '0.03em',
           '@media (min-width:1280px)': {
             padding: '17px 10px 16px',
@@ -99,7 +99,7 @@ const theme = createTheme({
   },
 });
 
-export default function Currency() {
+export default function Currency({ className = '' }) {
   const [currency, setCurrency] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -127,7 +127,7 @@ export default function Currency() {
 
   return (
     <>
-      <div>
+      <div className={className}>
         {/*className={s.table_wrapper}*/}
         <ThemeProvider theme={theme}>
           <TableContainer>

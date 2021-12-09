@@ -7,7 +7,9 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { dateFormatter } from '../../helpers/dateFormatter';
 import MobileTable from 'components/MobileTable';
+import TablePagination from '@mui/material/TablePagination';
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import s from './TableTransaction.module.css';
@@ -32,7 +34,7 @@ const theme = createTheme({
         },
         head: {
           border: 0,
-          padding: '15px 27px 16px 27px',
+          padding: '15px 26px 16px 26px',
 
           fontFamily: 'var(--main-font-family)',
           fontStyle: 'normal',
@@ -52,7 +54,7 @@ const theme = createTheme({
             paddingRight: '20px',
           },
           '@media (min-width:1280px)': {
-            padding: '15px 29px 16px 28px',
+            padding: '15px 28px 16px 27px',
           },
         },
         body: {
@@ -85,14 +87,29 @@ const theme = createTheme({
   },
 });
 
-const TableTransaction = ({ data, titles }) => {
+const TableTransaction = ({ data, titles, className = '' }) => {
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
   return (
     <>
       <MediaQuery minWidth={320} maxWidth={767}>
-        <MobileTable data={data} titles={titles} />
+        <MobileTable
+          data={data}
+          titles={titles}
+          className={`${s.table} ${className}`}
+        />
       </MediaQuery>
       <MediaQuery minWidth={768}>
-        <div className={s.table}>
+        <div className={`${s.table} ${className}`}>
           <ThemeProvider theme={theme}>
             <TableContainer>
               <Table aria-label="simple table">
@@ -104,52 +121,65 @@ const TableTransaction = ({ data, titles }) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {data.map(
-                    ({
-                      id,
-                      date,
-                      transactionType,
-                      category,
-                      comment,
-                      sum,
-                      balance,
-                    }) => (
-                      <TableRow key={id}>
-                        <TableCell type="date">{date}</TableCell>
-                        <TableCell align="center">
-                          {transactionType ? '+' : '-'}
-                        </TableCell>
-                        <TableCell>{category}</TableCell>
-                        <TableCell>{comment}</TableCell>
-                        {!transactionType ? (
-                          <TableCell
-                            align="right"
-                            sx={{
-                              color: 'var(--color-pink)',
-                              fontWeight: 'bold',
-                            }}
-                          >
-                            {sum}.00
+                  {data
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map(
+                      ({
+                        _id: id,
+                        date,
+                        transactionType,
+                        category,
+                        comment,
+                        sum,
+                        balance,
+                      }) => (
+                        <TableRow key={id}>
+                          <TableCell type="date">
+                            {dateFormatter(date)}
                           </TableCell>
-                        ) : (
-                          <TableCell
-                            align="right"
-                            sx={{
-                              color: 'var(--color-green)',
-                              fontWeight: 'bold',
-                            }}
-                          >
-                            {sum}.00
+                          <TableCell align="center">
+                            {transactionType ? '+' : '-'}
                           </TableCell>
-                        )}
+                          <TableCell>{category.name}</TableCell>
+                          <TableCell>{comment}</TableCell>
+                          {!transactionType ? (
+                            <TableCell
+                              align="right"
+                              sx={{
+                                color: 'var(--color-pink)',
+                                fontWeight: 'bold',
+                              }}
+                            >
+                              {sum}.00
+                            </TableCell>
+                          ) : (
+                            <TableCell
+                              align="right"
+                              sx={{
+                                color: 'var(--color-green)',
+                                fontWeight: 'bold',
+                              }}
+                            >
+                              {sum}.00
+                            </TableCell>
+                          )}
 
-                        <TableCell align="right">{balance}.00</TableCell>
-                      </TableRow>
-                    ),
-                  )}
+                          <TableCell align="right">{balance}.00</TableCell>
+                        </TableRow>
+                      ),
+                    )}
                 </TableBody>
               </Table>
             </TableContainer>
+            <TablePagination
+              rowsPerPageOptions={[5, 10]}
+              component="div"
+              count={data.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
           </ThemeProvider>
         </div>
       </MediaQuery>
