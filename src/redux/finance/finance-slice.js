@@ -1,15 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchTransactionOperation } from './finance-operations';
 
-import { fetchTotalBalance, fetchData } from './finance-operations';
+import {
+  fetchTotalBalance,
+  fetchData,
+  fetchDataByCategory,
+  fetchDataByQuery,
+} from './finance-operations';
 
 const initialState = {
   // isFetchingTotalBalance: false,
   // isFetchingData: false,
   error: null,
   totalBalance: 0,
+
   // data: {},
   data: null,
+  dataByCategory: null,
   isLoading: false,
   dataNewTransaction: null,
   isErrorTransation: false,
@@ -72,6 +79,38 @@ const financeSlice = createSlice({
       state.errorMessage = payload;
       state.isErrorTransation = true;
     },
+
+    [fetchDataByCategory.pending](state) {
+      //спиннер ?
+      state.isLoading = true;
+      state.error = null;
+    },
+    [fetchDataByCategory.fulfilled](state, { payload }) {
+      state.dataByCategory = payload;
+      state.isLoading = false;
+      //спиннер ?
+    },
+    [fetchDataByCategory.rejected](state, { payload }) {
+      state.isLoading = false;
+      //спиннер ?
+      state.error = payload;
+    },
+
+    // [fetchDataByQuery.pending](state) {
+    //   //спиннер ?
+    //   state.isLoading = true;
+    //   state.error = null;
+    // },
+    // [fetchDataByCategory.fulfilled](state, { payload }) {
+    //   state.dataByCategory = payload;
+    //   state.isLoading = false;
+    //   //спиннер ?
+    // },
+    // [fetchDataByCategory.rejected](state, { payload }) {
+    //   state.isLoading = false;
+    //   //спиннер ?
+    //   state.error = payload;
+    // },
   },
 });
 
