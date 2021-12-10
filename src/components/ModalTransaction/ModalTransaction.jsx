@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { ToastContainer, toast } from 'react-toastify';
+// import { ToastifyError } from 'components/ToastyfyError/ToastifyError';
 import 'react-toastify/dist/ReactToastify.css';
 //селекторы
 import { financeSelectors } from 'redux/finance';
@@ -19,11 +20,7 @@ import NumberFormat from 'react-number-format';
 import { Checkbox } from 'components/Checkbox';
 import style from './ModalTransaction.module.css';
 //селект
-// import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import './GlobalCssSlider.css';
+import { SelectCategory } from 'components/SelectCategory';
 //кнопка
 import { ButtonWindow } from 'components/ButtonWindow';
 //модалка
@@ -33,25 +30,15 @@ import {
 } from 'redux/finance';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalAction } from 'redux/modal';
-//select
-import { SelectCategory } from 'components/SelectCategory';
-
-//нормализация даты
 
 const validation = Yup.object({
   transactionType: Yup.boolean(),
-  // category: Yup.number()
-  //   .min(1, 'Выбери категорию от 1 до 7 ')
-  //   .when('type_pay', {
-  //     is: false,
-  //     then: Yup.number().min(0),
-  //   }),
 
   category: Yup.mixed()
     .notOneOf(['Выберите категорию'], 'Выберите категорию')
     .when('transactionType', {
       is: false,
-      then: Yup.mixed().oneOf(['']),
+      then: Yup.mixed().oneOf(['Выберите категорию']),
     }),
 
   sum: Yup.number()
@@ -111,7 +98,6 @@ export const ModalTransaction = () => {
       sum: '',
       category: 'Выберите категорию',
       date: new Date(),
-
       comment: '',
     },
     validationSchema: validation,
@@ -122,7 +108,7 @@ export const ModalTransaction = () => {
 
       if (!values.transactionType) delete values.category;
       if (!values.comment) delete values.comment;
-      console.log(values);
+
       dispatch(fetchTransactionOperation(values));
 
       resetForm();
@@ -179,32 +165,6 @@ export const ModalTransaction = () => {
               name={'category'}
               value={formik.values.category}
             />
-            {/* <FormControl variant="standard" sx={{ m: 1, minWidth: 280 }}>
-              <Select
-                id="category"
-                value={formik.values.category}
-                name="category"
-                onChange={formik.handleChange}
-                className={[style.Modal__input, style.Modal__category].join(
-                  ' ',
-                )}
-              >
-                <MenuItem disabled value="Выберите категорию">
-                  Выберите категорию
-                </MenuItem>
-
-                <MenuItem value="61ad865bc505a94bdf06939f">Основной</MenuItem>
-                <MenuItem value="61ad87a7c505a94bdf0693a2">Еда</MenuItem>
-                <MenuItem value="61ad881ac505a94bdf0693a3">Авто</MenuItem>
-                <MenuItem value="61ad8b50c505a94bdf0693a7">Развитие</MenuItem>
-                <MenuItem value="61ad8719c505a94bdf0693a0">Дети</MenuItem>
-                <MenuItem value="61ad8892c505a94bdf0693a4">Дом</MenuItem>
-                <MenuItem value="61ad8aadc505a94bdf0693a5">
-                  Образование
-                </MenuItem>
-                <MenuItem value="Остальное">Остальное</MenuItem>
-              </Select>
-            </FormControl> */}
             {formik.touched.category && formik.errors.category ? (
               <div className={style.Modal__errorSelect}>
                 {formik.errors.category}

@@ -5,14 +5,19 @@ import { ReactComponent as ArrowIcon } from './arrow.svg';
 export const SelectCategory = props => {
   const { value, list, onChange, id = 'unknow', name = 'unknow' } = props;
 
-  const initValue = {
-    target: { value: 0, text: 'Выберите категорию', id, name },
-  };
-
   const [hiddenList, setHiddenList] = useState(true);
-  const [currentValue, setCurrentValue] = useState(initValue);
+  const [currentValue, setCurrentValue] = useState({
+    target: { value: 0, text: 'Выберите категорию' },
+  });
   const [currentColor, setCurrentColor] = useState(false);
   const wrapperRef = useRef();
+
+  useEffect(() => {
+    if (value === 'Выберите категорию') {
+      setCurrentValue({ target: { value: 0, text: 'Выберите категорию' } });
+      setCurrentColor(false);
+    }
+  }, [value]);
 
   useEffect(() => {
     if (!hiddenList) {
@@ -51,7 +56,7 @@ export const SelectCategory = props => {
       },
     };
 
-    if (newCurrentValue.value !== 0) setCurrentColor(true);
+    if (newCurrentValue.target.value !== 0) setCurrentColor(true);
     setCurrentValue(newCurrentValue);
     setHiddenList(true);
 
@@ -68,8 +73,8 @@ export const SelectCategory = props => {
           ].join(' ')}
           data-value={currentValue.target.value}
         >
-          {/* {currentValue.target.text} */}
-          {value}
+          {currentValue.target.text}
+          {/* {value} */}
         </span>
         <span
           className={[

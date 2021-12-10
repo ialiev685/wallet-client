@@ -19,7 +19,7 @@ import NotFound from './components/NotFound';
 // import CurrencyPage from './pages/CurrencyPage/CurrencyPage'; // замена динамич. импорт
 // import RegistrationPage from './pages/RegistrationPage'; // замена динамич. импорт
 // import LoginPage from './pages/LoginPage'; // замена динамич. импорт
-import { ModalTransaction } from 'components/ModalTransaction';
+
 const HomeTab = lazy(() =>
   import('./pages/HomeTab/HomeTab' /* webpackChunkName: "homeTab-page" */),
 );
@@ -54,7 +54,7 @@ function App() {
   return (
     <>
       {/* {!isFetchingCurrentUser && ( */}
-      <ModalTransaction />
+
       {!isFetchingCurrentUser ? (
         <>
           {/* <Suspense fallback={<h1>Loading...</h1>}> */}
