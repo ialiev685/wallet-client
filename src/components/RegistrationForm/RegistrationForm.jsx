@@ -12,6 +12,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import logo from 'images/icons/logo.svg';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import { ButtonWindow } from '../ButtonWindow/ButtonWindow';
+import { toast } from 'react-toastify';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -39,10 +40,14 @@ const RegistrationForm = ({ classPosition }) => {
         resetForm();
         const { name, email, password, passwordConfirm } = values;
         if (password !== passwordConfirm) {
-          alert('Пароль не совпадает, попробуйте ещё раз');
+          toast.error('Пароль не совпадает, попробуйте ещё раз!');
+          return;
+          // alert('Пароль не совпадает, попробуйте ещё раз');
         }
+        toast.success('Поздравляем, вы успешно зарегистрировались!');
         dispatch(registerUser({ name, email, password }));
         navigate('/login');
+        return;
       }}
     >
       {props => (
