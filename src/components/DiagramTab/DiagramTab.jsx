@@ -10,11 +10,14 @@ import s from './DiagramTab.module.css';
 export default function DiagramTab() {
   const dispatch = useDispatch();
   // const totalBalance = useSelector(financeSelectors.totalBalance);
-  const {
-    expenseStatistic: dataByCategory,
-    expenseBalance,
-    incomeBalance,
-  } = useSelector(financeSelectors.dataByCategory);
+
+  // const {
+  //   expenseStatistic: dataByCategory,
+  //   expenseBalance,
+  //   incomeBalance,
+  // } = useSelector(financeSelectors.dataByCategory);
+
+  const dataStatBal = useSelector(financeSelectors.dataByCategory);
 
   useEffect(() => {
     dispatch(financeOperations.fetchDataByCategory());
@@ -38,26 +41,32 @@ export default function DiagramTab() {
         <div className={s.chart}>
           <div className={s.balance}>
             <span>₴</span>
-            {incomeBalance - expenseBalance}
+            {dataStatBal &&
+              dataStatBal.incomeBalance - dataStatBal.expenseBalance}
           </div>
-          <Chart operations={dataByCategory} />
+          {dataStatBal && <Chart operations={dataStatBal.expenseStatistic} />}
         </div>
         <div className={s.container}>
           <div className={s.filter}>
             <Filter />
           </div>
-          <TableStatistic titles={titles} data={dataByCategory} />
+          {dataStatBal && (
+            <TableStatistic
+              titles={titles}
+              data={dataStatBal.expenseStatistic}
+            />
+          )}
           <div className={s.holder}>
             <div className={s.result}>
               <span>Расходы:</span>
               <span className={s.costs}>
-                {expenseBalance.toLocaleString('ru')}
+                {dataStatBal & dataStatBal.expenseBalance.toLocaleString('ru')}
               </span>
             </div>
             <div className={s.result}>
               <span>Доходы:</span>
               <span className={s.income}>
-                {incomeBalance.toLocaleString('ru')}
+                {dataStatBal && dataStatBal.incomeBalance.toLocaleString('ru')}
               </span>
             </div>
           </div>

@@ -56,13 +56,15 @@ const HomeTab = () => {
                 {!isMobile && <Currency />}
               </div>
               <div className={s.rightSideBox}>
-                <TableTransaction
-                  numberPage={page}
-                  data={transactions || []}
-                  titles={TableTitleData}
-                  className={s.table}
-                  onPage={handlerControlPage}
-                />
+                {transactions && (
+                  <TableTransaction
+                    numberPage={page}
+                    data={transactions || []}
+                    titles={TableTitleData}
+                    className={s.table}
+                    onPage={handlerControlPage}
+                  />
+                )}
                 <ButtonAddTransactions className={s.btnAdd} />
               </div>
             </div>
