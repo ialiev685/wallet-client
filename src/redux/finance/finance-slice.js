@@ -84,7 +84,6 @@ const financeSlice = createSlice({
       state.isErrorTransation = true;
     },
 
-
     [fetchDataByCategory.pending](state) {
       //спиннер ?
       state.isLoading = true;
@@ -115,7 +114,7 @@ const financeSlice = createSlice({
       state.isLoading = false;
       //спиннер ?
       state.error = payload;
-
+    },
     [fetchTransactionCategory.pending](state) {
       state.isErrorTransation = false;
       state.errorMessage = null;
@@ -131,7 +130,6 @@ const financeSlice = createSlice({
       state.isLoading = false;
       state.errorMessage = payload;
       state.isErrorTransation = true;
-
     },
   },
 });
