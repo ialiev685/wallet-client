@@ -99,14 +99,14 @@ export const fetchTransactionCategory = createAsyncThunk(
 
 export const fetchData = createAsyncThunk(
   'finance/fetchData',
-  async (_, { getState, rejectWithValue }) => {
+  async (page, { getState, rejectWithValue }) => {
     const state = getState();
     const persistedToken = state.auth.token;
     // const persistedToken = tmpToken;
 
     if (persistedToken !== null) {
       try {
-        const data = await API.fetchData();
+        const data = await API.fetchData(page);
         return data;
       } catch (error) {
         return rejectWithValue(error.message);

@@ -17,9 +17,11 @@ async function fetchTotalBalance() {
   const balance = info.data.data.balance;
   return balance;
 }
-async function fetchData() {
-  const data = await axios.get('/transactions');
-  const transactions = data.data.userTransactions.transactions;
+
+async function fetchData(page) {
+  const data = await axios.get(`/transactions?page=${page}`);
+
+  const transactions = data.data.userTransactions;
   return transactions;
 }
 
