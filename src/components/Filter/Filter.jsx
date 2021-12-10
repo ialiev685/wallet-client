@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -6,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import InputBase from '@mui/material/InputBase';
+import { financeOperations } from 'redux/finance';
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
   'label + &': {
@@ -41,8 +43,19 @@ const MenuProps = {
 };
 
 export default function CustomizedSelects() {
+  const dispatch = useDispatch();
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
+
+  useEffect(() => {
+    if (month && year) {
+      dispatch(financeOperations.fetchDataByQuery({ month, year }));
+    }
+    if (year) {
+      dispatch(financeOperations.fetchDataByQuery({ month, year }));
+    }
+  }, [dispatch, month, year]);
+
   const handleChange = event => {
     const { name, value } = event.target;
 

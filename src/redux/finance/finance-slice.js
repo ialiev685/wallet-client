@@ -96,21 +96,21 @@ const financeSlice = createSlice({
       state.error = payload;
     },
 
-    // [fetchDataByQuery.pending](state) {
-    //   //спиннер ?
-    //   state.isLoading = true;
-    //   state.error = null;
-    // },
-    // [fetchDataByCategory.fulfilled](state, { payload }) {
-    //   state.dataByCategory = payload;
-    //   state.isLoading = false;
-    //   //спиннер ?
-    // },
-    // [fetchDataByCategory.rejected](state, { payload }) {
-    //   state.isLoading = false;
-    //   //спиннер ?
-    //   state.error = payload;
-    // },
+    [fetchDataByQuery.pending](state) {
+      //спиннер ?
+      state.isLoading = true;
+      state.error = null;
+    },
+    [fetchDataByQuery.fulfilled](state, { payload }) {
+      state.dataByCategory = payload;
+      state.isLoading = false;
+      //спиннер ?
+    },
+    [fetchDataByQuery.rejected](state, { payload }) {
+      state.isLoading = false;
+      //спиннер ?
+      state.error = payload;
+    },
   },
 });
 

@@ -9,7 +9,7 @@ import s from './DiagramTab.module.css';
 
 export default function DiagramTab() {
   const dispatch = useDispatch();
-  const totalBalance = useSelector(financeSelectors.totalBalance);
+  // const totalBalance = useSelector(financeSelectors.totalBalance);
   const {
     expenseStatistic: dataByCategory,
     expenseBalance,
@@ -20,10 +20,8 @@ export default function DiagramTab() {
     dispatch(financeOperations.fetchDataByCategory());
   }, [dispatch]);
 
-  // console.log('dataByCategoryDiaTab', dataByCategory);
-
-  const expense = expenseBalance;
-  const income = incomeBalance;
+  // const expense = expenseBalance;
+  // const income = incomeBalance;
   const titles = [
     { key: 1, title: 'Категория' },
     { key: 2, title: 'Сумма' },
@@ -40,9 +38,9 @@ export default function DiagramTab() {
         <div className={s.chart}>
           <div className={s.balance}>
             <span>₴</span>
-            {totalBalance}
+            {incomeBalance - expenseBalance}
           </div>
-          <Chart />
+          <Chart operations={dataByCategory} />
         </div>
         <div className={s.container}>
           <div className={s.filter}>
@@ -51,12 +49,16 @@ export default function DiagramTab() {
           <TableStatistic titles={titles} data={dataByCategory} />
           <div className={s.holder}>
             <div className={s.result}>
-              <span>Расходы:</span>{' '}
-              <span className={s.costs}>{expense.toLocaleString('uk-UA')}</span>
+              <span>Расходы:</span>
+              <span className={s.costs}>
+                {expenseBalance.toLocaleString('ru')}
+              </span>
             </div>
             <div className={s.result}>
-              <span>Доходы:</span>{' '}
-              <span className={s.income}>{income.toLocaleString('uk-UA')}</span>
+              <span>Доходы:</span>
+              <span className={s.income}>
+                {incomeBalance.toLocaleString('ru')}
+              </span>
             </div>
           </div>
         </div>
