@@ -114,3 +114,27 @@ export const fetchData = createAsyncThunk(
     }
   },
 );
+
+export const fetchDataByCategory = createAsyncThunk(
+  'finance/fetchDataByCategory',
+  async (_, { rejectWithValue }) => {
+    try {
+      const dataByCategory = await API.fetchDataByCategory();
+      return dataByCategory;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const fetchDataByQuery = createAsyncThunk(
+  'finance/fetchDataByQuery',
+  async ({ month, year }, { rejectWithValue }) => {
+    try {
+      const dataByQuery = await API.fetchDataByQuery({ month, year });
+      return dataByQuery;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);

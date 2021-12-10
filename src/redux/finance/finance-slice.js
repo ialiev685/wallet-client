@@ -4,15 +4,22 @@ import {
   fetchTransactionCategory,
 } from './finance-operations';
 
-import { fetchTotalBalance, fetchData } from './finance-operations';
+import {
+  fetchTotalBalance,
+  fetchData,
+  fetchDataByCategory,
+  fetchDataByQuery,
+} from './finance-operations';
 
 const initialState = {
   // isFetchingTotalBalance: false,
   // isFetchingData: false,
   error: null,
   totalBalance: 0,
+
   // data: {},
   data: null,
+  dataByCategory: null,
   isLoading: false,
   dataNewTransaction: null,
   listCategories: [],
@@ -77,6 +84,38 @@ const financeSlice = createSlice({
       state.isErrorTransation = true;
     },
 
+
+    [fetchDataByCategory.pending](state) {
+      //спиннер ?
+      state.isLoading = true;
+      state.error = null;
+    },
+    [fetchDataByCategory.fulfilled](state, { payload }) {
+      state.dataByCategory = payload;
+      state.isLoading = false;
+      //спиннер ?
+    },
+    [fetchDataByCategory.rejected](state, { payload }) {
+      state.isLoading = false;
+      //спиннер ?
+      state.error = payload;
+    },
+
+    [fetchDataByQuery.pending](state) {
+      //спиннер ?
+      state.isLoading = true;
+      state.error = null;
+    },
+    [fetchDataByQuery.fulfilled](state, { payload }) {
+      state.dataByCategory = payload;
+      state.isLoading = false;
+      //спиннер ?
+    },
+    [fetchDataByQuery.rejected](state, { payload }) {
+      state.isLoading = false;
+      //спиннер ?
+      state.error = payload;
+
     [fetchTransactionCategory.pending](state) {
       state.isErrorTransation = false;
       state.errorMessage = null;
@@ -92,6 +131,7 @@ const financeSlice = createSlice({
       state.isLoading = false;
       state.errorMessage = payload;
       state.isErrorTransation = true;
+
     },
   },
 });
