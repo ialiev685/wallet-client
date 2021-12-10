@@ -8,10 +8,16 @@ import s from './Balance.module.css';
 const Balance = ({ className = '' }) => {
   const sign = String.fromCharCode(8372);
   const totalBalance = useSelector(financeSelectors.totalBalance);
+  const transactions = useSelector(financeSelectors.data);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(financeOperations.fetchTotalBalance());
-  }, [dispatch]);
+    // if (transactions.length > 0) {
+    if (!totalBalance) {
+      dispatch(financeOperations.fetchTotalBalance());
+    }
+    // }
+  }, [dispatch, totalBalance, transactions]);
+  // }, [dispatch]);
 
   return (
     <div className={`${s.balanceBox} ${className}`}>

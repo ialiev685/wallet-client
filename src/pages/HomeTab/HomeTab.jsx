@@ -13,7 +13,6 @@ import TableTransaction from 'components/TableTransaction';
 import Header from 'components/Header';
 import { financeSelectors, financeOperations } from 'redux/finance';
 
-
 import { TableData, TableTitleData } from '../../data/tableData';
 import s from './HomeTab.module.css';
 
@@ -23,19 +22,21 @@ const HomeTab = () => {
   });
 
   const transactions = useSelector(financeSelectors.data);
+  const newTransactions = useSelector(financeSelectors.dataNewTransaction);
 
   const dispatch = useDispatch();
   useEffect(() => {
+    // if (newTransactions) {
     dispatch(financeOperations.fetchData());
-  }, [dispatch]);
+
+    // }
+  }, [dispatch, newTransactions]);
   return (
     <>
-
       <Container>
         <Header />
       </Container>
       <Background className={s.backdrop}>
-
         <Section className={s.hometabBackground}>
           <Container className={s.container}>
             <div className={s.border}></div>
@@ -49,7 +50,8 @@ const HomeTab = () => {
               </div>
               <div className={s.rightSideBox}>
                 <TableTransaction
-                  data={transactions || []}
+                  // data={transactions || []}
+                  data={transactions}
                   titles={TableTitleData}
                   className={s.table}
                 />

@@ -1,8 +1,11 @@
 .backdrop {
+  background: var(--page-background-color);
   backdrop-filter: var(--backdrop-filter);
   height: 100%;
 }
 .hometabBackground {
+  /* background: var(--page-background-color); */
+  /* background: var(--background-color) var(--third-grey-color); */
   background-color: var(--background-color);
   backdrop-filter: var(--backdrop-filter);
   height: 100vh;
