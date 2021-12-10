@@ -67,7 +67,7 @@ const theme = createTheme({
   },
 });
 
-const MobileTable = ({ data, titles, className = '' }) => {
+const MobileTable = ({ data, className = '' }) => {
   return (
     <div className={className}>
       <ul className={s.list}>
