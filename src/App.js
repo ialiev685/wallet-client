@@ -9,6 +9,7 @@ import PublicRoute from './components/ProtectedRoute/PublicRoute';
 
 import Header from 'components/Header';
 
+
 // import RegistrationPage from './pages/RegistrationPage';
 // import LoginPage from './pages/LoginPage';
 // import DashboardPage from 'pages/DashboardPage';
@@ -53,12 +54,12 @@ function App() {
 
   return (
     <>
-      {/* {!isFetchingCurrentUser && ( */}
-
-      {!isFetchingCurrentUser ? (
+      {/* {!isFetchingCurrentUser ? ( */}
+      {!isFetchingCurrentUser && (
         <>
-          {/* <Suspense fallback={<h1>Loading...</h1>}> */}
+
           <Suspense fallback={<Loader />}>
+
             <Routes>
               {/* <Route path="/" exact element={<Navigate to="/home" />} /> */}
               <Route path="/" exact element={<Navigate to="/login" />} />
@@ -74,7 +75,7 @@ function App() {
               <Route
                 path="/signup"
                 element={
-                  <PublicRoute restricted redirectTo="/home">
+                  <PublicRoute restricted redirectTo="/login">
                     {/* // <PublicRoute> */}
                     <RegistrationPage />
                   </PublicRoute>
@@ -92,6 +93,9 @@ function App() {
                 path="/diagram"
                 element={
                   <PrivateRoute redirectTo="/login">
+
+                    <Header />
+
                     <DashboardPage />
                   </PrivateRoute>
                 }
@@ -108,8 +112,6 @@ function App() {
             </Routes>
           </Suspense>
         </>
-      ) : (
-        <Header />
       )}
 
       <Loader />
