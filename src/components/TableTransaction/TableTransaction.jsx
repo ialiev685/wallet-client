@@ -9,10 +9,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { dateFormatter } from '../../helpers/dateFormatter';
 import MobileTable from 'components/MobileTable';
-import TablePagination from '@mui/material/TablePagination';
-
+import Pagination from '@mui/material/Pagination';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import s from './TableTransaction.module.css';
 
 const theme = createTheme({
   components: {
@@ -87,29 +85,22 @@ const theme = createTheme({
   },
 });
 
-const TableTransaction = ({ data, titles, className = '' }) => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+const TableTransaction = ({
+  numberPage,
+  onPage,
+  data,
+  titles,
+  className = '',
+}) => {
+  const { transactions, totalPages } = data;
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = event => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
   return (
     <>
       <MediaQuery minWidth={320} maxWidth={767}>
-        <MobileTable
-          data={data}
-          titles={titles}
-          className={`${s.table} ${className}`}
-        />
+        <MobileTable data={transactions} className={`${className}`} />
       </MediaQuery>
       <MediaQuery minWidth={768}>
-        <div className={`${s.table} ${className}`}>
+        <div className={`${className}`}>
           <ThemeProvider theme={theme}>
             <TableContainer>
               <Table aria-label="simple table">
@@ -121,65 +112,58 @@ const TableTransaction = ({ data, titles, className = '' }) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {data
-                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map(
-                      ({
-                        _id: id,
-                        date,
-                        transactionType,
-                        category,
-                        comment,
-                        sum,
-                        balance,
-                      }) => (
-                        <TableRow key={id}>
-                          <TableCell type="date">
-                            {dateFormatter(date)}
+                  {transactions.map(
+                    ({
+                      _id: id,
+                      date,
+                      transactionType,
+                      category,
+                      comment,
+                      sum,
+                      balance,
+                    }) => (
+                      <TableRow key={id}>
+                        <TableCell type="date">{dateFormatter(date)}</TableCell>
+                        <TableCell align="center">
+                          {transactionType ? '-' : '+'}
+                        </TableCell>
+                        <TableCell>{category.name}</TableCell>
+                        <TableCell>{comment}</TableCell>
+                        {transactionType ? (
+                          <TableCell
+                            align="right"
+                            sx={{
+                              color: 'var(--color-pink)',
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            {sum}
                           </TableCell>
-                          <TableCell align="center">
-                            {transactionType ? '+' : '-'}
+                        ) : (
+                          <TableCell
+                            align="right"
+                            sx={{
+                              color: 'var(--color-green)',
+                              fontWeight: 'bold',
+                            }}
+                          >
+                            {sum}
                           </TableCell>
-                          <TableCell>{category.name}</TableCell>
-                          <TableCell>{comment}</TableCell>
-                          {!transactionType ? (
-                            <TableCell
-                              align="right"
-                              sx={{
-                                color: 'var(--color-pink)',
-                                fontWeight: 'bold',
-                              }}
-                            >
-                              {sum}.00
-                            </TableCell>
-                          ) : (
-                            <TableCell
-                              align="right"
-                              sx={{
-                                color: 'var(--color-green)',
-                                fontWeight: 'bold',
-                              }}
-                            >
-                              {sum}.00
-                            </TableCell>
-                          )}
-
-                          <TableCell align="right">{balance}.00</TableCell>
-                        </TableRow>
-                      ),
-                    )}
+                        )}
+                        <TableCell align="right">{balance}</TableCell>
+                      </TableRow>
+                    ),
+                  )}
                 </TableBody>
               </Table>
             </TableContainer>
-            <TablePagination
-              rowsPerPageOptions={[5, 10]}
-              component="div"
-              count={data.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-            />
+            {!!totalPages && (
+              <Pagination
+                count={totalPages}
+                page={numberPage}
+                onChange={(_, num) => onPage(num)}
+              />
+            )}
           </ThemeProvider>
         </div>
       </MediaQuery>
