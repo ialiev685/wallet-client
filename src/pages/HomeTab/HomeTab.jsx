@@ -13,7 +13,6 @@ import TableTransaction from 'components/TableTransaction';
 import Header from 'components/Header';
 import { financeSelectors, financeOperations } from 'redux/finance';
 
-
 import { TableData, TableTitleData } from '../../data/tableData';
 import s from './HomeTab.module.css';
 
@@ -30,12 +29,10 @@ const HomeTab = () => {
   }, [dispatch]);
   return (
     <>
-
       <Container>
         <Header />
       </Container>
       <Background className={s.backdrop}>
-
         <Section className={s.hometabBackground}>
           <Container className={s.container}>
             <div className={s.border}></div>

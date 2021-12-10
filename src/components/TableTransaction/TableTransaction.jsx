@@ -88,6 +88,7 @@ const theme = createTheme({
 });
 
 const TableTransaction = ({ data, titles, className = '' }) => {
+  console.log(data);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -138,11 +139,11 @@ const TableTransaction = ({ data, titles, className = '' }) => {
                             {dateFormatter(date)}
                           </TableCell>
                           <TableCell align="center">
-                            {transactionType ? '+' : '-'}
+                            {transactionType ? '-' : '+'}
                           </TableCell>
                           <TableCell>{category.name}</TableCell>
                           <TableCell>{comment}</TableCell>
-                          {!transactionType ? (
+                          {transactionType ? (
                             <TableCell
                               align="right"
                               sx={{
@@ -150,7 +151,7 @@ const TableTransaction = ({ data, titles, className = '' }) => {
                                 fontWeight: 'bold',
                               }}
                             >
-                              {sum}.00
+                              {sum}
                             </TableCell>
                           ) : (
                             <TableCell
@@ -160,11 +161,11 @@ const TableTransaction = ({ data, titles, className = '' }) => {
                                 fontWeight: 'bold',
                               }}
                             >
-                              {sum}.00
+                              {sum}
                             </TableCell>
                           )}
 
-                          <TableCell align="right">{balance}.00</TableCell>
+                          <TableCell align="right">{balance}</TableCell>
                         </TableRow>
                       ),
                     )}

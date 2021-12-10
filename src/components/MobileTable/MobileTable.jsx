@@ -1,7 +1,5 @@
 import React from 'react';
 
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
@@ -68,6 +66,7 @@ const theme = createTheme({
     },
   },
 });
+
 const MobileTable = ({ data, titles, className = '' }) => {
   return (
     <div className={className}>
@@ -83,7 +82,7 @@ const MobileTable = ({ data, titles, className = '' }) => {
             balance,
           }) => (
             <li key={id} className={s.card}>
-              {!transactionType ? (
+              {transactionType ? (
                 <Box
                   sx={{
                     width: 5,
@@ -100,38 +99,34 @@ const MobileTable = ({ data, titles, className = '' }) => {
                   }}
                 />
               )}
+
               <ThemeProvider theme={theme}>
                 <TableContainer>
                   <Table>
                     <TableHead>
-                      <TableRow>
-                        {titles.map(({ key, title, type }) => (
-                          <>
-                            <TableCell
-                              key={`${id}${key}`}
-                              variant="head"
-                              type={type}
-                            >
-                              {title}
-                            </TableCell>
-                          </>
-                        ))}
+                      <TableRow variant="head">
+                        <TableCell type="date">Дата</TableCell>
+                        <TableCell type="boolean">Тип</TableCell>
+                        <TableCell>Категория</TableCell>
+                        <TableCell>Комментарий</TableCell>
+                        <TableCell type="number">Сумма</TableCell>
+                        <TableCell type="number">Баланс</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       <TableRow key={`${id}${date}`}>
                         <TableCell>{dateFormatter(date)}</TableCell>
-                        <TableCell>{transactionType ? '+' : '-'}</TableCell>
+                        <TableCell>{transactionType ? '-' : '+'}</TableCell>
                         <TableCell>{category.name}</TableCell>
                         <TableCell>{comment}</TableCell>
-                        {!transactionType ? (
+                        {transactionType ? (
                           <TableCell
                             sx={{
                               color: 'var(--color-pink)',
                               fontWeight: 'bold',
                             }}
                           >
-                            {sum}.00
+                            {sum}
                           </TableCell>
                         ) : (
                           <TableCell
@@ -140,7 +135,7 @@ const MobileTable = ({ data, titles, className = '' }) => {
                               fontWeight: 'bold',
                             }}
                           >
-                            {sum}.00
+                            {sum}
                           </TableCell>
                         )}
                         <TableCell>{balance}</TableCell>
