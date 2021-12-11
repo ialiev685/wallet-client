@@ -97,7 +97,13 @@ const TableTransaction = ({
   return (
     <>
       <MediaQuery minWidth={320} maxWidth={767}>
-        <MobileTable data={transactions} className={`${className}`} />
+        <MobileTable
+          data={transactions}
+          onPage={onPage}
+          numberPage={numberPage}
+          totalPages={totalPages}
+          className={`${className}`}
+        />
       </MediaQuery>
       <MediaQuery minWidth={768}>
         <div className={`${className}`}>
