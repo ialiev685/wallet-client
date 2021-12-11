@@ -7,11 +7,11 @@ const initialState = {
   // isFetchingTotalBalance: false,
   // isFetchingData: false,
   error: null,
-  // totalBalance: null,
-  totalBalance: 0,
+  totalBalance: null,
+  // totalBalance: 0,
   // data: {},
-  data: [],
-  // data: null,
+  // data: [],
+  data: null,
   isLoading: false,
   dataNewTransaction: null,
   isErrorTransation: false,
@@ -28,6 +28,7 @@ const financeSlice = createSlice({
       state.error = null;
     },
     [fetchTotalBalance.fulfilled](state, { payload }) {
+      // console.log(payload);
       state.totalBalance = payload;
       // state.isFetchingTotalBalance = false;
       state.isLoading = false;

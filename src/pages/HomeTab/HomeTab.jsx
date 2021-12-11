@@ -26,10 +26,7 @@ const HomeTab = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    // if (newTransactions) {
     dispatch(financeOperations.fetchData());
-
-    // }
   }, [dispatch, newTransactions]);
   return (
     <>
@@ -50,8 +47,8 @@ const HomeTab = () => {
               </div>
               <div className={s.rightSideBox}>
                 <TableTransaction
-                  // data={transactions || []}
-                  data={transactions}
+                  data={transactions || []}
+                  // data={transactions}
                   titles={TableTitleData}
                   className={s.table}
                 />

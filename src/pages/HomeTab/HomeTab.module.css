@@ -1,11 +1,8 @@
 .backdrop {
-  background: var(--page-background-color);
   backdrop-filter: var(--backdrop-filter);
   height: 100%;
 }
 .hometabBackground {
-  /* background: var(--page-background-color); */
-  /* background: var(--background-color) var(--third-grey-color); */
   background-color: var(--background-color);
   backdrop-filter: var(--backdrop-filter);
   height: 100vh;
@@ -39,10 +36,14 @@
   right: 0;
 }
 
+@media screen and (max-width: 767px) {
+  .hometabBackground {
+    background: var(--page-background-color);
+  }
+}
 @media screen and (min-width: 768px) {
   .hometabBackground {
-    /* background-color: transparent; */
-    backdrop-filter: var(--backdrop-filter);
+    background-color: transparent;
     height: 944px;
   }
   .navigation {
