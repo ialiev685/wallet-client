@@ -60,7 +60,7 @@ export default function DiagramTab() {
             <div className={s.result}>
               <span>Расходы:</span>
               <span className={s.costs}>
-                {dataStatBal & dataStatBal.expenseBalance.toLocaleString('ru')}
+                {dataStatBal && dataStatBal.expenseBalance.toLocaleString('ru')}
               </span>
             </div>
             <div className={s.result}>

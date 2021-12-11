@@ -36,10 +36,14 @@
   right: 0;
 }
 
+@media screen and (max-width: 767px) {
+  .hometabBackground {
+    background: var(--page-background-color);
+  }
+}
 @media screen and (min-width: 768px) {
   .hometabBackground {
-    /* background-color: transparent; */
-    backdrop-filter: var(--backdrop-filter);
+    background-color: transparent;
     height: 944px;
   }
   .navigation {

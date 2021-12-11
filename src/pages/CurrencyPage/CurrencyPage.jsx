@@ -5,6 +5,7 @@ import Currency from 'components/Currency';
 import Container from 'components/Container';
 import Section from 'components/Section';
 import Header from 'components/Header';
+import Background from 'pages/Background';
 import s from './CurrencyPage.module.css';
 
 const CurrencyPage = () => {
@@ -16,21 +17,22 @@ const CurrencyPage = () => {
       <Container>
         <Header />
       </Container>
-
-      <Section className={s.currencyBackground}>
-        <Container>
-          {isMobile ? (
-            <>
-              <div className={s.navigation}>
-                <Navigation />
-              </div>
-              <Currency />
-            </>
-          ) : (
-            <Navigate to="/home" />
-          )}
-        </Container>
-      </Section>
+      <Background className={s.backdrop}>
+        <Section className={s.currencyBackground}>
+          <Container>
+            {isMobile ? (
+              <>
+                <div className={s.navigation}>
+                  <Navigation />
+                </div>
+                <Currency />
+              </>
+            ) : (
+              <Navigate to="/home" />
+            )}
+          </Container>
+        </Section>
+      </Background>
     </>
   );
 };

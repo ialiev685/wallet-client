@@ -22,6 +22,8 @@ const HomeTab = () => {
   });
 
   const transactions = useSelector(financeSelectors.data);
+  const newTransactions = useSelector(financeSelectors.dataNewTransaction);
+
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
 
@@ -35,8 +37,10 @@ const HomeTab = () => {
   };
 
   useEffect(() => {
+    //   dispatch(financeOperations.fetchData());
+    // }, [dispatch, newTransactions]);
     fetchDataForTable(page);
-  }, [dispatch, fetchDataForTable, page]);
+  }, [dispatch, fetchDataForTable, page, newTransactions]);
 
   return (
     <>

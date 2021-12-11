@@ -112,7 +112,7 @@ const TableTransaction = ({
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {transactions.map(
+                  {transactions?.map(
                     ({
                       _id: id,
                       date,

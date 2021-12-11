@@ -7,7 +7,7 @@ import { authOperations, authSelectors } from 'redux/auth';
 import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute';
 
-import Header from 'components/Header';
+// import Header from 'components/Header';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -16,6 +16,8 @@ import 'react-toastify/dist/ReactToastify.css';
 // import DashboardPage from 'pages/DashboardPage';
 import Loader from './components/Loader';
 import NotFound from './components/NotFound';
+// import { useLocation, useNavigate } from 'react-router-dom';
+// import Section from 'components/Section';
 
 // import  HomeTab  from './pages/HomeTab/HomeTab'; // замена динамич. импорт
 // import CurrencyPage from './pages/CurrencyPage/CurrencyPage'; // замена динамич. импорт
@@ -43,9 +45,7 @@ const DashboardPage = lazy(() =>
 );
 
 function App() {
-  //проверка на текущего пользователя (не удалять)
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
-  // const isFetchingCurrentUser = true; //заглушка для рендера приватных роутов
 
   const dispatch = useDispatch();
 
@@ -55,32 +55,32 @@ function App() {
 
   return (
     <>
-      {/* {!isFetchingCurrentUser ? ( */}
-      {!isFetchingCurrentUser && (
+      {isFetchingCurrentUser ? (
+        <Loader />
+      ) : (
         <>
           <Suspense fallback={<Loader />}>
             <Routes>
-              {/* <Route path="/" exact element={<Navigate to="/home" />} /> */}
               <Route path="/" exact element={<Navigate to="/login" />} />
               <Route
-                path="/login"
+                path="/diagram"
                 element={
-                  <PublicRoute restricted redirectTo="/home">
-                    {/* <PublicRoute> */}
-                    <LoginPage />
-                  </PublicRoute>
+                  <PrivateRoute redirectTo="/login">
+                    <DashboardPage />
+                  </PrivateRoute>
                 }
               />
               <Route
-                path="/signup"
+                exact
+                path="/currency"
                 element={
-                  <PublicRoute restricted redirectTo="/login">
-                    {/* // <PublicRoute> */}
-                    <RegistrationPage />
-                  </PublicRoute>
+                  <PrivateRoute redirectTo="/login">
+                    <CurrencyPage />
+                  </PrivateRoute>
                 }
               />
               <Route
+                exact
                 path="/home"
                 element={
                   <PrivateRoute redirectTo="/login">
@@ -89,21 +89,20 @@ function App() {
                 }
               />
               <Route
-                path="/diagram"
+                exact
+                path="/login"
                 element={
-                  <PrivateRoute redirectTo="/login">
-                    <Header />
-
-                    <DashboardPage />
-                  </PrivateRoute>
+                  <PublicRoute restricted>
+                    <LoginPage />
+                  </PublicRoute>
                 }
               />
               <Route
-                path="/currency"
+                path="/signup"
                 element={
-                  <PrivateRoute redirectTo="/login">
-                    <CurrencyPage />
-                  </PrivateRoute>
+                  <PublicRoute restricted>
+                    <RegistrationPage />
+                  </PublicRoute>
                 }
               />
               <Route path="*" element={<NotFound />} />
@@ -112,7 +111,6 @@ function App() {
           <ToastContainer autoClose={2000} />
         </>
       )}
-
       <Loader />
     </>
   );

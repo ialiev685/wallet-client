@@ -57,6 +57,9 @@ const authSlice = createSlice({
       state.isLoading = true;
     },
     [authOperations.fetchCurrentUser.fulfilled](state, { payload }) {
+      // console.log('state auth', state);
+      // console.log('payload auth', payload);
+      // state.totalBalance = payload.data.balance;
       state.user = payload.data;
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;

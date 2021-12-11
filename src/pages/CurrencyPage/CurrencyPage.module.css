@@ -1,5 +1,9 @@
+.backdrop {
+  background-color: var(--page-background-color);
+}
 .currencyBackground {
   background-color: var(--background-color);
+  height: 100vh;
 }
 
 .navigation {

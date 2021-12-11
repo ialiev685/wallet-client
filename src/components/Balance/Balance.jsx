@@ -8,17 +8,18 @@ import s from './Balance.module.css';
 const Balance = ({ className = '' }) => {
   const sign = String.fromCharCode(8372);
   const totalBalance = useSelector(financeSelectors.totalBalance);
+  const transactions = useSelector(financeSelectors.data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(financeOperations.fetchTotalBalance());
-  }, [dispatch]);
+  }, [dispatch, totalBalance, transactions]);
 
   return (
     <div className={`${s.balanceBox} ${className}`}>
       <p className={s.balanceText}>ваш баланс</p>
       <p className={s.balanceNum}>
         <span className={s.sign}>{sign} </span>
-        {`${totalBalance.toLocaleString('ru')}`}
+        {`${totalBalance.toLocaleString('ru')}` || 0}
       </p>
     </div>
   );

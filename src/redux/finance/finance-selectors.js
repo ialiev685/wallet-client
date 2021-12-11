@@ -1,5 +1,6 @@
 export const totalBalance = state => state.finance.totalBalance;
 export const data = state => state.finance.data;
+export const dataNewTransaction = state => state.finance.dataNewTransaction;
 export const filter = state => state.finance.filter;
 export const dataByCategory = state => state.finance.dataByCategory;
 
