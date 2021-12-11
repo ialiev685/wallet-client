@@ -38,6 +38,8 @@ const HomeTab = () => {
     fetchDataForTable(page);
   }, [dispatch, fetchDataForTable, page]);
 
+
+
   return (
     <>
       <Container>

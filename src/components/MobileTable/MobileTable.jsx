@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
@@ -76,16 +76,19 @@ const MobileTable = ({
 }) => {
   const [isFetching, setIsFetching] = useState(false);
 
-  const [tables, setTables] = useState(() => data || []);
+  const [tables, setTables] = useState([]);
 
   useEffect(() => {
     if (isFetching) {
       setIsFetching(false);
 
       onPage(numberPage + 1);
-      setTables(prevTables => [...prevTables, ...data]);
+
+      setTables(prev => [...prev, ...data]);
     }
   }, [data, isFetching, numberPage, onPage]);
+
+  useEffect(() => {}, []);
 
   const handleScroll = e => {
     const heightScroll = e.target.scrollHeight;
@@ -103,8 +106,8 @@ const MobileTable = ({
   return (
     <div onScroll={handleScroll} className={className}>
       <ul className={s.list}>
-        {/* {data.map( */}
-        {tables.map(
+        {[...tables, ...data].map(
+          // {data.map(
           (
             { _id: id, date, transactionType, category, comment, sum, balance },
             index,
