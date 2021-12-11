@@ -1,5 +1,7 @@
-.section {
-  background-color: var(--page-background-color);
+@media screen and (min-width: 768px) {
+  .section {
+    background-color: var(--page-background-color);
+  }
 }
 
 .section .container {
