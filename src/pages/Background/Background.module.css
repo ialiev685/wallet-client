@@ -1,3 +1,8 @@
+.colorBox {
+  width: 100%;
+  background-color: var(--page-background-color);
+}
+
 .box {
   position: relative;
   margin-left: auto;
