@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { logInUser } from 'redux/auth/auth-operations';
 import s from './LoginForm.module.css';
 import { ButtonWindow } from '../ButtonWindow/ButtonWindow';
@@ -24,6 +24,10 @@ const validationSchema = Yup.object({
 const LoginForm = ({ classPosition }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  //   const location = useLocation();
+  // console.log('login form',location);
+  //   const from = location.state?.from?.pathname || "/";
+  //   console.log('from', from);
 
   return (
     <Formik
@@ -33,6 +37,7 @@ const LoginForm = ({ classPosition }) => {
         resetForm();
         const { email, password } = values;
         dispatch(logInUser({ email, password }));
+        // navigate(from, { replace: true })
       }}
     >
       <Form className={`${s.form} ${classPosition}`}>

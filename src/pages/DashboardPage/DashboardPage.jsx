@@ -8,8 +8,16 @@ import Balance from 'components/Balance';
 import Currency from 'components/Currency';
 import DiagramTab from 'components/DiagramTab';
 import Header from 'components/Header';
+import { useLocation, Navigate, useNavigate } from 'react-router-dom';
 
+// const DashboardPage = ({setStoryPage}) => {
 const DashboardPage = () => {
+  // const location = useLocation();
+  // setStoryPage(location)
+  // setStoryPage(location.pathname)
+  // const navigate = useNavigate()
+  // console.log('dash loc', location );
+
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });

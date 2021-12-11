@@ -6,6 +6,7 @@ import { authOperations, authSelectors } from 'redux/auth';
 // import { CurrencyPage } from './pages/CurrencyPage/CurrencyPage';
 import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute';
+import { ProtectedRoute } from 'components/ProtectedRoute/ProtectedRoute';
 
 import Header from 'components/Header';
 
@@ -14,6 +15,8 @@ import Header from 'components/Header';
 // import DashboardPage from 'pages/DashboardPage';
 import Loader from './components/Loader';
 import NotFound from './components/NotFound';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Section from 'components/Section';
 
 // import  HomeTab  from './pages/HomeTab/HomeTab'; // замена динамич. импорт
 // import CurrencyPage from './pages/CurrencyPage/CurrencyPage'; // замена динамич. импорт
@@ -43,6 +46,7 @@ const DashboardPage = lazy(() =>
 function App() {
   //проверка на текущего пользователя (не удалять)
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   // const isFetchingCurrentUser = true; //заглушка для рендера приватных роутов
 
   const dispatch = useDispatch();
@@ -53,39 +57,14 @@ function App() {
 
   return (
     <>
-      {/* {!isFetchingCurrentUser ? ( */}
-      {!isFetchingCurrentUser && (
+      {isFetchingCurrentUser ? (
+        <Loader />
+      ) : (
         <>
           <Suspense fallback={<Loader />}>
             <Routes>
-              {/* <Route path="/" exact element={<Navigate to="/home" />} /> */}
               <Route path="/" exact element={<Navigate to="/login" />} />
-              <Route
-                path="/login"
-                element={
-                  <PublicRoute restricted redirectTo="/home">
-                    {/* <PublicRoute> */}
-                    <LoginPage />
-                  </PublicRoute>
-                }
-              />
-              <Route
-                path="/signup"
-                element={
-                  <PublicRoute restricted redirectTo="/login">
-                    {/* // <PublicRoute> */}
-                    <RegistrationPage />
-                  </PublicRoute>
-                }
-              />
-              <Route
-                path="/home"
-                element={
-                  <PrivateRoute redirectTo="/login">
-                    <HomeTab />
-                  </PrivateRoute>
-                }
-              />
+
               <Route
                 path="/diagram"
                 element={
@@ -95,6 +74,7 @@ function App() {
                 }
               />
               <Route
+                exact
                 path="/currency"
                 element={
                   <PrivateRoute redirectTo="/login">
@@ -102,7 +82,37 @@ function App() {
                   </PrivateRoute>
                 }
               />
+              <Route
+                exact
+                path="/home"
+                element={
+                  <PrivateRoute redirectTo="/login">
+                    {/* // <ProtectedRoute> */}
+                    <HomeTab />
+                    {/* // </ProtectedRoute> */}
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                exact
+                path="/login"
+                element={
+                  // <PublicRoute restricted redirectTo="/home">
+                  <PublicRoute restricted>
+                    <LoginPage />
+                  </PublicRoute>
+                }
+              />
+              <Route
+                path="/signup"
+                element={
+                  <PublicRoute restricted redirectTo="/login">
+                    <RegistrationPage />
+                  </PublicRoute>
+                }
+              />
               <Route path="*" element={<NotFound />} />
+              {/* </Route> */}
             </Routes>
           </Suspense>
         </>
@@ -110,6 +120,68 @@ function App() {
 
       <Loader />
     </>
+    // <>
+    //   {/* {!isFetchingCurrentUser ? ( */}
+    //   {!isFetchingCurrentUser && (
+    //     <>
+    //       <Suspense fallback={<Loader />}>
+    //         <Routes>
+    //           {/* <Route path="/" exact element={<Navigate to="/home" />} /> */}
+    //           <Route path="/" exact element={<Navigate to="/login" />} />
+    //           <Route
+    //             exact
+    //             path="/login"
+    //             element={
+    //               <PublicRoute restricted redirectTo="/home">
+    //                 {/* <PublicRoute> */}
+    //                 <LoginPage />
+    //               </PublicRoute>
+    //             }
+    //           />
+    //           <Route
+    //             path="/signup"
+    //             element={
+    //               <PublicRoute restricted redirectTo="/login">
+    //                 {/* // <PublicRoute> */}
+    //                 <RegistrationPage />
+    //               </PublicRoute>
+    //             }
+    //           />
+    //           <Route
+    //             exact
+    //             path="/home"
+    //             element={
+    //               <PrivateRoute redirectTo="/login">
+    //                 <HomeTab />
+    //               </PrivateRoute>
+    //             }
+    //           />
+    //           <Route
+    //             exact
+    //             path="/diagram"
+    //             element={
+    //               <PrivateRoute redirectTo="/login">
+    //                 <DashboardPage />
+    //               </PrivateRoute>
+    //             }
+    //           />
+    //           <Route
+    //             exact
+    //             path="/currency"
+    //             element={
+    //               <PrivateRoute redirectTo="/login">
+    //                 <CurrencyPage />
+    //               </PrivateRoute>
+    //             }
+    //           />
+    //           <Route path="*" element={<NotFound />} />
+    //         </Routes>
+    //       </Suspense>
+    //     </>
+    //   )}
+
+    //   <Loader />
+    // </>
   );
 }
 
