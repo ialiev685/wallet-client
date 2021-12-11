@@ -67,7 +67,7 @@
 
 @media screen and (min-width: 1280px) {
   div.dashboardPage {
-    height: 963px;
+    height: 897px;
 
     background-image: url('../../images/background-images/EllipseOneDesktop.png'),
       url('../../images/background-images/EllipseTwoDesktopDashboardPage.png');
