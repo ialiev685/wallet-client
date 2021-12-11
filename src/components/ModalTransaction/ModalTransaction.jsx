@@ -50,19 +50,20 @@ const validation = Yup.object({
 });
 
 //приводит дату в нормальный формат
-const norlmalizeData = value => {
-  const normalizeFormatMonth =
-    value.getMonth() < 10 ? '0' + (value.getMonth() + 1) : value.getMonth() + 1;
 
-  const normalizeFormatDate =
-    value.getDate() < 10 ? '0' + value.getDate() : value.getDate();
-  const normalizeDate = [
-    normalizeFormatMonth,
-    normalizeFormatDate,
-    value.getFullYear(),
-  ].join('.');
-  return normalizeDate;
-};
+// const norlmalizeData = value => {
+//   const normalizeFormatMonth =
+//     value.getMonth() < 10 ? '0' + (value.getMonth() + 1) : value.getMonth() + 1;
+
+//   const normalizeFormatDate =
+//     value.getDate() < 10 ? '0' + value.getDate() : value.getDate();
+//   const normalizeDate = [
+//     normalizeFormatMonth,
+//     normalizeFormatDate,
+//     value.getFullYear(),
+//   ].join('.');
+//   return normalizeDate;
+// };
 
 export const ModalTransaction = () => {
   const dispatch = useDispatch();
@@ -104,11 +105,11 @@ export const ModalTransaction = () => {
 
     onSubmit: (values, { resetForm }) => {
       values.sum = Number(values.sum);
-      values.date = norlmalizeData(values.date);
-
+      // values.date = norlmalizeData(values.date);
+      values.date = values.date.toString();
       if (!values.transactionType) delete values.category;
       if (!values.comment) delete values.comment;
-
+      console.log(values);
       dispatch(fetchTransactionOperation(values));
 
       resetForm();

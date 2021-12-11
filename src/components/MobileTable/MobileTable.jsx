@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
@@ -67,21 +67,52 @@ const theme = createTheme({
   },
 });
 
-const MobileTable = ({ data, className = '' }) => {
+const MobileTable = ({
+  data,
+  className = '',
+  onPage,
+  numberPage,
+  totalPages,
+}) => {
+  const [isFetching, setIsFetching] = useState(false);
+
+  const [tables, setTables] = useState([]);
+
+  useEffect(() => {
+    if (isFetching) {
+      setIsFetching(false);
+
+      onPage(numberPage + 1);
+
+      setTables(prev => [...prev, ...data]);
+    }
+  }, [data, isFetching, numberPage, onPage]);
+
+  useEffect(() => {}, []);
+
+  const handleScroll = e => {
+    const heightScroll = e.target.scrollHeight;
+    const distanceToTop = e.target.scrollTop;
+    const heghtView = e.target.clientHeight;
+
+    if (
+      heightScroll - (distanceToTop + heghtView) < 50 &&
+      numberPage < totalPages
+    ) {
+      setIsFetching(true);
+    }
+  };
+
   return (
-    <div className={className}>
+    <div onScroll={handleScroll} className={className}>
       <ul className={s.list}>
-        {data.map(
-          ({
-            _id: id,
-            date,
-            transactionType,
-            category,
-            comment,
-            sum,
-            balance,
-          }) => (
-            <li key={id} className={s.card}>
+        {[...tables, ...data].map(
+          // {data.map(
+          (
+            { _id: id, date, transactionType, category, comment, sum, balance },
+            index,
+          ) => (
+            <li key={index} className={s.card}>
               {transactionType ? (
                 <Box
                   sx={{
