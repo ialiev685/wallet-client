@@ -1,7 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchTransactionOperation } from './finance-operations';
+import {
+  fetchTransactionOperation,
+  fetchTransactionCategory,
+} from './finance-operations';
 
-import { fetchTotalBalance, fetchData } from './finance-operations';
+import {
+  fetchTotalBalance,
+  fetchData,
+  fetchDataByCategory,
+  fetchDataByQuery,
+} from './finance-operations';
 
 const initialState = {
   // isFetchingTotalBalance: false,
@@ -12,8 +20,10 @@ const initialState = {
   // data: {},
   // data: [],
   data: null,
+  dataByCategory: null,
   isLoading: false,
   dataNewTransaction: null,
+  listCategories: [],
   isErrorTransation: false,
   errorMessage: null,
 };
@@ -77,7 +87,55 @@ const financeSlice = createSlice({
       state.errorMessage = payload;
       state.isErrorTransation = true;
     },
+
+    [fetchDataByCategory.pending](state) {
+      //спиннер ?
+      state.isLoading = true;
+      state.error = null;
+    },
+    [fetchDataByCategory.fulfilled](state, { payload }) {
+      state.dataByCategory = payload;
+      state.isLoading = false;
+      //спиннер ?
+    },
+    [fetchDataByCategory.rejected](state, { payload }) {
+      state.isLoading = false;
+      //спиннер ?
+      state.error = payload;
+    },
+
+    [fetchDataByQuery.pending](state) {
+      //спиннер ?
+      state.isLoading = true;
+      state.error = null;
+    },
+    [fetchDataByQuery.fulfilled](state, { payload }) {
+      state.dataByCategory = payload;
+      state.isLoading = false;
+      //спиннер ?
+    },
+    [fetchDataByQuery.rejected](state, { payload }) {
+      state.isLoading = false;
+      //спиннер ?
+      state.error = payload;
+    },
+    [fetchTransactionCategory.pending](state) {
+      state.isErrorTransation = false;
+      state.errorMessage = null;
+      state.isLoading = true;
+    },
+
+    [fetchTransactionCategory.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.listCategories = payload;
+    },
+
+    [fetchTransactionCategory.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.errorMessage = payload;
+      state.isErrorTransation = true;
+    },
   },
 });
-
+//fetchTransactionCategory
 export default financeSlice.reducer;

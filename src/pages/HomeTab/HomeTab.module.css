@@ -66,6 +66,7 @@
   .table {
     width: 688px;
     height: 100%;
+    overflow: hidden;
   }
   .btnAdd {
     bottom: 40px;
@@ -119,6 +120,7 @@
   }
 
   .table {
+    overflow: hidden;
     width: 700px;
     height: inherit;
     margin-left: var(--margin-l);

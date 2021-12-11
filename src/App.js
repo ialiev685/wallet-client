@@ -8,6 +8,8 @@ import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute';
 
 // import Header from 'components/Header';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // import RegistrationPage from './pages/RegistrationPage';
 // import LoginPage from './pages/LoginPage';
@@ -106,6 +108,7 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
+          <ToastContainer autoClose={2000} />
         </>
       )}
       <Loader />

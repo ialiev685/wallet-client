@@ -122,7 +122,7 @@ const TableStatistic = ({ data, titles }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map(({ id, color, category, sum }) => (
+              {data.map(({ id, hex, name, sum }) => (
                 <TableRow key={id}>
                   <TableCell
                     sx={{
@@ -134,11 +134,11 @@ const TableStatistic = ({ data, titles }) => {
                         marginRight: '16px',
                         width: 24,
                         height: 24,
-                        backgroundColor: `${color}`,
+                        backgroundColor: `${hex}`,
                         borderRadius: '2px',
                       }}
                     />
-                    {category}
+                    {name}
                   </TableCell>
                   <TableCell align="right">{sum}</TableCell>
                 </TableRow>
