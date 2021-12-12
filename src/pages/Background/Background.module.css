@@ -1,9 +1,3 @@
-/* .colorBox {
-  width: 100%;
-  height: 100vh;
-  background-color: var(--page-background-color);
-} */
-
 .box {
   position: relative;
   margin-left: auto;
@@ -12,42 +6,67 @@
 
 @media screen and (min-width: 320px) {
   .box {
-    /* max-width: var(--mobile); */
-    /* height: 568px; */
     background-color: var(--color-white);
   }
 }
 
 @media screen and (min-width: 768px) {
   .box {
-    /* max-width: var(--tablet); */
-    /* height: 1024px; */
-
     background-color: var(--page-background-color);
+    background-image: url('../../images/background-images/EllipseBlue.png');
+    background-position: -140px 700px;
 
-    background-image: url('../../images/background-images/EllipsePink.png'),
-      url('../../images/background-images/EllipseBlue.png');
-    background-position: 400px 0, 50% 700px;
-    /* background-position: 400px 0; */
     background-repeat: no-repeat;
   }
-  /* .blueCircle{
-    width: 618px;
-    height: 547px;
-    background-image: url('../../images/background-images/EllipseBlue.png');
-     background-position: 50% 700px;
-    background-position: 0 0;
-    background-repeat: no-repeat;
-  } */
 }
 
 @media screen and (min-width: 1280px) {
   .box {
-    /* max-width: var(--desktop); */
-    /* height: 720px; */
+    background-image: url('../../images/background-images/EllipseBlue.png');
+    background-position: -140px 388px;
+  }
 
-    /* background-image: url('../../images/background-images/EllipseOneDesktop.png'),
-      url('../../images/background-images/EllipseTwoTablet.png'); */
-    background-position: 727px 0, -18% 305px;
+  .box::before {
+    display: block;
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 53.3%;
+    height: 100vh;
+
+    z-index: 1;
+    background-color: var(--background-color);
+    backdrop-filter: blur(50px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .box::after {
+    display: block;
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 647px;
+    height: 508px;
+
+    background-image: url('../../images/background-images/EllipsePink.png');
+    background-position: 270px -112px;
+    background-repeat: no-repeat;
+
+    z-index: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    .box::after {
+      background-position: 170px -118px;
+    }
   }
 }

@@ -3,6 +3,10 @@
 }
 .loginBox {
   overflow-y: scroll;
+
+  position: relative;
+
+  z-index: 1;
 }
 /* .container {
   padding-left: 0;
@@ -131,8 +135,10 @@
     /* left: 560px; */
     /* top: 0px; */
     /* width: 720px; */
-    background-color: var(--background-color);
-    backdrop-filter: blur(50px);
+
+    /*оставить до одобрения*/
+    /* background-color: var(--background-color);
+    backdrop-filter: blur(50px); */
   }
   .loginBox {
     display: flex;
@@ -141,6 +147,21 @@
 
     /* background-image: url('../../images/background-images/PictureDesktopLogin.png');
     background-position: 76px 150px; */
+  }
+
+  .loginBox::after {
+    /* display: block;
+    content: '';
+
+    position: absolute;
+
+    width: calc(100vw);
+    height: 100vh;
+
+    top: 0;
+    right: -100px;
+
+    background-color: aqua;*/
   }
 
   /* .subBox {
