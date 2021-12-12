@@ -1,3 +1,7 @@
+.headerSection {
+  padding: 0;
+  background-color: var(--color-white);
+}
 .backdrop {
   /* height: 100%; */
 }
@@ -5,7 +9,8 @@
   position: relative;
 }
 .hometabBackground {
-  background-color: var(--background-color);
+  background-color: var(--page-background-color);
+  /* background-color: var(--background-color); */
   backdrop-filter: var(--backdrop-filter);
   /* height: 100vh; */
 }
@@ -43,16 +48,17 @@
   } */
 
 @media screen and (max-width: 767px) {
-  .hometabBackground {
+  /* .hometabBackground {
     background-color: var(--background-color);
   }
   .backdrop {
     background: var(--page-background-color);
-  }
+  } */
 }
 
 @media screen and (min-width: 768px) {
   .hometabBackground {
+    background-color: transparent;
     /* height: 944px; */
     /* height: 100%; */
   }

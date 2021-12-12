@@ -1,5 +1,6 @@
 .colorBox {
   width: 100%;
+  height: 100vh;
   background-color: var(--page-background-color);
 }
 
@@ -11,16 +12,16 @@
 
 @media screen and (min-width: 320px) {
   .box {
-    max-width: var(--mobile);
-    height: 568px;
+    /* max-width: var(--mobile); */
+    /* height: 568px; */
     background-color: var(--color-white);
   }
 }
 
 @media screen and (min-width: 768px) {
   .box {
-    max-width: var(--tablet);
-    height: 1024px;
+    /* max-width: var(--tablet); */
+    /* height: 1024px; */
     background-color: var(--page-background-color);
 
     background-image: url('../../images/background-images/EllipseOneTablet.png'),
@@ -32,8 +33,8 @@
 
 @media screen and (min-width: 1280px) {
   .box {
-    max-width: var(--desktop);
-    height: 720px;
+    /* max-width: var(--desktop); */
+    /* height: 720px; */
 
     background-image: url('../../images/background-images/EllipseOneDesktop.png'),
       url('../../images/background-images/EllipseTwoTablet.png');

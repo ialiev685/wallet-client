@@ -16,9 +16,11 @@ export const BasePage = ({ children }) => {
   });
   return (
     <>
-      <Container>
-        <Header />
-      </Container>
+      <Section className={s.headerSection}>
+        <Container>
+          <Header />
+        </Container>
+      </Section>
       {/* <Background className={s.backdrop}> */}
       <Section className={s.hometabBackground}>
         <Container className={s.container}>
