@@ -59,7 +59,7 @@
     margin-bottom: 50px;
   }
   .img {
-    padding-right: var(--margin-xl);
+    margin-right: var(--margin-xl);
     width: 260px;
   }
   .loginBox {
@@ -103,10 +103,10 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .container {
+  /* .container {
     padding-left: 0;
     padding-right: 0;
-  }
+  } */
   .titleBox {
     flex-direction: column;
     /* margin-right: 48px; */

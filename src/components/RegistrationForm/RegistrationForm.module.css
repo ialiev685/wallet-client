@@ -1,17 +1,20 @@
 .logoIcon {
-  position: absolute;
-  top: 40px;
+  /* position: absolute;
+  top: 40px; */
+  margin-bottom: 60px;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 130px;
+  /* padding-top: 130px;
+  padding-bottom: 60px; */
+  padding-top: 40px;
   padding-bottom: 60px;
 
   width: 540px;
-  height: 616px;
+  /* height: 616px; */
   border-radius: 20px;
 
   background-color: var(--color-white);
@@ -19,7 +22,8 @@
 
 @media screen and (max-width: 767px) {
   .form {
-    width: 320px;
+    /* width: 320px; */
+    width: 280px;
     height: 568px;
     text-align: center;
     margin-right: auto;

@@ -1,21 +1,32 @@
+.img {
+  display: none;
+}
+.registrBox {
+  overflow-y: scroll;
+  height: 100vh;
+}
 @media screen and (min-width: 768px) {
   .section {
     background-color: var(--page-background-color);
   }
 }
 
-.section .container {
+div .container {
   padding-left: 0;
   padding-right: 0;
 }
+.img {
+  display: block;
+  height: auto;
+}
 
 .subBox {
-  position: absolute;
+  /* position: absolute;
   left: 560px;
   top: 0px;
   width: 720px;
   background-color: var(--background-color);
-  backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px); */
 }
 
 @media screen and (max-width: 767px) {
@@ -34,15 +45,29 @@
 }
 
 @media screen and (min-width: 768px) {
+  .titleBox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  .img {
+    margin-right: var(--margin-xl);
+    width: 274px;
+  }
   .registrBox {
-    min-height: 1024px;
+    padding-top: 60px;
+    padding-bottom: 196px;
+    padding-left: 114px;
+    padding-right: 114px;
+    height: 100vh;
+    /* min-height: 1024px; */
 
     /* background-image: url('../../pictures/PictureTablet.png'); */
 
-    background-image: url('../../images/background-images/PictureTablet.png');
+    /* background-image: url('../../images/background-images/PictureTablet.png');
 
     background-position: 114px 60px;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
   }
 
   .subBox {
@@ -50,10 +75,10 @@
   }
 
   .title {
-    position: absolute;
+    /* position: absolute;
     z-index: 3;
     left: 428px;
-    top: 163px;
+    top: 163px; */
     font-family: var(--secondary-font-family);
     font-style: var(--font-style-norm);
     font-weight: var(--font-weigth-norm);
@@ -66,33 +91,59 @@
   }
 
   .registrationForm {
-    position: absolute;
+    /* position: absolute;
     left: 114px;
-    top: 360px;
+    top: 360px; */
   }
 }
 
 @media screen and (min-width: 1280px) {
+  .titleBox {
+    flex-direction: column;
+    /* margin-right: 48px; */
+    padding-right: 42px;
+    padding-bottom: 77px;
+    padding-top: 153px;
+    padding-left: 66px;
+  }
+  .img {
+    margin-right: 0;
+    margin-bottom: 28px;
+    width: 452px;
+  }
   .registrBox {
-    min-height: 720px;
+    display: flex;
+    padding: 0;
+    /* min-height: 720px; */
 
-    background-image: url('../../images/background-images/PictureDesktop.png');
-    background-position: 66px 153px;
+    /* background-image: url('../../images/background-images/PictureDesktop.png');
+    background-position: 66px 153px; */
   }
 
   .subBox {
-    height: 100%;
+    /* height: 100%; */
+    padding-right: 85px;
+    padding-bottom: 52px;
+    padding-top: 52px;
+    padding-left: 95px;
+    height: 100vh;
+    /* position: absolute; */
+    /* left: 560px; */
+    /* top: 0px; */
+    /* width: 720px; */
+    background-color: var(--background-color);
+    backdrop-filter: blur(50px);
   }
 
-  .title {
+  /* .title {
     left: 200px;
     top: 598px;
-  }
+  } */
 
   .registrationForm {
-    left: 655px;
+    /* left: 655px;
     top: 52px;
     width: 540px;
-    z-index: 2;
+    z-index: 2; */
   }
 }
