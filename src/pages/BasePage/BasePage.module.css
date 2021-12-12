@@ -1,3 +1,9 @@
+.basePage {
+  position: relative;
+
+  z-index: 1;
+}
+
 .headerSection {
   padding: 0;
   background-color: var(--color-white);
@@ -9,9 +15,12 @@
   position: relative;
 }
 .hometabBackground {
-  background-color: var(--page-background-color);
+  /*удалить после одобрение*/
+  /* background-color: var(--page-background-color); */
+  /* backdrop-filter: var(--backdrop-filter); */
+
   /* background-color: var(--background-color); */
-  backdrop-filter: var(--backdrop-filter);
+
   /* height: 100vh; */
 }
 

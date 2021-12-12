@@ -15,7 +15,7 @@ export const BasePage = ({ children }) => {
     query: '(max-width: 767px)',
   });
   return (
-    <>
+    <div className={s.basePage}>
       <Section className={s.headerSection}>
         <Container>
           <Header />
@@ -50,6 +50,6 @@ export const BasePage = ({ children }) => {
         </Container>
       </Section>
       {/* </Background> */}
-    </>
+    </div>
   );
 };
