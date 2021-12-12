@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
@@ -81,14 +81,12 @@ const MobileTable = ({
   useEffect(() => {
     if (isFetching) {
       setIsFetching(false);
-
+      console.log('запрос');
       onPage(numberPage + 1);
 
       setTables(prev => [...prev, ...data]);
     }
   }, [data, isFetching, numberPage, onPage]);
-
-  useEffect(() => {}, []);
 
   const handleScroll = e => {
     const heightScroll = e.target.scrollHeight;

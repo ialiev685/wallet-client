@@ -1,9 +1,9 @@
 import s from './RegistrationPage.module.css';
 import { useMediaQuery } from 'react-responsive';
 import RegistrationForm from 'components/RegistrationForm';
-import Background from 'pages/Background';
+// import Background from 'pages/Background';
 import Container from 'components/Container';
-import Section from 'components/Section';
+// import Section from 'components/Section';
 import PictureTablet from '../../images/background-images/PictureTablet.png';
 import PictureDesctop from '../../images/background-images/PictureDesktop.png';
 

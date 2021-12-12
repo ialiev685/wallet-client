@@ -1,11 +1,11 @@
 import s from './LoginPage.module.css';
 import { useMediaQuery } from 'react-responsive';
 import LoginForm from 'components/LoginForm';
-import Background from 'pages/Background';
+// import Background from 'pages/Background';
 import Container from 'components/Container';
-import Section from 'components/Section';
-import { useLocation, Navigate, useNavigate, Route } from 'react-router-dom';
-import { authSelectors } from 'redux/auth';
+// import Section from 'components/Section';
+// import { useLocation, Navigate, useNavigate, Route } from 'react-router-dom';
+// import { authSelectors } from 'redux/auth';
 import PictureTablet from '../../images/background-images/PictureTabletLogin.png';
 import PictureDesctop from '../../images/background-images/PictureDesktopLogin.png';
 
