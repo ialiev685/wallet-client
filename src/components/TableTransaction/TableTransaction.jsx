@@ -143,7 +143,12 @@ const TableTransaction = ({
                               fontWeight: 'bold',
                             }}
                           >
-                            {sum}
+                            {sum
+                              .toLocaleString('ru', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                              })
+                              .replace(/,/, '.')}
                           </TableCell>
                         ) : (
                           <TableCell
@@ -153,10 +158,22 @@ const TableTransaction = ({
                               fontWeight: 'bold',
                             }}
                           >
-                            {sum}
+                            {sum
+                              .toLocaleString('ru', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                              })
+                              .replace(/,/, '.')}
                           </TableCell>
                         )}
-                        <TableCell align="right">{balance}</TableCell>
+                        <TableCell align="right">
+                          {balance
+                            .toLocaleString('ru', {
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            })
+                            .replace(/,/, '.')}
+                        </TableCell>
                       </TableRow>
                     ),
                   )}

@@ -19,7 +19,12 @@ const Balance = ({ className = '' }) => {
       <p className={s.balanceText}>ваш баланс</p>
       <p className={s.balanceNum}>
         <span className={s.sign}>{sign} </span>
-        {`${totalBalance?.toLocaleString('ru')}` || 0}
+        {`${totalBalance
+          ?.toLocaleString('ru', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })
+          .replace(/,/, '.')}` || 0}
       </p>
     </div>
   );
