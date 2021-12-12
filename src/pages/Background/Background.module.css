@@ -22,13 +22,23 @@
   .box {
     /* max-width: var(--tablet); */
     /* height: 1024px; */
+
     background-color: var(--page-background-color);
 
     background-image: url('../../images/background-images/EllipsePink.png'),
       url('../../images/background-images/EllipseBlue.png');
-    background-position: 400px 0, 0 700px;
+    background-position: 400px 0, 50% 700px;
+    /* background-position: 400px 0; */
     background-repeat: no-repeat;
   }
+  /* .blueCircle{
+    width: 618px;
+    height: 547px;
+    background-image: url('../../images/background-images/EllipseBlue.png');
+     background-position: 50% 700px;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+  } */
 }
 
 @media screen and (min-width: 1280px) {
@@ -38,6 +48,6 @@
 
     /* background-image: url('../../images/background-images/EllipseOneDesktop.png'),
       url('../../images/background-images/EllipseTwoTablet.png'); */
-    background-position: 727px 0, 0 397px;
+    background-position: 727px 0, -18% 305px;
   }
 }
