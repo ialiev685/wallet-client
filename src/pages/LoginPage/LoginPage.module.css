@@ -2,16 +2,13 @@
   display: none;
 }
 .loginBox {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 
   position: relative;
 
   z-index: 1;
 }
-/* .container {
-  padding-left: 0;
-  padding-right: 0;
-} */
+
 @media screen and (min-width: 768px) {
   .section {
     background-color: var(--page-background-color);
@@ -27,15 +24,6 @@
   height: auto;
 }
 
-.subBox {
-  /* position: absolute; */
-  /* left: 560px; */
-  /* top: 0px; */
-  /* width: 720px;
-  background-color: var(--background-color);
-  backdrop-filter: blur(50px); */
-}
-
 @media screen and (max-width: 767px) {
   .title {
     display: none;
@@ -43,12 +31,7 @@
 }
 
 @media screen and (min-width: 320px) {
-  .loginBox {
-    /* height: 568px; */
-  }
-
   .loginForm {
-    /* height: 568px; */
     margin-left: auto;
     margin-right: auto;
     width: var(--mobile);
@@ -72,11 +55,6 @@
     padding-left: 114px;
     padding-right: 114px;
     height: 100vh;
-    /* height: 1024px; */
-
-    /* background-image: url('../../images/background-images/PictureTabletLogin.png');
-    background-position: 114px 60px;
-    background-repeat: no-repeat; */
   }
 
   .subBox {
@@ -84,10 +62,6 @@
   }
 
   .title {
-    /* position: absolute; */
-    /* z-index: 3; */
-    /* left: 428px; */
-    /* top: 163px; */
     font-family: var(--secondary-font-family);
     font-style: var(--font-style-norm);
     font-weight: var(--font-weigth-norm);
@@ -98,22 +72,12 @@
     margin: 0;
     color: var(--color-black);
   }
-
-  .loginForm {
-    /* position: absolute; */
-    /* left: 114px; */
-    /* top: 360px; */
-  }
 }
 
 @media screen and (min-width: 1280px) {
-  /* .container {
-    padding-left: 0;
-    padding-right: 0;
-  } */
   .titleBox {
     flex-direction: column;
-    /* margin-right: 48px; */
+
     padding-right: 48px;
     padding-bottom: 77px;
     padding-top: 150px;
@@ -131,51 +95,9 @@
     padding-top: 136px;
     padding-left: 95px;
     height: 100vh;
-    /* position: absolute; */
-    /* left: 560px; */
-    /* top: 0px; */
-    /* width: 720px; */
-
-    /*оставить до одобрения*/
-    /* background-color: var(--background-color);
-    backdrop-filter: blur(50px); */
   }
   .loginBox {
     display: flex;
     padding: 0;
-    /* height: 720px; */
-
-    /* background-image: url('../../images/background-images/PictureDesktopLogin.png');
-    background-position: 76px 150px; */
-  }
-
-  .loginBox::after {
-    /* display: block;
-    content: '';
-
-    position: absolute;
-
-    width: calc(100vw);
-    height: 100vh;
-
-    top: 0;
-    right: -100px;
-
-    background-color: aqua;*/
-  }
-
-  /* .subBox {
-    height: 100%;
-  } */
-
-  /* .title {
-    left: 200px;
-    top: 598px;
-  } */
-
-  .loginForm {
-    /* left: 655px;
-    top: 136px;
-    z-index: 2; */
   }
 }
