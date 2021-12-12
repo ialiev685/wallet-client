@@ -6,6 +6,7 @@ import { authOperations, authSelectors } from 'redux/auth';
 // import { CurrencyPage } from './pages/CurrencyPage/CurrencyPage';
 import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute';
+import Background from 'pages/Background';
 
 // import Header from 'components/Header';
 import { ToastContainer } from 'react-toastify';
@@ -54,7 +55,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <Background>
       {isFetchingCurrentUser ? (
         <Loader />
       ) : (
@@ -112,7 +113,7 @@ function App() {
         </>
       )}
       <Loader />
-    </>
+    </Background>
   );
 }
 

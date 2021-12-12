@@ -1,134 +1,33 @@
-.backdrop {
-  height: 100%;
-}
-.hometabBackground {
-  background-color: var(--background-color);
-  backdrop-filter: var(--backdrop-filter);
-  /* height: 100vh; */
-}
-
-.navigation {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: var(--margin-s);
-}
-
-.balance {
-  margin-bottom: var(--margin-l);
-}
-.rightSideBox {
-  position: relative;
-  height: 100%;
-}
-
 .table {
-  width: 280px;
-  height: 60vh;
   overflow: scroll;
+
+  position: relative;
 }
 
 .btnAdd {
   position: absolute;
+
   z-index: 4;
   bottom: 30px;
-  right: 0;
-}
-
-@media screen and (max-width: 767px) {
-  .hometabBackground {
-    background-color: var(--background-color);
-  }
-  .backdrop {
-    background: var(--page-background-color);
-  }
+  right: 20px;
 }
 
 @media screen and (min-width: 768px) {
-  .hometabBackground {
-    /* height: 944px; */
-    height: 100%;
-  }
-  .navigation {
-    justify-content: start;
-    align-items: flex-start;
-    margin-bottom: var(--margin-m);
-  }
-  .balance {
-    margin-bottom: 0;
-    margin-right: var(--margin-m);
-  }
-  .leftSideBox {
-    display: flex;
-    margin-bottom: var(--margin-xl);
-  }
-
-  .rightSideBox {
-    height: 652px;
-  }
   .table {
-    width: 688px;
-    height: 100%;
     overflow: hidden;
   }
   .btnAdd {
     bottom: 40px;
-    right: 0;
+
+    right: 40px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .container {
-    position: relative;
-    height: 100%;
-  }
-  .hometabBackground {
-    height: 720px;
-    padding: 0;
-  }
-  .hometab {
-    display: flex;
-    height: 640px;
-  }
-  .navigation {
-    margin-bottom: var(--margin-l);
-  }
-  .leftSideBox {
-    flex-direction: column;
-    padding-right: var(--margin-l);
-    margin-bottom: 0;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-  .rightSideBox {
-    height: 100%;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  .border {
-    position: absolute;
-    width: 0;
-    height: 100%;
-    left: 465px;
-    top: 0;
-    border: 1px solid var(--third-grey-color);
-    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
-      1px 0px 0px rgba(255, 255, 255, 0.6);
-  }
-
-  .balance {
-    margin-bottom: var(--margin-l);
-    margin-right: 0;
-  }
-
   .table {
-    overflow: hidden;
-    width: 700px;
-    height: inherit;
-    margin-left: var(--margin-l);
   }
   .btnAdd {
-    right: 0;
+    /* right: 0; */
+    right: 85px;
   }
 }

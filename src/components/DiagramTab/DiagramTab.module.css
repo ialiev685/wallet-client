@@ -66,6 +66,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  /* .container{
+    overflow: scroll;
+  } */
   .header {
     margin-bottom: var(--margin-m);
   }
@@ -82,9 +85,13 @@
   }
   .filter > div {
     width: 50%;
+
+    /* width: 159px; */
+    /* width: calc(50% - 19px); */
   }
   .filter > div:first-child {
     margin-bottom: 0;
-    margin-right: var(--margin-l);
+    margin-right: 19px;
+    /* margin-right: var(--margin-l); */
   }
 }

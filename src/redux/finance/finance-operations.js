@@ -83,6 +83,7 @@ export const fetchTransactionCategory = createAsyncThunk(
       const state = thunkAPI.getState();
       const persistedToken = state.auth.token;
 
+
       if (persistedToken) {
         const result = await ApiTransactionCategory(persistedToken);
 
