@@ -1,9 +1,13 @@
-/* .backdrop {
-  height: 100%;
+.backdrop {
+  /* height: 100%; */
+}
+.container {
+  position: relative;
 }
 .hometabBackground {
   background-color: var(--background-color);
   backdrop-filter: var(--backdrop-filter);
+  /* height: 100vh; */
 }
 
 .navigation {
@@ -16,45 +20,41 @@
 .balance {
   margin-bottom: var(--margin-l);
 }
+
 .rightSideBox {
-  position: relative;
-  height: 100%;
-} */
-/* .box{
+  width: 280px;
+  /* position: relative; */
   height: 60vh;
-  overflow: scroll;
-} */
-.table {
-  /* width: 280px; */
-  overflow: scroll;
-  /* height: 60vh; */
-  position: relative;
+  overflow-y: scroll;
+  /* height: 100%; */
 }
 
-.btnAdd {
-  position: absolute;
-  /* position: fixed; */
-  /* position: sticky; */
-  z-index: 4;
-  bottom: 30px;
-  right: 20px;
-  /* right: 6%; */
-  /* right: 0; */
-}
+/* .table {
+    width: 280px;
+    height: 60vh;
+    overflow: scroll;
+  } */
 
-/* @media screen and (max-width: 767px) {
+/* .btnAdd {
+    position: absolute;
+    z-index: 4;
+    bottom: 30px;
+    right: 0;
+  } */
+
+@media screen and (max-width: 767px) {
   .hometabBackground {
     background-color: var(--background-color);
   }
   .backdrop {
     background: var(--page-background-color);
   }
-} */
+}
 
 @media screen and (min-width: 768px) {
-  /* .hometabBackground {
-
-    height: 100%;
+  .hometabBackground {
+    /* height: 944px; */
+    /* height: 100%; */
   }
   .navigation {
     justify-content: start;
@@ -71,75 +71,81 @@
   }
 
   .rightSideBox {
-    height: 652px;
-  } */
-  .table {
-    /* position: fixed; */
-    /* width: 688px; */
-    /* position: static; */
-    /* height: 100%; */
-
+    /* position: relative; */
     overflow: hidden;
+    /* overflow-y:hidden; */
+    /* height: 50vh ; */
+    width: 688px;
+    /* height: 652px; */
   }
-  .btnAdd {
-    bottom: 40px;
-    /* right: 0; */
-    right: 40px;
-  }
+  /* .table {
+      width: 688px;
+      height: 100%;
+      overflow: hidden;
+    }
+    .btnAdd {
+      bottom: 40px;
+      right: 0;
+    } */
 }
 
 @media screen and (min-width: 1280px) {
-  /* .container {
+  .container {
     position: relative;
-    height: 100%;
-  } */
-  /* .hometabBackground {
-    height: 720px;
+    /* height: 100%; */
+  }
+  .hometabBackground {
+    /* height: 720px; */
     padding: 0;
-  } */
-  /* .hometab {
+  }
+  .hometab {
     display: flex;
-    height: 640px;
-  } */
-  /* .navigation {
+    /* height: 640px; */
+  }
+  .navigation {
     margin-bottom: var(--margin-l);
-  } */
-  /* .leftSideBox {
+  }
+  .leftSideBox {
     flex-direction: column;
+    /* padding-right: var(--margin-l); */
     margin-bottom: 0;
     padding-top: 40px;
     padding-bottom: 40px;
-  } */
-  /* .rightSideBox {
-    height: 100%;
+    margin-right: 60px;
+  }
+  .rightSideBox {
+    /* height: 100%; */
     padding-top: 40px;
     padding-bottom: 40px;
-  } */
+    height: 65vh;
+    width: 700px;
+  }
 
-  /* .border {
+  .border {
     position: absolute;
+    overflow: hidden;
     width: 0;
-    height: 100%;
+    /* height: 100%; */
+    height: 100vh;
     left: 465px;
     top: 0;
     border: 1px solid var(--third-grey-color);
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);
-  } */
+  }
 
-  /* .balance {
+  .balance {
     margin-bottom: var(--margin-l);
     margin-right: 0;
-  } */
+  }
 
-  .table {
-    /* overflow: hidden; */
-    /* width: 700px; */
-    /* height: inherit; */
-    /* margin-left: var(--margin-l); */
-  }
-  .btnAdd {
-    /* right: 0; */
-    right: 85px;
-  }
+  /* .table {
+      overflow: hidden;
+      width: 700px;
+      height: inherit;
+      margin-left: var(--margin-l);
+    } */
+  /* .btnAdd {
+      right: 0;
+    } */
 }

@@ -9,6 +9,7 @@ import Container from 'components/Container';
 import Section from 'components/Section';
 import Background from 'pages/Background';
 import TableTransaction from 'components/TableTransaction';
+import { BasePage } from 'pages/BasePage/BasePage';
 
 import Header from 'components/Header';
 import { financeSelectors, financeOperations } from 'redux/finance';
@@ -42,11 +43,24 @@ const HomeTab = () => {
     fetchDataForTable(page);
   }, [dispatch, fetchDataForTable, page, newTransactions]);
 
-
-
   return (
     <>
-      <Container>
+      <BasePage>
+        {/* <div className={s.box}> */}
+
+        {transactions && (
+          <TableTransaction
+            numberPage={page}
+            data={transactions || []}
+            titles={TableTitleData}
+            className={s.table}
+            onPage={handlerControlPage}
+          />
+        )}
+        <ButtonAddTransactions className={s.btnAdd} />
+        {/* </div> */}
+      </BasePage>
+      {/* <Container>
         <Header />
       </Container>
       <Background className={s.backdrop}>
@@ -76,9 +90,73 @@ const HomeTab = () => {
             </div>
           </Container>
         </Section>
-      </Background>
+      </Background> */}
     </>
   );
 };
 
 export default HomeTab;
+// const HomeTab = () => {
+//   const isMobile = useMediaQuery({
+//     query: '(max-width: 767px)',
+//   });
+
+//   const transactions = useSelector(financeSelectors.data);
+//   const newTransactions = useSelector(financeSelectors.dataNewTransaction);
+
+//   const dispatch = useDispatch();
+//   const [page, setPage] = useState(1);
+
+//   const fetchDataForTable = useCallback(
+//     page => dispatch(financeOperations.fetchData(page)),
+//     [dispatch],
+//   );
+
+//   const handlerControlPage = page => {
+//     setPage(page);
+//   };
+
+//   useEffect(() => {
+//     //   dispatch(financeOperations.fetchData());
+//     // }, [dispatch, newTransactions]);
+//     fetchDataForTable(page);
+//   }, [dispatch, fetchDataForTable, page, newTransactions]);
+
+//   return (
+//     <>
+//       <Container>
+//         <Header />
+//       </Container>
+//       <Background className={s.backdrop}>
+//         <Section className={s.hometabBackground}>
+//           <Container className={s.container}>
+//             <div className={s.border}></div>
+//             <div className={s.hometab}>
+//               <div className={s.leftSideBox}>
+//                 <div>
+//                   <Navigation className={s.navigation} />
+//                   <Balance className={s.balance} />
+//                 </div>
+//                 {!isMobile && <Currency />}
+//               </div>
+//               <div className={s.rightSideBox}>
+//                 {transactions && (
+//                   <TableTransaction
+//                     numberPage={page}
+//                     data={transactions || []}
+//                     titles={TableTitleData}
+//                     className={s.table}
+//                     onPage={handlerControlPage}
+//                   />
+//                 )}
+//                 <ButtonAddTransactions className={s.btnAdd} />
+//               </div>
+//             </div>
+//           </Container>
+//         </Section>
+//       </Background>
+//     </>
+//   );
+// };
+
+// export default HomeTab;

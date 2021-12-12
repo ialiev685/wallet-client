@@ -80,11 +80,11 @@ export const fetchTransactionCategory = createAsyncThunk(
   'finance/transactionCategory',
   async (_, thunkAPI) => {
     try {
-      // const state = thunkAPI.getState();
-      // const persistedToken = state.auth.token;
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.token;
 
-      const persistedToken =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWFmYzU4ZmNlYjc2N2VlNjc5Njk2NTkiLCJuYW1lIjoiaWxmYXQiLCJpYXQiOjE2Mzg5MTEzODl9.qxTjUtYiD_5v_gFUybM4BrbqPT58DUYbXEgW9tycSkk';
+      // const persistedToken =
+      //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWFmYzU4ZmNlYjc2N2VlNjc5Njk2NTkiLCJuYW1lIjoiaWxmYXQiLCJpYXQiOjE2Mzg5MTEzODl9.qxTjUtYiD_5v_gFUybM4BrbqPT58DUYbXEgW9tycSkk';
 
       if (persistedToken) {
         const result = await ApiTransactionCategory(persistedToken);
