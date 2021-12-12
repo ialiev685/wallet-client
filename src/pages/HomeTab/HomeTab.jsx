@@ -18,9 +18,9 @@ import { TableTitleData } from '../../data/tableData';
 import s from './HomeTab.module.css';
 
 const HomeTab = () => {
-  const isMobile = useMediaQuery({
-    query: '(max-width: 767px)',
-  });
+  // const isMobile = useMediaQuery({
+  //   query: '(max-width: 767px)',
+  // });
 
   const transactions = useSelector(financeSelectors.data);
   const newTransactions = useSelector(financeSelectors.dataNewTransaction);
