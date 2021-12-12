@@ -34,6 +34,14 @@ export default function DiagramTab() {
   //   { id: 2, color: '#FFD8D0', category: 'Kill again', sum: 3000 },
   //   { id: 3, color: '#FD9498', category: 'Kill always', sum: 1500 },
   // ];
+
+  const resultBalance = (dataStatBal.incomeBalance - dataStatBal.expenseBalance)
+    .toLocaleString('ru', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })
+    .replace(/,/, '.');
+
   return (
     <>
       <h2 className={s.header}>Статистика</h2>
@@ -41,8 +49,7 @@ export default function DiagramTab() {
         <div className={s.chart}>
           <div className={s.balance}>
             <span>₴</span>
-            {dataStatBal &&
-              dataStatBal.incomeBalance - dataStatBal.expenseBalance}
+            {dataStatBal && resultBalance}
           </div>
           {dataStatBal && <Chart operations={dataStatBal.expenseStatistic} />}
         </div>
@@ -60,13 +67,25 @@ export default function DiagramTab() {
             <div className={s.result}>
               <span>Расходы:</span>
               <span className={s.costs}>
-                {dataStatBal && dataStatBal.expenseBalance.toLocaleString('ru')}
+                {dataStatBal &&
+                  dataStatBal.expenseBalance
+                    .toLocaleString('ru', {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })
+                    .replace(/,/, '.')}
               </span>
             </div>
             <div className={s.result}>
               <span>Доходы:</span>
               <span className={s.income}>
-                {dataStatBal && dataStatBal.incomeBalance.toLocaleString('ru')}
+                {dataStatBal &&
+                  dataStatBal.incomeBalance
+                    .toLocaleString('ru', {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })
+                    .replace(/,/, '.')}
               </span>
             </div>
           </div>

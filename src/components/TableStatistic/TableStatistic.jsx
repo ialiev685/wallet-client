@@ -140,7 +140,14 @@ const TableStatistic = ({ data, titles }) => {
                     />
                     {name}
                   </TableCell>
-                  <TableCell align="right">{sum}</TableCell>
+                  <TableCell align="right">
+                    {sum
+                      .toLocaleString('ru', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })
+                      .replace(/,/, '.')}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -157,7 +157,12 @@ const MobileTable = ({
                               fontWeight: 'bold',
                             }}
                           >
-                            {sum}
+                            {sum
+                              .toLocaleString('ru', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                              })
+                              .replace(/,/, '.')}
                           </TableCell>
                         ) : (
                           <TableCell
@@ -166,10 +171,22 @@ const MobileTable = ({
                               fontWeight: 'bold',
                             }}
                           >
-                            {sum}
+                            {sum
+                              .toLocaleString('ru', {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                              })
+                              .replace(/,/, '.')}
                           </TableCell>
                         )}
-                        <TableCell>{balance}</TableCell>
+                        <TableCell>
+                          {balance
+                            .toLocaleString('ru', {
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                            })
+                            .replace(/,/, '.')}
+                        </TableCell>
                       </TableRow>
                     </TableBody>
                   </Table>
