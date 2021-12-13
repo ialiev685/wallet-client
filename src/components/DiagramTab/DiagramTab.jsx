@@ -35,7 +35,9 @@ export default function DiagramTab() {
   //   { id: 3, color: '#FD9498', category: 'Kill always', sum: 1500 },
   // ];
 
-  const resultBalance = (dataStatBal.incomeBalance - dataStatBal.expenseBalance)
+  const resultBalance = (
+    dataStatBal?.incomeBalance - dataStatBal?.expenseBalance
+  )
     .toLocaleString('ru', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -51,7 +53,7 @@ export default function DiagramTab() {
             <span>₴</span>
             {dataStatBal && resultBalance}
           </div>
-          {dataStatBal && <Chart operations={dataStatBal.expenseStatistic} />}
+          {dataStatBal && <Chart operations={dataStatBal?.expenseStatistic} />}
         </div>
         <div className={s.container}>
           <div className={s.filter}>
@@ -60,7 +62,7 @@ export default function DiagramTab() {
           {dataStatBal && (
             <TableStatistic
               titles={titles}
-              data={dataStatBal.expenseStatistic}
+              data={dataStatBal?.expenseStatistic}
             />
           )}
           <div className={s.holder}>
@@ -68,7 +70,7 @@ export default function DiagramTab() {
               <span>Расходы:</span>
               <span className={s.costs}>
                 {dataStatBal &&
-                  dataStatBal.expenseBalance
+                  dataStatBal?.expenseBalance
                     .toLocaleString('ru', {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
@@ -80,7 +82,7 @@ export default function DiagramTab() {
               <span>Доходы:</span>
               <span className={s.income}>
                 {dataStatBal &&
-                  dataStatBal.incomeBalance
+                  dataStatBal?.incomeBalance
                     .toLocaleString('ru', {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
