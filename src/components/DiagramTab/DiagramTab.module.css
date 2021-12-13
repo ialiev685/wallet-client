@@ -1,0 +1,90 @@
+.header {
+  font-family: var(--secondary-font-family-normal-w);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weigth-norm);
+  margin-top: 0;
+  margin-bottom: var(--margin-s);
+}
+
+.wrapper {
+  max-width: 700px;
+}
+
+.chart,
+.container,
+.filter {
+  width: 100%;
+}
+.chart {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter {
+  margin-bottom: var(--margin-m);
+}
+
+.filter > div:first-child {
+  margin-bottom: var(--margin-m);
+}
+
+.balance {
+  position: absolute;
+  font-size: var(--font-size-m);
+  font-family: var(--main-font-family-bold-w);
+}
+
+.holder {
+  margin-top: 15px;
+}
+
+.result {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  font-family: var(--main-font-family-bold-w);
+}
+
+.result:first-child {
+  margin-bottom: var(--margin-s);
+}
+
+.costs {
+  color: var(--color-pink);
+}
+
+.income {
+  color: var(--color-green);
+}
+
+@media screen and (max-width: 767px) {
+  .chart {
+    margin-bottom: var(--margin-l);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    margin-bottom: var(--margin-m);
+  }
+  .wrapper {
+    display: flex;
+    align-items: flex-start;
+  }
+  .chart {
+    max-width: 320px;
+    margin-right: var(--margin-l);
+  }
+  .filter {
+    display: flex;
+  }
+  .filter > div {
+    width: 50%;
+  }
+  .filter > div:first-child {
+    margin-bottom: 0;
+    margin-right: 19px;
+  }
+}

@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'Circe Bold';
+  src: url('../assets/fonts/circe/fonts/circe_bold.eot'); /* IE 9 Compatibility Mode */
+  src: url('../assets/fonts/circe/fonts/circe_bold.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE < 9 */ url('../assets/fonts/circe/fonts/circe_bold.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('../assets/fonts/circe/fonts/circe_bold.woff') format('woff'),
+    /* Firefox >= 3.6, any other modern browser */
+      url('../assets/fonts/circe/fonts/circe_bold.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+      url('../assets/fonts/circe/fonts/circe_bold.svg#circe_bold') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Poppins Bold';
+  src: url('../assets/fonts/poppins/fonts/poppins_bold.eot'); /* IE 9 Compatibility Mode */
+  src: url('../assets/fonts/poppins/fonts/poppins_bold.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE < 9 */ url('../assets/fonts/poppins/fonts/poppins_bold.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('../assets/fonts/poppins/fonts/poppins_bold.woff') format('woff'),
+    /* Firefox >= 3.6, any other modern browser */
+      url('../assets/fonts/poppins/fonts/poppins_bold.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+      url('../assets/fonts/poppins/fonts/poppins_bold.svg#poppins_bold')
+      format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Circe';
+  src: url('../assets/fonts/circe/fonts/circe.eot'); /* IE 9 Compatibility Mode */
+  src: url('../assets/fonts/circe/fonts/circe.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE < 9 */ url('../assets/fonts/circe/fonts/circe.woff2') format('woff2'),
+    /* Super Modern Browsers */ url('../assets/fonts/circe/fonts/circe.woff')
+      format('woff'),
+    /* Firefox >= 3.6, any other modern browser */
+      url('../assets/fonts/circe/fonts/circe.ttf') format('truetype'),
+    /* Safari, Android, iOS */
+      url('../assets/fonts/circe/fonts/circe.svg#circe') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Poppins Regular';
+  src: url('../assets/fonts/poppins/fonts/poppins_regular.eot'); /* IE 9 Compatibility Mode */
+  src: url('../assets/fonts/poppins/fonts/poppins_regular.eot?#iefix')
+      format('embedded-opentype'),
+    /* IE < 9 */ url('../assets/fonts/poppins/fonts/poppins_regular.woff2')
+      format('woff2'),
+    /* Super Modern Browsers */
+      url('../assets/fonts/poppins/fonts/poppins_regular.woff') format('woff'),
+    /* Firefox >= 3.6, any other modern browser */
+      url('../assets/fonts/poppins/fonts/poppins_regular.ttf')
+      format('truetype'),
+    /* Safari, Android, iOS */
+      url('../assets/fonts/poppins/fonts/poppins_regular.svg#poppins_regular')
+      format('svg'); /* Chrome < 4, Legacy iOS */
+}

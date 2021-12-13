@@ -1,0 +1,29 @@
+.table {
+  overflow-y: scroll;
+  height: 60vh;
+}
+
+.btnAdd {
+  position: absolute;
+
+  z-index: 4;
+  bottom: 30px;
+  right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .table {
+    overflow: hidden;
+  }
+  .btnAdd {
+    bottom: 40px;
+
+    right: 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .btnAdd {
+    right: 85px;
+  }
+}

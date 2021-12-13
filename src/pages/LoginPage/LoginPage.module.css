@@ -1,0 +1,98 @@
+.img {
+  display: none;
+}
+.loginBox {
+  position: relative;
+
+  z-index: 1;
+}
+
+@media screen and (min-width: 768px) {
+  div .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.img {
+  display: block;
+  height: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .title {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .loginForm {
+    margin-left: auto;
+    margin-right: auto;
+    width: var(--mobile);
+    background-color: var(--color-white);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .titleBox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  .img {
+    margin-right: var(--margin-xl);
+    width: 260px;
+  }
+  .loginBox {
+    padding-top: 60px;
+    padding-bottom: 196px;
+    padding-left: 114px;
+    padding-right: 114px;
+    height: 100vh;
+  }
+
+  .subBox {
+    height: 0;
+  }
+
+  .title {
+    font-family: var(--secondary-font-family);
+    font-style: var(--font-style-norm);
+    font-weight: var(--font-weigth-norm);
+    font-size: var(--font-size-xl);
+    line-height: var(--line-heigth-m);
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    color: var(--color-black);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .titleBox {
+    flex-direction: column;
+
+    padding-right: 48px;
+    padding-bottom: 77px;
+    padding-top: 150px;
+    padding-left: 76px;
+  }
+  .img {
+    margin-right: 0;
+    margin-bottom: 28px;
+    width: 435px;
+  }
+
+  .subBox {
+    padding-right: 85px;
+    padding-bottom: 116px;
+    padding-top: 136px;
+    padding-left: 95px;
+    height: 100vh;
+  }
+  .loginBox {
+    display: flex;
+    padding: 0;
+  }
+}

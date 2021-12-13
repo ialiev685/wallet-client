@@ -1,0 +1,70 @@
+.navigation {
+  display: flex;
+}
+
+.navigation .navLink:not(:last-child) {
+  margin-right: 36px;
+}
+
+.navLink {
+  text-decoration: none;
+}
+
+.navLink .icon:hover,
+.navLink .icon:focus {
+  background-color: var(--color-blue);
+}
+
+.navLink .icon {
+  width: 44px;
+  height: 44px;
+  color: var(--color-white);
+  background-color: var(--color-light-blue);
+  border-radius: 6px;
+}
+
+.activeNavLink .routeName {
+  font-weight: var(--font-weigth-bold);
+  color: var(--color-black);
+}
+
+.activeNavLink .icon {
+  background-color: var(--color-blue);
+  filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    flex-direction: column;
+    width: 200px;
+    justify-content: center;
+  }
+
+  .navLink {
+    display: flex;
+    font-family: var(--secondary-font-family-normal-w);
+    font-size: var(--font-size-m);
+    color: var(--color-black);
+  }
+
+  .navLink:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .navLink:hover,
+  .navLink:focus {
+    color: var(--color-blue);
+  }
+
+  .navLink .icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 23px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .icon {
+    margin-right: 20px;
+  }
+}
