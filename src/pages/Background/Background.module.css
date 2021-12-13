@@ -11,6 +11,9 @@
     max-width: var(--mobile);
     background-color: var(--color-white);
   } */
+  .isLoggin.box {
+    background-color: var(--page-background-color);
+  }
   .ellipseBlue {
     display: none;
   }
