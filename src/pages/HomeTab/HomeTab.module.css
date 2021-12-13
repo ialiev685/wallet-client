@@ -24,8 +24,8 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .table {
-  }
+  /* .table {
+  } */
   .btnAdd {
     /* right: 0; */
     right: 85px;
