@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+// import '../../node_modules/modern-normalize/modern-normalize.css';
+import '../node_modules/modern-normalize/modern-normalize.css';
+import './stylesheet/fonts.css';
+import './stylesheet/vars.css';
 
 import './stylesheet/index.css';
 
