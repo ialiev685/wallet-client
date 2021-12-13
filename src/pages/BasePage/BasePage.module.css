@@ -90,9 +90,8 @@
     position: absolute;
     overflow: hidden;
     width: 0;
-
     /* height: calc(100vh -85.39px); */
-    /* height: 100vh; */
+    height: 100vh;
     left: 465px;
     top: 0;
     border: 1px solid var(--third-grey-color);
