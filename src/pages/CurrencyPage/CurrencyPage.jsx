@@ -6,7 +6,7 @@ import Currency from 'components/Currency';
 // import Section from 'components/Section';
 // import Header from 'components/Header';
 // import Background from 'pages/Background';
-// import s from './CurrencyPage.module.css';
+import s from './CurrencyPage.module.css';
 import { BasePage } from '../BasePage/BasePage';
 
 const CurrencyPage = () => {
@@ -21,7 +21,7 @@ const CurrencyPage = () => {
       {/* <Background className={s.backdrop}> */}
       {/* <Section className={s.currencyBackground}>
           <Container> */}
-      <BasePage>
+      <BasePage className={s.navigation}>
         {isMobile ? (
           <>
             {/* <div className={s.navigation}>

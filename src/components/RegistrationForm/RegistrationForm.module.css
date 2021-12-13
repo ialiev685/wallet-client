@@ -10,7 +10,7 @@
   align-items: center;
   /* padding-top: 130px;
   padding-bottom: 60px; */
-  padding-top: 40px;
+  padding-top: 43px;
   padding-bottom: 60px;
 
   width: 540px;
@@ -22,7 +22,7 @@
 
 @media screen and (max-width: 767px) {
   .form {
-    width: 320px;
+    width: 280px;
     height: 568px;
     text-align: center;
     margin-right: auto;
@@ -51,7 +51,7 @@
 
   border: none;
   background-image: linear-gradient(var(--color-green), var(--color-green)),
-    linear-gradient(#ddd, #ddd);
+    linear-gradient(var(--color-light-grey), var(--color-light-grey));
   background-repeat: no-repeat, no-repeat;
   background-size: 0 2px, 100% 2px;
   background-position: center calc(100% - 2px), 0 calc(100% - 2px);

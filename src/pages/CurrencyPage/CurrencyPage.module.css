@@ -1,14 +1,14 @@
-.backdrop {
+/* .backdrop {
   background-color: var(--page-background-color);
-}
+} */
 .currencyBackground {
   background-color: var(--background-color);
   height: 100vh;
 }
 
 .navigation {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
-  margin-bottom: var(--margin-s);
+  align-items: center; */
+  margin-bottom: var(--margin-l);
 }

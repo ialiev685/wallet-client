@@ -24,29 +24,27 @@ const LoginPage = () => {
 
   // let from = location.state?.from?.pathname || "/";
   return (
-    <div>
-      <Container className={s.container}>
-        <div className={s.loginBox}>
-          <div className={s.titleBox}>
-            {isTablet && (
-              <img className={s.img} src={PictureTablet} alt="boy" />
-            )}
-            {isDesktop && (
-              <img
-                className={s.img}
-                src={PictureDesctop}
-                alt="парень с тележкой"
-              />
-            )}
+    // <div>
+    <Container className={s.container}>
+      <div className={s.loginBox}>
+        <div className={s.titleBox}>
+          {isTablet && <img className={s.img} src={PictureTablet} alt="boy" />}
+          {isDesktop && (
+            <img
+              className={s.img}
+              src={PictureDesctop}
+              alt="парень с тележкой"
+            />
+          )}
 
-            <h1 className={s.title}>Finance App</h1>
-          </div>
-          <div className={s.subBox}>
-            <LoginForm classPosition={s.loginForm} />
-          </div>
+          <h1 className={s.title}>Finance App</h1>
         </div>
-      </Container>
-    </div>
+        <div className={s.subBox}>
+          <LoginForm classPosition={s.loginForm} />
+        </div>
+      </div>
+    </Container>
+    /*  </div> */
   );
 };
 

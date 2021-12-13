@@ -10,7 +10,7 @@ import Header from 'components/Header';
 // import ButtonAddTransactions from 'components/ButtonAddTransactions';
 // import Container from 'components/Container';
 
-export const BasePage = ({ children }) => {
+export const BasePage = ({ children, className = '' }) => {
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });
@@ -28,7 +28,7 @@ export const BasePage = ({ children }) => {
           <div className={s.hometab}>
             <div className={s.leftSideBox}>
               <div>
-                <Navigation className={s.navigation} />
+                <Navigation className={`${s.navigation} ${className}`} />
                 {!isMobile && <Balance className={s.balance} />}
               </div>
               {!isMobile && <Currency />}
