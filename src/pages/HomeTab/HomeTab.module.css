@@ -1,7 +1,7 @@
 .table {
-  overflow: scroll;
-
-  position: relative;
+  overflow-y: scroll;
+  height: 60vh;
+  /* position: relative; */
 }
 
 .btnAdd {

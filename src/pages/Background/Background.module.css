@@ -10,10 +10,10 @@
   .isLoggin.box::before {
     display: none;
   }
-  /* .box {
-    max-width: var(--mobile);
-    background-color: var(--color-white);
-  } */
+  /* .box { */
+  /* max-width: var(--mobile); */
+  /* background-color: var(--color-white); */
+  /* } */
   .isLoggin.box {
     background-color: var(--page-background-color);
   }
@@ -33,7 +33,8 @@
 
 @media screen and (min-width: 320px) {
   .box {
-    background-color: var(--color-white);
+    /* background-color: var(--color-white); */
+    background-color: var(--page-background-color);
   }
 }
 
@@ -41,6 +42,7 @@
   .box {
     background-color: var(--page-background-color);
     /* background-image: url('../../images/background-images/EllipseBlue.png');
+
     background-position: -140px 700px;
 
     background-repeat: no-repeat; */
