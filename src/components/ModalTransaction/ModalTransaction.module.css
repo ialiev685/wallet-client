@@ -103,7 +103,8 @@
 }
 
 .Modal__errorSelect,
-.Modal__errorAmount {
+.Modal__errorAmount,
+.Modal__errorDate {
   position: absolute;
   /* font-size: var(--font-size-xs); */
   font-size: 12px;
@@ -119,6 +120,11 @@
 .Modal__errorAmount {
   left: 5px;
   bottom: 20px;
+}
+
+.Modal__errorDate {
+  left: 5px;
+  bottom: -20px;
 }
 
 .Modal__input {
