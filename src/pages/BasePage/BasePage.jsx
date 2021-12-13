@@ -29,7 +29,7 @@ export const BasePage = ({ children }) => {
             <div className={s.leftSideBox}>
               <div>
                 <Navigation className={s.navigation} />
-                <Balance className={s.balance} />
+                {!isMobile && <Balance className={s.balance} />}
               </div>
               {!isMobile && <Currency />}
             </div>
