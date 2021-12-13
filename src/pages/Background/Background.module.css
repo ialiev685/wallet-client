@@ -6,13 +6,14 @@
 
 @media screen and (min-width: 320px) {
   .box {
-    background-color: var(--color-white);
+    /* background-color: var(--color-white); */
+    background-color: var(--page-background-color);
   }
 }
 
 @media screen and (min-width: 768px) {
   .box {
-    background-color: var(--page-background-color);
+    /* background-color: var(--page-background-color); */
     background-image: url('../../images/background-images/EllipseBlue.png');
     background-position: -140px 700px;
 
