@@ -12,6 +12,8 @@ export const ButtonWindow = ({
   // title - любое
 
   const handleClick = e => {
+    console.log('e', e);
+
     if (typeof onClick === 'function') onClick(e);
   };
   const addStyle = action === 'добавить' ? style.confirm : style.cancel;

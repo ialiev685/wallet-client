@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
-import { Formik, useFormik } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { useFormik } from 'formik';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //селекторы
 import { financeSelectors } from 'redux/finance';
-import 'react-toastify/dist/ReactToastify.css';
 import * as Yup from 'yup';
 //дата
 import Datetime from 'react-datetime';
@@ -30,8 +29,24 @@ import { ButtonWindow } from 'components/ButtonWindow';
 import { fetchTransactionOperation } from 'redux/finance';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalAction } from 'redux/modal';
+// категории
+import {
+  fetchCatgories,
+  fetchAddCatgories,
+} from '../../redux/finance/categories-opeations';
+// import { ApiCategoriesTransactions, ApiAddCategorieTransactions } from '../../services/categories-api';
 
 //нормализация даты
+
+const arrayMainCategory = [
+  '61ad865bc505a94bdf06939f',
+  '61ad8719c505a94bdf0693a0',
+  '61ad87a7c505a94bdf0693a2',
+  '61ad8892c505a94bdf0693a4',
+  '61ad881ac505a94bdf0693a3',
+  '61ad8aadc505a94bdf0693a5',
+  '61ad8b50c505a94bdf0693a7',
+];
 
 const validation = Yup.object({
   transactionType: Yup.boolean(),
@@ -46,16 +61,7 @@ const validation = Yup.object({
     .notOneOf(['Выберите категорию'], 'Выберите категорию')
     .when('transactionType', {
       is: false,
-      then: Yup.mixed().oneOf([
-        'Выберите категорию',
-        '61ad865bc505a94bdf06939f',
-        '61ad8719c505a94bdf0693a0',
-        '61ad87a7c505a94bdf0693a2',
-        '61ad8892c505a94bdf0693a4',
-        '61ad881ac505a94bdf0693a3',
-        '61ad8aadc505a94bdf0693a5',
-        '61ad8b50c505a94bdf0693a7',
-      ]),
+      then: Yup.mixed().oneOf(['Выберите категорию', ...arrayMainCategory]),
     }),
 
   sum: Yup.number()
@@ -67,7 +73,7 @@ const validation = Yup.object({
 });
 
 //приводит дату в нормальный формат
-const norlmalizeData = value => {
+function norlmalizeData(value) {
   const normalizeFormatMonth =
     value.getMonth() < 10 ? '0' + (value.getMonth() + 1) : value.getMonth() + 1;
 
@@ -79,7 +85,7 @@ const norlmalizeData = value => {
     value.getFullYear(),
   ].join('.');
   return normalizeDate;
-};
+}
 
 export const ModalTransaction = () => {
   const dispatch = useDispatch();
@@ -114,8 +120,11 @@ export const ModalTransaction = () => {
     },
     validationSchema: validation,
 
-    onSubmit: (values, { resetForm }) => {
-      console.log(values);
+    onSubmit: async (values, { resetForm }) => {
+      console.log('validation', validation);
+      await console.log(values);
+      console.log(values.category);
+      console.log(values.myNameCategory);
       values.sum = Number(values.sum);
       values.date = norlmalizeData(values.date);
 
@@ -135,6 +144,39 @@ export const ModalTransaction = () => {
     className: style.Modal__date,
     onChange: {},
   };
+
+  const [isActive, setActive] = useState(false);
+
+  const handleMyCategory = ev => {
+    // console.log("handleMyCategory ~ ev", ev?.target.innerText);
+    if (isActive && !ev) {
+      setActive(false);
+    }
+
+    if (ev?.target.innerText === 'Свой вариант') {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  };
+
+  const onChangeInputMyCategory = async ev => {
+    formik.handleChange(ev);
+    console.log(123);
+    console.log(ev.target.value);
+    // const res = await dispatch(fetchCatgories());
+    // console.log("onChangeInputMyCategory ~ res", res)
+  };
+
+  const [categoies, setCategoies] = useState([]);
+
+  const getAllCategories = async () => {
+    const result = await dispatch(fetchCatgories());
+    console.log('getAllCategories ~ result.payload', result.payload);
+    setCategoies(result.payload);
+    return result.payload;
+  };
+
   return (
     <div className={style.Modal}>
       {isError && <ToastContainer />}
@@ -186,21 +228,82 @@ export const ModalTransaction = () => {
                   Выберите категорию
                 </MenuItem>
 
-                <MenuItem value="61ad865bc505a94bdf06939f">Основной</MenuItem>
-                <MenuItem value="61ad87a7c505a94bdf0693a2">Еда</MenuItem>
-                <MenuItem value="61ad881ac505a94bdf0693a3">Авто</MenuItem>
-                <MenuItem value="61ad8b50c505a94bdf0693a7">Развитие</MenuItem>
-                <MenuItem value="61ad8719c505a94bdf0693a0">Дети</MenuItem>
-                <MenuItem value="61ad8892c505a94bdf0693a4">Дом</MenuItem>
-                <MenuItem value="61ad8aadc505a94bdf0693a5">
+                {categoies.map(el => {
+                  console.log(el);
+                  return (
+                    <MenuItem value={el._id} onClick={handleMyCategory}>
+                      {el.name}
+                    </MenuItem>
+                  );
+                })}
+                <MenuItem
+                  value="61ad865bc505a94bdf06939f"
+                  onClick={handleMyCategory}
+                >
+                  Основной
+                </MenuItem>
+                <MenuItem
+                  value="61ad87a7c505a94bdf0693a2"
+                  onClick={handleMyCategory}
+                >
+                  Еда
+                </MenuItem>
+                <MenuItem
+                  value="61ad881ac505a94bdf0693a3"
+                  onClick={handleMyCategory}
+                >
+                  Авто
+                </MenuItem>
+                <MenuItem
+                  value="61ad8b50c505a94bdf0693a7"
+                  onClick={handleMyCategory}
+                >
+                  Развитие
+                </MenuItem>
+                <MenuItem
+                  value="61ad8719c505a94bdf0693a0"
+                  onClick={handleMyCategory}
+                >
+                  Дети
+                </MenuItem>
+                <MenuItem
+                  value="61ad8892c505a94bdf0693a4"
+                  onClick={handleMyCategory}
+                >
+                  Дом
+                </MenuItem>
+                <MenuItem
+                  value="61ad8aadc505a94bdf0693a5"
+                  onClick={handleMyCategory}
+                >
                   Образование
                 </MenuItem>
                 <MenuItem value="Остальное">Остальное</MenuItem>
+                <MenuItem onClick={handleMyCategory} value="myCategory">
+                  Свой вариант
+                </MenuItem>
               </Select>
             </FormControl>
-            {formik.touched.category && formik.errors.category ? (
+            <div className={isActive ? ' ' : `${style.isHiden}`}>
+              <textarea
+                id="myNameCategory"
+                className={[style.Modal__input, style.Modal__input__hight].join(
+                  ' ',
+                )}
+                name="myNameCategory"
+                rows="2"
+                maxLength="60"
+                placeholder="Введите название категории"
+                autoComplete="off"
+                type="text"
+                onChange={onChangeInputMyCategory}
+                onBlur={formik.handleBlur}
+                value={formik.values.myNameCategory}
+              ></textarea>
+            </div>
+            {formik.touched.myNameCategory && formik.errors.myNameCategory ? (
               <div className={style.Modal__errorSelect}>
-                {formik.errors.category}
+                {formik.errors.myNameCategory}
               </div>
             ) : null}
           </div>
