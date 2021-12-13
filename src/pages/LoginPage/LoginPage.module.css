@@ -2,17 +2,12 @@
   display: none;
 }
 .loginBox {
-  /* overflow-y: scroll; */
-
   position: relative;
 
   z-index: 1;
 }
 
 @media screen and (min-width: 768px) {
-  /* .section {
-    background-color: var(--page-background-color);
-  } */
   div .container {
     padding-left: 0;
     padding-right: 0;

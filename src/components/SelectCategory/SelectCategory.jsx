@@ -74,7 +74,7 @@ export const SelectCategory = props => {
           data-value={currentValue.target.value}
         >
           {currentValue.target.text}
-          {/* {value} */}
+      
         </span>
         <span
           className={[

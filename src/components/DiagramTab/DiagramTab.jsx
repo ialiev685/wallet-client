@@ -9,13 +9,6 @@ import s from './DiagramTab.module.css';
 
 export default function DiagramTab() {
   const dispatch = useDispatch();
-  // const totalBalance = useSelector(financeSelectors.totalBalance);
-
-  // const {
-  //   expenseStatistic: dataByCategory,
-  //   expenseBalance,
-  //   incomeBalance,
-  // } = useSelector(financeSelectors.dataByCategory);
 
   const dataStatBal = useSelector(financeSelectors.dataByCategory);
 
@@ -23,17 +16,10 @@ export default function DiagramTab() {
     dispatch(financeOperations.fetchDataByCategory());
   }, [dispatch]);
 
-  // const expense = expenseBalance;
-  // const income = incomeBalance;
   const titles = [
     { key: 1, title: 'Категория' },
     { key: 2, title: 'Сумма' },
   ];
-  // const data = [
-  //   { id: 1, color: '#FED057', category: 'Kill them all', sum: 2000 },
-  //   { id: 2, color: '#FFD8D0', category: 'Kill again', sum: 3000 },
-  //   { id: 3, color: '#FD9498', category: 'Kill always', sum: 1500 },
-  // ];
 
   const resultBalance = (
     dataStatBal?.incomeBalance - dataStatBal?.expenseBalance

@@ -12,13 +12,9 @@ import {
 } from './finance-operations';
 
 const initialState = {
-  // isFetchingTotalBalance: false,
-  // isFetchingData: false,
   error: null,
   totalBalance: null,
-  // totalBalance: 0,
-  // data: {},
-  // data: [],
+
   data: null,
   dataByCategory: null,
   isLoading: false,
@@ -33,34 +29,27 @@ const financeSlice = createSlice({
   initialState,
   extraReducers: {
     [fetchTotalBalance.pending](state, _) {
-      // state.isFetchingTotalBalance = true;
       state.isLoading = true;
       state.error = null;
     },
     [fetchTotalBalance.fulfilled](state, { payload }) {
-      // console.log(payload);
       state.totalBalance = payload;
-      // state.isFetchingTotalBalance = false;
+
       state.isLoading = false;
     },
     [fetchTotalBalance.rejected](state, _) {
-      // state.isFetchingTotalBalance = false;
-      // state.isFetchingTotalBalance = false;
       state.isLoading = false;
       //спиннер
     },
     [fetchData.pending](state) {
-      // state.isFetchingData = true;
       //спиннер
       state.isLoading = true;
       state.error = null;
     },
     [fetchData.fulfilled](state, { payload }) {
-      // console.log('payload trans',payload);
-      // state.totalBalance = payload[0]
       state.data = payload;
       state.isLoading = false;
-      // state.isFetchingData = false;
+
       //спиннер
     },
     [fetchData.rejected](state, { payload }) {
@@ -89,7 +78,7 @@ const financeSlice = createSlice({
     },
 
     [fetchDataByCategory.pending](state) {
-      //спиннер ?
+      //спиннер
       state.isLoading = true;
       state.error = null;
     },
@@ -100,23 +89,23 @@ const financeSlice = createSlice({
     },
     [fetchDataByCategory.rejected](state, { payload }) {
       state.isLoading = false;
-      //спиннер ?
+      //спиннер
       state.error = payload;
     },
 
     [fetchDataByQuery.pending](state) {
-      //спиннер ?
+      //спиннер
       state.isLoading = true;
       state.error = null;
     },
     [fetchDataByQuery.fulfilled](state, { payload }) {
       state.dataByCategory = payload;
       state.isLoading = false;
-      //спиннер ?
+      //спиннер
     },
     [fetchDataByQuery.rejected](state, { payload }) {
       state.isLoading = false;
-      //спиннер ?
+      //спиннер
       state.error = payload;
     },
     [fetchTransactionCategory.pending](state) {

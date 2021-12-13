@@ -89,7 +89,6 @@ export const ModalTransaction = () => {
 
     onSubmit: (values, { resetForm }) => {
       values.sum = Number(values.sum);
-      // values.date = norlmalizeData(values.date);
 
       if (new Date().getTime() - values.date.getTime() < 0) {
         return;

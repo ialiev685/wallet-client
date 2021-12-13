@@ -2,28 +2,16 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
-// import { HomeTab } from './pages/HomeTab/HomeTab';
-// import { CurrencyPage } from './pages/CurrencyPage/CurrencyPage';
+
 import PrivateRoute from './components/ProtectedRoute/PrivateRoute';
 import PublicRoute from './components/ProtectedRoute/PublicRoute';
 import Background from 'pages/Background';
 
-// import Header from 'components/Header';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// import RegistrationPage from './pages/RegistrationPage';
-// import LoginPage from './pages/LoginPage';
-// import DashboardPage from 'pages/DashboardPage';
 import Loader from './components/Loader';
 import NotFound from './components/NotFound';
-// import { useLocation, useNavigate } from 'react-router-dom';
-// import Section from 'components/Section';
-
-// import  HomeTab  from './pages/HomeTab/HomeTab'; // замена динамич. импорт
-// import CurrencyPage from './pages/CurrencyPage/CurrencyPage'; // замена динамич. импорт
-// import RegistrationPage from './pages/RegistrationPage'; // замена динамич. импорт
-// import LoginPage from './pages/LoginPage'; // замена динамич. импорт
 
 const HomeTab = lazy(() =>
   import('./pages/HomeTab/HomeTab' /* webpackChunkName: "homeTab-page" */),

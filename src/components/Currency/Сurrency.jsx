@@ -9,7 +9,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-// import s from './Сurrency.module.css';
+
 import fetchCurrency from '../../services/currency-api';
 import bgDesktop from '../../images/bg-currency/bg-currency-desktop.svg';
 import bgTablet from '../../images/bg-currency/bg-currency-tablet.svg';
@@ -128,7 +128,6 @@ export default function Currency({ className = '' }) {
   return (
     <>
       <div className={className}>
-        {/*className={s.table_wrapper}*/}
         <ThemeProvider theme={theme}>
           <TableContainer>
             <Table size="small" aria-label="simple table">

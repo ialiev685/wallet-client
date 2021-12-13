@@ -7,8 +7,7 @@ import Currency from 'components/Currency';
 import s from './BasePage.module.css';
 import Section from 'components/Section';
 import Header from 'components/Header';
-// import ButtonAddTransactions from 'components/ButtonAddTransactions';
-// import Container from 'components/Container';
+
 
 export const BasePage = ({ children, className = '' }) => {
   const isMobile = useMediaQuery({
@@ -21,7 +20,7 @@ export const BasePage = ({ children, className = '' }) => {
           <Header />
         </Container>
       </Section>
-      {/* <Background className={s.backdrop}> */}
+   
       <Section className={s.hometabBackground}>
         <Container className={s.container}>
           <div className={s.border}></div>
@@ -35,21 +34,12 @@ export const BasePage = ({ children, className = '' }) => {
             </div>
             <div className={s.rightSideBox}>
               {children}
-              {/* {transactions && (
-                  <TableTransaction
-                    numberPage={page}
-                    data={transactions || []}
-                    titles={TableTitleData}
-                    className={s.table}
-                    onPage={handlerControlPage}
-                  />
-                )}
-                <ButtonAddTransactions className={s.btnAdd} /> */}
+             
             </div>
           </div>
         </Container>
       </Section>
-      {/* </Background> */}
+   
     </div>
   );
 };

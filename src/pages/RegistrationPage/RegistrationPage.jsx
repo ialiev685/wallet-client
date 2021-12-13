@@ -1,9 +1,9 @@
 import s from './RegistrationPage.module.css';
 import { useMediaQuery } from 'react-responsive';
 import RegistrationForm from 'components/RegistrationForm';
-// import Background from 'pages/Background';
+
 import Container from 'components/Container';
-// import Section from 'components/Section';
+
 import PictureTablet from '../../images/background-images/PictureTablet.png';
 import PictureDesctop from '../../images/background-images/PictureDesktop.png';
 
@@ -11,7 +11,7 @@ const RegistrationPage = () => {
   const isTablet = useMediaQuery({
     minWidth: 768,
     maxWidth: 1279,
-    // query: '(min-width: 768px)',
+
   });
   const isDesktop = useMediaQuery({
     query: '(min-width: 1280px)',
@@ -19,7 +19,7 @@ const RegistrationPage = () => {
   return (
     <div>
       <Container className={s.container}>
-        {/* <Background> */}
+     
         <div className={s.registrBox}>
           <div className={s.titleBox}>
             {isTablet && (
@@ -34,7 +34,7 @@ const RegistrationPage = () => {
             <RegistrationForm classPosition={s.registrationForm} />
           </div>
         </div>
-        {/* </Background> */}
+   
       </Container>
     </div>
   );

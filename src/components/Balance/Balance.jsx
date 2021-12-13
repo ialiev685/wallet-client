@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { financeSelectors, financeOperations } from 'redux/finance';
-// console.log(financeSelectors);
 
 import s from './Balance.module.css';
 

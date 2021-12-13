@@ -2,7 +2,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://wallet-rf1.herokuapp.com/api';
 
-// axios.defaults.baseURL = 'http://localhost:8081/api/transactions';
+
 
 const token = {
   set(token) {

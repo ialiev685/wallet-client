@@ -34,8 +34,6 @@
 @media screen and (min-width: 768px) {
   .hometabBackground {
     background-color: transparent;
-    /* height: 944px; */
-    /* height: 100%; */
   }
   .navigation {
     justify-content: start;
@@ -90,7 +88,7 @@
     position: absolute;
     overflow: hidden;
     width: 0;
-    /* height: calc(100vh -85.39px); */
+
     height: 100vh;
     left: 465px;
     top: 0;
@@ -103,14 +101,4 @@
     margin-bottom: var(--margin-l);
     margin-right: 0;
   }
-
-  /* .table {
-      overflow: hidden;
-      width: 700px;
-      height: inherit;
-      margin-left: var(--margin-l);
-    } */
-  /* .btnAdd {
-      right: 0;
-    } */
 }

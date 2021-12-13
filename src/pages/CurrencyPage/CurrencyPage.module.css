@@ -1,14 +1,8 @@
-/* .backdrop {
-  background-color: var(--page-background-color);
-} */
 .currencyBackground {
   background-color: var(--background-color);
   height: 100vh;
 }
 
 .navigation {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   margin-bottom: var(--margin-l);
 }

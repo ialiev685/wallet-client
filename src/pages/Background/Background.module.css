@@ -11,7 +11,6 @@
     display: none;
   }
   .box {
-    /* max-width: var(--mobile); */
     background-color: var(--color-white);
   }
   .isLoggin.box {
@@ -31,23 +30,9 @@
   }
 }
 
-/* @media screen and (min-width: 320px) {
-  .box {
-    background-color: var(--color-white);
-    background-color: var(--page-background-color);
-  }
-} */
-
 @media screen and (min-width: 768px) {
   .box {
     background-color: var(--page-background-color);
-    /* background-image: url('../../images/background-images/EllipseBlue.png');
-
-    background-position: -140px 700px;
-
-    background-repeat: no-repeat; */
-    /* width: 100vh; */
-    /* height: 100vh; */
   }
   .ellipseBlue {
     position: absolute;
@@ -61,38 +46,7 @@
   }
 }
 
-/* @media screen and (min-width: 1280px) { */
-/* .box {
-    background-image: url('../../images/background-images/EllipseBlue.png');
-    background-position: calc(53% - 480px) 388px;
-  } */
-/* } */
-
-/* @media screen and (min-width: 768px) { */
-/* .box::after {
-    display: block;
-    content: '';
-
-    position: absolute;
-
-    top: 0;
-    right: 0;
-
-    width: 647px;
-    height: 508px;
-
-    background-image: url('../../images/background-images/EllipsePink.png');
-    background-position: 270px -112px;
-    background-repeat: no-repeat;
-
-    z-index: 0;
-  } */
-/* } */
-
 @media screen and (min-width: 1280px) {
-  /* .box::after {
-    background-position: 53% -118px;
-  } */
   .box::before {
     display: block;
     content: '';

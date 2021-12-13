@@ -1,7 +1,6 @@
 .table {
   overflow-y: scroll;
   height: 60vh;
-  /* position: relative; */
 }
 
 .btnAdd {
@@ -24,10 +23,7 @@
 }
 
 @media screen and (min-width: 1280px) {
-  /* .table {
-  } */
   .btnAdd {
-    /* right: 0; */
     right: 85px;
   }
 }
