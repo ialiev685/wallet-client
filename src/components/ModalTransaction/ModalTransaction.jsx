@@ -49,22 +49,6 @@ const validation = Yup.object({
   discription: Yup.mixed(),
 });
 
-//приводит дату в нормальный формат
-
-// const norlmalizeData = value => {
-//   const normalizeFormatMonth =
-//     value.getMonth() < 10 ? '0' + (value.getMonth() + 1) : value.getMonth() + 1;
-
-//   const normalizeFormatDate =
-//     value.getDate() < 10 ? '0' + value.getDate() : value.getDate();
-//   const normalizeDate = [
-//     normalizeFormatMonth,
-//     normalizeFormatDate,
-//     value.getFullYear(),
-//   ].join('.');
-//   return normalizeDate;
-// };
-
 export const ModalTransaction = () => {
   const dispatch = useDispatch();
   const isError = useSelector(financeSelectors.getIsError);
@@ -106,10 +90,15 @@ export const ModalTransaction = () => {
     onSubmit: (values, { resetForm }) => {
       values.sum = Number(values.sum);
       // values.date = norlmalizeData(values.date);
+
+      if (new Date().getTime() - values.date.getTime() < 0) {
+        return;
+      }
+
       values.date = values.date.toString();
       if (!values.transactionType) delete values.category;
       if (!values.comment) delete values.comment;
-      console.log(values);
+
       dispatch(fetchTransactionOperation(values));
 
       resetForm();
@@ -237,6 +226,9 @@ export const ModalTransaction = () => {
               }}
               closeOnSelect={true}
             />
+            {new Date().getTime() - formik.values.date.getTime() < 0 ? (
+              <div className={style.Modal__errorDate}>Дата позднее текущей</div>
+            ) : null}
           </div>
         </div>
 
