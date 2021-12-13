@@ -1,7 +1,28 @@
 .box {
   position: relative;
+  height: 100vh;
   margin-left: auto;
   margin-right: auto;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  /* .box {
+    max-width: var(--mobile);
+    background-color: var(--color-white);
+  } */
+  .ellipseBlue {
+    display: none;
+  }
+  .ellipsePink {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .box {
+    overflow-y: scroll;
+  }
 }
 
 @media screen and (min-width: 320px) {
@@ -13,42 +34,34 @@
 @media screen and (min-width: 768px) {
   .box {
     background-color: var(--page-background-color);
-    background-image: url('../../images/background-images/EllipseBlue.png');
+    /* background-image: url('../../images/background-images/EllipseBlue.png');
     background-position: -140px 700px;
 
-    background-repeat: no-repeat;
-
-    height: 100vh;
+    background-repeat: no-repeat; */
+    /* width: 100vh; */
+    /* height: 100vh; */
   }
-}
-
-@media screen and (min-width: 1280px) {
-  .box {
-    background-image: url('../../images/background-images/EllipseBlue.png');
-    background-position: -140px 388px;
-  }
-
-  .box::before {
-    display: block;
-    content: '';
-
+  .ellipseBlue {
     position: absolute;
-
-    top: 0;
-    right: 0;
-
-    width: 53.3%;
-
-    height: 100vh;
-
-    z-index: 1;
-    background-color: var(--background-color);
-    backdrop-filter: blur(50px);
+    left: -110px;
+    top: 700px;
+  }
+  .ellipsePink {
+    position: absolute;
+    left: 420px;
+    top: -110px;
   }
 }
 
-@media screen and (min-width: 768px) {
-  .box::after {
+/* @media screen and (min-width: 1280px) { */
+/* .box {
+    background-image: url('../../images/background-images/EllipseBlue.png');
+    background-position: calc(53% - 480px) 388px;
+  } */
+/* } */
+
+/* @media screen and (min-width: 768px) { */
+/* .box::after {
     display: block;
     content: '';
 
@@ -65,27 +78,45 @@
     background-repeat: no-repeat;
 
     z-index: 0;
-  }
+  } */
+/* } */
 
-  @media screen and (min-width: 1280px) {
-    .box::after {
-      background-position: 170px -118px;
-    }
+@media screen and (min-width: 1280px) {
+  /* .box::after {
+    background-position: 53% -118px;
+  } */
+  .box::before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 53.3%;
+    height: 100vh;
+    z-index: 1;
+    background-color: var(--background-color);
+    backdrop-filter: blur(50px);
+  }
+  .ellipseBlue {
+    position: absolute;
+    left: calc(53% - 820px);
+    top: 385px;
+  }
+  .ellipsePink {
+    position: absolute;
+    left: calc(53% + 55px);
+    top: -153px;
   }
 }
 
 .isLoggin.box::before {
   display: block;
   content: '';
-
   position: absolute;
-
   top: 0;
   right: 0;
-
   width: 100%;
   height: 100vh;
-
   z-index: 1;
   background-color: var(--background-color);
   backdrop-filter: blur(50px);
