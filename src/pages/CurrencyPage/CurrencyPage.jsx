@@ -17,22 +17,22 @@ const CurrencyPage = () => {
       <Container>
         <Header />
       </Container>
-      <Background className={s.backdrop}>
-        <Section className={s.currencyBackground}>
-          <Container>
-            {isMobile ? (
-              <>
-                <div className={s.navigation}>
-                  <Navigation />
-                </div>
-                <Currency />
-              </>
-            ) : (
-              <Navigate to="/home" />
-            )}
-          </Container>
-        </Section>
-      </Background>
+      {/* <Background className={s.backdrop}> */}
+      <Section className={s.currencyBackground}>
+        <Container>
+          {isMobile ? (
+            <>
+              <div className={s.navigation}>
+                <Navigation />
+              </div>
+              <Currency />
+            </>
+          ) : (
+            <Navigate to="/home" />
+          )}
+        </Container>
+      </Section>
+      {/* </Background> */}
     </>
   );
 };

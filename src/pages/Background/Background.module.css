@@ -7,6 +7,9 @@
 }
 
 @media screen and (max-width: 767px) {
+  .isLoggin.box::before {
+    display: none;
+  }
   /* .box {
     max-width: var(--mobile);
     background-color: var(--color-white);
@@ -46,12 +49,12 @@
   }
   .ellipseBlue {
     position: absolute;
-    left: -110px;
+    left: calc(50% - 520px);
     top: 700px;
   }
   .ellipsePink {
     position: absolute;
-    left: 420px;
+    left: calc(50% + 17px);
     top: -110px;
   }
 }
@@ -102,12 +105,12 @@
   }
   .ellipseBlue {
     position: absolute;
-    left: calc(53% - 820px);
+    left: calc(50% - 780px);
     top: 385px;
   }
   .ellipsePink {
     position: absolute;
-    left: calc(53% + 55px);
+    left: calc(50% + 75px);
     top: -153px;
   }
 }
