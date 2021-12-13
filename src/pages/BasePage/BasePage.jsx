@@ -31,7 +31,7 @@ export const BasePage = ({ children }) => {
                 <Navigation className={s.navigation} />
                 {!isMobile && <Balance className={s.balance} />}
               </div>
-              {/* {!isMobile && <Currency />} */}
+              {!isMobile && <Currency />}
             </div>
             <div className={s.rightSideBox}>
               {children}
