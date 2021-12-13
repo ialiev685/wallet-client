@@ -42,7 +42,6 @@ const RegistrationForm = ({ classPosition }) => {
         if (password !== passwordConfirm) {
           toast.error('Пароль не совпадает, попробуйте ещё раз!');
           return;
-          // alert('Пароль не совпадает, попробуйте ещё раз');
         }
         toast.success('Поздравляем, вы успешно зарегистрировались!');
         dispatch(registerUser({ name, email, password }));
