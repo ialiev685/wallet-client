@@ -1,11 +1,5 @@
-.backdrop {
-  backdrop-filter: var(--backdrop-filter);
-  height: 100%;
-}
-
 .section {
-  background-color: var(--background-color);
-  backdrop-filter: var(--backdrop-filter);
+  position: relative;
   height: 100vh;
 }
 
@@ -19,6 +13,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  z-index: 5;
 
   width: 100%;
   height: 400px;

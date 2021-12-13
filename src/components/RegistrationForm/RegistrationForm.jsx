@@ -126,7 +126,7 @@ const RegistrationForm = ({ classPosition }) => {
             action="добавить"
           />
           <ButtonWindow
-            type="submit"
+            type="button"
             title="ВХОД"
             onClick={() => navigate('/login')}
           />

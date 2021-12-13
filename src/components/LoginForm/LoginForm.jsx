@@ -71,7 +71,7 @@ const LoginForm = ({ classPosition }) => {
           action="добавить"
         />
         <ButtonWindow
-          type="submit"
+          type="button"
           title="РЕГИСТРАЦИЯ"
           onClick={() => navigate('/signup')}
         />
