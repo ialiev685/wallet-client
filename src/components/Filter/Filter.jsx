@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import InputLabel from '@mui/material/InputLabel';
@@ -42,22 +42,31 @@ const MenuProps = {
   },
 };
 
-export default function CustomizedSelects() {
+export default function CustomizedSelects({ years }) {
   const dispatch = useDispatch();
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     if (month && year) {
       dispatch(financeOperations.fetchDataByQuery({ month, year }));
     }
     if (year) {
       dispatch(financeOperations.fetchDataByQuery({ month, year }));
     }
+    if (month === '' && year === '') {
+      dispatch(financeOperations.fetchDataByQuery({ month: '', year: '' }));
+    }
   }, [dispatch, month, year]);
 
   const handleChange = event => {
     const { name, value } = event.target;
+    console.log(value);
 
     switch (name) {
       case 'month':
@@ -96,7 +105,10 @@ export default function CustomizedSelects() {
             IconComponent={ExpandMoreOutlinedIcon}
             MenuProps={MenuProps}
           >
-            <MenuItem value="">
+            <MenuItem
+              value={''}
+              // renderValue={''}
+            >
               <em>All</em>
             </MenuItem>
             <MenuItem value={1}>January</MenuItem>
@@ -137,12 +149,17 @@ export default function CustomizedSelects() {
             IconComponent={ExpandMoreOutlinedIcon}
             MenuProps={MenuProps}
           >
-            <MenuItem value="">
+            <MenuItem value={''}>
               <em>All</em>
             </MenuItem>
-            <MenuItem value={2021}>2021</MenuItem>
-            <MenuItem value={2020}>2020</MenuItem>
-            <MenuItem value={2019}>2019</MenuItem>
+
+            {years.map(el => {
+              return (
+                <MenuItem key={el} value={el}>
+                  {el}
+                </MenuItem>
+              );
+            })}
           </Select>
         </FormControl>
       </div>

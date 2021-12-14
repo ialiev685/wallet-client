@@ -11,6 +11,7 @@ export default function DiagramTab() {
   const dispatch = useDispatch();
 
   const dataStatBal = useSelector(financeSelectors.dataByCategory);
+  const years = useSelector(financeSelectors.dataYears);
 
   useEffect(() => {
     dispatch(financeOperations.fetchDataByCategory());
@@ -43,7 +44,7 @@ export default function DiagramTab() {
         </div>
         <div className={s.container}>
           <div className={s.filter}>
-            <Filter />
+            <Filter years={years} />
           </div>
           {dataStatBal && (
             <TableStatistic
