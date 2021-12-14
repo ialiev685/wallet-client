@@ -17,6 +17,7 @@ const initialState = {
 
   data: null,
   dataByCategory: null,
+  dataYears: [],
   isLoading: false,
   dataNewTransaction: null,
   listCategories: [],
@@ -84,6 +85,7 @@ const financeSlice = createSlice({
     },
     [fetchDataByCategory.fulfilled](state, { payload }) {
       state.dataByCategory = payload;
+      state.dataYears = payload.allYears;
       state.isLoading = false;
       //спиннер ?
     },
