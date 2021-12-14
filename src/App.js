@@ -43,11 +43,13 @@ function App() {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
+  const widthView = window.innerWidth;
+
   return (
     <>
       <Snowfall
         color="#2196f3"
-        snowflakeCount={40}
+        snowflakeCount={widthView > 768 ? 40 : 20}
         speed={[1, 3]}
         wind={[0, 3]}
         style={{
