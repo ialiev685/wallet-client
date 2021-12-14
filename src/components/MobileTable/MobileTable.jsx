@@ -81,7 +81,7 @@ const MobileTable = ({
   useEffect(() => {
     if (isFetching) {
       setIsFetching(false);
-      console.log('запрос');
+
       onPage(numberPage + 1);
 
       setTables(prev => [...prev, ...data]);
