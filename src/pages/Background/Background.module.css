@@ -15,7 +15,7 @@
   height: 150vh;
   z-index: 1;
   background-color: var(--background-color);
-  backdrop-filter: blur(50px);
+  backdrop-filter: var(--backdrop-filter);
 }
 
 @media screen and (max-width: 767px) {
@@ -44,11 +44,7 @@
     height: 1200px;
   }
 }
-/* @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .isLoggin.box::before {
-    height: 1200px;
-  }
-} */
+
 @media screen and (min-width: 768px) {
   .box {
     background-color: var(--page-background-color);
@@ -77,7 +73,7 @@
     height: 100vh;
     z-index: 1;
     background-color: var(--background-color);
-    backdrop-filter: blur(50px);
+    backdrop-filter: var(--backdrop-filter);
   }
   .ellipseBlue {
     position: absolute;
