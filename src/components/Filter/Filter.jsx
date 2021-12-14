@@ -47,7 +47,6 @@ export default function CustomizedSelects({ years }) {
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
   const isFirstRender = useRef(true);
-  // const [yearsState, setYearsState] = useState(years)
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -63,10 +62,6 @@ export default function CustomizedSelects({ years }) {
     if (month === '' && year === '') {
       dispatch(financeOperations.fetchDataByQuery({ month: '', year: '' }));
     }
-    // if(month === '' && year===''){
-    //   dispatch(financeOperations.fetchDataByCategory())
-
-    // }
   }, [dispatch, month, year]);
 
   const handleChange = event => {
@@ -157,10 +152,6 @@ export default function CustomizedSelects({ years }) {
             <MenuItem value={''}>
               <em>All</em>
             </MenuItem>
-            {/* <MenuItem value="">
-              <em>All</em>
-            </MenuItem> */}
-            {/* <MenuItem value={years[0]}>{years[0]}</MenuItem> */}
 
             {years.map(el => {
               return (
@@ -169,9 +160,6 @@ export default function CustomizedSelects({ years }) {
                 </MenuItem>
               );
             })}
-            {/* <MenuItem value={2021}>2021</MenuItem>
-            <MenuItem value={2020}>2020</MenuItem>
-            <MenuItem value={2019}>2019</MenuItem> */}
           </Select>
         </FormControl>
       </div>

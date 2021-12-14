@@ -9,12 +9,9 @@ import s from './DiagramTab.module.css';
 
 export default function DiagramTab() {
   const dispatch = useDispatch();
-  // const [yearsState, setYearsState] = useState([])
 
   const dataStatBal = useSelector(financeSelectors.dataByCategory);
   const years = useSelector(financeSelectors.dataYears);
-
-  // setYearsState((prev=> [...prev,...dataStatBal.allYears]))
 
   useEffect(() => {
     dispatch(financeOperations.fetchDataByCategory());
@@ -47,7 +44,6 @@ export default function DiagramTab() {
         </div>
         <div className={s.container}>
           <div className={s.filter}>
-            {/* <Filter years={dataStatBal?.allYears} /> */}
             <Filter years={years} />
           </div>
           {dataStatBal && (

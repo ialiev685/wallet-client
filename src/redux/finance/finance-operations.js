@@ -88,7 +88,6 @@ export const fetchDataByCategory = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const dataByCategory = await API.fetchDataByCategory();
-      console.log('без годов', dataByCategory);
       return dataByCategory;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -101,7 +100,6 @@ export const fetchDataByQuery = createAsyncThunk(
   async ({ month, year }, { rejectWithValue }) => {
     try {
       const dataByQuery = await API.fetchDataByQuery({ month, year });
-      console.log('с годами', dataByQuery);
       return dataByQuery;
     } catch (error) {
       return rejectWithValue(error.message);
