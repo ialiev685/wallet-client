@@ -9,6 +9,7 @@ const Background = ({ children, className = '' }) => {
 
   return (
     <div className={`${s.box} ${className} ${isLoggedIn && s.isLoggin}`}>
+      <div className={s.blur}></div>
       <img src={ellipseBlue} alt="EllipseBlue" className={s.ellipseBlue} />
       <img src={ellipsePink} alt="EllipsePink" className={s.ellipsePink} />
 

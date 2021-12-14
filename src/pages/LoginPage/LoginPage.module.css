@@ -53,7 +53,8 @@
   }
 
   .subBox {
-    height: 0;
+    /* height: 0; */
+    height: 100vh;
   }
 
   .title {

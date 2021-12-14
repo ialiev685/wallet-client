@@ -50,7 +50,8 @@
   }
 
   .rightSideBox {
-    overflow: hidden;
+    /* overflow: hidden; */
+    height: 100vh;
 
     width: 688px;
   }
@@ -80,13 +81,15 @@
   .rightSideBox {
     padding-top: 40px;
     padding-bottom: 40px;
-    height: 65vh;
+    height: auto;
+    overflow-y: hidden;
+    /* height: 65vh; */
     width: 700px;
   }
 
   .border {
     position: absolute;
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 0;
 
     height: 100vh;

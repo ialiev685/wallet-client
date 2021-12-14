@@ -13,7 +13,10 @@
 
 @media screen and (min-width: 768px) {
   .table {
-    overflow: hidden;
+    /* overflow: hidden; */
+    height: auto;
+    /* min-height: 350px; */
+    /* overflow: auto; */
   }
   .btnAdd {
     bottom: 40px;
@@ -23,6 +26,13 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .table {
+    overflow-y: hidden;
+    /* width: 100%; */
+
+    min-height: 350px;
+    /* overflow: auto; */
+  }
   .btnAdd {
     right: 85px;
   }
